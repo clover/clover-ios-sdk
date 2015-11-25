@@ -10,6 +10,8 @@
 		2F375E1913023E8EF5792670 /* Pods_CloverSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92BC14A0954D89DB2EC70C6F /* Pods_CloverSDK.framework */; };
 		881A22121C064D2900E45805 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 881A22111C064D2900E45805 /* README.md */; };
 		881A22141C064D3000E45805 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 881A22131C064D3000E45805 /* LICENSE */; };
+		881A22171C0656AA00E45805 /* CLVSDKModels.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 881A22161C0656AA00E45805 /* CLVSDKModels.podspec */; };
+		881A22191C0656B000E45805 /* CLVSDKUtils.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 881A22181C0656B000E45805 /* CLVSDKUtils.podspec */; };
 		88786F181C052ADF00889AE5 /* CloverSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 88786F171C052ADF00889AE5 /* CloverSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		88786F1F1C052AE000889AE5 /* CloverSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88786F141C052ADF00889AE5 /* CloverSDK.framework */; };
 		88786F241C052AE000889AE5 /* CloverSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88786F231C052AE000889AE5 /* CloverSDKTests.swift */; };
@@ -34,6 +36,8 @@
 		0FCE6573EC04D4BE8FDC8A25 /* Pods-CloverSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloverSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-CloverSDK/Pods-CloverSDK.release.xcconfig"; sourceTree = "<group>"; };
 		881A22111C064D2900E45805 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		881A22131C064D3000E45805 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		881A22161C0656AA00E45805 /* CLVSDKModels.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CLVSDKModels.podspec; sourceTree = "<group>"; };
+		881A22181C0656B000E45805 /* CLVSDKUtils.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CLVSDKUtils.podspec; sourceTree = "<group>"; };
 		88786F141C052ADF00889AE5 /* CloverSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CloverSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88786F171C052ADF00889AE5 /* CloverSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloverSDK.h; sourceTree = "<group>"; };
 		88786F191C052ADF00889AE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 		88786F0A1C052ADF00889AE5 = {
 			isa = PBXGroup;
 			children = (
+				881A22161C0656AA00E45805 /* CLVSDKModels.podspec */,
+				881A22181C0656B000E45805 /* CLVSDKUtils.podspec */,
 				881A22151C064D3500E45805 /* Meta */,
 				88786F161C052ADF00889AE5 /* CloverSDK */,
 				88786F221C052AE000889AE5 /* CloverSDKTests */,
@@ -248,7 +254,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				881A22191C0656B000E45805 /* CLVSDKUtils.podspec in Resources */,
 				881A22141C064D3000E45805 /* LICENSE in Resources */,
+				881A22171C0656AA00E45805 /* CLVSDKModels.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
