@@ -6,7 +6,7 @@
  
 import ObjectMapper
 
-class CLVData {
+class CLVModels {
   class Account {
 
     class Account: Mappable {
@@ -14,22 +14,22 @@ class CLVData {
       var name: String?
       var email: String?
       /// The primary merchant
-      var primaryMerchant: CLVData.Base.Reference?
+      var primaryMerchant: CLVModels.Base.Reference?
       /// The primary developer
-      var primaryDeveloper: CLVData.Base.Reference?
+      var primaryDeveloper: CLVModels.Base.Reference?
       /// The primary reseller
-      var primaryReseller: CLVData.Base.Reference?
+      var primaryReseller: CLVModels.Base.Reference?
       var isActive: Bool?
       var createdTime: NSDate?
       var claimedTime: NSDate?
       var lastLogin: Int?
       var inviteSent: Bool?
       var status: String?
-      var merchants: [CLVData.Base.Reference]?
-      var developers: [CLVData.Base.Reference]?
-      var resellers: [CLVData.Base.Reference]?
+      var merchants: [CLVModels.Base.Reference]?
+      var developers: [CLVModels.Base.Reference]?
+      var resellers: [CLVModels.Base.Reference]?
       var csrfToken: String?
-      var authFactors: [CLVData.Base.Reference]?
+      var authFactors: [CLVModels.Base.Reference]?
       
       init() {}
       required init?(_ map: Map) {}
@@ -59,7 +59,7 @@ class CLVData {
     class AuthFactor: Mappable {
       /// Unique identifier
       var id: String?
-      var type: CLVData.Account.AuthFactorType?
+      var type: CLVModels.Account.AuthFactorType?
       var phoneNumber: String?
       var backupCodes: String?
       var totpKey: String?
@@ -114,9 +114,9 @@ class CLVData {
       var hash: String?
       var deviceInstallCount: Int?
       var hashOriginal: String?
-      var approvalStatus: CLVData.Base.ApprovalStatus?
+      var approvalStatus: CLVModels.Base.ApprovalStatus?
       /// VirusTotal scan status
-      var scanStatus: CLVData.Apps.ScanStatus?
+      var scanStatus: CLVModels.Apps.ScanStatus?
       /// VirusTotal scan_id field, which is the sha256 hash joined with the timestamp by a hyphen
       var scanId: String?
       /// The minSdkVersion attribute parsed from the AndroidManifest.xml
@@ -128,7 +128,7 @@ class CLVData {
       /// List of android permissions
       var permissions: [String]?
       /// Reference to the app this Android version belongs to
-      var app: CLVData.Base.Reference?
+      var app: CLVModels.Base.Reference?
       
       init() {}
       required init?(_ map: Map) {}
@@ -159,9 +159,9 @@ class CLVData {
       /// Name of the app
       var name: String?
       var published: Bool?
-      var developer: CLVData.Developer.Developer?
+      var developer: CLVModels.Developer.Developer?
       /// Only available when app is installed to a merchant
-      var merchant: CLVData.Merchant.Merchant?
+      var merchant: CLVModels.Merchant.Merchant?
       /// App Description
       var description: String?
       /// Short tagline for the app
@@ -173,9 +173,9 @@ class CLVData {
       /// Site url for oauth redirect and web app launch from appmarket.
       var siteUrl: String?
       /// Default oauth response type.
-      var defaultResponseType: CLVData.Apps.OAuthResponseType?
+      var defaultResponseType: CLVModels.Apps.OAuthResponseType?
       var appDomain: String?
-      var androidVersion: CLVData.Apps.AndroidVersion?
+      var androidVersion: CLVModels.Apps.AndroidVersion?
       var packageName: String?
       var approved: Bool?
       var systemApp: Bool?
@@ -207,30 +207,30 @@ class CLVData {
       var supportPhoneHours: String?
       var supportEmail: String?
       var supportUrl: String?
-      var productType: CLVData.Apps.ProductType?
-      var approvalStatus: CLVData.Base.ApprovalStatus?
+      var productType: CLVModels.Apps.ProductType?
+      var approvalStatus: CLVModels.Base.ApprovalStatus?
       /// The app's android permissions
-      var androidPermissions: [CLVData.Apps.AndroidPermission]?
+      var androidPermissions: [CLVModels.Apps.AndroidPermission]?
       /// The app's screenshots
-      var screenshots: [CLVData.Apps.Screenshot]?
+      var screenshots: [CLVModels.Apps.Screenshot]?
       /// Available subscription options for this app
-      var availableSubscriptions: [CLVData.Apps.AppSubscription]?
+      var availableSubscriptions: [CLVModels.Apps.AppSubscription]?
       /// Subscription options for this app
-      var subscriptions: [CLVData.Apps.AppSubscription]?
+      var subscriptions: [CLVModels.Apps.AppSubscription]?
       /// Available metered options for this app
-      var availableMetereds: [CLVData.Apps.AppMetered]?
+      var availableMetereds: [CLVModels.Apps.AppMetered]?
       /// Metered options for this app
-      var metereds: [CLVData.Apps.AppMetered]?
+      var metereds: [CLVModels.Apps.AppMetered]?
       /// USB devices with which this app will communicate
-      var usbDevices: [CLVData.Apps.AppUsbDevice]?
+      var usbDevices: [CLVModels.Apps.AppUsbDevice]?
       /// DEPRECATED: This is now derived directly from billingStartTime (if future -> in trial; if past -> not in trial).  So it is now unnecessary.  Please update client code to not use it.
       var isMerchantInTrial: Bool?
       /// The merchant's current subscription for this app
-      var currentSubscription: CLVData.Apps.AppSubscription?
+      var currentSubscription: CLVModels.Apps.AppSubscription?
       /// The app's web hook
-      var webhook: CLVData.Apps.WebHook?
+      var webhook: CLVModels.Apps.WebHook?
       /// The app's uploaded apks
-      var androidVersions: [CLVData.Apps.AndroidVersion]?
+      var androidVersions: [CLVModels.Apps.AndroidVersion]?
       ///  Whether the app is installed 
       var installed: Bool?
       /// If the merchant has the app installed, this is the timestamp of when they installed the app.
@@ -248,10 +248,10 @@ class CLVData {
       /// App's client secret for use with oauth
       var appSecret: String?
       /// App's associated business types
-      var businessTypes: [CLVData.Apps.BusinessType]?
+      var businessTypes: [CLVModels.Apps.BusinessType]?
       /// App's supported device types
-      var deviceTypes: [CLVData.Apps.DeviceType]?
-      var modules: [CLVData.Merchant.Module]?
+      var deviceTypes: [CLVModels.Apps.DeviceType]?
+      var modules: [CLVModels.Merchant.Module]?
       
       init() {}
       required init?(_ map: Map) {}
@@ -329,13 +329,13 @@ class CLVData {
 
     class AppBillingInfo: Mappable {
       /// Current subscription level of the merchant for this app
-      var appSubscription: CLVData.Apps.AppSubscription?
+      var appSubscription: CLVModels.Apps.AppSubscription?
       /// Returns true if the merchant is in trial for this app.  Only valid for paid apps that offer trials.  Trials apply to app metereds and app subscriptions
       var isInTrial: Bool?
       /// When the merchant's trial ends.  Only valid for paid apps that offer trials
       var billingStartTime: NSDate?
       /// Returns active if a merchant has a credit card on file, and if it's currently authorizing properly.  Returns lapsed if their card is absent or most recently declined
-      var status: CLVData.Apps.MerchantBillingStatus?
+      var status: CLVModels.Apps.MerchantBillingStatus?
       /// If the merchant's account is lapsed (i.e. merchant is behind on paying), the number of days since it lapsed
       var daysLapsed: Int?
       
@@ -361,9 +361,9 @@ class CLVData {
       var price: Int?
       /// DEPRECATED: Instead use per country pricing in bundleCountries
       var pricePerDevice: Int?
-      var includedApps: [CLVData.Base.Reference]?
+      var includedApps: [CLVModels.Base.Reference]?
       /// Bundle country options for this app bundle
-      var bundleCountries: [CLVData.Apps.AppBundleCountry]?
+      var bundleCountries: [CLVModels.Apps.AppBundleCountry]?
       
       init() {}
       required init?(_ map: Map) {}
@@ -409,9 +409,9 @@ class CLVData {
       /// DEPRECATED: App metered active status. Instead use per country pricing in meteredCountries
       var active: Bool?
       /// Metered country options for this app metered
-      var meteredCountries: [CLVData.Apps.AppMeteredCountry]?
+      var meteredCountries: [CLVModels.Apps.AppMeteredCountry]?
       /// Reference to the app this metered belongs to
-      var app: CLVData.Base.Reference?
+      var app: CLVModels.Base.Reference?
       /// A label used to identify this metered action
       var label: String?
       
@@ -442,7 +442,7 @@ class CLVData {
       /// App metered country active status
       var active: Bool?
       /// Reference to metered this metered country belongs to
-      var appMetered: CLVData.Base.Reference?
+      var appMetered: CLVModels.Base.Reference?
       
       init() {}
       required init?(_ map: Map) {}
@@ -460,7 +460,7 @@ class CLVData {
 
     class AppNotification: Mappable {
       /// The app the notification will be sent to. This will be autopopulated by the server.
-      var app: CLVData.Base.Reference?
+      var app: CLVModels.Base.Reference?
       /// 
       var event: String?
       /// The time to live of the notification in seconds. By default this is 5 days.
@@ -492,9 +492,9 @@ class CLVData {
       /// DEPRECATED: App subscription active status.  Per country pricing in subscriptionCountries.
       var active: Bool?
       /// Subscription country options for this app subscription
-      var subscriptionCountries: [CLVData.Apps.AppSubscriptionCountry]?
+      var subscriptionCountries: [CLVModels.Apps.AppSubscriptionCountry]?
       /// Reference to app this subscription belongs to
-      var app: CLVData.Base.Reference?
+      var app: CLVModels.Base.Reference?
       /// App subscription label
       var label: String?
       
@@ -528,7 +528,7 @@ class CLVData {
       /// App subscription country active status
       var active: Bool?
       /// Reference to subscription this subscription country belongs to
-      var appSubscription: CLVData.Base.Reference?
+      var appSubscription: CLVModels.Base.Reference?
       /// The number of merchants that have this app subscription country installed
       var installCount: Int?
       
@@ -552,7 +552,7 @@ class CLVData {
       var packageName: String?
       var vendorId: Int?
       var productId: Int?
-      var app: CLVData.Base.Reference?
+      var app: CLVModels.Base.Reference?
       
       init() {}
       required init?(_ map: Map) {}
@@ -567,10 +567,10 @@ class CLVData {
     }
 
     class BusinessType: Mappable {
-      var businessTypeGroupCode: CLVData.Apps.BusinessTypeGroupCode?
+      var businessTypeGroupCode: CLVModels.Apps.BusinessTypeGroupCode?
       /// localized business type group
       var businessTypeGroupName: String?
-      var code: CLVData.Base.BusinessTypeCode?
+      var code: CLVModels.Base.BusinessTypeCode?
       /// Localized business type
       var name: String?
       
@@ -803,7 +803,7 @@ class CLVData {
       /// Unique identifier
       var id: String?
       /// The order with which the service charge is associated
-      var orderRef: CLVData.Base.Reference?
+      var orderRef: CLVModels.Base.Reference?
       /// Service charge name
       var name: String?
       /// If this service charge is enabled
@@ -894,17 +894,17 @@ class CLVData {
       /// Unique identifier
       var id: String?
       /// The order with which the customer is associated
-      var orderRef: CLVData.Base.Reference?
+      var orderRef: CLVModels.Base.Reference?
       /// First/given name of the customer
       var firstName: String?
       /// Last name/surname of the customer
       var lastName: String?
       var marketingAllowed: Bool?
       var customerSince: Int?
-      var orders: [CLVData.Base.Reference]?
-      var addresses: [CLVData.Customers.Address]?
-      var emailAddresses: [CLVData.Customers.EmailAddress]?
-      var phoneNumbers: [CLVData.Customers.PhoneNumber]?
+      var orders: [CLVModels.Base.Reference]?
+      var addresses: [CLVModels.Customers.Address]?
+      var emailAddresses: [CLVModels.Customers.EmailAddress]?
+      var phoneNumbers: [CLVModels.Customers.PhoneNumber]?
       
       init() {}
       required init?(_ map: Map) {}
@@ -1009,10 +1009,10 @@ class CLVData {
       /// Developer's business postal code
       var businessPostalCode: String?
       /// Developer's billing status
-      var billingStatus: CLVData.Developer.DeveloperBillingStatus?
+      var billingStatus: CLVModels.Developer.DeveloperBillingStatus?
       /// Developer's billing status message
       var billingStatusMessage: String?
-      var approvalStatus: CLVData.Base.ApprovalStatus?
+      var approvalStatus: CLVModels.Base.ApprovalStatus?
       /// If the user has accepted the developer agreement
       var acceptedAgreement: Bool?
       /// Name of public relations contact
@@ -1026,7 +1026,7 @@ class CLVData {
       /// Timestamp indicating the last time the developer was modified.
       var modifiedTime: NSDate?
       /// The user account that owns this developer account.
-      var owner: CLVData.Base.Reference?
+      var owner: CLVModels.Base.Reference?
       /// Temporary while we are switching US billing systems
       var appBillingSystem: String?
       /// The Infolease vendor code.  This is generated when the developer is on-boarded in the Infolease system.
@@ -1093,15 +1093,15 @@ class CLVData {
       /// Group name.
       var name: String?
       /// The developer that created this merchant group.
-      var developer_: CLVData.Base.Reference?
+      var developer_: CLVModels.Base.Reference?
       /// Timestamp indicating when the group was created.
       var createdTime: NSDate?
       /// The merchants directly added to the group (static merchants).
-      var merchants: [CLVData.Merchant.Merchant]?
+      var merchants: [CLVModels.Merchant.Merchant]?
       /// The filter query parameters used to join merchants to this group.
       var merchantFilter: String?
       /// The merchants in the group joined by the filter.
-      var filterMerchants: [CLVData.Merchant.Merchant]?
+      var filterMerchants: [CLVModels.Merchant.Merchant]?
       
       init() {}
       required init?(_ map: Map) {}
@@ -1137,7 +1137,7 @@ class CLVData {
       var serial: String?
       var buildNumber: Int?
       var secureId: String?
-      var buildType: CLVData.Device.BuildType?
+      var buildType: CLVModels.Device.BuildType?
       var cpuId: String?
       /// The IMEI of the device
       var imei: String?
@@ -1174,18 +1174,18 @@ class CLVData {
     class DeviceProvision: Mappable {
       /// Unique identifier
       var id: String?
-      var deviceRef: CLVData.Base.Reference?
-      var state: CLVData.Device.DeviceProvisionState?
+      var deviceRef: CLVModels.Base.Reference?
+      var state: CLVModels.Device.DeviceProvisionState?
       var lastActivationCode: String?
       var activationCode: String?
       var emailSent: Bool?
       var hasShipment: Bool?
       var serialNumber: String?
-      var merchant: CLVData.Base.Reference?
+      var merchant: CLVModels.Base.Reference?
       var deviceType: String?
       var provisionedTime: NSDate?
       var activatedTime: NSDate?
-      var reseller: CLVData.Base.Reference?
+      var reseller: CLVModels.Base.Reference?
       
       init() {}
       required init?(_ map: Map) {}
@@ -1243,16 +1243,16 @@ class CLVData {
       /// Employee PIN
       var unhashedPin: String?
       /// Employee System Role
-      var role: CLVData.Employees.AccountRole?
-      var roles: [CLVData.Base.Reference]?
+      var role: CLVModels.Employees.AccountRole?
+      var roles: [CLVModels.Base.Reference]?
       /// Returns true if this employee is the owner account for this merchant
       var isOwner: Bool?
       /// This employee's shifts
-      var shifts: [CLVData.Base.Reference]?
+      var shifts: [CLVModels.Base.Reference]?
       /// This employee's payments
-      var payments: [CLVData.Base.Reference]?
+      var payments: [CLVModels.Base.Reference]?
       /// This employee's orders
-      var orders: [CLVData.Base.Reference]?
+      var orders: [CLVModels.Base.Reference]?
       
       init() {}
       required init?(_ map: Map) {}
@@ -1299,13 +1299,13 @@ class CLVData {
       var name: String?
       /// Label of the permissionSet
       var label: String?
-      var app: CLVData.Base.Reference?
+      var app: CLVModels.Base.Reference?
       var employeeDefault: Bool?
       var managerDefault: Bool?
       /// Bitmap of permissions
-      var permissions: CLVData.Employees.Permissions?
+      var permissions: CLVModels.Employees.Permissions?
       /// roles enabled for this merchant
-      var roles: [CLVData.Base.Reference]?
+      var roles: [CLVModels.Base.Reference]?
       
       init() {}
       required init?(_ map: Map) {}
@@ -1327,9 +1327,9 @@ class CLVData {
       /// Unique identifier
       var id: String?
       /// The role
-      var role: CLVData.Base.Reference?
+      var role: CLVModels.Base.Reference?
       /// The role
-      var permissionSet: CLVData.Base.Reference?
+      var permissionSet: CLVModels.Base.Reference?
       var modified_time: Int?
       var deleted_time: Int?
       
@@ -1352,7 +1352,7 @@ class CLVData {
       /// A bitmap representing the permissions
       var bits: Int?
       /// A readable list of permissions
-      var readablePermissions: [CLVData.Employees.Permission]?
+      var readablePermissions: [CLVModels.Employees.Permission]?
       
       init() {}
       required init?(_ map: Map) {}
@@ -1371,9 +1371,9 @@ class CLVData {
       /// Full name of the role
       var name: String?
       /// Base System Role
-      var systemRole: CLVData.Employees.AccountRole?
+      var systemRole: CLVModels.Employees.AccountRole?
       /// employees with this role
-      var employeesRef: [CLVData.Base.Reference]?
+      var employeesRef: [CLVModels.Base.Reference]?
       
       init() {}
       required init?(_ map: Map) {}
@@ -1391,7 +1391,7 @@ class CLVData {
       /// Unique identifier
       var id: String?
       /// The employee that worked this shift
-      var employee: CLVData.Employees.Employee?
+      var employee: CLVModels.Employees.Employee?
       /// Amount of cash tips collected
       var cashTipsCollected: Int?
       /// Whether the employee used server banking
@@ -1401,13 +1401,13 @@ class CLVData {
       /// Overridden clock in time
       var overrideInTime: NSDate?
       /// The employee who overrode the clock in time
-      var overrideInEmployee: CLVData.Employees.Employee?
+      var overrideInEmployee: CLVModels.Employees.Employee?
       /// Clock out time
       var outTime: NSDate?
       /// Overridden clock out time
       var overrideOutTime: NSDate?
       /// The employee who overrode the clock out time
-      var overrideOutEmployee: CLVData.Employees.Employee?
+      var overrideOutEmployee: CLVModels.Employees.Employee?
       
       init() {}
       required init?(_ map: Map) {}
@@ -1449,14 +1449,14 @@ class CLVData {
       var id: String?
       /// Friendly name to describe the hours
       var name: String?
-      var reference: CLVData.Hours.Reference?
-      var sunday: [CLVData.Hours.HourRange]?
-      var monday: [CLVData.Hours.HourRange]?
-      var tuesday: [CLVData.Hours.HourRange]?
-      var wednesday: [CLVData.Hours.HourRange]?
-      var thursday: [CLVData.Hours.HourRange]?
-      var friday: [CLVData.Hours.HourRange]?
-      var saturday: [CLVData.Hours.HourRange]?
+      var reference: CLVModels.Hours.Reference?
+      var sunday: [CLVModels.Hours.HourRange]?
+      var monday: [CLVModels.Hours.HourRange]?
+      var tuesday: [CLVModels.Hours.HourRange]?
+      var wednesday: [CLVModels.Hours.HourRange]?
+      var thursday: [CLVModels.Hours.HourRange]?
+      var friday: [CLVModels.Hours.HourRange]?
+      var saturday: [CLVModels.Hours.HourRange]?
       
       init() {}
       required init?(_ map: Map) {}
@@ -1480,7 +1480,7 @@ class CLVData {
       /// ID of the reference that uses this set of hours
       var id: String?
       /// External type that these hours reference
-      var type: CLVData.Hours.ReferenceType?
+      var type: CLVModels.Hours.ReferenceType?
       
       init() {}
       required init?(_ map: Map) {}
@@ -1506,9 +1506,9 @@ class CLVData {
       /// Name of this attribute
       var name: String?
       /// The item group this attribute belongs to
-      var itemGroup: CLVData.Base.Reference?
+      var itemGroup: CLVModels.Base.Reference?
       /// Options associated with this attribute
-      var options: [CLVData.Inventory.Option]?
+      var options: [CLVModels.Inventory.Option]?
       
       init() {}
       required init?(_ map: Map) {}
@@ -1529,7 +1529,7 @@ class CLVData {
       var name: String?
       var sortOrder: Int?
       /// Items associated with this category
-      var items: [CLVData.Base.Reference]?
+      var items: [CLVModels.Base.Reference]?
       
       init() {}
       required init?(_ map: Map) {}
@@ -1544,8 +1544,8 @@ class CLVData {
     }
 
     class CategoryItem: Mappable {
-      var item: CLVData.Inventory.Item?
-      var category: CLVData.Inventory.Category?
+      var item: CLVModels.Inventory.Item?
+      var category: CLVModels.Inventory.Category?
       
       init() {}
       required init?(_ map: Map) {}
@@ -1585,7 +1585,7 @@ class CLVData {
       /// True if this item is hidden from register
       var hidden: Bool?
       /// Reference to an item group
-      var itemGroup: CLVData.Base.Reference?
+      var itemGroup: CLVModels.Base.Reference?
       /// Name of the item
       var name: String?
       /// Alternate name of the item
@@ -1596,7 +1596,7 @@ class CLVData {
       var sku: String?
       /// Price of the item, typically in cents; use priceType and merchant currency to determine actual item price
       var price: Int?
-      var priceType: CLVData.Inventory.PriceType?
+      var priceType: CLVModels.Inventory.PriceType?
       /// Flag to indicate whether or not to use default tax rates
       var defaultTaxRates: Bool?
       /// Unit name, e.g. oz, lb
@@ -1607,14 +1607,14 @@ class CLVData {
       var isRevenue: Bool?
       /// DEPRECATED: use itemStock instead
       var stockCount: Int?
-      var taxRates: [CLVData.Inventory.TaxRate]?
-      var modifierGroups: [CLVData.Inventory.ModifierGroup]?
+      var taxRates: [CLVModels.Inventory.TaxRate]?
+      var modifierGroups: [CLVModels.Inventory.ModifierGroup]?
       /// Categories associated with this item
-      var categories: [CLVData.Inventory.Category]?
+      var categories: [CLVModels.Inventory.Category]?
       /// Tags associated with this item
-      var tags: [CLVData.Inventory.Tag]?
+      var tags: [CLVModels.Inventory.Tag]?
       /// Item stock attribute that can be expanded to show stock quantity
-      var itemStock: CLVData.Inventory.ItemStock?
+      var itemStock: CLVModels.Inventory.ItemStock?
       var modifiedTime: NSDate?
       
       init() {}
@@ -1651,9 +1651,9 @@ class CLVData {
       /// Name of the option
       var name: String?
       /// Items that are members of this group
-      var items: [CLVData.Base.Reference]?
+      var items: [CLVModels.Base.Reference]?
       /// Attributes that belong to this group
-      var attributes: [CLVData.Base.Reference]?
+      var attributes: [CLVModels.Base.Reference]?
       
       init() {}
       required init?(_ map: Map) {}
@@ -1668,8 +1668,8 @@ class CLVData {
     }
 
     class ItemModifierGroup: Mappable {
-      var item: CLVData.Inventory.Item?
-      var modifierGroup: CLVData.Inventory.ModifierGroup?
+      var item: CLVModels.Inventory.Item?
+      var modifierGroup: CLVModels.Inventory.ModifierGroup?
       
       init() {}
       required init?(_ map: Map) {}
@@ -1684,7 +1684,7 @@ class CLVData {
     /// The class is used to update the item stock
     class ItemStock: Mappable {
       /// Reference to an item
-      var item: CLVData.Base.Reference?
+      var item: CLVModels.Base.Reference?
       /// DEPRECATED: use quantity instead
       var stockCount: Int?
       /// Current count of this item in stock
@@ -1709,7 +1709,7 @@ class CLVData {
       /// Alternate name of the modifier
       var alternateName: String?
       var price: Int?
-      var modifierGroup: CLVData.Base.Reference?
+      var modifierGroup: CLVModels.Base.Reference?
       
       init() {}
       required init?(_ map: Map) {}
@@ -1732,10 +1732,10 @@ class CLVData {
       var minRequired: Int?
       var maxAllowed: Int?
       var showByDefault: Bool?
-      var modifiers: [CLVData.Inventory.Modifier]?
+      var modifiers: [CLVModels.Inventory.Modifier]?
       /// The ordered, comma-separated list of modifier ids in this group.
       var modifierIds: String?
-      var items: [CLVData.Base.Reference]?
+      var items: [CLVModels.Base.Reference]?
       
       init() {}
       required init?(_ map: Map) {}
@@ -1759,7 +1759,7 @@ class CLVData {
       var id: String?
       /// Name of the option
       var name: String?
-      var attribute: CLVData.Base.Reference?
+      var attribute: CLVModels.Base.Reference?
       
       init() {}
       required init?(_ map: Map) {}
@@ -1775,9 +1775,9 @@ class CLVData {
     /// This class represents the association between an item and an option
     class OptionItem: Mappable {
       /// Reference to an option
-      var option: CLVData.Base.Reference?
+      var option: CLVModels.Base.Reference?
       /// Reference to an item
-      var item: CLVData.Base.Reference?
+      var item: CLVModels.Base.Reference?
       
       init() {}
       required init?(_ map: Map) {}
@@ -1801,9 +1801,9 @@ class CLVData {
       /// Tag name
       var name: String?
       /// Items associated with this tag
-      var items: [CLVData.Base.Reference]?
+      var items: [CLVModels.Base.Reference]?
       /// Printers associated with this tag
-      var printers: [CLVData.Base.Reference]?
+      var printers: [CLVModels.Base.Reference]?
       
       init() {}
       required init?(_ map: Map) {}
@@ -1818,8 +1818,8 @@ class CLVData {
     }
 
     class TagItem: Mappable {
-      var tag: CLVData.Inventory.Tag?
-      var item: CLVData.Inventory.Item?
+      var tag: CLVModels.Inventory.Tag?
+      var item: CLVModels.Inventory.Item?
       
       init() {}
       required init?(_ map: Map) {}
@@ -1832,8 +1832,8 @@ class CLVData {
     }
 
     class TagPrinter: Mappable {
-      var tag: CLVData.Inventory.Tag?
-      var printer: CLVData.Printer.Printer?
+      var tag: CLVModels.Inventory.Tag?
+      var printer: CLVModels.Printer.Printer?
       
       init() {}
       required init?(_ map: Map) {}
@@ -1848,12 +1848,12 @@ class CLVData {
     class TaxRate: Mappable {
       var id: String?
       /// The line item with which the tax rate is associated
-      var lineItemRef: CLVData.Base.Reference?
+      var lineItemRef: CLVModels.Base.Reference?
       var name: String?
       var rate: Int?
       var isDefault: Bool?
       /// Items associated with this tax rate
-      var items: [CLVData.Base.Reference]?
+      var items: [CLVModels.Base.Reference]?
       
       init() {}
       required init?(_ map: Map) {}
@@ -1870,8 +1870,8 @@ class CLVData {
     }
 
     class TaxRateItem: Mappable {
-      var taxRate: CLVData.Inventory.TaxRate?
-      var item: CLVData.Inventory.Item?
+      var taxRate: CLVModels.Inventory.TaxRate?
+      var item: CLVModels.Inventory.Item?
       
       init() {}
       required init?(_ map: Map) {}
@@ -1932,7 +1932,7 @@ class CLVData {
 
     class Logo: Mappable {
       /// The type of merchant logo
-      var logoType: CLVData.Merchant.LogoType?
+      var logoType: CLVModels.Merchant.LogoType?
       /// The filename of the logo
       var logoFilename: String?
       /// URL of the logo file. Generated from filename.
@@ -1960,46 +1960,46 @@ class CLVData {
       /// Name of the merchant
       var name: String?
       /// The account that owns this merchant
-      var owner: CLVData.Employees.Employee?
+      var owner: CLVModels.Employees.Employee?
       /// The address of the merchant.
-      var address: CLVData.Base.Address?
-      var merchantPlan: CLVData.Merchant.MerchantPlan?
+      var address: CLVModels.Base.Address?
+      var merchantPlan: CLVModels.Merchant.MerchantPlan?
       var defaultCurrency: String?
       var phoneNumber: String?
       var website: String?
-      var logos: [CLVData.Merchant.Logo]?
+      var logos: [CLVModels.Merchant.Logo]?
       var createdTime: NSDate?
-      var properties: CLVData.Merchant.MerchantProperties?
-      var gateway: CLVData.Merchant.Gateway?
-      var tipSuggestions: [CLVData.Merchant.TipSuggestion]?
+      var properties: CLVModels.Merchant.MerchantProperties?
+      var gateway: CLVModels.Merchant.Gateway?
+      var tipSuggestions: [CLVModels.Merchant.TipSuggestion]?
       /// This merchant's employees
-      var employees: [CLVData.Employees.Employee]?
+      var employees: [CLVModels.Employees.Employee]?
       /// This merchant's inventory items
-      var items: [CLVData.Inventory.Item]?
+      var items: [CLVModels.Inventory.Item]?
       /// This merchant's inventory tags
-      var tags: [CLVData.Inventory.Tag]?
+      var tags: [CLVModels.Inventory.Tag]?
       /// This merchant's supported tenders
-      var tenders: [CLVData.Base.Tender]?
+      var tenders: [CLVModels.Base.Tender]?
       /// This merchant's employees' shifts
-      var shifts: [CLVData.Employees.Shift]?
+      var shifts: [CLVModels.Employees.Shift]?
       /// This merchant's orders
-      var orders: [CLVData.Order.Order]?
+      var orders: [CLVModels.Order.Order]?
       /// This merchant's order payments
-      var payments: [CLVData.Payments.Payment]?
-      var taxRates: [CLVData.Inventory.TaxRate]?
-      var printers: [CLVData.Printer.Printer]?
-      var modifierGroups: [CLVData.Inventory.ModifierGroup]?
-      var orderTypes: [CLVData.Order.OrderType]?
+      var payments: [CLVModels.Payments.Payment]?
+      var taxRates: [CLVModels.Inventory.TaxRate]?
+      var printers: [CLVModels.Printer.Printer]?
+      var modifierGroups: [CLVModels.Inventory.ModifierGroup]?
+      var orderTypes: [CLVModels.Order.OrderType]?
       /// The merchant's reseller
-      var reseller: CLVData.Base.Reference?
+      var reseller: CLVModels.Base.Reference?
       /// This merchant's opening hours
-      var opening_hours: [CLVData.Hours.HoursSet]?
+      var opening_hours: [CLVModels.Hours.HoursSet]?
       /// The business type of the merchant
-      var businessTypeCode: CLVData.Base.BusinessTypeCode?
+      var businessTypeCode: CLVModels.Base.BusinessTypeCode?
       /// Returns true when the merchant is billable.
       var isBillable: Bool?
       /// A list of devices a merchant owns
-      var devices: [CLVData.Base.Reference]?
+      var devices: [CLVModels.Base.Reference]?
       
       init() {}
       required init?(_ map: Map) {}
@@ -2046,8 +2046,8 @@ class CLVData {
       /// Description of the plan
       var description: String?
       var price: Int?
-      var modules: [CLVData.Merchant.Module]?
-      var appBundle: CLVData.Apps.AppBundle?
+      var modules: [CLVModels.Merchant.Module]?
+      var appBundle: CLVModels.Apps.AppBundle?
       
       init() {}
       required init?(_ map: Map) {}
@@ -2073,7 +2073,7 @@ class CLVData {
       var tipRateDefault: Int?
       var onPaperTipSignatures: Bool?
       var autoLogout: Bool?
-      var orderTitle: CLVData.Merchant.OrderTitle?
+      var orderTitle: CLVModels.Merchant.OrderTitle?
       var orderTitleMax: Int?
       var resetOnReportingTime: Bool?
       var notesOnOrders: Bool?
@@ -2114,7 +2114,7 @@ class CLVData {
       var logInClockInPrompt: Bool?
       var accountType: String?
       /// The business type of the merchant
-      var businessTypeCode: CLVData.Base.BusinessTypeCode?
+      var businessTypeCode: CLVModels.Base.BusinessTypeCode?
       var pinLength: Int?
       /// Whether cash back is enabled for this merchant
       var cashBackEnabled: Bool?
@@ -2217,7 +2217,7 @@ class CLVData {
       /// Sync authoirty
       var authority: String?
       /// The minumum sync level rquired for this authority
-      var level: CLVData.Merchant.SyncLevel?
+      var level: CLVModels.Merchant.SyncLevel?
       
       init() {}
       required init?(_ map: Map) {}
@@ -2262,11 +2262,11 @@ class CLVData {
       /// Unique identifier
       var id: String?
       /// The order with which the discount is associated
-      var orderRef: CLVData.Base.Reference?
+      var orderRef: CLVModels.Base.Reference?
       /// The lineItem with which the discount is associated
-      var lineItemRef: CLVData.Base.Reference?
+      var lineItemRef: CLVModels.Base.Reference?
       /// If this item is based on a standard discount, this will point to the appropriate inventory.Discount
-      var discount: CLVData.Base.Reference?
+      var discount: CLVModels.Base.Reference?
       /// Name of the discount
       var name: String?
       /// Discount amount in fraction of currency unit (e.g. cents) based on currency fraction digits supported
@@ -2318,9 +2318,9 @@ class CLVData {
       /// Unique identifier
       var id: String?
       /// The order with which the line item is associated
-      var orderRef: CLVData.Base.Reference?
+      var orderRef: CLVModels.Base.Reference?
       /// Inventory item used to create this line item
-      var item: CLVData.Base.Reference?
+      var item: CLVModels.Base.Reference?
       /// Line item name
       var name: String?
       /// Alternate name of the line item
@@ -2334,22 +2334,22 @@ class CLVData {
       var itemCode: String?
       var note: String?
       var printed: Bool?
-      var exchangedLineItem: CLVData.Base.Reference?
+      var exchangedLineItem: CLVModels.Base.Reference?
       var binName: String?
       var userData: String?
       var createdTime: NSDate?
       var orderClientCreatedTime: NSDate?
-      var discounts: [CLVData.Order.Discount]?
+      var discounts: [CLVModels.Order.Discount]?
       /// does the calculated flag actually do anything?
       var discountAmount: Int?
       var exchanged: Bool?
-      var modifications: [CLVData.Order.Modification]?
+      var modifications: [CLVModels.Order.Modification]?
       var refunded: Bool?
       /// True if this item should be counted as revenue, for example gift cards and donations would not
       var isRevenue: Bool?
-      var taxRates: [CLVData.Inventory.TaxRate]?
+      var taxRates: [CLVModels.Inventory.TaxRate]?
       /// Payments that were made for this line item
-      var payments: [CLVData.Payments.LineItemPayment]?
+      var payments: [CLVModels.Payments.LineItemPayment]?
       
       init() {}
       required init?(_ map: Map) {}
@@ -2387,12 +2387,12 @@ class CLVData {
     class Modification: Mappable {
       var id: String?
       /// The line item with which the modification is associated
-      var lineItemRef: CLVData.Base.Reference?
+      var lineItemRef: CLVModels.Base.Reference?
       var name: String?
       var alternateName: String?
       var amount: Int?
       /// The modifier object.  Values from the Modifier are copied to the Modification at the time that the order is placed.  Modifier values may change after the order is placed.
-      var modifier: CLVData.Inventory.Modifier?
+      var modifier: CLVModels.Inventory.Modifier?
       
       init() {}
       required init?(_ map: Map) {}
@@ -2413,21 +2413,21 @@ class CLVData {
       var id: String?
       /// Currency of this order
       var currency: String?
-      var customers: [CLVData.Customers.Customer]?
+      var customers: [CLVModels.Customers.Customer]?
       /// The employee who took this order
-      var employee: CLVData.Base.Reference?
+      var employee: CLVModels.Base.Reference?
       /// Total price of the order
       var total: Int?
       var title: String?
       var note: String?
-      var orderType: CLVData.Order.OrderType?
+      var orderType: CLVModels.Order.OrderType?
       var taxRemoved: Bool?
       var isVat: Bool?
       var state: String?
       var manualTransaction: Bool?
       var groupLineItems: Bool?
       var testMode: Bool?
-      var payType: CLVData.Order.PayType?
+      var payType: CLVModels.Order.PayType?
       /// Creation timestamp
       var createdTime: NSDate?
       var clientCreatedTime: NSDate?
@@ -2435,19 +2435,19 @@ class CLVData {
       var modifiedTime: NSDate?
       var deletedTimestamp: NSDate?
       /// Optional service charge (gratuity) applied to this order
-      var serviceCharge: CLVData.Base.ServiceCharge?
-      var discounts: [CLVData.Order.Discount]?
-      var lineItems: [CLVData.Order.LineItem]?
-      var taxRates: [CLVData.Order.OrderTaxRate]?
+      var serviceCharge: CLVModels.Base.ServiceCharge?
+      var discounts: [CLVModels.Order.Discount]?
+      var lineItems: [CLVModels.Order.LineItem]?
+      var taxRates: [CLVModels.Order.OrderTaxRate]?
       /// Payments that were made for this order
-      var payments: [CLVData.Payments.Payment]?
+      var payments: [CLVModels.Payments.Payment]?
       /// Refunds that were made for this order
-      var refunds: [CLVData.Payments.Refund]?
-      var credits: [CLVData.Payments.Credit]?
+      var refunds: [CLVModels.Payments.Refund]?
+      var credits: [CLVModels.Payments.Credit]?
       /// Voided payments associated with this order
-      var voids: [CLVData.Payments.Payment]?
+      var voids: [CLVModels.Payments.Payment]?
       /// Device which created the order
-      var device: CLVData.Base.Reference?
+      var device: CLVModels.Base.Reference?
       
       init() {}
       required init?(_ map: Map) {}
@@ -2526,16 +2526,16 @@ class CLVData {
       var maxRadius: Int?
       /// The average time it takes to complete the order
       var avgOrderTime: Int?
-      var hoursAvailable: CLVData.Order.HoursAvailable?
-      var customerIdMethod: CLVData.Order.CustomerIdMethod?
+      var hoursAvailable: CLVModels.Order.HoursAvailable?
+      var customerIdMethod: CLVModels.Order.CustomerIdMethod?
       /// If this order type is deleted
       var isDeleted: Bool?
       /// Optional system order type that this order type is associated with.
       var systemOrderTypeId: String?
       /// The hours this order type is available (if they differ from normal merchant hours)
-      var hours: CLVData.Hours.HoursSet?
+      var hours: CLVModels.Hours.HoursSet?
       /// The categories of items that can be assigned to this order type
-      var categories: [CLVData.Base.Reference]?
+      var categories: [CLVModels.Base.Reference]?
       
       init() {}
       required init?(_ map: Map) {}
@@ -2564,8 +2564,8 @@ class CLVData {
     }
 
     class OrderTypeCategory: Mappable {
-      var orderType: CLVData.Order.OrderType?
-      var category: CLVData.Inventory.Category?
+      var orderType: CLVModels.Order.OrderType?
+      var category: CLVModels.Inventory.Category?
       
       init() {}
       required init?(_ map: Map) {}
@@ -2643,21 +2643,21 @@ class CLVData {
       /// Unique identifier
       var id: String?
       /// Payment that the auth was opened with
-      var payment: CLVData.Payments.Payment?
+      var payment: CLVModels.Payments.Payment?
       /// Name of tab
       var tabName: String?
       /// Amount authorized
       var amount: Int?
       /// Type of credit card used for authorization
-      var cardType: CLVData.Payments.CardType?
+      var cardType: CLVModels.Payments.CardType?
       /// Last 4 digits of credit card used for authorization
       var last4: String?
       /// Authorization code
       var authcode: String?
-      var type: CLVData.Payments.Type?
+      var type: CLVModels.Payments.Type?
       var note: String?
       /// Payment that the auth was closed with
-      var closingPayment: CLVData.Payments.Payment?
+      var closingPayment: CLVModels.Payments.Payment?
       /// Time authorization was recorded on server
       var createdTime: NSDate?
       
@@ -2693,14 +2693,14 @@ class CLVData {
       var totalBatchAmount: Int?
       /// List of devices in batch
       var devices: String?
-      var state: CLVData.Payments.BatchState?
-      var batchType: CLVData.Payments.BatchType?
+      var state: CLVModels.Payments.BatchState?
+      var batchType: CLVModels.Payments.BatchType?
       /// Created time of batch
       var createdTime: NSDate?
       /// Modified time of batch
       var modifiedTime: NSDate?
       /// Details split based on card / employees
-      var batchDetails: CLVData.Payments.BatchDetail?
+      var batchDetails: CLVModels.Payments.BatchDetail?
       
       init() {}
       required init?(_ map: Map) {}
@@ -2724,7 +2724,7 @@ class CLVData {
     }
 
     class BatchCardTotal: Mappable {
-      var cardType: CLVData.Payments.CardType?
+      var cardType: CLVModels.Payments.CardType?
       /// Total count of types
       var count: Int?
       /// Total amount for type
@@ -2742,9 +2742,9 @@ class CLVData {
     }
 
     class BatchDetail: Mappable {
-      var batchTotals: CLVData.Payments.BatchTotalStats?
-      var serverTotals: [CLVData.Payments.ServerTotalStats]?
-      var cardTotals: [CLVData.Payments.BatchCardTotal]?
+      var batchTotals: CLVModels.Payments.BatchTotalStats?
+      var serverTotals: [CLVModels.Payments.ServerTotalStats]?
+      var cardTotals: [CLVModels.Payments.BatchCardTotal]?
       /// Number of open tips.
       var openTips: Int?
       /// Number of open tabs.
@@ -2784,13 +2784,13 @@ class CLVData {
     }
 
     class BatchTotalStats: Mappable {
-      var sales: CLVData.Payments.BatchTotalType?
-      var refunds: CLVData.Payments.BatchTotalType?
-      var net: CLVData.Payments.BatchTotalType?
-      var giftCardLoads: CLVData.Payments.BatchTotalType?
-      var giftCardCashOuts: CLVData.Payments.BatchTotalType?
-      var tax: CLVData.Payments.BatchTotalType?
-      var tips: CLVData.Payments.BatchTotalType?
+      var sales: CLVModels.Payments.BatchTotalType?
+      var refunds: CLVModels.Payments.BatchTotalType?
+      var net: CLVModels.Payments.BatchTotalType?
+      var giftCardLoads: CLVModels.Payments.BatchTotalType?
+      var giftCardCashOuts: CLVModels.Payments.BatchTotalType?
+      var tax: CLVModels.Payments.BatchTotalType?
+      var tips: CLVModels.Payments.BatchTotalType?
       
       init() {}
       required init?(_ map: Map) {}
@@ -2850,24 +2850,24 @@ class CLVData {
 
     class CardTransaction: Mappable {
       /// The payment with which the card transaction is associated
-      var paymentRef: CLVData.Base.Reference?
+      var paymentRef: CLVModels.Base.Reference?
       /// The credit with which the card transaction is associated
-      var creditRef: CLVData.Base.Reference?
-      var cardType: CLVData.Payments.CardType?
-      var entryType: CLVData.Payments.CardEntryType?
+      var creditRef: CLVModels.Base.Reference?
+      var cardType: CLVModels.Payments.CardType?
+      var entryType: CLVModels.Payments.CardEntryType?
       /// The last four digits of the credit card number
       var last4: String?
-      var type: CLVData.Payments.CardTransactionType?
+      var type: CLVModels.Payments.CardTransactionType?
       /// Authorization code (if successful)
       var authCode: String?
       var referenceId: String?
       var transactionNo: String?
-      var state: CLVData.Payments.CardTransactionState?
+      var state: CLVModels.Payments.CardTransactionState?
       /// Extra info to be stored as part of gateway/card transaction
       var extra: [String:String]?
       var begBalance: Int?
       var endBalance: Int?
-      var avsResult: CLVData.Payments.AVSResult?
+      var avsResult: CLVModels.Payments.AVSResult?
       var cardholderName: String?
       
       init() {}
@@ -2941,25 +2941,25 @@ class CLVData {
       /// Unique identifier
       var id: String?
       /// The order with which the credit is associated
-      var orderRef: CLVData.Base.Reference?
+      var orderRef: CLVModels.Base.Reference?
       /// Device which processed this credit
-      var device: CLVData.Base.Reference?
+      var device: CLVModels.Base.Reference?
       /// The tender type associated with this payment, e.g. credit card, cash, etc.
-      var tender: CLVData.Base.Tender?
+      var tender: CLVModels.Base.Tender?
       /// The employee who processed the payment
-      var employee: CLVData.Base.Reference?
+      var employee: CLVModels.Base.Reference?
       /// Customer who received the credit/refund
-      var customers: CLVData.Customers.Customer?
+      var customers: CLVModels.Customers.Customer?
       /// Amount paid in tax
       var amount: Int?
       /// Amount paid in tax
       var taxAmount: Int?
-      var taxRates: [CLVData.Payments.TaxableAmountRate]?
+      var taxRates: [CLVModels.Payments.TaxableAmountRate]?
       /// Time payment was recorded on server
       var createdTime: NSDate?
       var clientCreatedTime: NSDate?
       /// Information about the card used for credit/debit card payments
-      var cardTransaction: CLVData.Payments.CardTransaction?
+      var cardTransaction: CLVModels.Payments.CardTransaction?
       
       init() {}
       required init?(_ map: Map) {}
@@ -3039,16 +3039,16 @@ class CLVData {
       var adjustAmount: Int?
       var taxAmount: Int?
       var tipAmount: Int?
-      var currency: CLVData.Payments.Currency?
-      var state: CLVData.Payments.GatewayTxState?
+      var currency: CLVModels.Payments.Currency?
+      var state: CLVModels.Payments.GatewayTxState?
       var retries: Int?
-      var type: CLVData.Payments.GatewayTxType?
-      var entryType: CLVData.Payments.CardEntryType?
+      var type: CLVModels.Payments.GatewayTxType?
+      var entryType: CLVModels.Payments.CardEntryType?
       var responseCode: String?
       var responseMessage: String?
       var first4: String?
       var last4: String?
-      var cardType: CLVData.Payments.CardType?
+      var cardType: CLVModels.Payments.CardType?
       var refnum: String?
       var token: String?
       var authcode: String?
@@ -3120,11 +3120,11 @@ class CLVData {
     }
 
     class GiftCardResponse: Mappable {
-      var txType: CLVData.Payments.TxType?
-      var state: CLVData.Payments.GiftCardState?
+      var txType: CLVModels.Payments.TxType?
+      var state: CLVModels.Payments.GiftCardState?
       /// Transaction Amount
       var requestAmount: Int?
-      var payment: CLVData.Payments.Payment?
+      var payment: CLVModels.Payments.Payment?
       var responseMessage: String?
       var requestSuccessful: Bool?
       var accountNumber: String?
@@ -3171,13 +3171,13 @@ class CLVData {
       var taxAmount: Int?
       var orderId: String?
       /// Gift Card
-      var card: CLVData.Payments.GiftCard?
+      var card: CLVModels.Payments.GiftCard?
       var paymentIds: [String]?
       var ignorePayment: Bool?
-      var serviceChargeAmount: CLVData.Payments.ServiceChargeAmount?
-      var taxableAmountRates: [CLVData.Payments.TaxableAmountRate]?
+      var serviceChargeAmount: CLVModels.Payments.ServiceChargeAmount?
+      var taxableAmountRates: [CLVModels.Payments.TaxableAmountRate]?
       /// Payments that were made for this line item
-      var lineItems: [CLVData.Payments.LineItemPayment]?
+      var lineItems: [CLVModels.Payments.LineItemPayment]?
       var employeeId: String?
       
       init() {}
@@ -3202,9 +3202,9 @@ class CLVData {
       /// Unique identifier; TBD this is confusing because it's used as either line item id or payment id
       var id: String?
       /// The line item with which the line item payment is associated
-      var lineItemRef: CLVData.Base.Reference?
+      var lineItemRef: CLVModels.Base.Reference?
       /// The payment with which the line item payment is associated
-      var paymentRef: CLVData.Base.Reference?
+      var paymentRef: CLVModels.Base.Reference?
       /// Percent of this line item covered by this payment
       var percentage: Int?
       /// Bin this line item payment was for
@@ -3230,11 +3230,11 @@ class CLVData {
       /// Unique identifier
       var id: String?
       /// The order with which the payment is associated
-      var order: CLVData.Base.Reference?
+      var order: CLVModels.Base.Reference?
       /// Device which processed the transaction for this payment
-      var device: CLVData.Base.Reference?
+      var device: CLVModels.Base.Reference?
       /// The tender type associated with this payment, e.g. credit card, cash, etc.
-      var tender: CLVData.Base.Tender?
+      var tender: CLVModels.Base.Tender?
       /// Total amount paid
       var amount: Int?
       /// Amount paid in tips
@@ -3247,24 +3247,24 @@ class CLVData {
       var cashTendered: Int?
       var externalPaymentId: String?
       /// The employee who processed the payment
-      var employee: CLVData.Base.Reference?
+      var employee: CLVModels.Base.Reference?
       /// Time payment was recorded on server
       var createdTime: NSDate?
       var clientCreatedTime: NSDate?
       /// Last modified time of the payment
       var modifiedTime: NSDate?
       var offline: Bool?
-      var result: CLVData.Payments.Result?
+      var result: CLVModels.Payments.Result?
       /// Information about the card used for credit/debit card payments
-      var cardTransaction: CLVData.Payments.CardTransaction?
+      var cardTransaction: CLVModels.Payments.CardTransaction?
       /// Amount record as a service charge
-      var serviceCharge: CLVData.Payments.ServiceChargeAmount?
-      var taxRates: [CLVData.Payments.PaymentTaxRate]?
-      var refunds: [CLVData.Payments.Refund]?
+      var serviceCharge: CLVModels.Payments.ServiceChargeAmount?
+      var taxRates: [CLVModels.Payments.PaymentTaxRate]?
+      var refunds: [CLVModels.Payments.Refund]?
       var note: String?
-      var lineItemPayments: [CLVData.Payments.LineItemPayment]?
+      var lineItemPayments: [CLVModels.Payments.LineItemPayment]?
       /// If voided, the reason why (when available)
-      var voidReason: CLVData.Order.VoidReason?
+      var voidReason: CLVModels.Order.VoidReason?
       
       init() {}
       required init?(_ map: Map) {}
@@ -3300,7 +3300,7 @@ class CLVData {
     class PaymentResponse: Mappable {
       var requestSuccessful: Bool?
       var responseErrorMessage: String?
-      var payment: CLVData.Payments.Payment?
+      var payment: CLVModels.Payments.Payment?
       
       init() {}
       required init?(_ map: Map) {}
@@ -3316,7 +3316,7 @@ class CLVData {
     class PaymentTaxRate: Mappable {
       var id: String?
       /// The payment with which the payment tax rate is associated
-      var paymentRef: CLVData.Base.Reference?
+      var paymentRef: CLVModels.Base.Reference?
       var name: String?
       var rate: Int?
       var isDefault: Bool?
@@ -3340,9 +3340,9 @@ class CLVData {
       /// Unique identifier
       var id: String?
       /// The order with which the refund is associated
-      var orderRef: CLVData.Base.Reference?
+      var orderRef: CLVModels.Base.Reference?
       /// Device which processed the transaction for this refund
-      var device: CLVData.Base.Reference?
+      var device: CLVModels.Base.Reference?
       /// Total amount refunded, including tax
       var amount: Int?
       /// Tax amount refunded
@@ -3352,13 +3352,13 @@ class CLVData {
       /// The time when the refund was recorded on the client
       var clientCreatedTime: NSDate?
       /// The payment with which the refund is associated
-      var payment: CLVData.Base.Reference?
-      var employee: CLVData.Base.Reference?
-      var lineItems: [CLVData.Base.Reference]?
+      var payment: CLVModels.Base.Reference?
+      var employee: CLVModels.Base.Reference?
+      var lineItems: [CLVModels.Base.Reference]?
       /// The tender type associated with this payment, e.g. credit card, cash, etc.
-      var overrideMerchantTender: CLVData.Base.Tender?
-      var taxableAmountRates: [CLVData.Payments.TaxableAmountRate]?
-      var serviceChargeAmount: CLVData.Payments.ServiceChargeAmount?
+      var overrideMerchantTender: CLVModels.Base.Tender?
+      var taxableAmountRates: [CLVModels.Payments.TaxableAmountRate]?
+      var serviceChargeAmount: CLVModels.Payments.ServiceChargeAmount?
       
       init() {}
       required init?(_ map: Map) {}
@@ -3394,13 +3394,13 @@ class CLVData {
       /// Employee corresponding to these stats
       var employeeId: String?
       var employeeName: String?
-      var sales: CLVData.Payments.BatchTotalType?
-      var refunds: CLVData.Payments.BatchTotalType?
-      var net: CLVData.Payments.BatchTotalType?
-      var giftCardLoads: CLVData.Payments.BatchTotalType?
-      var giftCardCashOuts: CLVData.Payments.BatchTotalType?
-      var tax: CLVData.Payments.BatchTotalType?
-      var tips: CLVData.Payments.BatchTotalType?
+      var sales: CLVModels.Payments.BatchTotalType?
+      var refunds: CLVModels.Payments.BatchTotalType?
+      var net: CLVModels.Payments.BatchTotalType?
+      var giftCardLoads: CLVModels.Payments.BatchTotalType?
+      var giftCardCashOuts: CLVModels.Payments.BatchTotalType?
+      var tax: CLVModels.Payments.BatchTotalType?
+      var tips: CLVModels.Payments.BatchTotalType?
       
       init() {}
       required init?(_ map: Map) {}
@@ -3424,7 +3424,7 @@ class CLVData {
       var name: String?
       var amount: Int?
       /// The payment with which the payment tax rate is associated
-      var paymentRef: CLVData.Base.Reference?
+      var paymentRef: CLVModels.Base.Reference?
       
       init() {}
       required init?(_ map: Map) {}
@@ -3463,9 +3463,9 @@ class CLVData {
       var createdTime: NSDate?
       /// The time when the transaction was recorded on the client
       var clientCreatedTime: NSDate?
-      var payment: CLVData.Payments.Payment?
-      var refund: CLVData.Payments.Refund?
-      var credit: CLVData.Payments.Credit?
+      var payment: CLVModels.Payments.Payment?
+      var refund: CLVModels.Payments.Refund?
+      var credit: CLVModels.Payments.Credit?
       
       init() {}
       required init?(_ map: Map) {}
@@ -3520,7 +3520,7 @@ class CLVData {
       /// IP address of a network printer
       var ipAddress: String?
       /// NETWORK is a printer that's directly connected to the network.  MY_LOCAL represents the printer that's connected to the device that's making the request.
-      var type: CLVData.Printer.PrinterType?
+      var type: CLVModels.Printer.PrinterType?
       
       init() {}
       required init?(_ map: Map) {}
@@ -3561,7 +3561,7 @@ class CLVData {
     class Category: Mappable {
       var id: String?
       var name: String?
-      var items: [CLVData.Report.Item]?
+      var items: [CLVModels.Report.Item]?
       
       init() {}
       required init?(_ map: Map) {}
@@ -3594,7 +3594,7 @@ class CLVData {
 
     class EmployeeSummary: Mappable {
       var name: String?
-      var employee: CLVData.Employees.Employee?
+      var employee: CLVModels.Employees.Employee?
       var numPayments: Int?
       var paymentsAmount: Int?
       var numRefunds: Int?
@@ -3631,8 +3631,8 @@ class CLVData {
       var amountRefunds: Int?
       var numberExchanges: Double?
       var amountExchanged: Int?
-      var discounts: [CLVData.Report.Discount]?
-      var modifiers: [CLVData.Report.Modifier]?
+      var discounts: [CLVModels.Report.Discount]?
+      var modifiers: [CLVModels.Report.Modifier]?
       
       init() {}
       required init?(_ map: Map) {}
@@ -3672,9 +3672,9 @@ class CLVData {
 
     class Report: Mappable {
       /// Reports By Payments
-      var payments: CLVData.Report.ReportPayments?
+      var payments: CLVModels.Report.ReportPayments?
       /// Reports By Items
-      var items: CLVData.Report.ReportItems?
+      var items: CLVModels.Report.ReportItems?
       
       init() {}
       required init?(_ map: Map) {}
@@ -3690,15 +3690,15 @@ class CLVData {
       /// Unique identifier
       var id: String?
       /// The employee being reported on
-      var employee: CLVData.Base.Reference?
+      var employee: CLVModels.Base.Reference?
       /// Number and amounts for payments processed
-      var paymentSummary: CLVData.Report.RevenueSummary?
+      var paymentSummary: CLVModels.Report.RevenueSummary?
       /// Number and amounts for refunds processed
-      var refundSummary: CLVData.Report.RevenueSummary?
+      var refundSummary: CLVModels.Report.RevenueSummary?
       /// Number and amounts for credits processed
-      var creditSummary: CLVData.Report.RevenueSummary?
+      var creditSummary: CLVModels.Report.RevenueSummary?
       /// The time range for which the report is generated
-      var timeRange: CLVData.Report.TimeRange?
+      var timeRange: CLVModels.Report.TimeRange?
       
       init() {}
       required init?(_ map: Map) {}
@@ -3715,9 +3715,9 @@ class CLVData {
     }
 
     class ReportItems: Mappable {
-      var categories: [CLVData.Report.Category]?
+      var categories: [CLVModels.Report.Category]?
       /// The time range for which the report is generated
-      var timeRange: CLVData.Report.TimeRange?
+      var timeRange: CLVModels.Report.TimeRange?
       
       init() {}
       required init?(_ map: Map) {}
@@ -3731,15 +3731,15 @@ class CLVData {
 
     class ReportPayments: Mappable {
       /// Number and amounts for payments processed
-      var paymentSummary: CLVData.Report.RevenueSummary?
+      var paymentSummary: CLVModels.Report.RevenueSummary?
       /// Number and amounts for refunds processed
-      var refundSummary: CLVData.Report.RevenueSummary?
+      var refundSummary: CLVModels.Report.RevenueSummary?
       /// Number and amounts for credits processed
-      var creditSummary: CLVData.Report.RevenueSummary?
+      var creditSummary: CLVModels.Report.RevenueSummary?
       /// Breakdown by employee
-      var employeeSummary: [CLVData.Report.EmployeeSummary]?
+      var employeeSummary: [CLVModels.Report.EmployeeSummary]?
       /// The time range for which the report is generated
-      var timeRange: CLVData.Report.TimeRange?
+      var timeRange: CLVModels.Report.TimeRange?
       
       init() {}
       required init?(_ map: Map) {}
@@ -3756,13 +3756,13 @@ class CLVData {
 
     class ReportTaxes: Mappable {
       /// Taxes for payments processed
-      var paymentSummary: [CLVData.Report.TaxableRateSummary]?
+      var paymentSummary: [CLVModels.Report.TaxableRateSummary]?
       /// Taxes for refunds processed
-      var refundSummary: [CLVData.Report.TaxableRateSummary]?
+      var refundSummary: [CLVModels.Report.TaxableRateSummary]?
       /// Taxes for credits processed
-      var creditSummary: [CLVData.Report.TaxableRateSummary]?
+      var creditSummary: [CLVModels.Report.TaxableRateSummary]?
       /// The time range for which the report is generated
-      var timeRange: CLVData.Report.TimeRange?
+      var timeRange: CLVModels.Report.TimeRange?
       
       init() {}
       required init?(_ map: Map) {}
@@ -3783,9 +3783,9 @@ class CLVData {
       var taxAmount: Int?
       var serviceChargeAmount: Int?
       /// Split by tender type
-      var byTender: [CLVData.Report.TenderStats]?
+      var byTender: [CLVModels.Report.TenderStats]?
       /// Split by credit card type
-      var byCardType: [CLVData.Report.CardType]?
+      var byCardType: [CLVModels.Report.CardType]?
       
       init() {}
       required init?(_ map: Map) {}
@@ -3824,10 +3824,10 @@ class CLVData {
 
     class SummaryGroup: Mappable {
       var id: String?
-      var summaryObject: CLVData.Base.Reference?
-      var paymentsSummary: CLVData.Report.Summary?
-      var refundsSummary: CLVData.Report.Summary?
-      var creditsSummary: CLVData.Report.Summary?
+      var summaryObject: CLVModels.Base.Reference?
+      var paymentsSummary: CLVModels.Report.Summary?
+      var refundsSummary: CLVModels.Report.Summary?
+      var creditsSummary: CLVModels.Report.Summary?
       
       init() {}
       required init?(_ map: Map) {}

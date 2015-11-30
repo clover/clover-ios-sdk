@@ -19,7 +19,7 @@
 		88786F471C05446F00889AE5 /* CLVAPIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88786F461C05446F00889AE5 /* CLVAPIUtils.swift */; };
 		88786F491C05449900889AE5 /* CLVHTTPUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88786F481C05449900889AE5 /* CLVHTTPUtils.swift */; };
 		88786F4D1C055AA100889AE5 /* CLVDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88786F4C1C055AA100889AE5 /* CLVDateTransform.swift */; };
-		88786F4F1C055B2000889AE5 /* CLVData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88786F4E1C055B2000889AE5 /* CLVData.swift */; };
+		88786F4F1C055B2000889AE5 /* CLVModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88786F4E1C055B2000889AE5 /* CLVModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +48,7 @@
 		88786F461C05446F00889AE5 /* CLVAPIUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLVAPIUtils.swift; sourceTree = "<group>"; };
 		88786F481C05449900889AE5 /* CLVHTTPUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLVHTTPUtils.swift; sourceTree = "<group>"; };
 		88786F4C1C055AA100889AE5 /* CLVDateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLVDateTransform.swift; sourceTree = "<group>"; };
-		88786F4E1C055B2000889AE5 /* CLVData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLVData.swift; sourceTree = "<group>"; };
+		88786F4E1C055B2000889AE5 /* CLVModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLVModels.swift; sourceTree = "<group>"; };
 		92BC14A0954D89DB2EC70C6F /* Pods_CloverSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CloverSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA930686F0AF2318B8DE8279 /* Pods-CloverSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloverSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CloverSDK/Pods-CloverSDK.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,7 +155,7 @@
 		88786F401C053D9600889AE5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				88786F4E1C055B2000889AE5 /* CLVData.swift */,
+				88786F4E1C055B2000889AE5 /* CLVModels.swift */,
 				88786F4C1C055AA100889AE5 /* CLVDateTransform.swift */,
 			);
 			path = Models;
@@ -311,7 +311,7 @@
 				88786F4D1C055AA100889AE5 /* CLVDateTransform.swift in Sources */,
 				88786F391C052E4700889AE5 /* CLVAPI.swift in Sources */,
 				88786F471C05446F00889AE5 /* CLVAPIUtils.swift in Sources */,
-				88786F4F1C055B2000889AE5 /* CLVData.swift in Sources */,
+				88786F4F1C055B2000889AE5 /* CLVModels.swift in Sources */,
 				88786F491C05449900889AE5 /* CLVHTTPUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
