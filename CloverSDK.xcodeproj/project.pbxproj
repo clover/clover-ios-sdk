@@ -15,6 +15,7 @@
 		88019D161C248DD4002FC9BB /* CLVSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88019D0E1C248DD4002FC9BB /* CLVSession.swift */; };
 		88019D181C248ECB002FC9BB /* CloverSDK.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 88019D171C248ECB002FC9BB /* CloverSDK.podspec */; };
 		881A22141C064D3000E45805 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 881A22131C064D3000E45805 /* LICENSE */; };
+		885C82BE1C8FD4BD00280B75 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C82BD1C8FD4BD00280B75 /* Logging.swift */; };
 		8874ACCB1C2CB255005CB35E /* CLVModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874ACCA1C2CB255005CB35E /* CLVModels.swift */; };
 		8874AD091C2CB37C005CB35E /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874ACF51C2CB37C005CB35E /* Account.swift */; };
 		8874AD0A1C2CB37C005CB35E /* Apps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874ACF61C2CB37C005CB35E /* Apps.swift */; };
@@ -40,7 +41,8 @@
 		88786F181C052ADF00889AE5 /* CloverSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 88786F171C052ADF00889AE5 /* CloverSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		88786F1F1C052AE000889AE5 /* CloverSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88786F141C052ADF00889AE5 /* CloverSDK.framework */; };
 		88786F241C052AE000889AE5 /* CloverSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88786F231C052AE000889AE5 /* CloverSDKTests.swift */; };
-		88B72A3C1C56229B003A2586 /* CLVUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B72A3B1C56229B003A2586 /* CLVUtils.swift */; };
+		8889DA561C8F7A08000ED5A8 /* CLVError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8889DA551C8F7A08000ED5A8 /* CLVError.swift */; };
+		88B72A3C1C56229B003A2586 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B72A3B1C56229B003A2586 /* Extensions.swift */; };
 		88B72A3F1C5622A6003A2586 /* CLVMethods+PK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B72A3D1C5622A6003A2586 /* CLVMethods+PK.swift */; };
 		88B72A401C5622A6003A2586 /* CLVRequest+PK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B72A3E1C5622A6003A2586 /* CLVRequest+PK.swift */; };
 		88DF3D091C4232350093FCB1 /* CLVOAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DF3D081C4232350093FCB1 /* CLVOAuth.swift */; };
@@ -67,6 +69,7 @@
 		88019D171C248ECB002FC9BB /* CloverSDK.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CloverSDK.podspec; sourceTree = "<group>"; };
 		881A22111C064D2900E45805 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		881A22131C064D3000E45805 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		885C82BD1C8FD4BD00280B75 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		8874ACCA1C2CB255005CB35E /* CLVModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLVModels.swift; sourceTree = "<group>"; };
 		8874ACF51C2CB37C005CB35E /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		8874ACF61C2CB37C005CB35E /* Apps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Apps.swift; sourceTree = "<group>"; };
@@ -94,7 +97,8 @@
 		88786F1E1C052AE000889AE5 /* CloverSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CloverSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		88786F231C052AE000889AE5 /* CloverSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloverSDKTests.swift; sourceTree = "<group>"; };
 		88786F251C052AE000889AE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		88B72A3B1C56229B003A2586 /* CLVUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLVUtils.swift; sourceTree = "<group>"; };
+		8889DA551C8F7A08000ED5A8 /* CLVError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLVError.swift; sourceTree = "<group>"; };
+		88B72A3B1C56229B003A2586 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		88B72A3D1C5622A6003A2586 /* CLVMethods+PK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLVMethods+PK.swift"; sourceTree = "<group>"; };
 		88B72A3E1C5622A6003A2586 /* CLVRequest+PK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLVRequest+PK.swift"; sourceTree = "<group>"; };
 		88DF3D081C4232350093FCB1 /* CLVOAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLVOAuth.swift; sourceTree = "<group>"; };
@@ -237,7 +241,9 @@
 				88019D0D1C248DD4002FC9BB /* CLVServerEnvironment.swift */,
 				88019D0B1C248DD4002FC9BB /* CLVRequest.swift */,
 				88019D091C248DD4002FC9BB /* CLVMethods.swift */,
-				88B72A3B1C56229B003A2586 /* CLVUtils.swift */,
+				8889DA551C8F7A08000ED5A8 /* CLVError.swift */,
+				88B72A3B1C56229B003A2586 /* Extensions.swift */,
+				885C82BD1C8FD4BD00280B75 /* Logging.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -421,8 +427,9 @@
 				8874AD1C1C2CB37C005CB35E /* Tables.swift in Sources */,
 				88019D161C248DD4002FC9BB /* CLVSession.swift in Sources */,
 				8874ACCB1C2CB255005CB35E /* CLVModels.swift in Sources */,
-				88B72A3C1C56229B003A2586 /* CLVUtils.swift in Sources */,
+				88B72A3C1C56229B003A2586 /* Extensions.swift in Sources */,
 				8874AD0B1C2CB37C005CB35E /* Base.swift in Sources */,
+				885C82BE1C8FD4BD00280B75 /* Logging.swift in Sources */,
 				8874AD0F1C2CB37C005CB35E /* Developer.swift in Sources */,
 				88B72A3F1C5622A6003A2586 /* CLVMethods+PK.swift in Sources */,
 				8874AD111C2CB37C005CB35E /* Employees.swift in Sources */,
@@ -430,6 +437,7 @@
 				88019D131C248DD4002FC9BB /* CLVRequest.swift in Sources */,
 				8874AD121C2CB37C005CB35E /* Entitlements.swift in Sources */,
 				88019D111C248DD4002FC9BB /* CLVMethods.swift in Sources */,
+				8889DA561C8F7A08000ED5A8 /* CLVError.swift in Sources */,
 				8874AD141C2CB37C005CB35E /* Inventory.swift in Sources */,
 				88DF3D091C4232350093FCB1 /* CLVOAuth.swift in Sources */,
 				8874AD161C2CB37C005CB35E /* Order.swift in Sources */,

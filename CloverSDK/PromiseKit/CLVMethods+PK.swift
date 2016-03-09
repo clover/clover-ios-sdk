@@ -12,7 +12,13 @@ extension CLVSession {
       return CLVRequest.Builder(httpMethod: .GET, domain: domain, endpoint: .V3(.APPS)).params(params).filters(filters).expands(expands).sorts(sorts).limit(limit).offset(offset).build()
         .makeRequestWithPromise(arrayType: CLVModels.Apps.App.self)
   }
-  
+
+  public class func getMerchantPlans(domain domain: CLVServerEnvironment, params: [String:String] = [:], filters: [String:String] = [:], expands: [String] = [], sorts: [String:CLVRequest.SortType] = [:], limit: UInt = 100, offset: UInt = 0)
+    -> Promise<[CLVModels.Merchant.MerchantPlan]> {
+      return CLVRequest.Builder(httpMethod: .GET, domain: domain, endpoint: .V3(.MERCHANT_PLANS)).params(params).filters(filters).expands(expands).sorts(sorts).limit(limit).offset(offset).build()
+        .makeRequestWithPromise(arrayType: CLVModels.Merchant.MerchantPlan.self)
+  }
+
   public class func getMerchants(domain domain: CLVServerEnvironment, accountToken: String, params: [String:String] = [:], filters: [String:String] = [:], expands: [String] = [], sorts: [String:CLVRequest.SortType] = [:], limit: UInt = 100, offset: UInt = 0)
     -> Promise<[CLVModels.Merchant.Merchant]> {
       return CLVRequest.Builder(httpMethod: .GET, domain: domain, endpoint: .V3(.ACCOUNT_MERCHANTS)).accessToken(accountToken).params(params).filters(filters).expands(expands).sorts(sorts).limit(limit).offset(offset).build()
@@ -98,7 +104,7 @@ extension CLVSession {
         .makeRequestWithPromise(arrayType: CLVModels.Order.LineItem.self)
   }
   
-  public func getOrders(startTime startTime: NSDate?, endTime: NSDate?, params: [String:String] = [:], filters: [String:String] = [:], expands: [String] = [], sorts: [String:CLVRequest.SortType] = [:], limit: UInt = 100, offset: UInt = 0, success: ([CLVModels.Order.Order]) -> Void, failure: (NSError) -> Void) {
+  public func getOrders(startTime startTime: NSDate?, endTime: NSDate?, params: [String:String] = [:], filters: [String:String] = [:], expands: [String] = [], sorts: [String:CLVRequest.SortType] = [:], limit: UInt = 100, offset: UInt = 0, success: ([CLVModels.Order.Order]) -> Void, failure: (CLVError) -> Void) {
     CLVRequest.Builder(httpMethod: .GET, domain: self.domain, endpoint: .CUSTOM("/v3/merchants/\(self.merchantId)/orders"))
       .accessToken(self.token).params(params).filters(filters).expands(expands).sorts(sorts).limit(limit).offset(offset)
       .timeFilters(CLVRequest.CloverAPITimeFilters(startTime: startTime, endTime: endTime, timeFilterType: CLVRequest.TimeFilterType.CLIENT_CREATED_TIME))

@@ -40,27 +40,3 @@ extension Array where Element: Equatable { // todo: test
     }
   }
 }
-
-// MARK: - Methods
-
-func logIfDebug(title: String, obj: AnyObject?) {
-  // todo: if debug
-  print(__FUNCTION__)
-  guard let obj = obj else { return }
-  
-  if let dict = obj as? [String:String] {
-    guard !dict.isEmpty else { return }
-    print("\(title): \(dict)")
-  } else {
-    print("\(title): \(obj)")
-  }
-}
-
-func logIfDebug(obj: AnyObject?) {
-  // todo: if debug
-  print(__FUNCTION__)
-  guard let obj = obj  else { return }
-  print("\(obj)")
-}
-
-// todo: dump(received_obj) if debug ??

@@ -3,25 +3,6 @@ import Alamofire
 import SwiftyJSON
 import ObjectMapper
 
-//extension Request {
-// todo
-//  public func validate() -> Self {
-//    let acceptableStatusCodes: Range<Int> = 200..<300
-//    let acceptableContentTypes: [String] = {
-//      if let accept = request?.valueForHTTPHeaderField("Accept") {
-//        return accept.componentsSeparatedByString(",")
-//      }
-//
-//      return ["*/*"]
-//    }()
-//    return self
-//  }
-
-//  func CLVvalidate() -> Self {
-//    return self
-//  }
-//}
-
 public class CLVRequest {
   
   // MARK: - Properties
@@ -57,43 +38,59 @@ public class CLVRequest {
   
   // MARK: - Main Methods
   
-  func validate() -> Self { // todo
-    return self
+  //  func validate() -> Self { // todo
+  //    return self
+  //  }
+  
+  internal enum CLVValidation {
+    case SUCCESS(AnyObject)
+    case FAILURE(CLVError)
   }
   
+  /// This validation function is necessary because Alamofire's .validate() method ignores the server messages if it's a non-200 status code
+  internal func validateResponse(response response: Response<AnyObject, NSError>) -> CLVValidation {
+    logRequest(responseData: response.data, statusCode: response.response?.statusCode)
+    if let error = response.result.error {
+      if let statusCode = response.response?.statusCode, data = response.data where error.code == -6003 {
+        let serverMessage = JSON(data: data)["message"].stringValue
+        return .FAILURE(CLVError.UnacceptableStatusCode(statusCode: statusCode, serverMessage: serverMessage))
+      } else {
+        return .FAILURE(CLVError.Error(error))
+      }
+    } else {
+      guard let result = response.result.value else { return .FAILURE(CLVError.UnknownError) }
+      return .SUCCESS(result)
+    }
+  }
+  
+  
   /// Get a single Clover object using a RETRIEVE endpoint
-  public func makeRequest<T: Mappable>(objectType objectType: T.Type, success: (T?) -> Void = {print($0)}, failure: (NSError) -> Void = {print($0)}) {
-    print(getUrlString())
-    if let payload = payload { print("payload: \(payload)") }
+  public func makeRequest<T: Mappable>(objectType objectType: T.Type, success: (T?) -> Void = {print($0)}, failure: (CLVError) -> Void = {print($0)}) {
     Alamofire.request(httpMethod, getUrlString(), parameters: payload, encoding: .JSON, headers: getHeaders()).validate().responseJSON { response in
-      switch response.result {
-      case .Success(let data):  success(Mapper<T>().map(JSON(data).object))
-      case .Failure(let error): failure(error)
+      switch self.validateResponse(response: response) {
+      case .SUCCESS(let value): success(Mapper<T>().map(JSON(value).object))
+      case .FAILURE(let error): failure(error)
       }
     }
   }
   
   /// Get an array of Clover objects using a LIST endpoint
-  public func makeRequest<T: Mappable>(arrayType arrayType: T.Type, success: ([T]) -> Void = {$0}, failure: (NSError) -> () = {print($0)}) {
-    print(getUrlString())
-    if let payload = payload { print("payload: \(payload)") }
+  public func makeRequest<T: Mappable>(arrayType arrayType: T.Type, success: ([T]) -> Void = {$0}, failure: (CLVError) -> () = {print($0)}) {
     Alamofire.request(httpMethod, getUrlString(), parameters: payload, encoding: .JSON, headers: getHeaders()).validate().responseJSON { response in
-      switch response.result {
-      case .Success(let data):  success(JSON(data)["elements"].arrayValue.map({ Mapper<T>().map($0.object)! }))
-      case .Failure(let error): failure(error)
+      switch self.validateResponse(response: response) {
+      case .SUCCESS(let value): success(JSON(value)["elements"].arrayValue.map({ Mapper<T>().map($0.object)! }))
+      case .FAILURE(let error): failure(error)
       }
     }
   }
   
   /// Get AnyObject
-  public func makeRequest(success: (AnyObject?) -> Void = {$0}, failure: (NSError) -> Void = {print($0)}) {
+  public func makeRequest(success: (AnyObject?) -> Void = {$0}, failure: (CLVError) -> Void = {print($0)}) {
     // todo: if Session.debugging. ? inherit from CLVSession?
-    print(getUrlString())
-    if let payload = payload { print("payload: \(payload)") }
     Alamofire.request(httpMethod, getUrlString(), parameters: payload, encoding: .JSON, headers: getHeaders()).validate().responseJSON { response in
-      switch response.result {
-      case .Success(let data):  success(JSON(data).object)
-      case .Failure(let error): failure(error)
+      switch self.validateResponse(response: response) {
+      case .SUCCESS(let value): success(JSON(value).object)
+      case .FAILURE(let error): failure(error)
       }
     }
   }
@@ -112,6 +109,7 @@ public class CLVRequest {
   
   public enum V3Endpoint: String {
     case APPS = "/v3/apps" // todo: how to handle \(appId) ?
+    case MERCHANT_PLANS = "/v3/merchant_plans"
     case ACCOUNT = "/v3/accounts/current"
     case ACCOUNT_MERCHANTS = "/v3/accounts/current/merchants"
     case EMPLOYEE = "/v3/merchants/{mId}/employees/current"

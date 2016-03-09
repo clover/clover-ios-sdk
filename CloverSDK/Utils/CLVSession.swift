@@ -17,7 +17,8 @@ public class CLVSession {
   public var merchant: CLVModels.Merchant.Merchant?
   public var employee: CLVModels.Employees.Employee?
   
-  public var debugging: Bool = true
+  public static var debugMode: Bool = false
+  public static var debugPrintOptions: [CLVDebugPrintOption] = [.URL, .TIME_FILTERS, .HEADERS, .PAYLOAD, .STATUS_CODE, .RESPONSE_DATA]
   
   public init(merchantToken token: String, merchantId: String, employeeId: String, clientId: String, domain: CLVServerEnvironment, fetchMerchant: Bool = false, fetchEmployee: Bool = false) {
     self.token = token
