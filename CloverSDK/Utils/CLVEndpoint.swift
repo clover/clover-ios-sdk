@@ -1,5 +1,5 @@
 //
-//  Endpoint.swift
+//  CLVEndpoint.swift
 //  CloverSDK
 //
 //  Created by Yusuf on 3/9/16.
@@ -8,12 +8,12 @@
 
 import Foundation
 
-public enum Endpoint {
-  case V3(V3Endpoint)
+public enum CLVEndpoint {
+  case V3(CLVV3Endpoint)
   case CUSTOM(String)
 }
 
-public enum V3Endpoint: String {
+public enum CLVV3Endpoint: String {
   // Merchants
   case MERCHANT = "/v3/merchants/{mId}"
   case MERCHANT_ADDRESS = "/v3/merchants/{mId}/address"

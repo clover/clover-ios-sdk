@@ -10,13 +10,12 @@ extension CLVSession {
   
   private static var nav: UINavigationController!
   
-  public class func authenticateUser(forClientIds clientIds: [String], withAppName appName: String, domain: CLVServerEnvironment, activeView: UIViewController, success: (CLVSession) -> Void, failure: ErrorHandler) {
-    guard clientIds.count > 0 else { failure(.Error(CLVError.generateNSError())); return }
+  public class func authenticateUser(forClientId clientId: String, withAppName appName: String, domain: CLVServerEnvironment, activeView: UIViewController, success: (CLVSession) -> Void, failure: ErrorHandler) {
     self.nav = UINavigationController()
     let authVC = CLVAuthViewController()
     self.nav.addChildViewController(authVC)
     activeView.showViewController(self.nav, sender: self)
-    authVC.setup(domain: domain, appName: appName, clientIds: clientIds, success: success, failure: failure)
+    authVC.setup(domain: domain, appName: appName, clientId: clientId, success: success, failure: failure)
   }
   
 }
@@ -38,15 +37,13 @@ class CLVAuthViewController: UIViewController, UIWebViewDelegate, UIScrollViewDe
     self.webView.loadRequest(NSURLRequest(URL: self.url))
   }
   
-  func setup(domain domain: CLVServerEnvironment, appName: String, clientIds: [String], success: (CLVSession) -> Void, failure: ErrorHandler) {
+  func setup(domain domain: CLVServerEnvironment, appName: String, clientId: String, success: (CLVSession) -> Void, failure: ErrorHandler) {
     self.success = success
     self.failure = failure
     self.navigationItem.title = appName
     self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: "close")
     
-    let clientIdParam: String = clientIds.count > 1 ? "client_ids=" + clientIds.joinWithSeparator(",") : "client_id=" + clientIds.first!
-    
-    let urlString = "\(domain.rawValue)/oauth/authorize?\(clientIdParam)&response_type=token"
+    let urlString = "\(domain.rawValue)/oauth/authorize?client_id=\(clientId)&response_type=token"
     self.url = NSURL(string: urlString)!
   }
   

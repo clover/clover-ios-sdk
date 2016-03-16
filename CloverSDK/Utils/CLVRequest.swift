@@ -14,11 +14,9 @@ public class CLVRequest {
   
   // MARK: - Properties
   
-  static let timeOfLastRequest = NSDate()
-  
   let httpMethod: Alamofire.Method
   let domain: CLVServerEnvironment
-  let endpoint: Endpoint
+  let endpoint: CLVEndpoint
   let accessToken: String?
   let pathParams: [String:String]
   let params: [String:String]
@@ -153,7 +151,7 @@ public class CLVRequest {
   public class Builder {
     private var httpMethod: Alamofire.Method
     private var domain: CLVServerEnvironment
-    private var endpoint: Endpoint
+    private var endpoint: CLVEndpoint
     private var accessToken: String?
     private var pathParams: [String:String] = [:]
     private var params: [String:String] = [:]
@@ -173,7 +171,7 @@ public class CLVRequest {
     }
     
     /// Initialize with required fields
-    public init(httpMethod: Alamofire.Method, domain: CLVServerEnvironment, endpoint: Endpoint) {
+    public init(httpMethod: Alamofire.Method, domain: CLVServerEnvironment, endpoint: CLVEndpoint) {
       self.httpMethod = httpMethod
       self.domain = domain
       self.endpoint = endpoint
@@ -219,7 +217,7 @@ public class CLVRequest {
     
     public func httpMethod(httpMethod: Alamofire.Method)               -> Builder { self.httpMethod = httpMethod; return self }
     public func domain(domain: CLVServerEnvironment)                   -> Builder { self.domain = domain; return self }
-    public func endpoint(endpoint: Endpoint)                           -> Builder { self.endpoint = endpoint; return self }
+    public func endpoint(endpoint: CLVEndpoint)                        -> Builder { self.endpoint = endpoint; return self }
     public func accessToken(accessToken: String? = nil)                -> Builder { self.accessToken = accessToken; return self }
     public func pathParams(pathParams: [String:String] = [:])          -> Builder { self.pathParams = pathParams; return self }
     public func params(params: [String:String] = [:])                  -> Builder { self.params = params; return self }
