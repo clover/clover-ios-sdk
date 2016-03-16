@@ -15,6 +15,8 @@ Note: This is an alpha version of the Clover iOS SDK, and is subject to change.
 
 - Most fields on the models have documentation, which will show with auto-completion in Xcode.
 
+- Some field name which conflict with Swift keywords are changed to have an underscore at the end, as: `description_`.
+
 ## Utils: Helper classes for api calls
 
 - Two main classes are: `CLVSession` and `CLVRequest`.
