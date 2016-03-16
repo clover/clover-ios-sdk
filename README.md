@@ -26,8 +26,8 @@ Note: This is an alpha version of the Clover iOS SDK, and is subject to change.
   - Session has two static vars which define debugging options. `debugMode` is a boolean which determines if any output will be made with requests, and `debugPrintOptions` is a list of enum values which you individually opt in to get output of.
 
 ```
-    let session = CLVSession(accessToken: "####", domain: .US, merchantId: "####")
-    session.getMerchantOrder(withId: "####", expands: ["lineItems"])
+let session = CLVSession(accessToken: "####", domain: .US, merchantId: "####")
+session.getMerchantOrder(withId: "####", expands: ["lineItems"])
 ```
 
 - `CLVRequest`
@@ -48,28 +48,28 @@ Note: This is an alpha version of the Clover iOS SDK, and is subject to change.
 
 ## PromiseKit Extension
 
-- In our experience of using the SDK for the Clover Dashboard app, when using multiple consecutive api calls, using success and failure methods makes the code harder to read and debug; as an alternative, we support the open source port of the `Promise` concept, where you can act on promised object when they become available. All the CLVRequest.makeRequest methods and endpoint methods are also redefined for the PromiseKit. Usage example:
+- In our experience of using the SDK for the Clover Dashboard app, when using multiple consecutive api calls, using success and failure methods made the code harder to read and debug; as an alternative, we support the open source port of the `Promise` concept, where you can act on promised object when they become available. All the CLVRequest.makeRequest methods and endpoint methods are also redefined for the PromiseKit. Usage example:
 
 ```
-    let session = CLVSession(accessToken: "####", domain: .US, merchantId: "####")
-    session.getMerchantOrders(filters: ["employee.id": "####"], expands: ["lineItems", "customers"])
-      .then() { (orders) -> String? in
-        for order in orders {
-          print(order.lineItems!)
-        }
-        return orders.first?.employee?.id
-      }
-      .then() { (employeeId) -> Void in
-        guard let employeeId = employeeId else { return }
-        session.getMerchantEmployee(withId: employeeId)
-        ...
-      }
-      .always() {
-        // cleanup code
-      }
-      .error() { error in
-        print(error)
+let session = CLVSession(accessToken: "####", domain: .US, merchantId: "####")
+session.getMerchantOrders(filters: ["employee.id": "####"], expands: ["lineItems", "customers"])
+  .then() { (orders) -> String? in
+    for order in orders {
+      print(order.lineItems!)
     }
+    return orders.first?.employee?.id
+  }
+  .then() { (employeeId) -> Void in
+    guard let employeeId = employeeId else { return }
+    session.getMerchantEmployee(withId: employeeId)
+    ...
+  }
+  .always() {
+    // cleanup code, such as: hide spinners
+  }
+  .error() { error in
+    print(error)
+}
 ```
 
 - Use of PromiseKit is still experimental, so use at your own risk.
@@ -89,38 +89,38 @@ Note: This is an alpha version of the Clover iOS SDK, and is subject to change.
 - It’s important only to use Keychain to save these information as the token can be used by anyone to make api requests on behalf of the merchant!
 
 ```
-    CLVSession.authenticateUser(forClientId: "####", withAppName: "App", domain: .US, activeView: self,
-      success: { (session) -> Void in
-        // Persist the values in Keychain to use later
-      }) { (error) -> Void in
-        // ...
-    }
+CLVSession.authenticateUser(forClientId: "####", withAppName: "App", domain: .US, activeView: self,
+  success: { (session) -> Void in
+    // Persist the values in Keychain to use later
+  }) { (error) -> Void in
+    // ...
+}
 ```
 
 ## Full Example:
 
 ```
-    let session = CLVSession(accessToken: "####", domain: .US, merchantId: "####")
-    session.getMerchantEmployees(
-      filters: ["role": "ADMIN"],
-      expands: ["shifts"],
-      sorts: ["name": .ASC],
-      params: [:],
-      limit: 50,
-      offset: 0,
-      success: { employees in
-        for employee in employees {
-          print(employee.name!)
-        }
-      },
-      failure: { error in
-        switch error {
-        case .UnacceptableStatusCode(let statusCode, let serverMessage):
-          print("\(statusCode) - \(serverMessage)")
-        case .Error(let error): print(error)
-        case .UnknownError: print("Unknown error!")
-        }
-    })
+let session = CLVSession(accessToken: "####", domain: .US, merchantId: "####")
+session.getMerchantEmployees(
+  filters: ["role": "ADMIN"],
+  expands: ["shifts"],
+  sorts: ["name": .ASC],
+  params: [:],
+  limit: 50,
+  offset: 0,
+  success: { employees in
+    for employee in employees {
+      print(employee.name!)
+    }
+  },
+  failure: { error in
+    switch error {
+    case .UnacceptableStatusCode(let statusCode, let serverMessage):
+      print("\(statusCode) - \(serverMessage)")
+    case .Error(let error): print(error)
+    case .UnknownError: print("Unknown error!")
+    }
+})
 ```
 
 ## General Notes:
