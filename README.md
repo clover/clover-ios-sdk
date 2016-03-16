@@ -1,6 +1,53 @@
 
 Note: This is an alpha version of the Clover iOS SDK, and is subject to change.
 
+# Sample Usage:
+
+- Getting the access token:
+
+```
+CLVSession.authenticateUser(forClientId: "####", withAppName: "", domain: .US, activeView: self,
+  success: { session in
+    // Persist the values in Keychain to use later
+  }, failure: { err in
+})
+```
+
+- Short example:
+
+```
+CLVSession(accessToken: "####", domain: .US, merchantId: "####")
+  .getMerchantOrder(withId: "####", expands: ["lineItems"],
+    success: { order in },
+    failure: { error in })
+```
+
+- Full example:
+
+```
+let session = CLVSession(accessToken: "####", domain: .US, merchantId: "####")
+session.getMerchantEmployees(
+  	filters: ["role": "ADMIN"],
+  	expands: ["shifts"],
+  	  sorts: ["name": .ASC],
+     params: [:],
+      limit: 50,
+     offset: 0,
+    success: { employees in
+    for employee in employees {
+      print(employee.name!)
+    }
+  },
+    failure: { error in
+    switch error {
+    case .UnacceptableStatusCode(let statusCode, let serverMessage):
+      print("\(statusCode) - \(serverMessage)")
+    case .Error(let error): print(error)
+    case .UnknownError: print("Unknown error!")
+    }
+})
+```
+
 # Components of the Clover iOS SDK:
 
 ## Models: Swift models of the json responses listed [api_docs](https://www.clover.com/api_docs) page
@@ -97,32 +144,6 @@ CLVSession.authenticateUser(forClientId: "####", withAppName: "App", domain: .US
   }) { (error) -> Void in
     // ...
 }
-```
-
-## Full Example:
-
-```
-let session = CLVSession(accessToken: "####", domain: .US, merchantId: "####")
-session.getMerchantEmployees(
-  filters: ["role": "ADMIN"],
-  expands: ["shifts"],
-  sorts: ["name": .ASC],
-  params: [:],
-  limit: 50,
-  offset: 0,
-  success: { employees in
-    for employee in employees {
-      print(employee.name!)
-    }
-  },
-  failure: { error in
-    switch error {
-    case .UnacceptableStatusCode(let statusCode, let serverMessage):
-      print("\(statusCode) - \(serverMessage)")
-    case .Error(let error): print(error)
-    case .UnknownError: print("Unknown error!")
-    }
-})
 ```
 
 ## General Notes:
