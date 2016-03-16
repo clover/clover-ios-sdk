@@ -6,26 +6,30 @@
 //  Copyright © 2016 Clover Network, Inc. All rights reserved.
 //
 
-import Foundation
 import SwiftyJSON
 
-// MARK: - Logging
+// MARK: - Logger
 
 func logIfDebug(title: String, obj: AnyObject?) {
   guard CLVSession.debugMode else { return }
   guard let obj = obj else { return }
   
   switch obj {
-  case let dict as [String:String]: if !dict.isEmpty { print("\(title): \(dict)") }
-  case let data as NSData: print("\(title): \(JSON(data: data))")
-  default: print("\(title): \(obj)")
+  case let dict as [String:String]: if !dict.isEmpty { log("\(title): \(dict)") }
+  case let data as NSData: log("\(title): \(JSON(data: data))")
+  default: log("\(title): \(obj)")
   }
 }
 
 func logIfDebug(obj: AnyObject?) {
   guard CLVSession.debugMode else { return }
   guard let obj = obj  else { return }
-  print("\(obj)")
+  log("\(obj)")
+}
+
+private func log(str: String) {
+  // todo: add more output alternatives by defining a class var on CLVSession
+  print(str)
 }
 
 extension CLVRequest {
@@ -48,4 +52,6 @@ extension CLVRequest {
   }
 }
 
-public enum CLVDebugPrintOption { case URL, TIME_FILTERS, HEADERS, PAYLOAD, STATUS_CODE, RESPONSE_DATA }
+public enum CLVDebugPrintOption {
+  case URL, TIME_FILTERS, HEADERS, PAYLOAD, STATUS_CODE, RESPONSE_DATA
+}

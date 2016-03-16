@@ -14,12 +14,16 @@ public enum CLVError: ErrorType {
   case UnknownError
   
   var error: NSError {
-    let domain = "com.clover.sdk.error"
     switch self {
     case .Error(let error): return error
-    case .UnacceptableStatusCode(let statusCode, let serverMessage): return NSError(domain: domain, code: -42, userInfo: ["statusCode": statusCode, "serverMessage": serverMessage])
-    case .UnknownError: return NSError(domain: domain, code: -1, userInfo: [:])
+    case .UnacceptableStatusCode(let statusCode, let serverMessage): return CLVError.generateNSError(code: -42, userInfo: ["statusCode": statusCode, "serverMessage": serverMessage])
+    case .UnknownError: return CLVError.generateNSError()
     }
+  }
+  
+  static func generateNSError(code code: Int = -1, userInfo: [NSObject:AnyObject] = [:]) -> NSError {
+    let domain = "com.clover.sdk.error"
+    return NSError(domain: domain, code: code, userInfo: userInfo)
   }
   
 }

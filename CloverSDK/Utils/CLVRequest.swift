@@ -1,3 +1,10 @@
+//
+//  CLVRequest.swift
+//  CloverDashboard
+//
+//  Created by Yusuf on 12/17/15.
+//  Copyright © 2015 Clover Network, Inc. All rights reserved.
+//
 
 import Alamofire
 import SwiftyJSON
@@ -7,10 +14,13 @@ public class CLVRequest {
   
   // MARK: - Properties
   
+  static let timeOfLastRequest = NSDate()
+  
   let httpMethod: Alamofire.Method
   let domain: CLVServerEnvironment
   let endpoint: Endpoint
   let accessToken: String?
+  let pathParams: [String:String]
   let params: [String:String]
   let filters: [String:String]
   let expands: [String]
@@ -19,14 +29,15 @@ public class CLVRequest {
   let offset: UInt
   let timeFilters: CloverAPITimeFilters?
   let payload: [String:AnyObject]?
-  let debugMode: Bool = true // todo
+  let debugMode: Bool = true
   
   private init(builder: Builder) {
     self.httpMethod = builder.httpMethod
     self.domain = builder.domain
     self.endpoint = builder.endpoint
     self.accessToken = builder.accessToken
-    self.params = builder.params // urlParams?
+    self.pathParams = builder.pathParams
+    self.params = builder.params
     self.filters = builder.filters
     self.expands = builder.expands
     self.sorts = builder.sorts
@@ -36,84 +47,12 @@ public class CLVRequest {
     self.payload = builder.payload
   }
   
-  // MARK: - Main Methods
-  
-  //  func validate() -> Self { // todo
-  //    return self
-  //  }
-  
-  internal enum CLVValidation {
-    case SUCCESS(AnyObject)
-    case FAILURE(CLVError)
-  }
-  
-  /// This validation function is necessary because Alamofire's .validate() method ignores the server messages if it's a non-200 status code
-  internal func validateResponse(response response: Response<AnyObject, NSError>) -> CLVValidation {
-    logRequest(responseData: response.data, statusCode: response.response?.statusCode)
-    if let error = response.result.error {
-      if let statusCode = response.response?.statusCode, data = response.data where error.code == -6003 {
-        let serverMessage = JSON(data: data)["message"].stringValue
-        return .FAILURE(CLVError.UnacceptableStatusCode(statusCode: statusCode, serverMessage: serverMessage))
-      } else {
-        return .FAILURE(CLVError.Error(error))
-      }
-    } else {
-      guard let result = response.result.value else { return .FAILURE(CLVError.UnknownError) }
-      return .SUCCESS(result)
-    }
-  }
-  
-  
-  /// Get a single Clover object using a RETRIEVE endpoint
-  public func makeRequest<T: Mappable>(objectType objectType: T.Type, success: (T?) -> Void = {print($0)}, failure: (CLVError) -> Void = {print($0)}) {
-    Alamofire.request(httpMethod, getUrlString(), parameters: payload, encoding: .JSON, headers: getHeaders()).validate().responseJSON { response in
-      switch self.validateResponse(response: response) {
-      case .SUCCESS(let value): success(Mapper<T>().map(JSON(value).object))
-      case .FAILURE(let error): failure(error)
-      }
-    }
-  }
-  
-  /// Get an array of Clover objects using a LIST endpoint
-  public func makeRequest<T: Mappable>(arrayType arrayType: T.Type, success: ([T]) -> Void = {$0}, failure: (CLVError) -> () = {print($0)}) {
-    Alamofire.request(httpMethod, getUrlString(), parameters: payload, encoding: .JSON, headers: getHeaders()).validate().responseJSON { response in
-      switch self.validateResponse(response: response) {
-      case .SUCCESS(let value): success(JSON(value)["elements"].arrayValue.map({ Mapper<T>().map($0.object)! }))
-      case .FAILURE(let error): failure(error)
-      }
-    }
-  }
-  
-  /// Get AnyObject
-  public func makeRequest(success: (AnyObject?) -> Void = {$0}, failure: (CLVError) -> Void = {print($0)}) {
-    // todo: if Session.debugging. ? inherit from CLVSession?
-    Alamofire.request(httpMethod, getUrlString(), parameters: payload, encoding: .JSON, headers: getHeaders()).validate().responseJSON { response in
-      switch self.validateResponse(response: response) {
-      case .SUCCESS(let value): success(JSON(value).object)
-      case .FAILURE(let error): failure(error)
-      }
-    }
-  }
-  
   // MARK: - Enums
   
   public enum SortType: String {
     case ASC = "ASC"
     case DESC = "DESC"
-  }
-  
-  public enum Endpoint {
-    case V3(V3Endpoint)
-    case CUSTOM(String)
-  }
-  
-  public enum V3Endpoint: String {
-    case APPS = "/v3/apps" // todo: how to handle \(appId) ?
-    case MERCHANT_PLANS = "/v3/merchant_plans"
-    case ACCOUNT = "/v3/accounts/current"
-    case ACCOUNT_MERCHANTS = "/v3/accounts/current/merchants"
-    case EMPLOYEE = "/v3/merchants/{mId}/employees/current"
-  }
+  }  
   
   public enum TimeFilterType: String {
     case CREATED_TIME = "createdTime"
@@ -127,7 +66,7 @@ public class CLVRequest {
     var timeFilterType: TimeFilterType
     
     /// Initialize with required fields
-    init(startTime: NSDate? = nil, endTime: NSDate? = nil, timeFilterType: TimeFilterType) {
+    public init(startTime: NSDate? = nil, endTime: NSDate? = nil, timeFilterType: TimeFilterType) {
       self.startTime = startTime
       self.endTime = endTime
       self.timeFilterType = timeFilterType
@@ -150,12 +89,21 @@ public class CLVRequest {
   
   internal func getUrlString() -> String {
     let urlParams = getUrlParams().stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet())!
-    var endpointString: String
+    return "\(domain.rawValue)\(getEndpointString())?\(urlParams)"
+  }
+  
+  private func getEndpointString() -> String {
     switch endpoint {
-    case .V3(let v3): endpointString = v3.rawValue
-    case .CUSTOM(let str): endpointString = str
+    case .V3(let v3): return replacePathParams(v3.rawValue)
+    case .CUSTOM(let str): return replacePathParams(str)
     }
-    return "\(domain.rawValue)\(endpointString)?\(urlParams)"
+  }
+  
+  private func replacePathParams(var endpoint: String) -> String {
+    for (param, value) in self.pathParams where endpoint =~ "\\{\(param)\\}" {
+      endpoint = endpoint.stringByReplacingOccurrencesOfString("\\{\(param)\\}", withString: "\(value)", options: .RegularExpressionSearch)
+    }
+    return endpoint
   }
   
   private func getUrlParams() -> String {
@@ -207,6 +155,7 @@ public class CLVRequest {
     private var domain: CLVServerEnvironment
     private var endpoint: Endpoint
     private var accessToken: String?
+    private var pathParams: [String:String] = [:]
     private var params: [String:String] = [:]
     private var filters: [String:String] = [:]
     private var expands: [String] = []
@@ -236,6 +185,7 @@ public class CLVRequest {
       self.domain = cloverRequestBuilder.domain
       self.endpoint = cloverRequestBuilder.endpoint
       self.accessToken = cloverRequestBuilder.accessToken
+      self.pathParams = cloverRequestBuilder.pathParams
       self.params = cloverRequestBuilder.params
       self.filters = cloverRequestBuilder.filters
       self.expands = cloverRequestBuilder.expands
@@ -252,6 +202,7 @@ public class CLVRequest {
       self.domain = cloverRequest.domain
       self.endpoint = cloverRequest.endpoint
       self.accessToken = cloverRequest.accessToken
+      self.pathParams = cloverRequest.pathParams
       self.params = cloverRequest.params
       self.filters = cloverRequest.filters
       self.expands = cloverRequest.expands
@@ -270,6 +221,7 @@ public class CLVRequest {
     public func domain(domain: CLVServerEnvironment)                   -> Builder { self.domain = domain; return self }
     public func endpoint(endpoint: Endpoint)                           -> Builder { self.endpoint = endpoint; return self }
     public func accessToken(accessToken: String? = nil)                -> Builder { self.accessToken = accessToken; return self }
+    public func pathParams(pathParams: [String:String] = [:])          -> Builder { self.pathParams = pathParams; return self }
     public func params(params: [String:String] = [:])                  -> Builder { self.params = params; return self }
     public func filters(filters: [String:String] = [:])                -> Builder { self.filters = filters; return self }
     public func expands(expands: [String] = [])                        -> Builder { self.expands = expands; return self }
@@ -296,6 +248,30 @@ public class CLVRequest {
     public func addSorts(sorts: [String:SortType])                     -> Builder { self.sorts.updateContentsOf(sorts); return self }
     public func removeSorts(sorts: [String:SortType])                  -> Builder { self.sorts.removeContentsOf(sorts); return self }
     public func removeSorts(keys: [String])                            -> Builder { self.sorts.removeContentsOf(keys); return self }
+    
+    internal func addOptions(options: [CLVParamOptions]) -> CLVRequest.Builder {
+      for option in options {
+        switch option {
+        case let .Params(params):   self.params(params)
+        case let .Filters(filters): self.filters(filters)
+        case let .Expands(expands): self.expands(expands)
+        case let .Sorts(sorts):     self.sorts(sorts)
+        case let .Limit(limit):     self.limit(limit)
+        case let .Offset(offset):   self.offset(offset)
+        }
+      }
+      return self
+    }
+    
   }
+}
+
+public enum CLVParamOptions {
+  case Params([String:String])
+  case Filters([String:String])
+  case Expands([String])
+  case Sorts([String:CLVRequest.SortType])
+  case Limit(UInt)
+  case Offset(UInt)
 }
 

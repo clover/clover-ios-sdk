@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CloverSDK"
-  s.version      = "0.1.5"
+  s.version      = "0.3.0"
   s.summary      = "Clover SDK"
   s.homepage     = "https://www.clover.com/features/integrations"
   s.license      = { :type => "MIT", :file => "LICENSE" }
@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/clover/clover-ios-sdk.git", :tag => s.version.to_s }
 
   s.platform     = :ios
-  s.ios.deployment_target = "9.0"
+  s.ios.deployment_target = "8.0"
   s.watchos.deployment_target = "2.0"
   s.requires_arc = true
 

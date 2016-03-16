@@ -15,38 +15,35 @@
 		88019D161C248DD4002FC9BB /* CLVSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88019D0E1C248DD4002FC9BB /* CLVSession.swift */; };
 		88019D181C248ECB002FC9BB /* CloverSDK.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 88019D171C248ECB002FC9BB /* CloverSDK.podspec */; };
 		881A22141C064D3000E45805 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 881A22131C064D3000E45805 /* LICENSE */; };
-		885C82BE1C8FD4BD00280B75 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C82BD1C8FD4BD00280B75 /* Logging.swift */; };
+		885C82BE1C8FD4BD00280B75 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C82BD1C8FD4BD00280B75 /* Logger.swift */; };
 		8874ACCB1C2CB255005CB35E /* CLVModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874ACCA1C2CB255005CB35E /* CLVModels.swift */; };
-		8874AD091C2CB37C005CB35E /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874ACF51C2CB37C005CB35E /* Account.swift */; };
-		8874AD0A1C2CB37C005CB35E /* Apps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874ACF61C2CB37C005CB35E /* Apps.swift */; };
-		8874AD0B1C2CB37C005CB35E /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874ACF71C2CB37C005CB35E /* Base.swift */; };
-		8874AD0C1C2CB37C005CB35E /* Billing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874ACF81C2CB37C005CB35E /* Billing.swift */; };
-		8874AD0D1C2CB37C005CB35E /* Cash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874ACF91C2CB37C005CB35E /* Cash.swift */; };
-		8874AD0E1C2CB37C005CB35E /* Customers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874ACFA1C2CB37C005CB35E /* Customers.swift */; };
-		8874AD0F1C2CB37C005CB35E /* Developer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874ACFB1C2CB37C005CB35E /* Developer.swift */; };
-		8874AD101C2CB37C005CB35E /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874ACFC1C2CB37C005CB35E /* Device.swift */; };
-		8874AD111C2CB37C005CB35E /* Employees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874ACFD1C2CB37C005CB35E /* Employees.swift */; };
-		8874AD121C2CB37C005CB35E /* Entitlements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874ACFE1C2CB37C005CB35E /* Entitlements.swift */; };
-		8874AD131C2CB37C005CB35E /* Hours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874ACFF1C2CB37C005CB35E /* Hours.swift */; };
-		8874AD141C2CB37C005CB35E /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874AD001C2CB37C005CB35E /* Inventory.swift */; };
-		8874AD151C2CB37C005CB35E /* Merchant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874AD011C2CB37C005CB35E /* Merchant.swift */; };
-		8874AD161C2CB37C005CB35E /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874AD021C2CB37C005CB35E /* Order.swift */; };
-		8874AD171C2CB37C005CB35E /* Pay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874AD031C2CB37C005CB35E /* Pay.swift */; };
-		8874AD181C2CB37C005CB35E /* Payments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874AD041C2CB37C005CB35E /* Payments.swift */; };
-		8874AD191C2CB37C005CB35E /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874AD051C2CB37C005CB35E /* Printer.swift */; };
-		8874AD1A1C2CB37C005CB35E /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874AD061C2CB37C005CB35E /* Report.swift */; };
-		8874AD1B1C2CB37C005CB35E /* Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874AD071C2CB37C005CB35E /* Sync.swift */; };
-		8874AD1C1C2CB37C005CB35E /* Tables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874AD081C2CB37C005CB35E /* Tables.swift */; };
 		8874AD851C2DC93E005CB35E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 881A22111C064D2900E45805 /* README.md */; };
 		88786F181C052ADF00889AE5 /* CloverSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 88786F171C052ADF00889AE5 /* CloverSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		88786F1F1C052AE000889AE5 /* CloverSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88786F141C052ADF00889AE5 /* CloverSDK.framework */; };
 		88786F241C052AE000889AE5 /* CloverSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88786F231C052AE000889AE5 /* CloverSDKTests.swift */; };
 		8889DA561C8F7A08000ED5A8 /* CLVError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8889DA551C8F7A08000ED5A8 /* CLVError.swift */; };
-		88B72A3C1C56229B003A2586 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B72A3B1C56229B003A2586 /* Extensions.swift */; };
-		88B72A3F1C5622A6003A2586 /* CLVMethods+PK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B72A3D1C5622A6003A2586 /* CLVMethods+PK.swift */; };
-		88B72A401C5622A6003A2586 /* CLVRequest+PK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B72A3E1C5622A6003A2586 /* CLVRequest+PK.swift */; };
+		88AB4CF71C911A0C00F535BB /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AB4CF61C911A0C00F535BB /* Endpoint.swift */; };
+		88B72A3C1C56229B003A2586 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B72A3B1C56229B003A2586 /* Utils.swift */; };
+		88B72A3F1C5622A6003A2586 /* CLVMethodsExt+PK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B72A3D1C5622A6003A2586 /* CLVMethodsExt+PK.swift */; };
+		88B72A401C5622A6003A2586 /* CLVRequestExt+PK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B72A3E1C5622A6003A2586 /* CLVRequestExt+PK.swift */; };
+		88D288F21C98E858005AF5A9 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288E41C98E858005AF5A9 /* Account.swift */; };
+		88D288F31C98E858005AF5A9 /* Apps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288E51C98E858005AF5A9 /* Apps.swift */; };
+		88D288F41C98E858005AF5A9 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288E61C98E858005AF5A9 /* Base.swift */; };
+		88D288F51C98E858005AF5A9 /* Cash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288E71C98E858005AF5A9 /* Cash.swift */; };
+		88D288F61C98E858005AF5A9 /* Customers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288E81C98E858005AF5A9 /* Customers.swift */; };
+		88D288F71C98E858005AF5A9 /* Developer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288E91C98E858005AF5A9 /* Developer.swift */; };
+		88D288F81C98E858005AF5A9 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288EA1C98E858005AF5A9 /* Device.swift */; };
+		88D288F91C98E858005AF5A9 /* Employees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288EB1C98E858005AF5A9 /* Employees.swift */; };
+		88D288FA1C98E858005AF5A9 /* Hours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288EC1C98E858005AF5A9 /* Hours.swift */; };
+		88D288FB1C98E858005AF5A9 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288ED1C98E858005AF5A9 /* Inventory.swift */; };
+		88D288FC1C98E858005AF5A9 /* Merchant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288EE1C98E858005AF5A9 /* Merchant.swift */; };
+		88D288FD1C98E858005AF5A9 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288EF1C98E858005AF5A9 /* Order.swift */; };
+		88D288FE1C98E858005AF5A9 /* Payments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288F01C98E858005AF5A9 /* Payments.swift */; };
+		88D288FF1C98E858005AF5A9 /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288F11C98E858005AF5A9 /* Printer.swift */; };
+		88D2890B1C98F39B005AF5A9 /* CLVRequestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D2890A1C98F39B005AF5A9 /* CLVRequestExtension.swift */; };
 		88DF3D091C4232350093FCB1 /* CLVOAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DF3D081C4232350093FCB1 /* CLVOAuth.swift */; };
 		88E163691C293FCB008FC1B9 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 88E163681C293FCB008FC1B9 /* Podfile */; };
+		88F6C7981C963B3F006BBD22 /* CLVSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F6C7971C963B3F006BBD22 /* CLVSessionExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,28 +66,8 @@
 		88019D171C248ECB002FC9BB /* CloverSDK.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CloverSDK.podspec; sourceTree = "<group>"; };
 		881A22111C064D2900E45805 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		881A22131C064D3000E45805 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		885C82BD1C8FD4BD00280B75 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
+		885C82BD1C8FD4BD00280B75 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		8874ACCA1C2CB255005CB35E /* CLVModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLVModels.swift; sourceTree = "<group>"; };
-		8874ACF51C2CB37C005CB35E /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
-		8874ACF61C2CB37C005CB35E /* Apps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Apps.swift; sourceTree = "<group>"; };
-		8874ACF71C2CB37C005CB35E /* Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
-		8874ACF81C2CB37C005CB35E /* Billing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Billing.swift; sourceTree = "<group>"; };
-		8874ACF91C2CB37C005CB35E /* Cash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cash.swift; sourceTree = "<group>"; };
-		8874ACFA1C2CB37C005CB35E /* Customers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customers.swift; sourceTree = "<group>"; };
-		8874ACFB1C2CB37C005CB35E /* Developer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Developer.swift; sourceTree = "<group>"; };
-		8874ACFC1C2CB37C005CB35E /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
-		8874ACFD1C2CB37C005CB35E /* Employees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employees.swift; sourceTree = "<group>"; };
-		8874ACFE1C2CB37C005CB35E /* Entitlements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entitlements.swift; sourceTree = "<group>"; };
-		8874ACFF1C2CB37C005CB35E /* Hours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hours.swift; sourceTree = "<group>"; };
-		8874AD001C2CB37C005CB35E /* Inventory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
-		8874AD011C2CB37C005CB35E /* Merchant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Merchant.swift; sourceTree = "<group>"; };
-		8874AD021C2CB37C005CB35E /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
-		8874AD031C2CB37C005CB35E /* Pay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pay.swift; sourceTree = "<group>"; };
-		8874AD041C2CB37C005CB35E /* Payments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payments.swift; sourceTree = "<group>"; };
-		8874AD051C2CB37C005CB35E /* Printer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Printer.swift; sourceTree = "<group>"; };
-		8874AD061C2CB37C005CB35E /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
-		8874AD071C2CB37C005CB35E /* Sync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sync.swift; sourceTree = "<group>"; };
-		8874AD081C2CB37C005CB35E /* Tables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tables.swift; sourceTree = "<group>"; };
 		88786F141C052ADF00889AE5 /* CloverSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CloverSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88786F171C052ADF00889AE5 /* CloverSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloverSDK.h; sourceTree = "<group>"; };
 		88786F191C052ADF00889AE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -98,11 +75,28 @@
 		88786F231C052AE000889AE5 /* CloverSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloverSDKTests.swift; sourceTree = "<group>"; };
 		88786F251C052AE000889AE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8889DA551C8F7A08000ED5A8 /* CLVError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLVError.swift; sourceTree = "<group>"; };
-		88B72A3B1C56229B003A2586 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		88B72A3D1C5622A6003A2586 /* CLVMethods+PK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLVMethods+PK.swift"; sourceTree = "<group>"; };
-		88B72A3E1C5622A6003A2586 /* CLVRequest+PK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLVRequest+PK.swift"; sourceTree = "<group>"; };
+		88AB4CF61C911A0C00F535BB /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		88B72A3B1C56229B003A2586 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		88B72A3D1C5622A6003A2586 /* CLVMethodsExt+PK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLVMethodsExt+PK.swift"; sourceTree = "<group>"; };
+		88B72A3E1C5622A6003A2586 /* CLVRequestExt+PK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLVRequestExt+PK.swift"; sourceTree = "<group>"; };
+		88D288E41C98E858005AF5A9 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		88D288E51C98E858005AF5A9 /* Apps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Apps.swift; sourceTree = "<group>"; };
+		88D288E61C98E858005AF5A9 /* Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
+		88D288E71C98E858005AF5A9 /* Cash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cash.swift; sourceTree = "<group>"; };
+		88D288E81C98E858005AF5A9 /* Customers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customers.swift; sourceTree = "<group>"; };
+		88D288E91C98E858005AF5A9 /* Developer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Developer.swift; sourceTree = "<group>"; };
+		88D288EA1C98E858005AF5A9 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		88D288EB1C98E858005AF5A9 /* Employees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employees.swift; sourceTree = "<group>"; };
+		88D288EC1C98E858005AF5A9 /* Hours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hours.swift; sourceTree = "<group>"; };
+		88D288ED1C98E858005AF5A9 /* Inventory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
+		88D288EE1C98E858005AF5A9 /* Merchant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Merchant.swift; sourceTree = "<group>"; };
+		88D288EF1C98E858005AF5A9 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		88D288F01C98E858005AF5A9 /* Payments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payments.swift; sourceTree = "<group>"; };
+		88D288F11C98E858005AF5A9 /* Printer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Printer.swift; sourceTree = "<group>"; };
+		88D2890A1C98F39B005AF5A9 /* CLVRequestExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLVRequestExtension.swift; sourceTree = "<group>"; };
 		88DF3D081C4232350093FCB1 /* CLVOAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLVOAuth.swift; sourceTree = "<group>"; };
 		88E163681C293FCB008FC1B9 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		88F6C7971C963B3F006BBD22 /* CLVSessionExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLVSessionExtension.swift; sourceTree = "<group>"; };
 		92BC14A0954D89DB2EC70C6F /* Pods_CloverSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CloverSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA930686F0AF2318B8DE8279 /* Pods-CloverSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloverSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CloverSDK/Pods-CloverSDK.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,8 +150,8 @@
 		882F79541C275E4D008CDF79 /* PromiseKit */ = {
 			isa = PBXGroup;
 			children = (
-				88B72A3D1C5622A6003A2586 /* CLVMethods+PK.swift */,
-				88B72A3E1C5622A6003A2586 /* CLVRequest+PK.swift */,
+				88B72A3E1C5622A6003A2586 /* CLVRequestExt+PK.swift */,
+				88B72A3D1C5622A6003A2586 /* CLVMethodsExt+PK.swift */,
 			);
 			path = PromiseKit;
 			sourceTree = "<group>";
@@ -165,26 +159,20 @@
 		8874ACF41C2CB370005CB35E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				8874ACF51C2CB37C005CB35E /* Account.swift */,
-				8874ACF61C2CB37C005CB35E /* Apps.swift */,
-				8874ACF71C2CB37C005CB35E /* Base.swift */,
-				8874ACF81C2CB37C005CB35E /* Billing.swift */,
-				8874ACF91C2CB37C005CB35E /* Cash.swift */,
-				8874ACFA1C2CB37C005CB35E /* Customers.swift */,
-				8874ACFB1C2CB37C005CB35E /* Developer.swift */,
-				8874ACFC1C2CB37C005CB35E /* Device.swift */,
-				8874ACFD1C2CB37C005CB35E /* Employees.swift */,
-				8874ACFE1C2CB37C005CB35E /* Entitlements.swift */,
-				8874ACFF1C2CB37C005CB35E /* Hours.swift */,
-				8874AD001C2CB37C005CB35E /* Inventory.swift */,
-				8874AD011C2CB37C005CB35E /* Merchant.swift */,
-				8874AD021C2CB37C005CB35E /* Order.swift */,
-				8874AD031C2CB37C005CB35E /* Pay.swift */,
-				8874AD041C2CB37C005CB35E /* Payments.swift */,
-				8874AD051C2CB37C005CB35E /* Printer.swift */,
-				8874AD061C2CB37C005CB35E /* Report.swift */,
-				8874AD071C2CB37C005CB35E /* Sync.swift */,
-				8874AD081C2CB37C005CB35E /* Tables.swift */,
+				88D288E41C98E858005AF5A9 /* Account.swift */,
+				88D288E51C98E858005AF5A9 /* Apps.swift */,
+				88D288E61C98E858005AF5A9 /* Base.swift */,
+				88D288E71C98E858005AF5A9 /* Cash.swift */,
+				88D288E81C98E858005AF5A9 /* Customers.swift */,
+				88D288E91C98E858005AF5A9 /* Developer.swift */,
+				88D288EA1C98E858005AF5A9 /* Device.swift */,
+				88D288EB1C98E858005AF5A9 /* Employees.swift */,
+				88D288EC1C98E858005AF5A9 /* Hours.swift */,
+				88D288ED1C98E858005AF5A9 /* Inventory.swift */,
+				88D288EE1C98E858005AF5A9 /* Merchant.swift */,
+				88D288EF1C98E858005AF5A9 /* Order.swift */,
+				88D288F01C98E858005AF5A9 /* Payments.swift */,
+				88D288F11C98E858005AF5A9 /* Printer.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -238,12 +226,15 @@
 			isa = PBXGroup;
 			children = (
 				88019D0E1C248DD4002FC9BB /* CLVSession.swift */,
+				88F6C7971C963B3F006BBD22 /* CLVSessionExtension.swift */,
 				88019D0D1C248DD4002FC9BB /* CLVServerEnvironment.swift */,
 				88019D0B1C248DD4002FC9BB /* CLVRequest.swift */,
+				88D2890A1C98F39B005AF5A9 /* CLVRequestExtension.swift */,
 				88019D091C248DD4002FC9BB /* CLVMethods.swift */,
 				8889DA551C8F7A08000ED5A8 /* CLVError.swift */,
-				88B72A3B1C56229B003A2586 /* Extensions.swift */,
-				885C82BD1C8FD4BD00280B75 /* Logging.swift */,
+				88B72A3B1C56229B003A2586 /* Utils.swift */,
+				885C82BD1C8FD4BD00280B75 /* Logger.swift */,
+				88AB4CF61C911A0C00F535BB /* Endpoint.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -251,8 +242,8 @@
 		88786F401C053D9600889AE5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				88019D031C248DBE002FC9BB /* TransformTypes.swift */,
 				8874ACCA1C2CB255005CB35E /* CLVModels.swift */,
+				88019D031C248DBE002FC9BB /* TransformTypes.swift */,
 				8874ACF41C2CB370005CB35E /* Extensions */,
 			);
 			path = Models;
@@ -414,38 +405,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8874AD1B1C2CB37C005CB35E /* Sync.swift in Sources */,
-				88B72A401C5622A6003A2586 /* CLVRequest+PK.swift in Sources */,
-				8874AD091C2CB37C005CB35E /* Account.swift in Sources */,
-				8874AD151C2CB37C005CB35E /* Merchant.swift in Sources */,
-				8874AD191C2CB37C005CB35E /* Printer.swift in Sources */,
+				88D288FB1C98E858005AF5A9 /* Inventory.swift in Sources */,
+				88B72A401C5622A6003A2586 /* CLVRequestExt+PK.swift in Sources */,
 				88019D051C248DBE002FC9BB /* TransformTypes.swift in Sources */,
-				8874AD101C2CB37C005CB35E /* Device.swift in Sources */,
-				8874AD171C2CB37C005CB35E /* Pay.swift in Sources */,
-				8874AD181C2CB37C005CB35E /* Payments.swift in Sources */,
-				8874AD131C2CB37C005CB35E /* Hours.swift in Sources */,
-				8874AD1C1C2CB37C005CB35E /* Tables.swift in Sources */,
 				88019D161C248DD4002FC9BB /* CLVSession.swift in Sources */,
 				8874ACCB1C2CB255005CB35E /* CLVModels.swift in Sources */,
-				88B72A3C1C56229B003A2586 /* Extensions.swift in Sources */,
-				8874AD0B1C2CB37C005CB35E /* Base.swift in Sources */,
-				885C82BE1C8FD4BD00280B75 /* Logging.swift in Sources */,
-				8874AD0F1C2CB37C005CB35E /* Developer.swift in Sources */,
-				88B72A3F1C5622A6003A2586 /* CLVMethods+PK.swift in Sources */,
-				8874AD111C2CB37C005CB35E /* Employees.swift in Sources */,
-				8874AD0D1C2CB37C005CB35E /* Cash.swift in Sources */,
+				88B72A3C1C56229B003A2586 /* Utils.swift in Sources */,
+				88D288F21C98E858005AF5A9 /* Account.swift in Sources */,
+				885C82BE1C8FD4BD00280B75 /* Logger.swift in Sources */,
+				88D2890B1C98F39B005AF5A9 /* CLVRequestExtension.swift in Sources */,
+				88B72A3F1C5622A6003A2586 /* CLVMethodsExt+PK.swift in Sources */,
+				88D288F41C98E858005AF5A9 /* Base.swift in Sources */,
+				88D288FD1C98E858005AF5A9 /* Order.swift in Sources */,
 				88019D131C248DD4002FC9BB /* CLVRequest.swift in Sources */,
-				8874AD121C2CB37C005CB35E /* Entitlements.swift in Sources */,
+				88D288F51C98E858005AF5A9 /* Cash.swift in Sources */,
+				88D288F31C98E858005AF5A9 /* Apps.swift in Sources */,
+				88D288F81C98E858005AF5A9 /* Device.swift in Sources */,
+				88D288FE1C98E858005AF5A9 /* Payments.swift in Sources */,
+				88D288FC1C98E858005AF5A9 /* Merchant.swift in Sources */,
+				88D288F91C98E858005AF5A9 /* Employees.swift in Sources */,
 				88019D111C248DD4002FC9BB /* CLVMethods.swift in Sources */,
 				8889DA561C8F7A08000ED5A8 /* CLVError.swift in Sources */,
-				8874AD141C2CB37C005CB35E /* Inventory.swift in Sources */,
+				88D288FF1C98E858005AF5A9 /* Printer.swift in Sources */,
+				88D288FA1C98E858005AF5A9 /* Hours.swift in Sources */,
+				88AB4CF71C911A0C00F535BB /* Endpoint.swift in Sources */,
+				88D288F61C98E858005AF5A9 /* Customers.swift in Sources */,
+				88D288F71C98E858005AF5A9 /* Developer.swift in Sources */,
 				88DF3D091C4232350093FCB1 /* CLVOAuth.swift in Sources */,
-				8874AD161C2CB37C005CB35E /* Order.swift in Sources */,
-				8874AD0A1C2CB37C005CB35E /* Apps.swift in Sources */,
-				8874AD1A1C2CB37C005CB35E /* Report.swift in Sources */,
 				88019D151C248DD4002FC9BB /* CLVServerEnvironment.swift in Sources */,
-				8874AD0C1C2CB37C005CB35E /* Billing.swift in Sources */,
-				8874AD0E1C2CB37C005CB35E /* Customers.swift in Sources */,
+				88F6C7981C963B3F006BBD22 /* CLVSessionExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,6 +560,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
 				INFOPLIST_FILE = CloverSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.clover.CloverSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -593,6 +582,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
 				INFOPLIST_FILE = CloverSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.clover.CloverSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
