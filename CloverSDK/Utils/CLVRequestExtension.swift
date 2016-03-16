@@ -11,7 +11,6 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import ObjectMapper
-import PromiseKit
 
 extension CLVRequest {
   
