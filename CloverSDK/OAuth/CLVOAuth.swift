@@ -30,7 +30,7 @@ class CLVAuthViewController: UIViewController, UIWebViewDelegate, UIScrollViewDe
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.webView = UIWebView(frame: self.view.frame) // UIScreen.mainScreen().applicationFrame
+    self.webView = UIWebView(frame: self.view.frame)
     self.webView.delegate = self;
     self.webView.scrollView.delegate = self;
     self.view.addSubview(webView)
