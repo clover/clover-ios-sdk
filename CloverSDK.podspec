@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version      = "0.3.0"
   s.summary      = "Clover SDK"
   s.homepage     = "https://www.clover.com/features/integrations"
-  s.license      = { :type => "MIT", :file => "LICENSE" }
+  s.license      = { :type => "Apache License 2.0", :file => "LICENSE" }
   s.author       = { "Yusuf Erisen" => "dev@clover.com" }
   s.source       = { :git => "https://github.com/clover/clover-ios-sdk.git", :tag => s.version.to_s }
 
