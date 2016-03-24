@@ -41,7 +41,7 @@ class CLVAuthViewController: UIViewController, UIWebViewDelegate, UIScrollViewDe
     self.success = success
     self.failure = failure
     self.navigationItem.title = appName
-    self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: "close")
+    self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: #selector(CLVAuthViewController.close))
     
     let urlString = "\(domain.rawValue)/oauth/authorize?client_id=\(clientId)&response_type=token"
     self.url = NSURL(string: urlString)!
