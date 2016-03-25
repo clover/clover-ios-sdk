@@ -98,10 +98,11 @@ public class CLVRequest {
   }
   
   private func replacePathParams(endpoint: String) -> String {
-    for (param, value) in self.pathParams where endpoint =~ "\\{\(param)\\}" {
-      return endpoint.stringByReplacingOccurrencesOfString("\\{\(param)\\}", withString: "\(value)", options: .RegularExpressionSearch)
+    var endpointVar = endpoint
+    for (param, value) in self.pathParams where endpointVar =~ "\\{\(param)\\}" {
+      endpointVar = endpointVar.stringByReplacingOccurrencesOfString("\\{\(param)\\}", withString: "\(value)", options: .RegularExpressionSearch)
     }
-    return endpoint
+    return endpointVar
   }
   
   private func getUrlParams() -> String {
