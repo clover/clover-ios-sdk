@@ -1,9 +1,34 @@
 
-Note: This is an alpha version of the Clover iOS SDK, and is subject to change.
+# Notes:
+
+- This is an http wrapper for [Clover V3 REST API](https://www.clover.com/api_docs), it makes developing iOS apps with these endpoints much easier, however, this shouldn't be confused with our [Android](https://docs.clover.com/build/android-apps/) [SDK](https://github.com/clover/clover-android-sdk), which lets you develop apps that would work on Clover devices, and is much more powerful.
+
+- This is an alpha version of the Clover iOS SDK, and is subject to change depending on the feedback.
+
+- Currently, all V3 GET endpoints are supported, support for the other HTTP methods is in progress.
+
+- Feedback and pull requests are greatly welcome and appreciated!
+
+
 
 # Sample Usage:
 
-- Getting the access token:
+- To install:
+
+Using [cocoapods](https://guides.cocoapods.org/using/getting-started.html), add to your Podfile:
+
+```
+pod 'CloverSDK'
+```
+
+Import CloverSDK in each file you're using the SDK:
+
+
+```
+import CloverSDK
+```
+
+- To get an access token:
 
 ```
 CLVSession.authenticateUser(forClientId: "####", withAppName: "", domain: .US, activeView: self,
@@ -147,9 +172,3 @@ CLVSession.authenticateUser(forClientId: "####", withAppName: "App", domain: .US
     // ...
 }
 ```
-
-## General Notes:
-
-- This is an Alpha version, so there’s absolutely no guarantee that something will stay the same or will even stay in the SDK. Anything might change or be removed depending on the feedback. We will try to make changes which wouldn’t cause much trouble in case you need to update your project, but this is an Alpha version, so any change is possible.
-
-- Feedback and pull requests are greatly welcome and appreciated!
