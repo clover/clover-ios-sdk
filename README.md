@@ -10,7 +10,6 @@
 - Feedback and pull requests are greatly welcome and appreciated!
 
 
-
 # Sample Usage:
 
 - To install:
@@ -31,7 +30,7 @@ import CloverSDK
 - To get an access token:
 
 ```
-CLVSession.authenticateUser(forClientId: "####", withAppName: "", domain: .US, activeView: self,
+CLVSession.authenticateUser(forClientId: "####", domain: .US, activeView: self,
   success: { session in
     // Persist the values in Keychain to use later
   }, failure: { err in
@@ -156,8 +155,6 @@ session.getMerchantOrders(filters: ["employee.id": "####"], expands: ["lineItems
 
 - `clientId` is the id of your app. For now, you need to infer/ask the user their region before referring to the webpage popup since they cannot just change the url on the login page and you need to pass in the appropriate app id for the region in case your app exists in multiple regions. We may put an option on the login page for the user to switch to a different region, and if so, we’ll update this method so that you won’t need to know their region beforehand.
 
-- `appName` is only used as title of the browser window.
-
 - `domain` is the region your app is in.
 
 - `activeView` is the ViewController you’re calling this from.
@@ -165,7 +162,7 @@ session.getMerchantOrders(filters: ["employee.id": "####"], expands: ["lineItems
 - It’s important only to use Keychain to save these information as the token can be used by anyone to make api requests on behalf of the merchant!
 
 ```
-CLVSession.authenticateUser(forClientId: "####", withAppName: "App", domain: .US, activeView: self,
+CLVSession.authenticateUser(forClientId: "####", domain: .US, activeView: self,
   success: { (session) -> Void in
     // Persist the values in Keychain to use later
   }) { (error) -> Void in
