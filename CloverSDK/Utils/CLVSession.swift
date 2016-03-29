@@ -14,9 +14,6 @@ public class CLVSession {
   public var clientId: String?
   public var domain: CLVServerEnvironment
   
-  public var merchant: CLVModels.Merchant.Merchant?
-  public var employee: CLVModels.Employees.Employee?
-  
   public static var debugMode: Bool = false
   public static var debugPrintOptions: [CLVDebugPrintOption] = [.URL, .TIME_FILTERS, .HEADERS, .PAYLOAD, .STATUS_CODE, .RESPONSE_DATA]
   

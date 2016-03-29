@@ -97,11 +97,12 @@ public class CLVRequest {
     }
   }
   
-  private func replacePathParams(var endpoint: String) -> String {
-    for (param, value) in self.pathParams where endpoint =~ "\\{\(param)\\}" {
-      endpoint = endpoint.stringByReplacingOccurrencesOfString("\\{\(param)\\}", withString: "\(value)", options: .RegularExpressionSearch)
+  private func replacePathParams(endpoint: String) -> String {
+    var endpointVar = endpoint
+    for (param, value) in self.pathParams where endpointVar =~ "\\{\(param)\\}" {
+      endpointVar = endpointVar.stringByReplacingOccurrencesOfString("\\{\(param)\\}", withString: "\(value)", options: .RegularExpressionSearch)
     }
-    return endpoint
+    return endpointVar
   }
   
   private func getUrlParams() -> String {
@@ -229,6 +230,10 @@ public class CLVRequest {
     public func timeFilters(timeFilters: CloverAPITimeFilters? = nil)  -> Builder { self.timeFilters = timeFilters; return self }
     public func payload(payload: [String:AnyObject]? = nil)            -> Builder { self.payload = payload; return self }
     
+    public func addPathParams(pathParams: [String:String])             -> Builder { self.pathParams.updateContentsOf(pathParams); return self }
+    public func removePathParams(pathParams: [String:String])          -> Builder { self.pathParams.removeContentsOf(pathParams); return self }
+    public func removePathParams(keys: [String])                       -> Builder { self.pathParams.removeContentsOf(keys); return self }
+
     /// Update params with contents of
     public func addParams(params: [String:String])                     -> Builder { self.params.updateContentsOf(params); return self }
     /// Remove params that exist in

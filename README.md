@@ -1,12 +1,36 @@
 
-Note: This is an alpha version of the Clover iOS SDK, and is subject to change.
+# Notes:
+
+- This is an http wrapper for [Clover V3 REST API](https://www.clover.com/api_docs), it makes developing iOS apps with these endpoints much easier, however, this shouldn't be confused with our [Android](https://docs.clover.com/build/android-apps/) [SDK](https://github.com/clover/clover-android-sdk), which lets you develop apps that would work on Clover devices, and is much more powerful.
+
+- This is an alpha version of the Clover iOS SDK, and is subject to change depending on the feedback.
+
+- Currently, all V3 GET endpoints are supported, support for the other HTTP methods is in progress.
+
+- Feedback and pull requests are greatly welcome and appreciated!
+
 
 # Sample Usage:
 
-- Getting the access token:
+- To install:
+
+Using [cocoapods](https://guides.cocoapods.org/using/getting-started.html), add to your Podfile:
 
 ```
-CLVSession.authenticateUser(forClientId: "####", withAppName: "", domain: .US, activeView: self,
+pod 'CloverSDK'
+```
+
+Import CloverSDK in each file you're using the SDK:
+
+
+```
+import CloverSDK
+```
+
+- To get an access token:
+
+```
+CLVSession.authenticateUser(forClientId: "####", domain: .US, activeView: self,
   success: { session in
     // Persist the values in Keychain to use later
   }, failure: { err in
@@ -131,8 +155,6 @@ session.getMerchantOrders(filters: ["employee.id": "####"], expands: ["lineItems
 
 - `clientId` is the id of your app. For now, you need to infer/ask the user their region before referring to the webpage popup since they cannot just change the url on the login page and you need to pass in the appropriate app id for the region in case your app exists in multiple regions. We may put an option on the login page for the user to switch to a different region, and if so, we’ll update this method so that you won’t need to know their region beforehand.
 
-- `appName` is only used as title of the browser window.
-
 - `domain` is the region your app is in.
 
 - `activeView` is the ViewController you’re calling this from.
@@ -140,16 +162,10 @@ session.getMerchantOrders(filters: ["employee.id": "####"], expands: ["lineItems
 - It’s important only to use Keychain to save these information as the token can be used by anyone to make api requests on behalf of the merchant!
 
 ```
-CLVSession.authenticateUser(forClientId: "####", withAppName: "App", domain: .US, activeView: self,
+CLVSession.authenticateUser(forClientId: "####", domain: .US, activeView: self,
   success: { (session) -> Void in
     // Persist the values in Keychain to use later
   }) { (error) -> Void in
     // ...
 }
 ```
-
-## General Notes:
-
-- This is an Alpha version, so there’s absolutely no guarantee that something will stay the same or will even stay in the SDK. Anything might change or be removed depending on the feedback. We will try to make changes which wouldn’t cause much trouble in case you need to update your project, but this is an Alpha version, so any change is possible.
-
-- Feedback and pull requests are greatly welcome and appreciated!

@@ -10,12 +10,12 @@ extension CLVSession {
   
   private static var nav: UINavigationController!
   
-  public class func authenticateUser(forClientId clientId: String, withAppName appName: String, domain: CLVServerEnvironment, activeView: UIViewController, success: (CLVSession) -> Void, failure: ErrorHandler) {
+  public class func authenticateUser(forClientId clientId: String, domain: CLVServerEnvironment, activeView: UIViewController, success: (CLVSession) -> Void, failure: ErrorHandler) {
     self.nav = UINavigationController()
     let authVC = CLVAuthViewController()
     self.nav.addChildViewController(authVC)
     activeView.showViewController(self.nav, sender: self)
-    authVC.setup(domain: domain, appName: appName, clientId: clientId, success: success, failure: failure)
+    authVC.setup(domain: domain, clientId: clientId, success: success, failure: failure)
   }
   
 }
@@ -37,11 +37,11 @@ class CLVAuthViewController: UIViewController, UIWebViewDelegate, UIScrollViewDe
     self.webView.loadRequest(NSURLRequest(URL: self.url))
   }
   
-  func setup(domain domain: CLVServerEnvironment, appName: String, clientId: String, success: (CLVSession) -> Void, failure: ErrorHandler) {
+  func setup(domain domain: CLVServerEnvironment, clientId: String, success: (CLVSession) -> Void, failure: ErrorHandler) {
     self.success = success
     self.failure = failure
-    self.navigationItem.title = appName
-    self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: "close")
+    self.navigationItem.title = NSLocalizedString("Authenticate with Clover", comment: "Page title for web login and authenticating an app.")
+    self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: #selector(CLVAuthViewController.close))
     
     let urlString = "\(domain.rawValue)/oauth/authorize?client_id=\(clientId)&response_type=token"
     self.url = NSURL(string: urlString)!
