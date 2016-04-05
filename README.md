@@ -1,11 +1,11 @@
 
 # Notes:
 
-- This is an http wrapper for [Clover V3 REST API](https://www.clover.com/api_docs), it makes developing iOS apps with these endpoints much easier, however, this shouldn't be confused with our [Android](https://docs.clover.com/build/android-apps/) [SDK](https://github.com/clover/clover-android-sdk), which lets you develop apps that would work on Clover devices, and is much more powerful.
+- This is an http wrapper for [Clover V3 REST API](https://www.clover.com/api_docs). It makes developing iOS apps with these endpoints much easier. However, this shouldn't be confused with our [Android](https://docs.clover.com/build/android-apps/) [SDK](https://github.com/clover/clover-android-sdk), which lets you develop apps that would work on Clover devices, and is much more powerful.
 
 - This is an alpha version of the Clover iOS SDK, and is subject to change depending on the feedback.
 
-- Currently, all V3 GET endpoints are supported, support for the other HTTP methods is in progress.
+- Currently, all V3 GET endpoints are supported. Support for the other HTTP methods is in progress.
 
 - Feedback and pull requests are greatly welcome and appreciated!
 
@@ -20,7 +20,7 @@ Using [cocoapods](https://guides.cocoapods.org/using/getting-started.html), add 
 pod 'CloverSDK'
 ```
 
-Import CloverSDK in each file you're using the SDK:
+Import CloverSDK in each file where you're using the SDK:
 
 
 ```
@@ -82,13 +82,13 @@ session.getMerchantEmployees(
 
 - All models conform to `Mappable`  (open source library: ObjectMapper) for serialization/deserialization of json.
 
-- The alpha version includes some models which are not on the public api, but expanded on some api calls, so some of the models will be removed in the following versions.
+- The alpha version includes some models that are not on the public api, but expanded on some api calls, so some of the models will be removed in the following versions.
 
-- All models inherit from main `CLVModel`  class, and then grouped into logical group classes; as an example, the customer address model would be: `CLVModels.Customers.Address`.
+- All models inherit from main `CLVModel`  class, and are then grouped into logical group classes; as an example, the customer address model would be: `CLVModels.Customers.Address`.
 
 - Most fields on the models have documentation, which will show with auto-completion in Xcode.
 
-- Some field name which conflict with Swift keywords are changed to have an underscore at the end, as: `description_`.
+- Some field names that conflict with Swift keywords are changed to have an underscore at the end, as: `description_`.
 
 ## Utils: Helper classes for api calls
 
@@ -96,7 +96,7 @@ session.getMerchantEmployees(
 
 - `CLVSession`
 
-  - Once you already have the merchant’s id, merchant token, and the domain (currently US or EU and Sandbox for development), you can initiate a session object and then start calling Clover endpoints on that object which stores those information.
+  - Once you already have the merchant’s id, merchant token, and the domain (currently US or EU and Sandbox for development), you can initiate a session object and then start calling Clover endpoints on that object, which stores those information.
 
   - Session has two static vars which define debugging options. `debugMode` is a boolean which determines if any output will be made with requests, and `debugPrintOptions` is a list of enum values which you individually opt in to get output of.
 
@@ -111,15 +111,15 @@ session.getMerchantOrder(withId: "####", expands: ["lineItems"])
 
   - It has a builder for passing all options, and an initializer with absolute minimum options: http method, domain, and the endpoint. Once you pass in all the options, you   can call `build()` to get a `CLVRequest` object. The builder also takes a `CLVRequest` parameter when modifying a request is needed.
 
-  - Once you have a `CLVRequest` object, there are `makeRequest…()` methods that can be called on that object, which the endpoint methods use internally, but they’re also public methods. These methods take care of all the pre and post request validations, handle resubmitting a request if a 429 - too many requests error was received, and calls the appropriate `success` or `failure` block passed in. There are three kinds to get a single object, an array of an object, or to get an `AnyObject` for models that are not included in `CLVModels` (for v1/v2 endpoints).
+  - Once you have a `CLVRequest` object, there are `makeRequest…()` methods that can be called on that object, which the endpoint methods use internally, but they’re also public methods. These methods take care of all the pre and post request validations, handle resubmitting a request if a "429 - too many requests error" is received, and calls the appropriate `success` or `failure` block passed in. There are three kinds: get a single object, get an array of an object, or get an `AnyObject` for models that are not included in `CLVModels` (for v1/v2 endpoints).
 
-  - `CLVMethods` file is an extension on `CLVSession`, is an auto-generated file, and includes calls to all GET endpoints on our api_docs page, such as: `getMerchantOrderDiscounts:withId:`. Making POST and DELETE requests is not supported with these methods at this point, but will be included in the beta version, however, you can use the `CLVRequest.Builder` class and `makeRequest` methods for now.
+  - `CLVMethods` file is an extension on `CLVSession`, is an auto-generated file, and includes calls to all GET endpoints on our api_docs page, such as: `getMerchantOrderDiscounts:withId:`. Making POST and DELETE requests is not supported with these methods at this point, but will be included in the beta version. However, you can use the `CLVRequest.Builder` class and `makeRequest` methods for now.
 
-  - Some of the endpoint methods return a single object (such as `getMerchantOrder:withId:`) and some of them return an array of that object (such as `getMerchantOrders:`). The returned objects are optional, whereas arrays are not, but they can just be empty.
+  - Some of the endpoint methods return a single object (such as `getMerchantOrder:withId:`), and some of them return an array of that object (such as `getMerchantOrders:`). The returned objects are optional, whereas arrays are not, but they can just be empty.
 
-  - `CLVEndpoint` is an enum with two cases: `V3` and `Custom`. `V3` takes a parameter of `CLVV3Endpoint` which is another enum with all our v3 endpoint urls defined. If you need to call a different endpoint (v1/v2), you can use `Custom` with a String as url.
+  - `CLVEndpoint` is an enum with two cases: `V3` and `Custom`. `V3` takes a parameter of `CLVV3Endpoint`, which is another enum with all our v3 endpoint urls defined. If you need to call a different endpoint (v1/v2), you can use `Custom` with a String as url.
 
-  - `CLVError` is an enum which inherits from standard `ErrorType` . For now, it only has options for non-200 status code, NSError, and unknown error, but more granular options may be added in the future versions. It also has a calculated var `error` for when an NSError object is needed.
+  - `CLVError` is an enum which inherits from standard `ErrorType` . For now, it only has options for non-200 status code, NSError, and unknown error, but more granular options may be added in future versions. It also has a calculated var `error` for when an NSError object is needed.
 
 ## PromiseKit Extension
 
@@ -159,7 +159,7 @@ session.getMerchantOrders(filters: ["employee.id": "####"], expands: ["lineItems
 
 - `activeView` is the ViewController you’re calling this from.
 
-- It’s important only to use Keychain to save these information as the token can be used by anyone to make api requests on behalf of the merchant!
+- It’s important to only use Keychain to save these information as the token can be used by anyone to make api requests on behalf of the merchant!
 
 ```
 CLVSession.authenticateUser(forClientId: "####", domain: .US, activeView: self,
