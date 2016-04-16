@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CloverSDK"
-  s.version      = "0.3.1"
+  s.version      = "0.3.5"
   s.summary      = "Clover SDK"
   s.homepage     = "https://github.com/clover/clover-ios-sdk"
   s.license      = { :type => "Apache License 2.0", :file => "LICENSE" }
