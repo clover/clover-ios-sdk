@@ -12,6 +12,13 @@ import ObjectMapper
 
 public class CLVRequest {
   
+  static var retryFailedRequestsWith429: Bool = true
+  private static var retryCount: Int = 5
+  static var retryCountAfter429: Int {
+    get { return self.retryCount }
+    set { self.retryCount = newValue <= 5 ? newValue : 5 }
+  }
+  
   // MARK: - Properties
   
   let httpMethod: Alamofire.Method
