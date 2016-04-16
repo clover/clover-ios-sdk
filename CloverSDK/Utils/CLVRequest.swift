@@ -19,6 +19,10 @@ public class CLVRequest {
     set { self.retryCount = newValue <= 5 ? newValue : 5 }
   }
   
+  static var autoDelayRequests: Bool = true
+  static var requestRateLimit: Int = 15
+  static var requestRateLimitTime: Double = 1 / Double(CLVRequest.requestRateLimit)
+  
   // MARK: - Properties
   
   let httpMethod: Alamofire.Method
