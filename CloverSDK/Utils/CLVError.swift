@@ -11,12 +11,14 @@ import Foundation
 public enum CLVError: ErrorType {
   case Error(NSError)
   case UnacceptableStatusCode(statusCode: Int, serverMessage: String)
+  case TooManyRequestsException
   case UnknownError
   
   public var error: NSError {
     switch self {
     case .Error(let error): return error
     case .UnacceptableStatusCode(let statusCode, let serverMessage): return CLVError.generateNSError(code: -42, userInfo: ["statusCode": statusCode, "serverMessage": serverMessage])
+    case .TooManyRequestsException: return CLVError.generateNSError(code: -429, userInfo: ["statusCode": 429])
     case .UnknownError: return CLVError.generateNSError()
     }
   }

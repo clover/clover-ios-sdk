@@ -22,7 +22,9 @@ extension CLVRequest {
         switch validation {
         case .SUCCESS(let value): fulfill(self.mapObject(value)!)
         case .FAILURE(let error): reject(error)
-        case .TOO_MANY_REQUESTS_EXCEPTION_429: self.makeRequestObjWithPromise(0, fulfill, reject)
+        case .TOO_MANY_REQUESTS_EXCEPTION_429:
+          if CLVRequest.retryFailedRequestsWith429 { self.makeRequestObjWithPromise(0, fulfill, reject) }
+          else { reject(CLVError.TooManyRequestsException) }
         }
       }
     }
@@ -35,7 +37,9 @@ extension CLVRequest {
         switch validation {
         case .SUCCESS(let value): fulfill(self.mapObject(value)!); self.log429Success(retryCount)
         case .FAILURE(let error): reject(error)
-        case .TOO_MANY_REQUESTS_EXCEPTION_429: self.makeRequestObjWithPromise(retryCount + 1, fulfill, reject)
+        case .TOO_MANY_REQUESTS_EXCEPTION_429:
+          if retryCount < CLVRequest.retryCountAfter429 { self.makeRequestObjWithPromise(retryCount + 1, fulfill, reject) }
+          else { reject(CLVError.TooManyRequestsException) }
         }
       }
     }
@@ -48,7 +52,9 @@ extension CLVRequest {
         switch validation {
         case .SUCCESS(let value): fulfill(self.mapArray(value))
         case .FAILURE(let error): reject(error)
-        case .TOO_MANY_REQUESTS_EXCEPTION_429: self.makeRequestArrWithPromise(0, fulfill, reject)
+        case .TOO_MANY_REQUESTS_EXCEPTION_429:
+          if CLVRequest.retryFailedRequestsWith429 { self.makeRequestArrWithPromise(0, fulfill, reject) }
+          else { reject(CLVError.TooManyRequestsException) }
         }
       }
     }
@@ -61,7 +67,9 @@ extension CLVRequest {
         switch validation {
         case .SUCCESS(let value): fulfill(self.mapArray(value)); self.log429Success(retryCount)
         case .FAILURE(let error): reject(error)
-        case .TOO_MANY_REQUESTS_EXCEPTION_429: self.makeRequestArrWithPromise(retryCount + 1, fulfill, reject)
+        case .TOO_MANY_REQUESTS_EXCEPTION_429:
+          if retryCount < CLVRequest.retryCountAfter429 { self.makeRequestArrWithPromise(retryCount + 1, fulfill, reject) }
+          else { reject(CLVError.TooManyRequestsException) }
         }
       }
     }
@@ -74,7 +82,9 @@ extension CLVRequest {
         switch validation {
         case .SUCCESS(let value): fulfill(self.mapAnyObject(value))
         case .FAILURE(let error): reject(error)
-        case .TOO_MANY_REQUESTS_EXCEPTION_429: self.makeRequestWithPromise(0, fulfill, reject)
+        case .TOO_MANY_REQUESTS_EXCEPTION_429:
+          if CLVRequest.retryFailedRequestsWith429 { self.makeRequestWithPromise(0, fulfill, reject) }
+          else { reject(CLVError.TooManyRequestsException) }
         }
       }
     }
@@ -87,7 +97,9 @@ extension CLVRequest {
         switch validation {
         case .SUCCESS(let value): fulfill(self.mapAnyObject(value)); self.log429Success(retryCount)
         case .FAILURE(let error): reject(error)
-        case .TOO_MANY_REQUESTS_EXCEPTION_429: self.makeRequestWithPromise(retryCount + 1, fulfill, reject)
+        case .TOO_MANY_REQUESTS_EXCEPTION_429:
+          if retryCount < CLVRequest.retryCountAfter429 { self.makeRequestWithPromise(retryCount + 1, fulfill, reject) }
+          else { reject(CLVError.TooManyRequestsException) }
         }
       }
     }

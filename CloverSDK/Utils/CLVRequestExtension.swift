@@ -22,7 +22,9 @@ extension CLVRequest {
       switch validation {
       case .SUCCESS(let value): success(self.mapObject(value))
       case .FAILURE(let error): failure(error)
-      case .TOO_MANY_REQUESTS_EXCEPTION_429: self.makeRequestObj(0, success, failure)
+      case .TOO_MANY_REQUESTS_EXCEPTION_429:
+        if CLVRequest.retryFailedRequestsWith429 { self.makeRequestObj(0, success, failure) }
+        else { failure(CLVError.TooManyRequestsException) }
       }
     }
   }
@@ -34,7 +36,9 @@ extension CLVRequest {
         switch validation {
         case .SUCCESS(let value): success(self.mapObject(value)); self.log429Success(retryCount)
         case .FAILURE(let error): failure(error)
-        case .TOO_MANY_REQUESTS_EXCEPTION_429: self.makeRequestObj(retryCount + 1, success, failure)
+        case .TOO_MANY_REQUESTS_EXCEPTION_429:
+          if retryCount < CLVRequest.retryCountAfter429 { self.makeRequestObj(retryCount + 1, success, failure) }
+          else { failure(CLVError.TooManyRequestsException) }
         }
       }
     }
@@ -46,7 +50,9 @@ extension CLVRequest {
       switch validation {
       case .SUCCESS(let value): success(self.mapArray(value))
       case .FAILURE(let error): failure(error)
-      case .TOO_MANY_REQUESTS_EXCEPTION_429: self.makeRequestArr(0, success, failure)
+      case .TOO_MANY_REQUESTS_EXCEPTION_429:
+        if CLVRequest.retryFailedRequestsWith429 { self.makeRequestArr(0, success, failure) }
+        else { failure(CLVError.TooManyRequestsException) }
       }
     }
   }
@@ -58,7 +64,9 @@ extension CLVRequest {
         switch validation {
         case .SUCCESS(let value): success(self.mapArray(value)); self.log429Success(retryCount)
         case .FAILURE(let error): failure(error)
-        case .TOO_MANY_REQUESTS_EXCEPTION_429: self.makeRequestArr(retryCount + 1, success, failure)
+        case .TOO_MANY_REQUESTS_EXCEPTION_429:
+          if retryCount < CLVRequest.retryCountAfter429 { self.makeRequestArr(retryCount + 1, success, failure) }
+          else { failure(CLVError.TooManyRequestsException) }
         }
       }
     }
@@ -70,7 +78,9 @@ extension CLVRequest {
       switch validation {
       case .SUCCESS(let value): success(self.mapAnyObject(value))
       case .FAILURE(let error): failure(error)
-      case .TOO_MANY_REQUESTS_EXCEPTION_429: self.makeRequest(0, success, failure)
+      case .TOO_MANY_REQUESTS_EXCEPTION_429:
+        if CLVRequest.retryFailedRequestsWith429 { self.makeRequest(0, success, failure) }
+        else { failure(CLVError.TooManyRequestsException) }
       }
     }
   }
@@ -82,9 +92,38 @@ extension CLVRequest {
         switch validation {
         case .SUCCESS(let value): success(self.mapAnyObject(value))
         case .FAILURE(let error): failure(error)
-        case .TOO_MANY_REQUESTS_EXCEPTION_429: self.makeRequest(retryCount + 1, success, failure)
+        case .TOO_MANY_REQUESTS_EXCEPTION_429:
+          if retryCount < CLVRequest.retryCountAfter429 { self.makeRequest(retryCount + 1, success, failure) }
+          else { failure(CLVError.TooManyRequestsException) }
         }
       }
+    }
+  }
+  
+  
+  // MARK: - CLVRequestQueue
+  
+  class CLVRequestQueue {
+    private static var queue: [() -> Void] = []
+    weak private static var timer: NSTimer?
+    
+    class func addRequestToQueue(request: () -> Void) {
+      queue.append(request)
+      activateTimer()
+    }
+    
+    @objc private class func makeFirstRequest() {
+      if !queue.isEmpty { queue.removeFirst()() }
+      else { deactivateTimer() }
+    }
+    
+    private class func activateTimer() {
+      guard timer == nil else { return }
+      timer = NSTimer.scheduledTimerWithTimeInterval(CLVRequest.requestRateLimitTime, target: self, selector: #selector(makeFirstRequest), userInfo: nil, repeats: true)
+    }
+    
+    private class func deactivateTimer() {
+      timer?.invalidate()
     }
   }
   
@@ -102,12 +141,17 @@ extension CLVRequest {
       return
     }
     
-    Alamofire
-      .request(httpMethod, getUrlString(), parameters: payload, encoding: .JSON, headers: getHeaders())
-      .validate()
-      .responseJSON { response in
-        switchBlock(self.validateResponse(response: response))
+    let makeRequestBlock: () -> Void = {
+      Alamofire
+        .request(self.httpMethod, self.getUrlString(), parameters: self.payload, encoding: .JSON, headers: self.getHeaders())
+        .validate()
+        .responseJSON { response in
+          switchBlock(self.validateResponse(response: response))
+      }
     }
+    
+    if CLVRequest.autoDelayRequests { CLVRequestQueue.addRequestToQueue(makeRequestBlock) }
+    else { makeRequestBlock() }
   }
   
   internal enum CLVValidation {

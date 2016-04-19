@@ -72,7 +72,32 @@ session.getMerchantEmployees(
 })
 ```
 
-- CloverSDK handles 429 (too many requests) error cases by retrying the same request with exponentially increasing time delays.
+- Debug output:
+
+If debugMode is set to true (false by default) the options passed to debugPrintOptions will be printed on each request.
+
+```
+CLVSession.debugMode = true
+CLVSession.debugPrintOptions = [.URL, .TIME_FILTERS, .HEADERS, .PAYLOAD, .STATUS_CODE, .RESPONSE_DATA]
+```
+
+- Handling request rate limits:
+
+If autoDelayRequests is set to true (true by default) SDK will spread the requests over time to be within the set rate limits (15/sec by default.)
+
+```
+CLVRequest.autoDelayRequests = true
+CLVRequest.requestRateLimit = 16
+```
+
+- Handling 429 Too Many Requests errors:
+
+If retryFailedRequestsWith429 is set to true (true by default) SDK will handle 429 error cases by retrying the same request with exponentially increasing time delays.
+
+```
+CLVRequest.retryFailedRequestsWith429 = true
+CLVRequest.retryCountAfter429 = 5
+```
 
 # Components of the Clover iOS SDK:
 

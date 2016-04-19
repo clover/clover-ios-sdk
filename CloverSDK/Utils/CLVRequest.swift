@@ -12,6 +12,17 @@ import ObjectMapper
 
 public class CLVRequest {
   
+  static var retryFailedRequestsWith429: Bool = true
+  private static var retryCount: Int = 5
+  static var retryCountAfter429: Int {
+    get { return self.retryCount }
+    set { self.retryCount = newValue <= 5 ? newValue : 5 }
+  }
+  
+  static var autoDelayRequests: Bool = true
+  static var requestRateLimit: Int = 15
+  static var requestRateLimitTime: Double = 1 / Double(CLVRequest.requestRateLimit)
+  
   // MARK: - Properties
   
   let httpMethod: Alamofire.Method
@@ -56,6 +67,7 @@ public class CLVRequest {
     case CREATED_TIME = "createdTime"
     case CLIENT_CREATED_TIME = "clientCreatedTime"
     case TIMESTAMP = "timestamp"
+    case START_END_TIMESTAMP
   }
   
   public struct CloverAPITimeFilters {
@@ -73,9 +85,6 @@ public class CLVRequest {
   
   // MARK: - Helper Methods
   
-  internal class func getApiDateFilters(beginningTime: NSDate, endTime: NSDate, timeFilterType: TimeFilterType) -> String {
-    return "filter=\(timeFilterType.rawValue)%3E\(Int64(beginningTime.timeIntervalSince1970 * 1000))&filter=\(timeFilterType.rawValue)%3C\(Int64(endTime.timeIntervalSince1970 * 1000))"
-  }
   
   internal class func getFiltersUrlString(filters: [String:String]) -> String {
     return filters.map({(k,v) in return "filter=\(k)=\(v)"}).joinWithSeparator("&")
@@ -119,12 +128,13 @@ public class CLVRequest {
   }
   
   private func getTimeFilters() -> String {
-    guard let timeFilters = timeFilters else { return "" }
-    let timeFilterType = timeFilters.timeFilterType.rawValue
-    var res = [String]()
-    if let startTime = timeFilters.startTime { res.append("filter=\(timeFilterType)>\(Int64(startTime.timeIntervalSince1970 * 1000))") }
-    if let endTime   = timeFilters.endTime   { res.append("filter=\(timeFilterType)<\(Int64(endTime.timeIntervalSince1970   * 1000))") }
-    return res.isEmpty ? "" : res.joinWithSeparator("&")
+    guard let timeFilters = timeFilters, startTime = timeFilters.startTime, endTime = timeFilters.endTime else { return "" }
+    let start = Int64(startTime.timeIntervalSince1970 * 1000)
+    let end = Int64(endTime.timeIntervalSince1970 * 1000)
+    switch timeFilters.timeFilterType {
+    case .START_END_TIMESTAMP: return "startTimestamp=\(start)&endTimestamp=\(end)"
+    default: return "filter=\(timeFilters.timeFilterType.rawValue)>\(start)&filter=\(timeFilters.timeFilterType.rawValue)<\(end)"
+    }
   }
   
   private func getExpands() -> String {
@@ -233,7 +243,7 @@ public class CLVRequest {
     public func addPathParams(pathParams: [String:String])             -> Builder { self.pathParams.updateContentsOf(pathParams); return self }
     public func removePathParams(pathParams: [String:String])          -> Builder { self.pathParams.removeContentsOf(pathParams); return self }
     public func removePathParams(keys: [String])                       -> Builder { self.pathParams.removeContentsOf(keys); return self }
-
+    
     /// Update params with contents of
     public func addParams(params: [String:String])                     -> Builder { self.params.updateContentsOf(params); return self }
     /// Remove params that exist in
