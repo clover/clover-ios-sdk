@@ -19,9 +19,11 @@ public class CLVRequest {
     set { self.retryCount = newValue <= 5 ? newValue : 5 }
   }
   
-  static var autoDelayRequests: Bool = true
-  static var requestRateLimit: Int = 15
-  static var requestRateLimitTime: Double = 1 / Double(CLVRequest.requestRateLimit)
+  public static var autoDelayRequests: Bool = true
+  public static var requestRateLimit: Int = 15
+  public static var requestRateLimitTime: Double = 1 / Double(CLVRequest.requestRateLimit)
+  
+  public static var headers = [String:String]()
   
   // MARK: - Properties
   
@@ -154,7 +156,11 @@ public class CLVRequest {
   }
   
   internal func getHeaders() -> [String:String] {
-    return (accessToken == nil || accessToken!.isEmpty) ? [:] : ["Authorization": "Bearer \(accessToken!)"]
+    var headers = CLVRequest.headers
+    if let accessToken = accessToken where !accessToken.isEmpty {
+      headers.updateContentsOf(["Authorization": "Bearer \(accessToken)"])
+    }
+    return headers
   }
   
   // MARK: - Builder
