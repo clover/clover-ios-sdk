@@ -22,6 +22,7 @@ extension CLVRequest {
       switch validation {
       case .SUCCESS(let value): success(self.mapObject(value))
       case .FAILURE(let error): failure(error)
+      case .UNAUTHORIZED_EXCEPTION_401: failure(CLVError.UnauthorizedException)
       case .TOO_MANY_REQUESTS_EXCEPTION_429:
         if CLVRequest.retryFailedRequestsWith429 { self.makeRequestObj(0, success, failure) }
         else { failure(CLVError.TooManyRequestsException) }
@@ -36,6 +37,7 @@ extension CLVRequest {
         switch validation {
         case .SUCCESS(let value): success(self.mapObject(value)); self.log429Success(retryCount)
         case .FAILURE(let error): failure(error)
+        case .UNAUTHORIZED_EXCEPTION_401: failure(CLVError.UnauthorizedException)
         case .TOO_MANY_REQUESTS_EXCEPTION_429:
           if retryCount < CLVRequest.retryCountAfter429 { self.makeRequestObj(retryCount + 1, success, failure) }
           else { failure(CLVError.TooManyRequestsException) }
@@ -50,6 +52,7 @@ extension CLVRequest {
       switch validation {
       case .SUCCESS(let value): success(self.mapArray(value))
       case .FAILURE(let error): failure(error)
+      case .UNAUTHORIZED_EXCEPTION_401: failure(CLVError.UnauthorizedException)
       case .TOO_MANY_REQUESTS_EXCEPTION_429:
         if CLVRequest.retryFailedRequestsWith429 { self.makeRequestArr(0, success, failure) }
         else { failure(CLVError.TooManyRequestsException) }
@@ -64,6 +67,7 @@ extension CLVRequest {
         switch validation {
         case .SUCCESS(let value): success(self.mapArray(value)); self.log429Success(retryCount)
         case .FAILURE(let error): failure(error)
+        case .UNAUTHORIZED_EXCEPTION_401: failure(CLVError.UnauthorizedException)
         case .TOO_MANY_REQUESTS_EXCEPTION_429:
           if retryCount < CLVRequest.retryCountAfter429 { self.makeRequestArr(retryCount + 1, success, failure) }
           else { failure(CLVError.TooManyRequestsException) }
@@ -78,6 +82,7 @@ extension CLVRequest {
       switch validation {
       case .SUCCESS(let value): success(self.mapAnyObject(value))
       case .FAILURE(let error): failure(error)
+      case .UNAUTHORIZED_EXCEPTION_401: failure(CLVError.UnauthorizedException)
       case .TOO_MANY_REQUESTS_EXCEPTION_429:
         if CLVRequest.retryFailedRequestsWith429 { self.makeRequest(0, success, failure) }
         else { failure(CLVError.TooManyRequestsException) }
@@ -92,6 +97,7 @@ extension CLVRequest {
         switch validation {
         case .SUCCESS(let value): success(self.mapAnyObject(value))
         case .FAILURE(let error): failure(error)
+        case .UNAUTHORIZED_EXCEPTION_401: failure(CLVError.UnauthorizedException)
         case .TOO_MANY_REQUESTS_EXCEPTION_429:
           if retryCount < CLVRequest.retryCountAfter429 { self.makeRequest(retryCount + 1, success, failure) }
           else { failure(CLVError.TooManyRequestsException) }
@@ -158,6 +164,7 @@ extension CLVRequest {
     case SUCCESS(AnyObject)
     case FAILURE(CLVError)
     case TOO_MANY_REQUESTS_EXCEPTION_429
+    case UNAUTHORIZED_EXCEPTION_401
   }
   
   /// This validation function is necessary because Alamofire's .validate() method ignores the server messages if it's a non-200 status code
@@ -167,6 +174,7 @@ extension CLVRequest {
     if let error = response.result.error {
       if let statusCode = response.response?.statusCode, data = response.data where error.code == -6003 {
         if statusCode == 429 { return .TOO_MANY_REQUESTS_EXCEPTION_429 }
+        if statusCode == 401 { return .UNAUTHORIZED_EXCEPTION_401 }
         let serverMessage = JSON(data: data)["message"].stringValue
         return .FAILURE(CLVError.UnacceptableStatusCode(statusCode: statusCode, serverMessage: serverMessage))
       } else {
