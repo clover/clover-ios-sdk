@@ -6,6 +6,6 @@
 //  Copyright © 2015 Clover Network, Inc. All rights reserved.
 //
 
-public class CLVModels {
+open class CLVModels {
   
 }

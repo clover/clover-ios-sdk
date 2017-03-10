@@ -9,36 +9,57 @@
 import SwiftyJSON
 import ObjectMapper
 
-public class CLVDateTransform: TransformType {
-  public typealias Object = NSDate
+open class CLVDateTransform: TransformType {
+  public typealias Object = Date
   public typealias JSON = Double
   
   public init() {}
   
-  public func transformFromJSON(value: AnyObject?) -> NSDate? {
+  open func transformFromJSON(_ value: Any?) -> Date? {
     guard let timeInt = value as? Double else { return nil }
-    return NSDate(timeIntervalSince1970: NSTimeInterval(timeInt / 1000))
+    return Date(timeIntervalSince1970: TimeInterval(timeInt / 1000))
   }
   
-  public func transformToJSON(value: NSDate?) -> Double? {
+  open func transformToJSON(_ value: Date?) -> Double? {
     guard let date = value else { return nil }
     return date.timeIntervalSince1970 * 1000
   }
 }
 
-public class CLVArrayTransform<T: Mappable>: TransformType {
+/*open class CLVArrayTransform<T: Mappable>: TransformType {
   public typealias Object = [T]
   public typealias JSON = AnyObject
   
   public init() {}
   
-  public func transformFromJSON(value: AnyObject?) -> [T]? {
-    guard let obj = value as? NSDictionary, let arr = obj.valueForKey("elements") as? NSArray else { return nil }
-    return arr.map({ item in Mapper<T>().map(item)! })
+  /*open func transformFromJSON(_ value: Any?) -> [T]? {
+    guard let obj = value as? NSDictionary, let arr = obj.value(forKey: "elements") as? NSArray else { return nil }
+    return arr.map({ item in Mapper<T>().map(JSONObject: item)! })
   }
   
-  public func transformToJSON(value: [T]?) -> AnyObject? {
-    guard let value = value else { return nil }
-    return Mapper<T>().toJSONArray(value)
-  }
-}
+  open func transformToJSON(_ value: [T]?) -> Any? {
+    if let val = value {
+        return Mapper<T>().toJSONArray(val)
+    }
+    return nil
+//    return Mapper<T>().toJSONArray(value as! [_])
+  }*/
+    
+    
+    
+    public func transformFromJSON(_ value: Any?) -> Object? {
+        if let obj = value as? NSDictionary, let arr = obj.value(forKey: "elements") as? NSArray {
+               return arr.map({ item in Mapper<T>().map(JSONObject: item)! })
+        } else {
+            return nil
+        }
+        
+    }
+    public func transformToJSON(_ value: [T]?) -> JSON? {
+        if let val = value {
+            return Mapper<T>().toJSONArray(val)
+        }
+        return nil
+        
+    }
+}*/

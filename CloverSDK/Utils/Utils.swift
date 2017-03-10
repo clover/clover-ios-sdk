@@ -10,14 +10,14 @@ import Foundation
 
 // MARK: - Utility Methods
 
-func do_after(seconds seconds: Double = 1, block: () -> Void) {
-  let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(seconds * Double(NSEC_PER_SEC)))
-  dispatch_after(delayTime, dispatch_get_main_queue(), block)
+func do_after(seconds: Double = 1, block: @escaping () -> Void) {
+  let delayTime = DispatchTime.now() + Double(Int64(seconds * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+  DispatchQueue.main.asyncAfter(deadline: delayTime, execute: block)
 }
 
-infix operator =~ {}
+infix operator =~
 func =~ (input: String, pattern: String) -> Bool {
-  return input.rangeOfString(pattern, options: NSStringCompareOptions.RegularExpressionSearch) != nil
+  return input.range(of: pattern, options: NSString.CompareOptions.regularExpression) != nil
 }
 
 infix operator ** { associativity left precedence 160 }
@@ -28,30 +28,30 @@ func ** (radix: Float,  power: Float ) -> Double { return pow(Double(radix), Dou
 // MARK: - Extensions
 
 extension Dictionary {
-  mutating func updateContentsOf(other:Dictionary) {
+  mutating func updateContentsOf(_ other:Dictionary) {
     for (key,value) in other {
       self.updateValue(value, forKey:key)
     }
   }
-  mutating func removeContentsOf(other:Dictionary) {
+  mutating func removeContentsOf(_ other:Dictionary) {
     for (key,_) in other {
-      self.removeValueForKey(key)
+      self.removeValue(forKey: key)
     }
   }
-  mutating func removeContentsOf(keys:[Key]) {
+  mutating func removeContentsOf(_ keys:[Key]) {
     for key in keys {
-      self.removeValueForKey(key)
+      self.removeValue(forKey: key)
     }
   }
 }
 
 extension Array where Element: Equatable {
-  mutating func removeObject(object: Element) {
-    if let index = self.indexOf(object) {
-      self.removeAtIndex(index)
+  mutating func removeObject(_ object: Element) {
+    if let index = self.index(of: object) {
+      self.remove(at: index)
     }
   }
-  mutating func removeContentsOf(array: [Element]) {
+  mutating func removeContentsOf(_ array: [Element]) {
     for object in array {
       self.removeObject(object)
     }

@@ -9,8 +9,8 @@
 import Foundation
 
 public enum CLVEndpoint {
-  case V3(CLVV3Endpoint)
-  case CUSTOM(String)
+  case v3(CLVV3Endpoint)
+  case custom(String)
 }
 
 public enum CLVV3Endpoint: String {

@@ -10,24 +10,24 @@ import SwiftyJSON
 
 // MARK: - Logger
 
-func logIfDebug(title: String, obj: AnyObject?) {
+func logIfDebug(_ title: String, obj: AnyObject?) {
   guard CLVSession.debugMode else { return }
   guard let obj = obj else { return }
   
   switch obj {
   case let dict as [String:String]: if !dict.isEmpty { log("\(title): \(dict)") }
-  case let data as NSData: log("\(title): \(JSON(data: data))")
+  case let data as Data: log("\(title): \(JSON(data: data))")
   default: log("\(title): \(obj)")
   }
 }
 
-func logIfDebug(obj: AnyObject?) {
+func logIfDebug(_ obj: AnyObject?) {
   guard CLVSession.debugMode else { return }
   guard let obj = obj  else { return }
   log("\(obj)")
 }
 
-private func log(str: String) {
+private func log(_ str: String) {
   // todo: add more output alternatives by defining a class var on CLVSession
   print(str)
 }
@@ -41,17 +41,17 @@ extension CLVRequest {
   func logRequest(responseData data: AnyObject? = nil, statusCode: Int? = nil) {
     for option in CLVSession.debugPrintOptions {
       switch option {
-      case .URL: logIfDebug("url", obj: getUrlString())
-      case .TIME_FILTERS: logIfDebug("time filters", obj: getTimeFiltersDebugPrint())
-      case .HEADERS: logIfDebug("headers", obj: getHeaders())
-      case .PAYLOAD: logIfDebug("payload", obj: payload)
-      case .STATUS_CODE: logIfDebug("status code", obj: statusCode)
-      case .RESPONSE_DATA: logIfDebug("response data", obj: data)
+      case .url: logIfDebug("url", obj: getUrlString() as AnyObject?)
+      case .time_FILTERS: logIfDebug("time filters", obj: getTimeFiltersDebugPrint() as AnyObject?)
+      case .headers: logIfDebug("headers", obj: getHeaders() as AnyObject?)
+      case .payload: logIfDebug("payload", obj: payload as AnyObject?)
+      case .status_CODE: logIfDebug("status code", obj: statusCode as AnyObject?)
+      case .response_DATA: logIfDebug("response data", obj: data)
       }
     }
   }
 }
 
 public enum CLVDebugPrintOption {
-  case URL, TIME_FILTERS, HEADERS, PAYLOAD, STATUS_CODE, RESPONSE_DATA
+  case url, time_FILTERS, headers, payload, status_CODE, response_DATA
 }

@@ -6,16 +6,16 @@
 //  Copyright © 2015 Clover Network, Inc. All rights reserved.
 //
 
-public class CLVSession {
+open class CLVSession {
   
-  public var token: String
-  public var merchantId: String
-  public var employeeId: String?
-  public var clientId: String?
-  public var domain: CLVServerEnvironment
+  open var token: String
+  open var merchantId: String
+  open var employeeId: String?
+  open var clientId: String?
+  open var domain: CLVServerEnvironment
   
-  public static var debugMode: Bool = false
-  public static var debugPrintOptions: [CLVDebugPrintOption] = [.URL, .TIME_FILTERS, .HEADERS, .PAYLOAD, .STATUS_CODE, .RESPONSE_DATA]
+  open static var debugMode: Bool = false
+  open static var debugPrintOptions: [CLVDebugPrintOption] = [.url, .time_FILTERS, .headers, .payload, .status_CODE, .response_DATA]
   
   public init(accessToken token: String, domain: CLVServerEnvironment, merchantId: String, employeeId: String? = nil, clientId: String? = nil) {
     self.token = token

@@ -9,37 +9,37 @@ import PromiseKit
 
 extension CLVSession {
   
-  public func getMerchant(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchant(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<CLVModels.Merchant.Merchant> {
       return getV3GetRequest(.MERCHANT, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestObjWithPromise()
   }
   
-  public func getMerchantAddress(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantAddress(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<CLVModels.Base.Address> {
       return getV3GetRequest(.MERCHANT_ADDRESS, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestObjWithPromise()
   }
   
-  public func getMerchantGateway(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantGateway(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<CLVModels.Merchant.Gateway> {
       return getV3GetRequest(.MERCHANT_GATEWAY, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestObjWithPromise()
   }
   
-  public func getMerchantProperties(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantProperties(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<CLVModels.Merchant.MerchantProperties> {
       return getV3GetRequest(.MERCHANT_PROPERTIES, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestObjWithPromise()
   }
   
-  public func getMerchantDefaultServiceCharge(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantDefaultServiceCharge(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<CLVModels.Base.ServiceCharge> {
       return getV3GetRequest(.MERCHANT_DEFAULT_SERVICE_CHARGE, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestObjWithPromise()
   }
   
-  public func getMerchantTipSuggestions(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantTipSuggestions(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Merchant.TipSuggestion]> {
       return getV3GetRequest(.MERCHANT_TIP_SUGGESTIONS, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()
@@ -51,7 +51,7 @@ extension CLVSession {
         .makeRequestObjWithPromise()
   }
   
-  public func getMerchantOrderTypes(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantOrderTypes(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Order.OrderType]> {
       return getV3GetRequest(.MERCHANT_ORDER_TYPES, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()
@@ -63,13 +63,13 @@ extension CLVSession {
         .makeRequestObjWithPromise()
   }
   
-  public func getMerchantSystemOrderTypes(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantSystemOrderTypes(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Order.SystemOrderType]> {
       return getV3GetRequest(.MERCHANT_SYSTEM_ORDER_TYPES, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()
   }
   
-  public func getMerchantRoles(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantRoles(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Employees.Role]> {
       return getV3GetRequest(.MERCHANT_ROLES, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()
@@ -81,7 +81,7 @@ extension CLVSession {
         .makeRequestObjWithPromise()
   }
   
-  public func getMerchantTenders(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantTenders(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Base.Tender]> {
       return getV3GetRequest(.MERCHANT_TENDERS, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()
@@ -93,7 +93,7 @@ extension CLVSession {
         .makeRequestObjWithPromise()
   }
   
-  public func getMerchantOpeningHours(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantOpeningHours(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Hours.HoursSet]> {
       return getV3GetRequest(.MERCHANT_OPENING_HOURS, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()
@@ -105,7 +105,7 @@ extension CLVSession {
         .makeRequestObjWithPromise()
   }
   
-  public func getMerchantCashEvents(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantCashEvents(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Cash.CashEvent]> {
       return getV3GetRequest(.MERCHANT_CASH_EVENTS, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()
@@ -123,7 +123,7 @@ extension CLVSession {
         .makeRequestArrWithPromise()
   }
   
-  public func getMerchantCustomers(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantCustomers(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Customers.Customer]> {
       return getV3GetRequest(.MERCHANT_CUSTOMERS, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()
@@ -135,7 +135,7 @@ extension CLVSession {
         .makeRequestObjWithPromise()
   }
   
-  public func getMerchantEmployees(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantEmployees(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Employees.Employee]> {
       return getV3GetRequest(.MERCHANT_EMPLOYEES, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()
@@ -147,7 +147,7 @@ extension CLVSession {
         .makeRequestObjWithPromise()
   }
   
-  public func getMerchantShifts(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantShifts(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Employees.Shift]> {
       return getV3GetRequest(.MERCHANT_SHIFTS, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()
@@ -177,7 +177,7 @@ extension CLVSession {
         .makeRequestArrWithPromise()
   }
   
-  public func getMerchantItems(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantItems(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Inventory.Item]> {
       return getV3GetRequest(.MERCHANT_ITEMS, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()
@@ -189,7 +189,7 @@ extension CLVSession {
         .makeRequestObjWithPromise()
   }
   
-  public func getMerchantItemStocks(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantItemStocks(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Inventory.ItemStock]> {
       return getV3GetRequest(.MERCHANT_ITEM_STOCKS, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()
@@ -201,7 +201,7 @@ extension CLVSession {
         .makeRequestObjWithPromise()
   }
   
-  public func getMerchantItemGroups(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantItemGroups(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Inventory.ItemGroup]> {
       return getV3GetRequest(.MERCHANT_ITEM_GROUPS, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()
@@ -213,7 +213,7 @@ extension CLVSession {
         .makeRequestObjWithPromise()
   }
   
-  public func getMerchantTags(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantTags(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Inventory.Tag]> {
       return getV3GetRequest(.MERCHANT_TAGS, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()
@@ -237,7 +237,7 @@ extension CLVSession {
         .makeRequestObjWithPromise()
   }
   
-  public func getMerchantTaxRates(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantTaxRates(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Inventory.TaxRate]> {
       return getV3GetRequest(.MERCHANT_TAX_RATES, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()
@@ -249,7 +249,7 @@ extension CLVSession {
         .makeRequestObjWithPromise()
   }
   
-  public func getMerchantCategories(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantCategories(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Inventory.Category]> {
       return getV3GetRequest(.MERCHANT_CATEGORIES, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()
@@ -279,7 +279,7 @@ extension CLVSession {
         .makeRequestArrWithPromise()
   }
   
-  public func getMerchantModifierGroups(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantModifierGroups(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Inventory.ModifierGroup]> {
       return getV3GetRequest(.MERCHANT_MODIFIER_GROUPS, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()
@@ -291,7 +291,7 @@ extension CLVSession {
         .makeRequestObjWithPromise()
   }
   
-  public func getMerchantModifiers(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantModifiers(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Inventory.Modifier]> {
       return getV3GetRequest(.MERCHANT_MODIFIERS, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()
@@ -309,7 +309,7 @@ extension CLVSession {
         .makeRequestObjWithPromise()
   }
   
-  public func getMerchantAttributes(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantAttributes(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Inventory.Attribute]> {
       return getV3GetRequest(.MERCHANT_ATTRIBUTES, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()
@@ -321,7 +321,7 @@ extension CLVSession {
         .makeRequestObjWithPromise()
   }
   
-  public func getMerchantOptions(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantOptions(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Inventory.Option]> {
       return getV3GetRequest(.MERCHANT_OPTIONS, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()
@@ -339,7 +339,7 @@ extension CLVSession {
         .makeRequestObjWithPromise()
   }
   
-  public func getMerchantOrders(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantOrders(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Order.Order]> {
       return getV3GetRequest(.MERCHANT_ORDERS, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()
@@ -369,7 +369,7 @@ extension CLVSession {
         .makeRequestObjWithPromise()
   }
   
-  public func getMerchantAuthorizations(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantAuthorizations(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Payments.Authorization]> {
       return getV3GetRequest(.MERCHANT_AUTHORIZATIONS, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()
@@ -381,7 +381,7 @@ extension CLVSession {
         .makeRequestObjWithPromise()
   }
   
-  public func getMerchantPayments(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantPayments(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Payments.Payment]> {
       return getV3GetRequest(.MERCHANT_PAYMENTS, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()
@@ -399,7 +399,7 @@ extension CLVSession {
         .makeRequestArrWithPromise()
   }
   
-  public func getMerchantRefunds(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantRefunds(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Payments.Refund]> {
       return getV3GetRequest(.MERCHANT_REFUNDS, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()
@@ -411,7 +411,7 @@ extension CLVSession {
         .makeRequestObjWithPromise()
   }
   
-  public func getMerchantCredits(filters filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+  public func getMerchantCredits(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Payments.Credit]> {
       return getV3GetRequest(.MERCHANT_CREDITS, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()

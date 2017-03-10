@@ -1,8 +1,8 @@
 PODS:
-  - Alamofire (3.1.5)
-  - ObjectMapper (1.1.1)
-  - PromiseKit/CorePromise (3.0.2)
-  - SwiftyJSON (2.3.2)
+  - Alamofire (4.4.0)
+  - ObjectMapper (2.2.5)
+  - PromiseKit/CorePromise (4.1.7)
+  - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - Alamofire
@@ -11,11 +11,11 @@ DEPENDENCIES:
   - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: 5f730ba29fd113b7ddd71c1e65d0c630acf5d7b0
-  ObjectMapper: 4143abed1dbd49b73d75092fe8fa1c88ed6434b7
-  PromiseKit: ab1a380f7a30cf8cce663a2411e8b3580b10313d
-  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  ObjectMapper: fb30f71e08470d1e5a20b199fafe1246281db898
+  PromiseKit: 779f2e41faf62d854e7593026ddbcb0bb5c5002d
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 4206554b0dfc2233e88e430cfe51bd763ed2b600
+PODFILE CHECKSUM: 93cba9ea9d273e2a396ce023392854c6f6011cb5
 
-COCOAPODS: 1.1.0.rc.2
+COCOAPODS: 1.2.0
