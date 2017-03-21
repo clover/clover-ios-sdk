@@ -15,6 +15,12 @@ extension CLVSession {
         .makeRequestObjWithPromise()
   }
   
+  public func getMerchantDevices(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
+    params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Device.Device]> {
+      return getV3GetRequest(.MERCHANT_DEVICES, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
+        .makeRequestObjWithPromise()
+  }
+    
   public func getMerchantAddress(filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<CLVModels.Base.Address> {
       return getV3GetRequest(.MERCHANT_ADDRESS, filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
@@ -266,6 +272,8 @@ extension CLVSession {
       return getV3GetRequest(.MERCHANT_CATEGORY_ITEMS, pathParams: ["catId": catId], filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestArrWithPromise()
   }
+    
+    
   
   public func getMerchantItemCategories(withId itemId: String, filters: [String:String] = [:], expands: [String] = [], sorts: [String:SortType] = [:],
     params: [String:String] = [:], limit: UInt = 100, offset: UInt = 0) -> Promise<[CLVModels.Inventory.Category]> {
@@ -434,5 +442,7 @@ extension CLVSession {
       return getV3GetRequest(.APP_MERCHANT_METERED, pathParams: ["aId": aId, "meteredId": meteredId], filters: filters, expands: expands, sorts: sorts, params: params, limit: limit, offset: offset)
         .makeRequestObjWithPromise()
   }
+    
+  
   
 }

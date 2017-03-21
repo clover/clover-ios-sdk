@@ -17,6 +17,7 @@ public enum CLVV3Endpoint: String {
   // Merchants
   case MERCHANT = "/v3/merchants/{mId}"
   case MERCHANT_ADDRESS = "/v3/merchants/{mId}/address"
+  case MERCHANT_DEVICES = "/v3/merchants/{mId}/devices"
   case MERCHANT_GATEWAY = "/v3/merchants/{mId}/gateway"
   case MERCHANT_PROPERTIES = "/v3/merchants/{mId}/properties"
   case MERCHANT_DEFAULT_SERVICE_CHARGE = "/v3/merchants/{mId}/default_service_charge"

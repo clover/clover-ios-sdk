@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		111533DE70B27CC008DB1291 /* Pods_CloverSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92BC14A0954D89DB2EC70C6F /* Pods_CloverSDK.framework */; };
+		7EB240541E7451BF00FBD900 /* Exclusions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB240531E7451BF00FBD900 /* Exclusions.swift */; };
 		7EEB2A6E1E72186E00EB8616 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EEB2A6A1E72186E00EB8616 /* Alamofire.framework */; };
 		7EEB2A6F1E72186E00EB8616 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EEB2A6B1E72186E00EB8616 /* ObjectMapper.framework */; };
 		7EEB2A701E72186E00EB8616 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EEB2A6C1E72186E00EB8616 /* PromiseKit.framework */; };
@@ -69,6 +71,7 @@
 		7E12A34F1E71C27900EF7458 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "DerivedData/CloverSDK/Build/Products/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		7E12A3501E71C27900EF7458 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = "DerivedData/CloverSDK/Build/Products/Debug-iphoneos/PromiseKit/PromiseKit.framework"; sourceTree = "<group>"; };
 		7E12A3511E71C27900EF7458 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "DerivedData/CloverSDK/Build/Products/Debug-iphoneos/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		7EB240531E7451BF00FBD900 /* Exclusions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exclusions.swift; sourceTree = "<group>"; };
 		7EEB2A6A1E72186E00EB8616 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		7EEB2A6B1E72186E00EB8616 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "Pods/../build/Debug-iphoneos/ObjectMapper/ObjectMapper.framework"; sourceTree = "<group>"; };
 		7EEB2A6C1E72186E00EB8616 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = "Pods/../build/Debug-iphoneos/PromiseKit/PromiseKit.framework"; sourceTree = "<group>"; };
@@ -125,6 +128,7 @@
 				7EEB2A6F1E72186E00EB8616 /* ObjectMapper.framework in Frameworks */,
 				7EEB2A701E72186E00EB8616 /* PromiseKit.framework in Frameworks */,
 				7EEB2A711E72186E00EB8616 /* SwiftyJSON.framework in Frameworks */,
+				111533DE70B27CC008DB1291 /* Pods_CloverSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +193,7 @@
 		8874ACF41C2CB370005CB35E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				7EB240531E7451BF00FBD900 /* Exclusions.swift */,
 				88D288E41C98E858005AF5A9 /* Account.swift */,
 				88D288E51C98E858005AF5A9 /* Apps.swift */,
 				88D288E61C98E858005AF5A9 /* Base.swift */,
@@ -501,6 +506,7 @@
 				88D288F51C98E858005AF5A9 /* Cash.swift in Sources */,
 				88D288F31C98E858005AF5A9 /* Apps.swift in Sources */,
 				88D288F81C98E858005AF5A9 /* Device.swift in Sources */,
+				7EB240541E7451BF00FBD900 /* Exclusions.swift in Sources */,
 				88D288FE1C98E858005AF5A9 /* Payments.swift in Sources */,
 				88D288FC1C98E858005AF5A9 /* Merchant.swift in Sources */,
 				88D288F91C98E858005AF5A9 /* Employees.swift in Sources */,
