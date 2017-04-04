@@ -11,16 +11,16 @@ extension CLVModels {
 public class Customers {
  
 open class Address: NSObject, NSCoding, Mappable {
-    open var id: String?
-    open var address1: String?
-    open var address2: String?
-    open var address3: String?
-    open var city: String?
-    open var country: String?
-    open var state: String?
-    open var zip: String?
+  open var id: String?
+  open var address1: String?
+  open var address2: String?
+  open var address3: String?
+  open var city: String?
+  open var country: String?
+  open var state: String?
+  open var zip: String?
     /// Customer who this address belongs to.
-    open var customer: CLVModels.Customers.Customer?
+  open var customer: CLVModels.Base.Reference?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -43,7 +43,7 @@ required public init(coder aDecoder: NSCoder) {
         country = aDecoder.decodeObject(forKey:"country") as? String
         state = aDecoder.decodeObject(forKey:"state") as? String
         zip = aDecoder.decodeObject(forKey:"zip") as? String
-        customer = aDecoder.decodeObject(forKey:"customer") as? CLVModels.Customers.Customer
+        customer = aDecoder.decodeObject(forKey:"customer") as? CLVModels.Base.Reference
   }
 
 override public init() {}
@@ -67,16 +67,16 @@ public func mapping(map: Map) {
 
  
 open class Card: NSObject, NSCoding, Mappable {
-    open var id: String?
-    open var first6: String?
-    open var last4: String?
-    open var firstName: String?
-    open var lastName: String?
-    open var expirationDate: String?
-    open var cardType: String?
-    open var token: String?
+  open var id: String?
+  open var first6: String?
+  open var last4: String?
+  open var firstName: String?
+  open var lastName: String?
+  open var expirationDate: String?
+  open var cardType: String?
+  open var token: String?
     /// Customer who this card belongs to.
-    open var customer: CLVModels.Customers.Customer?
+  open var customer: CLVModels.Base.Reference?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -99,7 +99,7 @@ required public init(coder aDecoder: NSCoder) {
         expirationDate = aDecoder.decodeObject(forKey:"expirationDate") as? String
         cardType = aDecoder.decodeObject(forKey:"cardType") as? String
         token = aDecoder.decodeObject(forKey:"token") as? String
-        customer = aDecoder.decodeObject(forKey:"customer") as? CLVModels.Customers.Customer
+        customer = aDecoder.decodeObject(forKey:"customer") as? CLVModels.Base.Reference
   }
 
 override public init() {}
@@ -124,24 +124,24 @@ public func mapping(map: Map) {
  
 open class Customer: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// The order with which the customer is associated
-    open var orderRef: CLVModels.Order.Order?
+  open var orderRef: CLVModels.Base.Reference?
     /// The merchant that is associated with this customer
-    open var merchant: CLVModels.Merchant.Merchant?
+  open var merchant: CLVModels.Base.Reference?
     /// First/given name of the customer
-    open var firstName: String?
+  open var firstName: String?
     /// Last name/surname of the customer
-    open var lastName: String?
-    open var marketingAllowed: Bool?
-    open var customerSince: Int?
-    open var orders: [CLVModels.Order.Order]?
-    open var addresses: [CLVModels.Customers.Address]?
-    open var emailAddresses: [CLVModels.Customers.EmailAddress]?
-    open var phoneNumbers: [CLVModels.Customers.PhoneNumber]?
-    open var cards: [CLVModels.Customers.Card]?
+  open var lastName: String?
+  open var marketingAllowed: Bool?
+  open var customerSince: Int?
+  open var orders: [CLVModels.Base.Reference]?
+  open var addresses: [CLVModels.Customers.Address]?
+  open var emailAddresses: [CLVModels.Customers.EmailAddress]?
+  open var phoneNumbers: [CLVModels.Customers.PhoneNumber]?
+  open var cards: [CLVModels.Customers.Card]?
     /// Additional information about the customer.
-    open var metadata: CLVModels.Customers.CustomerMetadata?
+  open var metadata: CLVModels.Customers.CustomerMetadata?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -161,13 +161,13 @@ open func encode(with aCoder: NSCoder) {
 
 required public init(coder aDecoder: NSCoder) {
       id = aDecoder.decodeObject(forKey:"id") as? String
-        orderRef = aDecoder.decodeObject(forKey:"orderRef") as? CLVModels.Order.Order
-        merchant = aDecoder.decodeObject(forKey:"merchant") as? CLVModels.Merchant.Merchant
+        orderRef = aDecoder.decodeObject(forKey:"orderRef") as? CLVModels.Base.Reference
+        merchant = aDecoder.decodeObject(forKey:"merchant") as? CLVModels.Base.Reference
         firstName = aDecoder.decodeObject(forKey:"firstName") as? String
         lastName = aDecoder.decodeObject(forKey:"lastName") as? String
         marketingAllowed = aDecoder.decodeObject(forKey:"marketingAllowed") as? Bool
         customerSince = aDecoder.decodeObject(forKey:"customerSince") as? Int
-        orders = aDecoder.decodeObject(forKey:"orders") as? [CLVModels.Order.Order]
+        orders = aDecoder.decodeObject(forKey:"orders") as? [CLVModels.Base.Reference]
         addresses = aDecoder.decodeObject(forKey:"addresses") as? [CLVModels.Customers.Address]
         emailAddresses = aDecoder.decodeObject(forKey:"emailAddresses") as? [CLVModels.Customers.EmailAddress]
         phoneNumbers = aDecoder.decodeObject(forKey:"phoneNumbers") as? [CLVModels.Customers.PhoneNumber]
@@ -201,17 +201,17 @@ public func mapping(map: Map) {
  
 open class CustomerMetadata: NSObject, NSCoding, Mappable {
     /// The name of the business the customer is associated with.
-    open var businessName: String?
+  open var businessName: String?
     /// A note about the customer.
-    open var note: String?
+  open var note: String?
     /// The year part of the date of birth for this customer. This part of the date of birth is optional, i.e., it's possible that only dobMonth and dobDay are populated.
-    open var dobYear: Int?
+  open var dobYear: Int?
     /// The month part of the date of birth for this customer.
-    open var dobMonth: Int?
+  open var dobMonth: Int?
     /// The day part of the date of birth for this customer.
-    open var dobDay: Int?
+  open var dobDay: Int?
     /// Customer who this metadata belongs to.
-    open var customer: CLVModels.Customers.Customer?
+  open var customer: CLVModels.Base.Reference?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(businessName, forKey: "businessName")
@@ -228,7 +228,7 @@ required public init(coder aDecoder: NSCoder) {
         dobYear = aDecoder.decodeObject(forKey:"dobYear") as? Int
         dobMonth = aDecoder.decodeObject(forKey:"dobMonth") as? Int
         dobDay = aDecoder.decodeObject(forKey:"dobDay") as? Int
-        customer = aDecoder.decodeObject(forKey:"customer") as? CLVModels.Customers.Customer
+        customer = aDecoder.decodeObject(forKey:"customer") as? CLVModels.Base.Reference
   }
 
 override public init() {}
@@ -249,11 +249,11 @@ public func mapping(map: Map) {
 
  
 open class EmailAddress: NSObject, NSCoding, Mappable {
-    open var id: String?
-    open var emailAddress: String?
-    open var verifiedTime: Date?
+  open var id: String?
+  open var emailAddress: String?
+  open var verifiedTime: Date?
     /// Customer who this email address belongs to.
-    open var customer: CLVModels.Customers.Customer?
+  open var customer: CLVModels.Base.Reference?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -266,7 +266,7 @@ required public init(coder aDecoder: NSCoder) {
       id = aDecoder.decodeObject(forKey:"id") as? String
         emailAddress = aDecoder.decodeObject(forKey:"emailAddress") as? String
         verifiedTime = aDecoder.decodeObject(forKey:"verifiedTime") as? Date
-        customer = aDecoder.decodeObject(forKey:"customer") as? CLVModels.Customers.Customer
+        customer = aDecoder.decodeObject(forKey:"customer") as? CLVModels.Base.Reference
   }
 
 override public init() {}
@@ -285,10 +285,10 @@ public func mapping(map: Map) {
 
  
 open class PhoneNumber: NSObject, NSCoding, Mappable {
-    open var id: String?
-    open var phoneNumber: String?
+  open var id: String?
+  open var phoneNumber: String?
     /// Customer who this phone number belongs to.
-    open var customer: CLVModels.Customers.Customer?
+  open var customer: CLVModels.Base.Reference?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -299,7 +299,7 @@ open func encode(with aCoder: NSCoder) {
 required public init(coder aDecoder: NSCoder) {
       id = aDecoder.decodeObject(forKey:"id") as? String
         phoneNumber = aDecoder.decodeObject(forKey:"phoneNumber") as? String
-        customer = aDecoder.decodeObject(forKey:"customer") as? CLVModels.Customers.Customer
+        customer = aDecoder.decodeObject(forKey:"customer") as? CLVModels.Base.Reference
   }
 
 override public init() {}

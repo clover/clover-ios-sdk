@@ -10,30 +10,6 @@ extension CLVModels {
 
 public class Order {
  
-open class CreateLineItemsRequest: NSObject, NSCoding, Mappable {
-    /// List of LineItem objects to create
-    open var items: [CLVModels.Order.LineItem]?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(items, forKey: "items")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      items = aDecoder.decodeObject(forKey:"items") as? [CLVModels.Order.LineItem]
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      items <- map["items.elements"]
-  }
-}
-
- 
 public enum CustomerIdMethod: String {
   case NAME
   case TABLE
@@ -43,21 +19,21 @@ public enum CustomerIdMethod: String {
  
 open class Discount: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// The order with which the discount is associated
-    open var orderRef: CLVModels.Order.Order?
+  open var orderRef: CLVModels.Base.Reference?
     /// The lineItem with which the discount is associated
-    open var lineItemRef: CLVModels.Order.LineItem?
+  open var lineItemRef: CLVModels.Base.Reference?
     /// If this item is based on a standard discount, this will point to the appropriate inventory.Discount
-    open var discount: CLVModels.Inventory.Discount?
+  open var discount: CLVModels.Base.Reference?
     /// The person that authorized a discount
-    open var approver: CLVModels.Account.Account?
+  open var approver: CLVModels.Base.Reference?
     /// Name of the discount
-    open var name: String?
+  open var name: String?
     /// Discount amount in fraction of currency unit (e.g. cents) based on currency fraction digits supported
-    open var amount: Int?
+  open var amount: Int?
     /// Discount amount in percent
-    open var percentage: Int?
+  open var percentage: Int?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -72,10 +48,10 @@ open func encode(with aCoder: NSCoder) {
 
 required public init(coder aDecoder: NSCoder) {
       id = aDecoder.decodeObject(forKey:"id") as? String
-        orderRef = aDecoder.decodeObject(forKey:"orderRef") as? CLVModels.Order.Order
-        lineItemRef = aDecoder.decodeObject(forKey:"lineItemRef") as? CLVModels.Order.LineItem
-        discount = aDecoder.decodeObject(forKey:"discount") as? CLVModels.Inventory.Discount
-        approver = aDecoder.decodeObject(forKey:"approver") as? CLVModels.Account.Account
+        orderRef = aDecoder.decodeObject(forKey:"orderRef") as? CLVModels.Base.Reference
+        lineItemRef = aDecoder.decodeObject(forKey:"lineItemRef") as? CLVModels.Base.Reference
+        discount = aDecoder.decodeObject(forKey:"discount") as? CLVModels.Base.Reference
+        approver = aDecoder.decodeObject(forKey:"approver") as? CLVModels.Base.Reference
         name = aDecoder.decodeObject(forKey:"name") as? String
         amount = aDecoder.decodeObject(forKey:"amount") as? Int
         percentage = aDecoder.decodeObject(forKey:"percentage") as? Int
@@ -100,354 +76,6 @@ public func mapping(map: Map) {
 }
 
  
-open class DisplayDiscount: NSObject, NSCoding, Mappable {
-    /// Unique identifier
-    open var id: String?
-    /// The lineItem with which the discount is associated
-    open var lineItemId: String?
-    /// Name of the discount
-    open var name: String?
-    /// Formatted discount amount
-    open var amount: String?
-    /// Discount amount in percent
-    open var percentage: String?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(lineItemId, forKey: "lineItemId")
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(amount, forKey: "amount")
-  aCoder.encode(percentage, forKey: "percentage")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        lineItemId = aDecoder.decodeObject(forKey:"lineItemId") as? String
-        name = aDecoder.decodeObject(forKey:"name") as? String
-        amount = aDecoder.decodeObject(forKey:"amount") as? String
-        percentage = aDecoder.decodeObject(forKey:"percentage") as? String
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      id <- map["id"]
-        lineItemId <- map["lineItemId"]
-        name <- map["name"]
-        amount <- map["amount"]
-        percentage <- map["percentage"]
-  }
-}
-
- 
-open class DisplayLineItem: NSObject, NSCoding, Mappable {
-    /// Unique identifier
-    open var id: String?
-    /// The order with which the line item is associated
-    open var orderId: String?
-    /// Line item name
-    open var name: String?
-    /// Alternate name of the line item
-    open var alternateName: String?
-    /// Formatted total price of the line item
-    open var price: String?
-    /// Formatted unit price in cases if applicable
-    open var unitPrice: String?
-    /// Formatted quantity
-    open var quantity: String?
-    /// Formatted unit quantity - such as 10 @ $1.99/oz
-    open var unitQuantity: String?
-    open var note: String?
-    open var printed: Bool?
-    open var binName: String?
-    open var userData: String?
-    open var discounts: [CLVModels.Order.DisplayDiscount]?
-    open var discountAmount: String?
-    open var exchanged: Bool?
-    /// Formatted exchanged amount
-    open var exchangedAmount: String?
-    open var modifications: [CLVModels.Order.DisplayModification]?
-    open var refunded: Bool?
-    /// Formatted refunded amount
-    open var refundedAmount: String?
-    open var percent: String?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(orderId, forKey: "orderId")
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(alternateName, forKey: "alternateName")
-  aCoder.encode(price, forKey: "price")
-  aCoder.encode(unitPrice, forKey: "unitPrice")
-  aCoder.encode(quantity, forKey: "quantity")
-  aCoder.encode(unitQuantity, forKey: "unitQuantity")
-  aCoder.encode(note, forKey: "note")
-  aCoder.encode(printed, forKey: "printed")
-  aCoder.encode(binName, forKey: "binName")
-  aCoder.encode(userData, forKey: "userData")
-  aCoder.encode(discounts, forKey: "discounts")
-  aCoder.encode(discountAmount, forKey: "discountAmount")
-  aCoder.encode(exchanged, forKey: "exchanged")
-  aCoder.encode(exchangedAmount, forKey: "exchangedAmount")
-  aCoder.encode(modifications, forKey: "modifications")
-  aCoder.encode(refunded, forKey: "refunded")
-  aCoder.encode(refundedAmount, forKey: "refundedAmount")
-  aCoder.encode(percent, forKey: "percent")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        orderId = aDecoder.decodeObject(forKey:"orderId") as? String
-        name = aDecoder.decodeObject(forKey:"name") as? String
-        alternateName = aDecoder.decodeObject(forKey:"alternateName") as? String
-        price = aDecoder.decodeObject(forKey:"price") as? String
-        unitPrice = aDecoder.decodeObject(forKey:"unitPrice") as? String
-        quantity = aDecoder.decodeObject(forKey:"quantity") as? String
-        unitQuantity = aDecoder.decodeObject(forKey:"unitQuantity") as? String
-        note = aDecoder.decodeObject(forKey:"note") as? String
-        printed = aDecoder.decodeObject(forKey:"printed") as? Bool
-        binName = aDecoder.decodeObject(forKey:"binName") as? String
-        userData = aDecoder.decodeObject(forKey:"userData") as? String
-        discounts = aDecoder.decodeObject(forKey:"discounts") as? [CLVModels.Order.DisplayDiscount]
-        discountAmount = aDecoder.decodeObject(forKey:"discountAmount") as? String
-        exchanged = aDecoder.decodeObject(forKey:"exchanged") as? Bool
-        exchangedAmount = aDecoder.decodeObject(forKey:"exchangedAmount") as? String
-        modifications = aDecoder.decodeObject(forKey:"modifications") as? [CLVModels.Order.DisplayModification]
-        refunded = aDecoder.decodeObject(forKey:"refunded") as? Bool
-        refundedAmount = aDecoder.decodeObject(forKey:"refundedAmount") as? String
-        percent = aDecoder.decodeObject(forKey:"percent") as? String
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      id <- map["id"]
-        orderId <- map["orderId"]
-        name <- map["name"]
-        alternateName <- map["alternateName"]
-        price <- map["price"]
-        unitPrice <- map["unitPrice"]
-        quantity <- map["quantity"]
-        unitQuantity <- map["unitQuantity"]
-        note <- map["note"]
-        printed <- map["printed"]
-        binName <- map["binName"]
-        userData <- map["userData"]
-        discounts <- map["discounts.elements"]
-        discountAmount <- map["discountAmount"]
-        exchanged <- map["exchanged"]
-        exchangedAmount <- map["exchangedAmount"]
-        modifications <- map["modifications.elements"]
-        refunded <- map["refunded"]
-        refundedAmount <- map["refundedAmount"]
-        percent <- map["percent"]
-  }
-}
-
- 
-/// Snapshot of a line item modifier at the time that the order was placed.
-open class DisplayModification: NSObject, NSCoding, Mappable {
-    open var id: String?
-    open var name: String?
-    open var amount: String?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(amount, forKey: "amount")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        name = aDecoder.decodeObject(forKey:"name") as? String
-        amount = aDecoder.decodeObject(forKey:"amount") as? String
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      id <- map["id"]
-        name <- map["name"]
-        amount <- map["amount"]
-  }
-}
-
- 
-open class DisplayOrder: NSObject, NSCoding, Mappable {
-    /// Unique identifier
-    open var id: String?
-    /// Currency of this order
-    open var currency: String?
-    /// The employee associated with this order
-    open var employee: String?
-    /// Formatted subtotal of the order
-    open var subtotal: String?
-    /// Formatted tax of the order
-    open var tax: String?
-    /// Formatted total of the order
-    open var total: String?
-    open var title: String?
-    open var note: String?
-    /// Optional service charge name (gratuity) applied to this order
-    open var serviceChargeName: String?
-    /// Optional service charge amount (gratuity) applied to this order
-    open var serviceChargeAmount: String?
-    open var discounts: [CLVModels.Order.DisplayDiscount]?
-    open var lineItems: [CLVModels.Order.DisplayLineItem]?
-    /// Formatted amount remaining
-    open var amountRemaining: String?
-    /// Payments that were made for this order
-    open var payments: [CLVModels.Order.DisplayPayment]?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(currency, forKey: "currency")
-  aCoder.encode(employee, forKey: "employee")
-  aCoder.encode(subtotal, forKey: "subtotal")
-  aCoder.encode(tax, forKey: "tax")
-  aCoder.encode(total, forKey: "total")
-  aCoder.encode(title, forKey: "title")
-  aCoder.encode(note, forKey: "note")
-  aCoder.encode(serviceChargeName, forKey: "serviceChargeName")
-  aCoder.encode(serviceChargeAmount, forKey: "serviceChargeAmount")
-  aCoder.encode(discounts, forKey: "discounts")
-  aCoder.encode(lineItems, forKey: "lineItems")
-  aCoder.encode(amountRemaining, forKey: "amountRemaining")
-  aCoder.encode(payments, forKey: "payments")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        currency = aDecoder.decodeObject(forKey:"currency") as? String
-        employee = aDecoder.decodeObject(forKey:"employee") as? String
-        subtotal = aDecoder.decodeObject(forKey:"subtotal") as? String
-        tax = aDecoder.decodeObject(forKey:"tax") as? String
-        total = aDecoder.decodeObject(forKey:"total") as? String
-        title = aDecoder.decodeObject(forKey:"title") as? String
-        note = aDecoder.decodeObject(forKey:"note") as? String
-        serviceChargeName = aDecoder.decodeObject(forKey:"serviceChargeName") as? String
-        serviceChargeAmount = aDecoder.decodeObject(forKey:"serviceChargeAmount") as? String
-        discounts = aDecoder.decodeObject(forKey:"discounts") as? [CLVModels.Order.DisplayDiscount]
-        lineItems = aDecoder.decodeObject(forKey:"lineItems") as? [CLVModels.Order.DisplayLineItem]
-        amountRemaining = aDecoder.decodeObject(forKey:"amountRemaining") as? String
-        payments = aDecoder.decodeObject(forKey:"payments") as? [CLVModels.Order.DisplayPayment]
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      id <- map["id"]
-        currency <- map["currency"]
-        employee <- map["employee"]
-        subtotal <- map["subtotal"]
-        tax <- map["tax"]
-        total <- map["total"]
-        title <- map["title"]
-        note <- map["note"]
-        serviceChargeName <- map["serviceChargeName"]
-        serviceChargeAmount <- map["serviceChargeAmount"]
-        discounts <- map["discounts.elements"]
-        lineItems <- map["lineItems.elements"]
-        amountRemaining <- map["amountRemaining"]
-        payments <- map["payments.elements"]
-  }
-}
-
- 
-open class DisplayPayment: NSObject, NSCoding, Mappable {
-    /// Unique identifier
-    open var id: String?
-    /// Formatted display string for the tender e.g. credit card, cash, etc.
-    open var label: String?
-    /// Formatted total amount paid
-    open var amount: String?
-    /// Formatted amount paid in tips
-    open var tipAmount: String?
-    /// Formatted amount paid in tax
-    open var taxAmount: Int?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(label, forKey: "label")
-  aCoder.encode(amount, forKey: "amount")
-  aCoder.encode(tipAmount, forKey: "tipAmount")
-  aCoder.encode(taxAmount, forKey: "taxAmount")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        label = aDecoder.decodeObject(forKey:"label") as? String
-        amount = aDecoder.decodeObject(forKey:"amount") as? String
-        tipAmount = aDecoder.decodeObject(forKey:"tipAmount") as? String
-        taxAmount = aDecoder.decodeObject(forKey:"taxAmount") as? Int
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      id <- map["id"]
-        label <- map["label"]
-        amount <- map["amount"]
-        tipAmount <- map["tipAmount"]
-        taxAmount <- map["taxAmount"]
-  }
-}
-
- 
-open class FireOrder: NSObject, NSCoding, Mappable {
-    /// Unique identifier
-    open var id: String?
-    /// The id of the order to fire.
-    open var orderId: String?
-    /// How long in seconds to wait before calling fire.
-    open var delay: Int?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(orderId, forKey: "orderId")
-  aCoder.encode(delay, forKey: "delay")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        orderId = aDecoder.decodeObject(forKey:"orderId") as? String
-        delay = aDecoder.decodeObject(forKey:"delay") as? Int
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      id <- map["id"]
-        orderId <- map["orderId"]
-        delay <- map["delay"]
-  }
-}
-
- 
 public enum HoursAvailable: String {
   case ALL
   case BUSINESS
@@ -457,45 +85,45 @@ public enum HoursAvailable: String {
  
 open class LineItem: NSObject, NSCoding, Mappable {
     /// Unique identifier.
-    open var id: String?
+  open var id: String?
     /// Reference to the order with which the line item is associated.
-    open var orderRef: CLVModels.Order.Order?
+  open var orderRef: CLVModels.Base.Reference?
     /// A reference to the inventory item that was used to create this line item.
-    open var item: CLVModels.Inventory.Item?
+  open var item: CLVModels.Base.Reference?
     /// Line item name
-    open var name: String?
+  open var name: String?
     /// Alternate name of the line item.
-    open var alternateName: String?
+  open var alternateName: String?
     /// Price of the item, typically in cents; use priceType and merchant currency to determine actual item price.
-    open var price: Int?
+  open var price: Int?
     /// Unit quantity if this line item is priced by quantity instead of having a fixed price.
-    open var unitQty: Int?
+  open var unitQty: Int?
     /// Unit name (e.g. oz, lb, etc.)
-    open var unitName: String?
-    open var itemCode: String?
-    open var note: String?
+  open var unitName: String?
+  open var itemCode: String?
+  open var note: String?
     /// True if this line item has been printed out on an order printer at least once already.
-    open var printed: Bool?
-    open var exchangedLineItem: CLVModels.Order.LineItem?
-    open var binName: String?
-    open var userData: String?
-    open var createdTime: Date?
-    open var orderClientCreatedTime: Date?
+  open var printed: Bool?
+  open var exchangedLineItem: CLVModels.Base.Reference?
+  open var binName: String?
+  open var userData: String?
+  open var createdTime: Date?
+  open var orderClientCreatedTime: Date?
     /// List of references to of Order discounts.
-    open var discounts: [CLVModels.Order.Discount]?
+  open var discounts: [CLVModels.Order.Discount]?
     /// Unnamed fixed discount amount in cents.
-    open var discountAmount: Int?
-    open var exchanged: Bool?
+  open var discountAmount: Int?
+  open var exchanged: Bool?
     /// List of references to modifications applied to this line item.
-    open var modifications: [CLVModels.Order.Modification]?
+  open var modifications: [CLVModels.Order.Modification]?
     /// True if this line item has been refunded
-    open var refunded: Bool?
+  open var refunded: Bool?
     /// True if this item should be counted as revenue, for example gift cards and donations would not.
-    open var isRevenue: Bool?
+  open var isRevenue: Bool?
     /// Tax rates that apply to this line item
-    open var taxRates: [CLVModels.Inventory.TaxRate]?
+  open var taxRates: [CLVModels.Inventory.TaxRate]?
     /// Payments that apply to this line item
-    open var payments: [CLVModels.Payments.LineItemPayment]?
+  open var payments: [CLVModels.Payments.LineItemPayment]?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -526,8 +154,8 @@ open func encode(with aCoder: NSCoder) {
 
 required public init(coder aDecoder: NSCoder) {
       id = aDecoder.decodeObject(forKey:"id") as? String
-        orderRef = aDecoder.decodeObject(forKey:"orderRef") as? CLVModels.Order.Order
-        item = aDecoder.decodeObject(forKey:"item") as? CLVModels.Inventory.Item
+        orderRef = aDecoder.decodeObject(forKey:"orderRef") as? CLVModels.Base.Reference
+        item = aDecoder.decodeObject(forKey:"item") as? CLVModels.Base.Reference
         name = aDecoder.decodeObject(forKey:"name") as? String
         alternateName = aDecoder.decodeObject(forKey:"alternateName") as? String
         price = aDecoder.decodeObject(forKey:"price") as? Int
@@ -536,7 +164,7 @@ required public init(coder aDecoder: NSCoder) {
         itemCode = aDecoder.decodeObject(forKey:"itemCode") as? String
         note = aDecoder.decodeObject(forKey:"note") as? String
         printed = aDecoder.decodeObject(forKey:"printed") as? Bool
-        exchangedLineItem = aDecoder.decodeObject(forKey:"exchangedLineItem") as? CLVModels.Order.LineItem
+        exchangedLineItem = aDecoder.decodeObject(forKey:"exchangedLineItem") as? CLVModels.Base.Reference
         binName = aDecoder.decodeObject(forKey:"binName") as? String
         userData = aDecoder.decodeObject(forKey:"userData") as? String
         createdTime = aDecoder.decodeObject(forKey:"createdTime") as? Date
@@ -588,16 +216,16 @@ public func mapping(map: Map) {
  
 /// Snapshot of a line item modifier at the time that the order was placed.
 open class Modification: NSObject, NSCoding, Mappable {
-    open var id: String?
+  open var id: String?
     /// The line item with which the modification is associated
-    open var lineItemRef: CLVModels.Order.LineItem?
+  open var lineItemRef: CLVModels.Base.Reference?
     /// the name of the modifier when it was applied
-    open var name: String?
-    open var alternateName: String?
+  open var name: String?
+  open var alternateName: String?
     /// the additional cost of the modifier when it was applied
-    open var amount: Int?
+  open var amount: Int?
     /// The modifier object.  Values from the Modifier are copied to the Modification at the time that the order is placed.  Modifier values may change after the modification is created.
-    open var modifier: CLVModels.Inventory.Modifier?
+  open var modifier: CLVModels.Inventory.Modifier?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -610,7 +238,7 @@ open func encode(with aCoder: NSCoder) {
 
 required public init(coder aDecoder: NSCoder) {
       id = aDecoder.decodeObject(forKey:"id") as? String
-        lineItemRef = aDecoder.decodeObject(forKey:"lineItemRef") as? CLVModels.Order.LineItem
+        lineItemRef = aDecoder.decodeObject(forKey:"lineItemRef") as? CLVModels.Base.Reference
         name = aDecoder.decodeObject(forKey:"name") as? String
         alternateName = aDecoder.decodeObject(forKey:"alternateName") as? String
         amount = aDecoder.decodeObject(forKey:"amount") as? Int
@@ -637,62 +265,62 @@ public func mapping(map: Map) {
 /// The Order object is at the core of Clover’s transaction data. Almost every transaction either creates or updates an Order. When an order is created or updated via one of the Clover SDKs, the order data is automatically synchronized between the Clover Server and the merchant’s Clover devices.
 open class Order: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// Currency of this order. For example, "USD"
-    open var currency: String?
-    open var customerId: Int?
-    open var customerUuid: String?
-    open var orderTypeId: Int?
+  open var currency: String?
+  open var customerId: Int?
+  open var customerUuid: String?
+  open var orderTypeId: Int?
     /// List of customers associated with this order.
-    open var customers: [CLVModels.Customers.Customer]?
+  open var customers: [CLVModels.Customers.Customer]?
     /// The employee who took this order
-    open var employee: CLVModels.Employees.Employee?
+  open var employee: CLVModels.Base.Reference?
     /// Total price of the order in cents
-    open var total: Int?
-    open var title: String?
+  open var total: Int?
+  open var title: String?
     /// An arbitrary string with information about this order, may be printed on the order receipt and displayed in apps
-    open var note: String?
-    open var orderType: CLVModels.Order.OrderType?
+  open var note: String?
+  open var orderType: CLVModels.Order.OrderType?
     /// If true then this order should not have taxes applied to it
-    open var taxRemoved: Bool?
+  open var taxRemoved: Bool?
     /// This order was created by merchant with VAT enabled.
-    open var isVat: Bool?
+  open var isVat: Bool?
     /// A String generally describing the state of this Order. The value null indicates an empty Order that is not displayed in user interfaces. Other value such as "open" and "locked" are not checked or enforced by client or server and thus are not useful for making any logical decisions about this Order.
-    open var state: String?
+  open var state: String?
     /// Whether this order represents a manual transaction. A manual transaction is a transaction that has an arbitrary amount defined and is not associated with any inventory items. For example, the Clover Sale App and Clover Manual Transaction App create manual transactions. A manual transactions will have a single associated line item to hold the sale amount, but the generated receipt will display this differently to indicate that it is not considered a typical order with inventory items.
-    open var manualTransaction: Bool?
+  open var manualTransaction: Bool?
     /// Whether similar line items should be grouped together on the receipt that this order generates. Item "similarity" is based on items having matching values for a set of properties including price, modifiers, and discounts.
-    open var groupLineItems: Bool?
+  open var groupLineItems: Bool?
     /// Whether this order was created in test mode. Payments made against test orders are not processed. Test mode orders can be deleted from the Orders App on the merchant's device or web dashboard (https://www.clover.com/orders/m/{mId}/orders). They will also be deleted when the device sends a POST to the /v2/merchant/{mId}/orders/delete_all_tests endpoint.
-    open var testMode: Bool?
+  open var testMode: Bool?
     /// Possible values: SPLIT_GUEST, SPLIT_ITEM, SPLIT_CUSTOM, FULL. During the payment flow, if the user chooses to split the payment for this order, this field will be set to one of the SPLIT_* values to indicate how the full amount should be split. If the user chooses to pay for the order in full with one payment, then this field will be FULL.
-    open var payType: CLVModels.Order.PayType?
+  open var payType: CLVModels.Order.PayType?
     /// Creation timestamp
-    open var createdTime: Date?
+  open var createdTime: Date?
     /// The time at which the client created this order
-    open var clientCreatedTime: Date?
+  open var clientCreatedTime: Date?
     /// Last modified time of the order
-    open var modifiedTime: Date?
-    open var deletedTimestamp: Date?
+  open var modifiedTime: Date?
+  open var deletedTimestamp: Date?
     /// Optional service charge (gratuity) applied to this order
-    open var serviceCharge: CLVModels.Base.ServiceCharge?
+  open var serviceCharge: CLVModels.Base.ServiceCharge?
     /// Discounts applied to this order
-    open var discounts: [CLVModels.Order.Discount]?
+  open var discounts: [CLVModels.Order.Discount]?
     /// Line items associated with this order
-    open var lineItems: [CLVModels.Order.LineItem]?
-    open var taxRates: [CLVModels.Order.OrderTaxRate]?
+  open var lineItems: [CLVModels.Order.LineItem]?
+  open var taxRates: [CLVModels.Order.OrderTaxRate]?
     /// Payments that were made for this order. If multiple payments were made, then the payType field should reflect the method used to split the total amount.
-    open var payments: [CLVModels.Payments.Payment]?
+  open var payments: [CLVModels.Payments.Payment]?
     /// Refunds that were made for this order
-    open var refunds: [CLVModels.Payments.Refund]?
+  open var refunds: [CLVModels.Payments.Refund]?
     /// Credits associated with this order.
-    open var credits: [CLVModels.Payments.Credit]?
+  open var credits: [CLVModels.Payments.Credit]?
     /// Voided payments associated with this order
-    open var voids: [CLVModels.Payments.Payment]?
+  open var voids: [CLVModels.Payments.Payment]?
     /// Device which created the order
-    open var device: CLVModels.Device.Device?
+  open var device: CLVModels.Base.Reference?
     /// Card authorizations associated with this order
-    open var authorizations: [CLVModels.Payments.Authorization]?
+  open var authorizations: [CLVModels.Payments.Authorization]?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -736,7 +364,7 @@ required public init(coder aDecoder: NSCoder) {
         customerUuid = aDecoder.decodeObject(forKey:"customerUuid") as? String
         orderTypeId = aDecoder.decodeObject(forKey:"orderTypeId") as? Int
         customers = aDecoder.decodeObject(forKey:"customers") as? [CLVModels.Customers.Customer]
-        employee = aDecoder.decodeObject(forKey:"employee") as? CLVModels.Employees.Employee
+        employee = aDecoder.decodeObject(forKey:"employee") as? CLVModels.Base.Reference
         total = aDecoder.decodeObject(forKey:"total") as? Int
         title = aDecoder.decodeObject(forKey:"title") as? String
         note = aDecoder.decodeObject(forKey:"note") as? String
@@ -761,7 +389,7 @@ required public init(coder aDecoder: NSCoder) {
         refunds = aDecoder.decodeObject(forKey:"refunds") as? [CLVModels.Payments.Refund]
         credits = aDecoder.decodeObject(forKey:"credits") as? [CLVModels.Payments.Credit]
         voids = aDecoder.decodeObject(forKey:"voids") as? [CLVModels.Payments.Payment]
-        device = aDecoder.decodeObject(forKey:"device") as? CLVModels.Device.Device
+        device = aDecoder.decodeObject(forKey:"device") as? CLVModels.Base.Reference
         authorizations = aDecoder.decodeObject(forKey:"authorizations") as? [CLVModels.Payments.Authorization]
   }
 
@@ -809,9 +437,9 @@ public func mapping(map: Map) {
 
  
 open class OrderTaxRate: NSObject, NSCoding, Mappable {
-    open var id: String?
-    open var name: String?
-    open var amount: Int?
+  open var id: String?
+  open var name: String?
+  open var amount: Int?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -841,39 +469,39 @@ public func mapping(map: Map) {
  
 open class OrderType: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// Label Key
-    open var labelKey: String?
+  open var labelKey: String?
     /// Label Key
-    open var label: String?
+  open var label: String?
     /// If this order type is taxable
-    open var taxable: Bool?
+  open var taxable: Bool?
     /// If this order type is the default
-    open var isDefault: Bool?
+  open var isDefault: Bool?
     /// If set to false, then this order type includes all of the merchant's categories. Otherwise, it only contains the categories defined in the "categories" field on this object.
-    open var filterCategories: Bool?
+  open var filterCategories: Bool?
     /// If this order type is hidden on the register
-    open var isHidden: Bool?
+  open var isHidden: Bool?
     /// The price of a fee added to this order type, not fully implemented at this time.
-    open var fee: Int?
+  open var fee: Int?
     /// The minimum amount required for an order to be placed
-    open var minOrderAmount: Int?
+  open var minOrderAmount: Int?
     /// The maximum amount for an order allowed
-    open var maxOrderAmount: Int?
+  open var maxOrderAmount: Int?
     /// The maximum radius allowed for an order (i.e. delivery)
-    open var maxRadius: Int?
+  open var maxRadius: Int?
     /// The average time it takes to complete the order
-    open var avgOrderTime: Int?
-    open var hoursAvailable: CLVModels.Order.HoursAvailable?
-    open var customerIdMethod: CLVModels.Order.CustomerIdMethod?
+  open var avgOrderTime: Int?
+  open var hoursAvailable: CLVModels.Order.HoursAvailable?
+  open var customerIdMethod: CLVModels.Order.CustomerIdMethod?
     /// If this order type is deleted
-    open var isDeleted: Bool?
+  open var isDeleted: Bool?
     /// Optional system order type that this order type is associated with.
-    open var systemOrderTypeId: String?
+  open var systemOrderTypeId: String?
     /// The hours this order type is available (if they differ from normal merchant hours)
-    open var hours: CLVModels.Hours.HoursSet?
+  open var hours: CLVModels.Hours.HoursSet?
     /// The categories of items that can be assigned to this order type
-    open var categories: [CLVModels.Inventory.Category]?
+  open var categories: [CLVModels.Base.Reference]?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -916,7 +544,7 @@ required public init(coder aDecoder: NSCoder) {
         isDeleted = aDecoder.decodeObject(forKey:"isDeleted") as? Bool
         systemOrderTypeId = aDecoder.decodeObject(forKey:"systemOrderTypeId") as? String
         hours = aDecoder.decodeObject(forKey:"hours") as? CLVModels.Hours.HoursSet
-        categories = aDecoder.decodeObject(forKey:"categories") as? [CLVModels.Inventory.Category]
+        categories = aDecoder.decodeObject(forKey:"categories") as? [CLVModels.Base.Reference]
   }
 
 override public init() {}
@@ -948,33 +576,6 @@ public func mapping(map: Map) {
 }
 
  
-open class OrderTypeCategory: NSObject, NSCoding, Mappable {
-    open var orderType: CLVModels.Order.OrderType?
-    open var category: CLVModels.Inventory.Category?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(orderType, forKey: "orderType")
-  aCoder.encode(category, forKey: "category")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      orderType = aDecoder.decodeObject(forKey:"orderType") as? CLVModels.Order.OrderType
-        category = aDecoder.decodeObject(forKey:"category") as? CLVModels.Inventory.Category
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      orderType <- map["orderType"]
-        category <- map["category"]
-  }
-}
-
- 
 public enum PayType: String {
   case SPLIT_GUEST
   case SPLIT_ITEM
@@ -985,15 +586,15 @@ public enum PayType: String {
  
 open class SystemOrderType: NSObject, NSCoding, Mappable {
     /// Unqiue identifier
-    open var id: String?
+  open var id: String?
     /// Label Key
-    open var labelKey: String?
+  open var labelKey: String?
     /// Is for quick service restraunts?
-    open var isQsr: Bool?
+  open var isQsr: Bool?
     /// Is for full service restraunts?
-    open var isFsr: Bool?
+  open var isFsr: Bool?
     /// Is for retail stores?
-    open var isRetail: Bool?
+  open var isRetail: Bool?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -1023,60 +624,6 @@ public func mapping(map: Map) {
         isQsr <- map["isQsr"]
         isFsr <- map["isFsr"]
         isRetail <- map["isRetail"]
-  }
-}
-
- 
-/// For reporting on a removed line item
-open class VoidedLineItem: NSObject, NSCoding, Mappable {
-    /// The line item that was voided
-    open var lineItem: CLVModels.Order.LineItem?
-    open var merchant: CLVModels.Merchant.Merchant?
-    /// Why was the line item voided
-    open var reason: String?
-    /// Employee who voided the item
-    open var removedBy: CLVModels.Base.Reference?
-    /// Employee who created the order from which the line item was voided
-    open var createdBy: CLVModels.Base.Reference?
-    /// Timestamp of when this line item was deleted
-    open var deletedTime: Date?
-    /// Which environment was this recorded in
-    open var environment: String?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(lineItem, forKey: "lineItem")
-  aCoder.encode(merchant, forKey: "merchant")
-  aCoder.encode(reason, forKey: "reason")
-  aCoder.encode(removedBy, forKey: "removedBy")
-  aCoder.encode(createdBy, forKey: "createdBy")
-  aCoder.encode(deletedTime, forKey: "deletedTime")
-  aCoder.encode(environment, forKey: "environment")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      lineItem = aDecoder.decodeObject(forKey:"lineItem") as? CLVModels.Order.LineItem
-        merchant = aDecoder.decodeObject(forKey:"merchant") as? CLVModels.Merchant.Merchant
-        reason = aDecoder.decodeObject(forKey:"reason") as? String
-        removedBy = aDecoder.decodeObject(forKey:"removedBy") as? CLVModels.Base.Reference
-        createdBy = aDecoder.decodeObject(forKey:"createdBy") as? CLVModels.Base.Reference
-        deletedTime = aDecoder.decodeObject(forKey:"deletedTime") as? Date
-        environment = aDecoder.decodeObject(forKey:"environment") as? String
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      lineItem <- map["lineItem"]
-        merchant <- map["merchant"]
-        reason <- map["reason"]
-        removedBy <- map["removedBy"]
-        createdBy <- map["createdBy"]
-        deletedTime <- (map["deletedTime"], CLVDateTransform())
-        environment <- map["environment"]
   }
 }
 

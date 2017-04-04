@@ -19,36 +19,36 @@ public enum AccountRole: String {
  
 open class Employee: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// Full name of the employee
-    open var name: String?
+  open var name: String?
     /// Nickname of the employee (shows up on receipts)
-    open var nickname: String?
+  open var nickname: String?
     /// Custom ID of the employee
-    open var customId: String?
+  open var customId: String?
     /// Email of the employee (optional)
-    open var email: String?
+  open var email: String?
     /// Returns true if this employee was sent an invite to activate their account
-    open var inviteSent: Bool?
+  open var inviteSent: Bool?
     /// Timestamp of when this employee claimed their account
-    open var claimedTime: Date?
+  open var claimedTime: Date?
     /// Timestamp of when this employee was deleted
-    open var deletedTime: Date?
+  open var deletedTime: Date?
     /// Employee PIN (hashed)
-    open var pin: String?
+  open var pin: String?
     /// Employee PIN
-    open var unhashedPin: String?
+  open var unhashedPin: String?
     /// Employee System Role
-    open var role: CLVModels.Employees.AccountRole?
-    open var roles: [CLVModels.Employees.Role]?
+  open var role: CLVModels.Employees.AccountRole?
+  open var roles: [CLVModels.Base.Reference]?
     /// Returns true if this employee is the owner account for this merchant
-    open var isOwner: Bool?
+  open var isOwner: Bool?
     /// This employee's shifts
-    open var shifts: [CLVModels.Employees.Shift]?
+  open var shifts: [CLVModels.Base.Reference]?
     /// This employee's payments
-    open var payments: [CLVModels.Payments.Payment]?
+  open var payments: [CLVModels.Base.Reference]?
     /// This employee's orders
-    open var orders: [CLVModels.Order.Order]?
+  open var orders: [CLVModels.Base.Reference]?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -82,11 +82,11 @@ required public init(coder aDecoder: NSCoder) {
         unhashedPin = aDecoder.decodeObject(forKey:"unhashedPin") as? String
         role = (aDecoder.decodeObject(forKey:"role") as? String) != nil ?
       CLVModels.Employees.AccountRole(rawValue: (aDecoder.decodeObject(forKey:"role") as! String)) : nil
-        roles = aDecoder.decodeObject(forKey:"roles") as? [CLVModels.Employees.Role]
+        roles = aDecoder.decodeObject(forKey:"roles") as? [CLVModels.Base.Reference]
         isOwner = aDecoder.decodeObject(forKey:"isOwner") as? Bool
-        shifts = aDecoder.decodeObject(forKey:"shifts") as? [CLVModels.Employees.Shift]
-        payments = aDecoder.decodeObject(forKey:"payments") as? [CLVModels.Payments.Payment]
-        orders = aDecoder.decodeObject(forKey:"orders") as? [CLVModels.Order.Order]
+        shifts = aDecoder.decodeObject(forKey:"shifts") as? [CLVModels.Base.Reference]
+        payments = aDecoder.decodeObject(forKey:"payments") as? [CLVModels.Base.Reference]
+        orders = aDecoder.decodeObject(forKey:"orders") as? [CLVModels.Base.Reference]
   }
 
 override public init() {}
@@ -116,168 +116,15 @@ public func mapping(map: Map) {
 }
 
  
-public enum Permission: String {
-  case ORDERS_R
-  case ORDERS_W
-  case INVENTORY_R
-  case INVENTORY_W
-  case PAYMENTS_R
-  case PAYMENTS_W
-  case CUSTOMERS_R
-  case CUSTOMERS_W
-  case EMPLOYEES_R
-  case EMPLOYEES_W
-  case MERCHANT_R
-  case MERCHANT_W
-}
-
- 
-open class Permissions: NSObject, NSCoding, Mappable {
-    /// Unique identifier
-    open var id: String?
-    /// A bitmap representing the permissions
-    open var bits: Int?
-    /// A readable list of permissions
-    open var readablePermissions: [CLVModels.Employees.Permission]?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(bits, forKey: "bits")
-  aCoder.encode(readablePermissions, forKey: "readablePermissions")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        bits = aDecoder.decodeObject(forKey:"bits") as? Int
-        readablePermissions = aDecoder.decodeObject(forKey:"readablePermissions") as? [CLVModels.Employees.Permission]
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      id <- map["id"]
-        bits <- map["bits"]
-        readablePermissions <- map["readablePermissions.elements"]
-  }
-}
-
- 
-open class PermissionSet: NSObject, NSCoding, Mappable {
-    /// Unique identifier
-    open var id: String?
-    /// Key of the permissionSet
-    open var name: String?
-    /// Label of the permissionSet
-    open var label: String?
-    open var app: CLVModels.Apps.App?
-    open var employeeDefault: Bool?
-    open var managerDefault: Bool?
-    /// Bitmap of permissions
-    open var permissions: CLVModels.Employees.Permissions?
-    /// roles enabled for this merchant
-    open var roles: [CLVModels.Employees.Role]?
-    /// The module associated with this permission set (if any)
-    open var module: CLVModels.Base.Reference?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(label, forKey: "label")
-  aCoder.encode(app, forKey: "app")
-  aCoder.encode(employeeDefault, forKey: "employeeDefault")
-  aCoder.encode(managerDefault, forKey: "managerDefault")
-  aCoder.encode(permissions, forKey: "permissions")
-  aCoder.encode(roles, forKey: "roles")
-  aCoder.encode(module, forKey: "module")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        name = aDecoder.decodeObject(forKey:"name") as? String
-        label = aDecoder.decodeObject(forKey:"label") as? String
-        app = aDecoder.decodeObject(forKey:"app") as? CLVModels.Apps.App
-        employeeDefault = aDecoder.decodeObject(forKey:"employeeDefault") as? Bool
-        managerDefault = aDecoder.decodeObject(forKey:"managerDefault") as? Bool
-        permissions = aDecoder.decodeObject(forKey:"permissions") as? CLVModels.Employees.Permissions
-        roles = aDecoder.decodeObject(forKey:"roles") as? [CLVModels.Employees.Role]
-        module = aDecoder.decodeObject(forKey:"module") as? CLVModels.Base.Reference
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      id <- map["id"]
-        name <- map["name"]
-        label <- map["label"]
-        app <- map["app"]
-        employeeDefault <- map["employeeDefault"]
-        managerDefault <- map["managerDefault"]
-        permissions <- map["permissions"]
-        roles <- map["roles.elements"]
-        module <- map["module"]
-  }
-}
-
- 
-open class PermissionSetRole: NSObject, NSCoding, Mappable {
-    /// Unique identifier
-    open var id: String?
-    /// The role
-    open var role: CLVModels.Employees.Role?
-    /// The role
-    open var permissionSet: CLVModels.Employees.PermissionSet?
-    open var modified_time: Int?
-    open var deleted_time: Int?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(role, forKey: "role")
-  aCoder.encode(permissionSet, forKey: "permissionSet")
-  aCoder.encode(modified_time, forKey: "modified_time")
-  aCoder.encode(deleted_time, forKey: "deleted_time")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        role = aDecoder.decodeObject(forKey:"role") as? CLVModels.Employees.Role
-        permissionSet = aDecoder.decodeObject(forKey:"permissionSet") as? CLVModels.Employees.PermissionSet
-        modified_time = aDecoder.decodeObject(forKey:"modified_time") as? Int
-        deleted_time = aDecoder.decodeObject(forKey:"deleted_time") as? Int
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      id <- map["id"]
-        role <- map["role"]
-        permissionSet <- map["permissionSet"]
-        modified_time <- map["modified_time"]
-        deleted_time <- map["deleted_time"]
-  }
-}
-
- 
 open class Role: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// Full name of the role
-    open var name: String?
+  open var name: String?
     /// Base System Role
-    open var systemRole: CLVModels.Employees.AccountRole?
+  open var systemRole: CLVModels.Employees.AccountRole?
     /// employees with this role
-    open var employeesRef: [CLVModels.Employees.Employee]?
+  open var employeesRef: [CLVModels.Base.Reference]?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -291,7 +138,7 @@ required public init(coder aDecoder: NSCoder) {
         name = aDecoder.decodeObject(forKey:"name") as? String
         systemRole = (aDecoder.decodeObject(forKey:"systemRole") as? String) != nil ?
       CLVModels.Employees.AccountRole(rawValue: (aDecoder.decodeObject(forKey:"systemRole") as! String)) : nil
-        employeesRef = aDecoder.decodeObject(forKey:"employeesRef") as? [CLVModels.Employees.Employee]
+        employeesRef = aDecoder.decodeObject(forKey:"employeesRef") as? [CLVModels.Base.Reference]
   }
 
 override public init() {}
@@ -311,25 +158,25 @@ public func mapping(map: Map) {
  
 open class Shift: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// The employee that worked this shift
-    open var employee: CLVModels.Employees.Employee?
+  open var employee: CLVModels.Employees.Employee?
     /// Amount of cash tips collected
-    open var cashTipsCollected: Int?
+  open var cashTipsCollected: Int?
     /// Whether the employee used server banking
-    open var serverBanking: Bool?
+  open var serverBanking: Bool?
     /// Clock in time
-    open var inTime: Date?
+  open var inTime: Date?
     /// Overridden clock in time
-    open var overrideInTime: Date?
+  open var overrideInTime: Date?
     /// The employee who overrode the clock in time
-    open var overrideInEmployee: CLVModels.Employees.Employee?
+  open var overrideInEmployee: CLVModels.Employees.Employee?
     /// Clock out time
-    open var outTime: Date?
+  open var outTime: Date?
     /// Overridden clock out time
-    open var overrideOutTime: Date?
+  open var overrideOutTime: Date?
     /// The employee who overrode the clock out time
-    open var overrideOutEmployee: CLVModels.Employees.Employee?
+  open var overrideOutEmployee: CLVModels.Employees.Employee?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")

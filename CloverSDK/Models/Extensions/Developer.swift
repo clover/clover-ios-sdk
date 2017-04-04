@@ -12,88 +12,88 @@ public class Developer {
  
 open class Developer: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// Developer's name.  Could be a company name.  Whatever is to be shown as who made the app in App Marketplace, e.g. NoshList, Pioneer Works Inc., Seven Spaces, etc.  Also used as (optional) Business DBA (Doing Business Name) name when sending to Braintree for app billing background check.
-    open var name: String?
+  open var name: String?
     /// Developer's individual first name
-    open var firstName: String?
+  open var firstName: String?
     /// Developer's individual last name
-    open var lastName: String?
+  open var lastName: String?
     /// Developer's email
-    open var email: String?
+  open var email: String?
     /// Developer's phone
-    open var phone: String?
+  open var phone: String?
     /// Developer's date of birth
-    open var dob: String?
+  open var dob: String?
     /// Developer's SSN; won't be stored in the clear in the DB; will be stored encrypted in sensitiveInfo
-    open var ssn: String?
+  open var ssn: String?
     /// Developer's address
-    open var address: String?
+  open var address: String?
     /// Developer's city
-    open var city: String?
+  open var city: String?
     /// Developer's county
-    open var county: String?
+  open var county: String?
     /// Developer's state
-    open var state: String?
+  open var state: String?
     /// Developer's country
-    open var country: String?
+  open var country: String?
     /// Developer's postal code
-    open var postalCode: String?
+  open var postalCode: String?
     /// Developer's bank account number; won't be stored in the clear in the DB; will be stored encrypted in sensitiveInfo
-    open var bankAccountNumber: String?
+  open var bankAccountNumber: String?
     /// Developer's bank routing number
-    open var bankRoutingNumber: String?
+  open var bankRoutingNumber: String?
     /// Developer's business legal name
-    open var businessLegalName: String?
+  open var businessLegalName: String?
     /// Developer's Tax ID
-    open var tin: String?
+  open var tin: String?
     /// Developer's VAT Register Number
-    open var vatRegisterNumber: String?
+  open var vatRegisterNumber: String?
     /// Sensitive data encrypted
-    open var sensitiveData: String?
+  open var sensitiveData: String?
     /// Developer's business address
-    open var businessAddress: String?
+  open var businessAddress: String?
     /// Developer's business city
-    open var businessCity: String?
+  open var businessCity: String?
     /// Developer's business state
-    open var businessState: String?
+  open var businessState: String?
     /// Developer's business country
-    open var businessCountry: String?
+  open var businessCountry: String?
     /// Developer's business postal code
-    open var businessPostalCode: String?
+  open var businessPostalCode: String?
     /// Developer's billing status
-    open var billingStatus: CLVModels.Developer.DeveloperBillingStatus?
+  open var billingStatus: CLVModels.Developer.DeveloperBillingStatus?
     /// Developer's billing status message
-    open var billingStatusMessage: String?
-    open var approvalStatus: CLVModels.Base.ApprovalStatus?
+  open var billingStatusMessage: String?
+  open var approvalStatus: CLVModels.Base.ApprovalStatus?
     /// If the user has accepted the developer agreement
-    open var acceptedAgreement: Bool?
+  open var acceptedAgreement: Bool?
     /// Name of public relations contact
-    open var prName: String?
+  open var prName: String?
     /// Email of public relations contact
-    open var prEmail: String?
+  open var prEmail: String?
     /// Phone of public relations contact
-    open var prPhone: String?
+  open var prPhone: String?
     /// Developer's business website
-    open var website: String?
+  open var website: String?
     /// Timestamp indicating the last time the developer was modified.
-    open var modifiedTime: Date?
+  open var modifiedTime: Date?
     /// The user account that owns this developer account.
-    open var owner: CLVModels.Account.Account?
+  open var owner: CLVModels.Base.Reference?
     /// Temporary while we are switching US billing systems
-    open var appBillingSystem: String?
+  open var appBillingSystem: String?
     /// The Infolease vendor code.  This is generated when the developer is on-boarded in the Infolease system.
-    open var infoleaseVendorCode: String?
+  open var infoleaseVendorCode: String?
     /// The Infolease GL (General Ledger) code.  Only for specific apps.  Will usually be null.
-    open var infoleaseGlCode: String?
+  open var infoleaseGlCode: String?
     /// Signor name for developer referral program
-    open var signorName: String?
+  open var signorName: String?
     /// Signor title for developer referral program
-    open var signorTitle: String?
+  open var signorTitle: String?
     /// Timestamp indicating when the developer referral form was submitted
-    open var referralSubmissionTime: Date?
+  open var referralSubmissionTime: Date?
     /// Optional email field used by Clover support for high priority communications.
-    open var emergencyEmail: String?
+  open var emergencyEmail: String?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -177,7 +177,7 @@ required public init(coder aDecoder: NSCoder) {
         prPhone = aDecoder.decodeObject(forKey:"prPhone") as? String
         website = aDecoder.decodeObject(forKey:"website") as? String
         modifiedTime = aDecoder.decodeObject(forKey:"modifiedTime") as? Date
-        owner = aDecoder.decodeObject(forKey:"owner") as? CLVModels.Account.Account
+        owner = aDecoder.decodeObject(forKey:"owner") as? CLVModels.Base.Reference
         appBillingSystem = aDecoder.decodeObject(forKey:"appBillingSystem") as? String
         infoleaseVendorCode = aDecoder.decodeObject(forKey:"infoleaseVendorCode") as? String
         infoleaseGlCode = aDecoder.decodeObject(forKey:"infoleaseGlCode") as? String
@@ -248,169 +248,33 @@ public enum DeveloperBillingStatus: String {
 }
 
  
-open class DeveloperMerchantLimits: NSObject, NSCoding, Mappable {
-    /// Total limit for developers.
-    open var requestLimit: Int?
-    /// Limit for each merchantApp.
-    open var merchantRequestLimit: Int?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(requestLimit, forKey: "requestLimit")
-  aCoder.encode(merchantRequestLimit, forKey: "merchantRequestLimit")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      requestLimit = aDecoder.decodeObject(forKey:"requestLimit") as? Int
-        merchantRequestLimit = aDecoder.decodeObject(forKey:"merchantRequestLimit") as? Int
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      requestLimit <- map["requestLimit"]
-        merchantRequestLimit <- map["merchantRequestLimit"]
-  }
-}
-
- 
-open class DeveloperPermission: NSObject, NSCoding, Mappable {
-    open var id: String?
-    open var name: String?
-    open var label: String?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(label, forKey: "label")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        name = aDecoder.decodeObject(forKey:"name") as? String
-        label = aDecoder.decodeObject(forKey:"label") as? String
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      id <- map["id"]
-        name <- map["name"]
-        label <- map["label"]
-  }
-}
-
- 
-open class DeveloperRole: NSObject, NSCoding, Mappable {
-    open var id: String?
-    open var name: String?
-    open var label: String?
-    open var system: Bool?
-    open var templateRole: CLVModels.Developer.DeveloperRole?
-    open var accounts: [CLVModels.Account.Account]?
-    open var permissions: [CLVModels.Employees.Permissions]?
-    open var developerRef: CLVModels.Developer.Developer?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(label, forKey: "label")
-  aCoder.encode(system, forKey: "system")
-  aCoder.encode(templateRole, forKey: "templateRole")
-  aCoder.encode(accounts, forKey: "accounts")
-  aCoder.encode(permissions, forKey: "permissions")
-  aCoder.encode(developerRef, forKey: "developerRef")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        name = aDecoder.decodeObject(forKey:"name") as? String
-        label = aDecoder.decodeObject(forKey:"label") as? String
-        system = aDecoder.decodeObject(forKey:"system") as? Bool
-        templateRole = aDecoder.decodeObject(forKey:"templateRole") as? CLVModels.Developer.DeveloperRole
-        accounts = aDecoder.decodeObject(forKey:"accounts") as? [CLVModels.Account.Account]
-        permissions = aDecoder.decodeObject(forKey:"permissions") as? [CLVModels.Employees.Permissions]
-        developerRef = aDecoder.decodeObject(forKey:"developerRef") as? CLVModels.Developer.Developer
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      id <- map["id"]
-        name <- map["name"]
-        label <- map["label"]
-        system <- map["system"]
-        templateRole <- map["templateRole"]
-        accounts <- map["accounts.elements"]
-        permissions <- map["permissions.elements"]
-        developerRef <- map["developerRef"]
-  }
-}
-
- 
-/// A batch of merchants
-open class MerchantBatch: NSObject, NSCoding, Mappable {
-    /// The merchants that belong to this batch
-    open var merchants: [CLVModels.Base.Reference]?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(merchants, forKey: "merchants")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      merchants = aDecoder.decodeObject(forKey:"merchants") as? [CLVModels.Base.Reference]
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      merchants <- map["merchants.elements"]
-  }
-}
-
- 
 open class MerchantGroup: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// Group name.
-    open var name: String?
+  open var name: String?
     /// The developer that created this merchant group.
-    open var developer_: CLVModels.Developer.Developer?
+  open var developer_: CLVModels.Base.Reference?
     /// The rollout that created this merchant group if it the result of a scheduled rollout. Developers can schedule rollouts for future dates by creating Rollout resources. When the rollout time is reached, a merchant group is created.
-    open var rollout: CLVModels.Base.Reference?
+  open var rollout: CLVModels.Base.Reference?
     /// Timestamp indicating when the group was created.
-    open var createdTime: Date?
+  open var createdTime: Date?
     /// The merchants directly added to the group (static merchants).
-    open var merchants: [CLVModels.Merchant.Merchant]?
+  open var merchants: [CLVModels.Merchant.Merchant]?
     /// The number of merchants that belong to this group.
-    open var merchantCount: Int?
+  open var merchantCount: Int?
     /// The app android versions that belong to this merchant group
-    open var androidVersions: [CLVModels.Apps.AndroidVersion]?
+  open var androidVersions: [CLVModels.Base.Reference]?
     /// The application versions configured for this merchant group.
-    open var appVersions: [CLVModels.Developer.MerchantGroupAppVersion]?
+  open var appVersions: [CLVModels.Base.Reference]?
     /// The ROM versions that belong to this merchant group
-    open var roms: [CLVModels.Device.Rom]?
+  open var roms: [CLVModels.Base.Reference]?
     /// The exclusions that belong to the merchant group
-    open var exclusions: [CLVModels.Exclusions.SoftwareUpdateExclusion]?
+  open var exclusions: [CLVModels.Base.Reference]?
     /// The filter query parameters used to join merchants to this group.
-    open var merchantFilter: String?
+  open var merchantFilter: String?
     /// The merchants in the group joined by the filter.
-    open var filterMerchants: [CLVModels.Merchant.Merchant]?
+  open var filterMerchants: [CLVModels.Merchant.Merchant]?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -431,15 +295,15 @@ open func encode(with aCoder: NSCoder) {
 required public init(coder aDecoder: NSCoder) {
       id = aDecoder.decodeObject(forKey:"id") as? String
         name = aDecoder.decodeObject(forKey:"name") as? String
-        developer_ = aDecoder.decodeObject(forKey:"developer_") as? CLVModels.Developer.Developer
+        developer_ = aDecoder.decodeObject(forKey:"developer_") as? CLVModels.Base.Reference
         rollout = aDecoder.decodeObject(forKey:"rollout") as? CLVModels.Base.Reference
         createdTime = aDecoder.decodeObject(forKey:"createdTime") as? Date
         merchants = aDecoder.decodeObject(forKey:"merchants") as? [CLVModels.Merchant.Merchant]
         merchantCount = aDecoder.decodeObject(forKey:"merchantCount") as? Int
-        androidVersions = aDecoder.decodeObject(forKey:"androidVersions") as? [CLVModels.Apps.AndroidVersion]
-        appVersions = aDecoder.decodeObject(forKey:"appVersions") as? [CLVModels.Developer.MerchantGroupAppVersion]
-        roms = aDecoder.decodeObject(forKey:"roms") as? [CLVModels.Device.Rom]
-        exclusions = aDecoder.decodeObject(forKey:"exclusions") as? [CLVModels.Exclusions.SoftwareUpdateExclusion]
+        androidVersions = aDecoder.decodeObject(forKey:"androidVersions") as? [CLVModels.Base.Reference]
+        appVersions = aDecoder.decodeObject(forKey:"appVersions") as? [CLVModels.Base.Reference]
+        roms = aDecoder.decodeObject(forKey:"roms") as? [CLVModels.Base.Reference]
+        exclusions = aDecoder.decodeObject(forKey:"exclusions") as? [CLVModels.Base.Reference]
         merchantFilter = aDecoder.decodeObject(forKey:"merchantFilter") as? String
         filterMerchants = aDecoder.decodeObject(forKey:"filterMerchants") as? [CLVModels.Merchant.Merchant]
   }
@@ -471,17 +335,17 @@ public func mapping(map: Map) {
 /// Declares the target version of a given application for a given merchant group, optionally constrained by device type.
 open class MerchantGroupAppVersion: NSObject, NSCoding, Mappable {
     /// Unique identifier.
-    open var id: String?
+  open var id: String?
     /// Identifies the merchant group of interest.
-    open var merchantGroup: CLVModels.Developer.MerchantGroup?
+  open var merchantGroup: CLVModels.Base.Reference?
     /// Identifies the application of interest.
-    open var app: CLVModels.Apps.App?
+  open var app: CLVModels.Base.Reference?
     /// The targeted app version.
-    open var version_: CLVModels.Apps.AndroidVersion?
+  open var version_: CLVModels.Base.Reference?
     /// The targeted device type, if any.
-    open var deviceType: CLVModels.Apps.DeviceType?
+  open var deviceType: CLVModels.Base.Reference?
     /// The time this android version was associated to this merchant group.
-    open var associationTime: Date?
+  open var associationTime: Date?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -494,10 +358,10 @@ open func encode(with aCoder: NSCoder) {
 
 required public init(coder aDecoder: NSCoder) {
       id = aDecoder.decodeObject(forKey:"id") as? String
-        merchantGroup = aDecoder.decodeObject(forKey:"merchantGroup") as? CLVModels.Developer.MerchantGroup
-        app = aDecoder.decodeObject(forKey:"app") as? CLVModels.Apps.App
-        version_ = aDecoder.decodeObject(forKey:"version_") as? CLVModels.Apps.AndroidVersion
-        deviceType = aDecoder.decodeObject(forKey:"deviceType") as? CLVModels.Apps.DeviceType
+        merchantGroup = aDecoder.decodeObject(forKey:"merchantGroup") as? CLVModels.Base.Reference
+        app = aDecoder.decodeObject(forKey:"app") as? CLVModels.Base.Reference
+        version_ = aDecoder.decodeObject(forKey:"version_") as? CLVModels.Base.Reference
+        deviceType = aDecoder.decodeObject(forKey:"deviceType") as? CLVModels.Base.Reference
         associationTime = aDecoder.decodeObject(forKey:"associationTime") as? Date
   }
 
@@ -514,281 +378,6 @@ public func mapping(map: Map) {
         version_ <- map["version"]
         deviceType <- map["deviceType"]
         associationTime <- (map["associationTime"], CLVDateTransform())
-  }
-}
-
- 
-/// Various parameters that specify the creation of a merchant group without explicitly having to associate individual merchants.
-open class MerchantGroupConfig: NSObject, NSCoding, Mappable {
-    /// If the numberIsFixed field is true, then this represents the number of merchants to include in the merchant group. If the numberIsFixed field is false, then this represents the percentage of merchants (that match the remaining criteria specified by these parameters) to add to the group.
-    open var numberOfMerchants: Int?
-    open var excludedMerchantGroups: [CLVModels.Base.Reference]?
-    /// Whether the numberOfMerchants field represents a count or a percentage. See documentation for numberOfMerchants.
-    open var numberIsFixed: Bool?
-    /// Whether to restrict the merchants in this group to billable merchants only.
-    open var billable: Bool?
-    /// The optional UUID of a Clover app. If it is supplied, then only merchants that have installed that app will be added to the merchant group.
-    open var app: String?
-    /// The optional UUID of an APK (i.e., Android version). If it is supplied, then only merchants that have that version of the app will be added to the merchant group.
-    open var version_: String?
-    /// Whether to require merchants in this group to have a Clover Station.
-    open var stationRequired: Bool?
-    /// Whether to require merchants in this group to have a Clover Mobile.
-    open var mobileRequired: Bool?
-    /// Whether to require merchants in this group to have a Clover Mini.
-    open var miniRequired: Bool?
-    open var androidVersions: [CLVModels.Base.Reference]?
-    open var roms: [CLVModels.Base.Reference]?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(numberOfMerchants, forKey: "numberOfMerchants")
-  aCoder.encode(excludedMerchantGroups, forKey: "excludedMerchantGroups")
-  aCoder.encode(numberIsFixed, forKey: "numberIsFixed")
-  aCoder.encode(billable, forKey: "billable")
-  aCoder.encode(app, forKey: "app")
-  aCoder.encode(version_, forKey: "version_")
-  aCoder.encode(stationRequired, forKey: "stationRequired")
-  aCoder.encode(mobileRequired, forKey: "mobileRequired")
-  aCoder.encode(miniRequired, forKey: "miniRequired")
-  aCoder.encode(androidVersions, forKey: "androidVersions")
-  aCoder.encode(roms, forKey: "roms")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      numberOfMerchants = aDecoder.decodeObject(forKey:"numberOfMerchants") as? Int
-        excludedMerchantGroups = aDecoder.decodeObject(forKey:"excludedMerchantGroups") as? [CLVModels.Base.Reference]
-        numberIsFixed = aDecoder.decodeObject(forKey:"numberIsFixed") as? Bool
-        billable = aDecoder.decodeObject(forKey:"billable") as? Bool
-        app = aDecoder.decodeObject(forKey:"app") as? String
-        version_ = aDecoder.decodeObject(forKey:"version_") as? String
-        stationRequired = aDecoder.decodeObject(forKey:"stationRequired") as? Bool
-        mobileRequired = aDecoder.decodeObject(forKey:"mobileRequired") as? Bool
-        miniRequired = aDecoder.decodeObject(forKey:"miniRequired") as? Bool
-        androidVersions = aDecoder.decodeObject(forKey:"androidVersions") as? [CLVModels.Base.Reference]
-        roms = aDecoder.decodeObject(forKey:"roms") as? [CLVModels.Base.Reference]
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      numberOfMerchants <- map["numberOfMerchants"]
-        excludedMerchantGroups <- map["excludedMerchantGroups.elements"]
-        numberIsFixed <- map["numberIsFixed"]
-        billable <- map["billable"]
-        app <- map["app"]
-        version_ <- map["version"]
-        stationRequired <- map["stationRequired"]
-        mobileRequired <- map["mobileRequired"]
-        miniRequired <- map["miniRequired"]
-        androidVersions <- map["androidVersions.elements"]
-        roms <- map["roms.elements"]
-  }
-}
-
- 
-/// A report containing information about a particular merchant group configuration
-open class ReportMerchantGroupConfig: NSObject, NSCoding, Mappable {
-    /// The total number of merchants that satisfy the merchant group configuration criteria. See the MerchantGroupConfig class.
-    open var totalMerchantCount: Int?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(totalMerchantCount, forKey: "totalMerchantCount")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      totalMerchantCount = aDecoder.decodeObject(forKey:"totalMerchantCount") as? Int
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      totalMerchantCount <- map["totalMerchantCount"]
-  }
-}
-
- 
-/// A Rollout defines specifications for creating a merchant group at a scheduled time
-open class Rollout: NSObject, NSCoding, Mappable {
-    /// Unique identifier
-    open var id: String?
-    open var name: String?
-    open var config: String?
-    open var publish: Bool?
-    open var status: String?
-    /// The number of merchants associated with this rollout
-    open var merchantCount: Int?
-    open var rolloutTime: Date?
-    open var createdTime: Date?
-    open var modifiedTime: Date?
-    open var developerRef: CLVModels.Base.Reference?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(config, forKey: "config")
-  aCoder.encode(publish, forKey: "publish")
-  aCoder.encode(status, forKey: "status")
-  aCoder.encode(merchantCount, forKey: "merchantCount")
-  aCoder.encode(rolloutTime, forKey: "rolloutTime")
-  aCoder.encode(createdTime, forKey: "createdTime")
-  aCoder.encode(modifiedTime, forKey: "modifiedTime")
-  aCoder.encode(developerRef, forKey: "developerRef")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        name = aDecoder.decodeObject(forKey:"name") as? String
-        config = aDecoder.decodeObject(forKey:"config") as? String
-        publish = aDecoder.decodeObject(forKey:"publish") as? Bool
-        status = aDecoder.decodeObject(forKey:"status") as? String
-        merchantCount = aDecoder.decodeObject(forKey:"merchantCount") as? Int
-        rolloutTime = aDecoder.decodeObject(forKey:"rolloutTime") as? Date
-        createdTime = aDecoder.decodeObject(forKey:"createdTime") as? Date
-        modifiedTime = aDecoder.decodeObject(forKey:"modifiedTime") as? Date
-        developerRef = aDecoder.decodeObject(forKey:"developerRef") as? CLVModels.Base.Reference
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      id <- map["id"]
-        name <- map["name"]
-        config <- map["config"]
-        publish <- map["publish"]
-        status <- map["status"]
-        merchantCount <- map["merchantCount"]
-        rolloutTime <- (map["rolloutTime"], CLVDateTransform())
-        createdTime <- (map["createdTime"], CLVDateTransform())
-        modifiedTime <- (map["modifiedTime"], CLVDateTransform())
-        developerRef <- map["developerRef"]
-  }
-}
-
- 
-/// A Merchant associated with a Rollout
-open class RolloutMerchant: NSObject, NSCoding, Mappable {
-    /// The merchant's name
-    open var name: String?
-    /// The rollout that the merchant is associated with
-    open var rollout: CLVModels.Base.Reference?
-    /// The merchant that is associated with the rollout
-    open var merchant: CLVModels.Base.Reference?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(rollout, forKey: "rollout")
-  aCoder.encode(merchant, forKey: "merchant")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      name = aDecoder.decodeObject(forKey:"name") as? String
-        rollout = aDecoder.decodeObject(forKey:"rollout") as? CLVModels.Base.Reference
-        merchant = aDecoder.decodeObject(forKey:"merchant") as? CLVModels.Base.Reference
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      name <- map["name"]
-        rollout <- map["rollout"]
-        merchant <- map["merchant"]
-  }
-}
-
- 
-/// Metadata for a logical set of scheduled rollouts
-open class RolloutSchedule: NSObject, NSCoding, Mappable {
-    /// Unique identifier
-    open var id: String?
-    open var name: String?
-    open var statusCounts: [String:Int]?
-    open var rolloutCount: Int?
-    open var startTime: Date?
-    open var endTime: Date?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(statusCounts, forKey: "statusCounts")
-  aCoder.encode(rolloutCount, forKey: "rolloutCount")
-  aCoder.encode(startTime, forKey: "startTime")
-  aCoder.encode(endTime, forKey: "endTime")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        name = aDecoder.decodeObject(forKey:"name") as? String
-        statusCounts = aDecoder.decodeObject(forKey:"statusCounts") as? [String:Int]
-        rolloutCount = aDecoder.decodeObject(forKey:"rolloutCount") as? Int
-        startTime = aDecoder.decodeObject(forKey:"startTime") as? Date
-        endTime = aDecoder.decodeObject(forKey:"endTime") as? Date
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      id <- map["id"]
-        name <- map["name"]
-        statusCounts <- map["statusCounts"]
-        rolloutCount <- map["rolloutCount"]
-        startTime <- (map["startTime"], CLVDateTransform())
-        endTime <- (map["endTime"], CLVDateTransform())
-  }
-}
-
- 
-public enum RolloutStatus: String {
-  case SCHEDULED
-  case IN_PROGRESS
-  case FAILED
-  case DONE
-}
-
- 
-/// A collection of APK and ROM versions that can be delivered to a merchant as a single package
-open class SoftwarePackage: NSObject, NSCoding, Mappable {
-    open var androidVersions: [CLVModels.Base.Reference]?
-    open var roms: [CLVModels.Base.Reference]?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(androidVersions, forKey: "androidVersions")
-  aCoder.encode(roms, forKey: "roms")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      androidVersions = aDecoder.decodeObject(forKey:"androidVersions") as? [CLVModels.Base.Reference]
-        roms = aDecoder.decodeObject(forKey:"roms") as? [CLVModels.Base.Reference]
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      androidVersions <- map["androidVersions.elements"]
-        roms <- map["roms.elements"]
   }
 }
 

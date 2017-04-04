@@ -12,17 +12,17 @@ public class Cash {
  
 open class CashEvent: NSObject, NSCoding, Mappable {
     /// The type of event that occurred
-    open var type_: CLVModels.Cash.Type_?
+  open var type_: CLVModels.Cash.Type_?
     /// The amount that was either added, removed of modified by the event
-    open var amountChange: Int?
+  open var amountChange: Int?
     /// Time at which the event was exectued
-    open var timestamp: Int?
+  open var timestamp: Int?
     /// Any additional information regarding the event
-    open var note: String?
+  open var note: String?
     /// The employee who performed the event
-    open var employee: CLVModels.Employees.Employee?
+  open var employee: CLVModels.Employees.Employee?
     /// The device that initiated the event
-    open var device: CLVModels.Device.Device?
+  open var device: CLVModels.Device.Device?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(type_?.rawValue, forKey: "type_")

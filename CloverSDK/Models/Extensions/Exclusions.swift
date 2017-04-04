@@ -12,19 +12,19 @@ public class Exclusions {
  
 open class SoftwareUpdateExclusion: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// Friendly name to describe the exclusion
-    open var name: String?
+  open var name: String?
     /// The merchant with which the exclusion is associated
-    open var merchantRef: CLVModels.Merchant.Merchant?
+  open var merchantRef: CLVModels.Base.Reference?
     /// Optional serial number to restrict updates for a particular device
-    open var serialNumber: String?
+  open var serialNumber: String?
     /// List of OTA reasons for which we should ignore this exclusion (e.g. 'boot')
-    open var systemUpdateAllowedReasons: [String]?
+  open var systemUpdateAllowedReasons: [String]?
     /// List of app updater reasons for which we should ignore this exclusion (e.g. 'boot')
-    open var appUpdateAllowedReasons: [String]?
+  open var appUpdateAllowedReasons: [String]?
     /// Hours during which software updates should not be applied
-    open var hours: CLVModels.Hours.HoursSet?
+  open var hours: CLVModels.Hours.HoursSet?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -39,7 +39,7 @@ open func encode(with aCoder: NSCoder) {
 required public init(coder aDecoder: NSCoder) {
       id = aDecoder.decodeObject(forKey:"id") as? String
         name = aDecoder.decodeObject(forKey:"name") as? String
-        merchantRef = aDecoder.decodeObject(forKey:"merchantRef") as? CLVModels.Merchant.Merchant
+        merchantRef = aDecoder.decodeObject(forKey:"merchantRef") as? CLVModels.Base.Reference
         serialNumber = aDecoder.decodeObject(forKey:"serialNumber") as? String
         systemUpdateAllowedReasons = aDecoder.decodeObject(forKey:"systemUpdateAllowedReasons") as? [String]
         appUpdateAllowedReasons = aDecoder.decodeObject(forKey:"appUpdateAllowedReasons") as? [String]

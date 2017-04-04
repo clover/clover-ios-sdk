@@ -18,46 +18,46 @@ public enum BuildType: String {
  
 open class Device: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// Name of the device (if entered)
-    open var name: String?
-    open var model: String?
-    open var merchant: CLVModels.Base.Reference?
+  open var name: String?
+  open var model: String?
+  open var merchant: CLVModels.Base.Reference?
     /// A prefix that will be applied to order numbers. This is useful if the merchant and/or customer needs to track which device an order came from.
-    open var orderPrefix: String?
-    open var terminalPrefix: Int?
+  open var orderPrefix: String?
+  open var terminalPrefix: Int?
     /// The device's serial number.
-    open var serial: String?
-    open var buildNumber: Int?
-    open var secureId: String?
-    open var buildType: CLVModels.Device.BuildType?
-    open var cpuId: String?
+  open var serial: String?
+  open var buildNumber: Int?
+  open var secureId: String?
+  open var buildType: CLVModels.Device.BuildType?
+  open var cpuId: String?
     /// The IMEI of the device
-    open var imei: String?
+  open var imei: String?
     /// The IMSI of the SIM in the device (if present)
-    open var imsi: String?
+  open var imsi: String?
     /// The ICCID of the SIM in the device (if present)
-    open var simIccid: String?
-    open var deviceCertificate: String?
-    open var pedCertificate: String?
+  open var simIccid: String?
+  open var deviceCertificate: String?
+  open var pedCertificate: String?
     /// The type of device. Possible values are "GOLDLEAF" (Station), "LEAFCUTTER" (Mobile), "MAPLECUTTER" (Mini), "CLOVER_GO" (Clover Go), or "OTHER" (Unknown).
-    open var deviceTypeName: String?
+  open var deviceTypeName: String?
     /// Whether this device has PIN prompt disabled.
-    open var pinDisabled: Bool?
-    open var offlinePayments: Bool?
-    open var offlinePaymentsAll: Bool?
-    open var offlinePaymentsLimit: Int?
-    open var offlinePaymentsPromptThreshold: Int?
-    open var offlinePaymentsTotalPaymentsLimit: Int?
-    open var offlinePaymentsLimitDefault: Int?
-    open var offlinePaymentsPromptThresholdDefault: Int?
-    open var offlinePaymentsTotalPaymentsLimitDefault: Int?
-    open var offlinePaymentsMaxLimit: Int?
-    open var offlinePaymentsMaxTotalPaymentsLimit: Int?
-    open var showOfflinePayments: Bool?
-    open var maxOfflineDays: Int?
-    open var allowStoreAndForward: Bool?
-    open var secureReports: [CLVModels.Base.Reference]?
+  open var pinDisabled: Bool?
+  open var offlinePayments: Bool?
+  open var offlinePaymentsAll: Bool?
+  open var offlinePaymentsLimit: Int?
+  open var offlinePaymentsPromptThreshold: Int?
+  open var offlinePaymentsTotalPaymentsLimit: Int?
+  open var offlinePaymentsLimitDefault: Int?
+  open var offlinePaymentsPromptThresholdDefault: Int?
+  open var offlinePaymentsTotalPaymentsLimitDefault: Int?
+  open var offlinePaymentsMaxLimit: Int?
+  open var offlinePaymentsMaxTotalPaymentsLimit: Int?
+  open var showOfflinePayments: Bool?
+  open var maxOfflineDays: Int?
+  open var allowStoreAndForward: Bool?
+  open var secureReports: [CLVModels.Base.Reference]?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -173,142 +173,20 @@ public func mapping(map: Map) {
 }
 
  
-open class DeviceProvision: NSObject, NSCoding, Mappable {
-    /// Unique identifier
-    open var id: String?
-    open var deviceRef: CLVModels.Device.Device?
-    open var state: CLVModels.Device.DeviceProvisionState?
-    open var lastActivationCode: String?
-    open var activationCode: String?
-    open var emailSent: Bool?
-    open var hasShipment: Bool?
-    open var serialNumber: String?
-    open var merchant: CLVModels.Merchant.Merchant?
-    open var deviceType: String?
-    open var provisionedTime: Date?
-    open var activatedTime: Date?
-    open var reseller: CLVModels.Base.Reference?
-    open var currentRom: CLVModels.Device.Rom?
-    open var currentSecureBoardRom: CLVModels.Device.Rom?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(deviceRef, forKey: "deviceRef")
-  aCoder.encode(state?.rawValue, forKey: "state")
-  aCoder.encode(lastActivationCode, forKey: "lastActivationCode")
-  aCoder.encode(activationCode, forKey: "activationCode")
-  aCoder.encode(emailSent, forKey: "emailSent")
-  aCoder.encode(hasShipment, forKey: "hasShipment")
-  aCoder.encode(serialNumber, forKey: "serialNumber")
-  aCoder.encode(merchant, forKey: "merchant")
-  aCoder.encode(deviceType, forKey: "deviceType")
-  aCoder.encode(provisionedTime, forKey: "provisionedTime")
-  aCoder.encode(activatedTime, forKey: "activatedTime")
-  aCoder.encode(reseller, forKey: "reseller")
-  aCoder.encode(currentRom, forKey: "currentRom")
-  aCoder.encode(currentSecureBoardRom, forKey: "currentSecureBoardRom")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        deviceRef = aDecoder.decodeObject(forKey:"deviceRef") as? CLVModels.Device.Device
-        state = (aDecoder.decodeObject(forKey:"state") as? String) != nil ?
-      CLVModels.Device.DeviceProvisionState(rawValue: (aDecoder.decodeObject(forKey:"state") as! String)) : nil
-        lastActivationCode = aDecoder.decodeObject(forKey:"lastActivationCode") as? String
-        activationCode = aDecoder.decodeObject(forKey:"activationCode") as? String
-        emailSent = aDecoder.decodeObject(forKey:"emailSent") as? Bool
-        hasShipment = aDecoder.decodeObject(forKey:"hasShipment") as? Bool
-        serialNumber = aDecoder.decodeObject(forKey:"serialNumber") as? String
-        merchant = aDecoder.decodeObject(forKey:"merchant") as? CLVModels.Merchant.Merchant
-        deviceType = aDecoder.decodeObject(forKey:"deviceType") as? String
-        provisionedTime = aDecoder.decodeObject(forKey:"provisionedTime") as? Date
-        activatedTime = aDecoder.decodeObject(forKey:"activatedTime") as? Date
-        reseller = aDecoder.decodeObject(forKey:"reseller") as? CLVModels.Base.Reference
-        currentRom = aDecoder.decodeObject(forKey:"currentRom") as? CLVModels.Device.Rom
-        currentSecureBoardRom = aDecoder.decodeObject(forKey:"currentSecureBoardRom") as? CLVModels.Device.Rom
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      id <- map["id"]
-        deviceRef <- map["deviceRef"]
-        state <- map["state"]
-        lastActivationCode <- map["lastActivationCode"]
-        activationCode <- map["activationCode"]
-        emailSent <- map["emailSent"]
-        hasShipment <- map["hasShipment"]
-        serialNumber <- map["serialNumber"]
-        merchant <- map["merchant"]
-        deviceType <- map["deviceType"]
-        provisionedTime <- (map["provisionedTime"], CLVDateTransform())
-        activatedTime <- (map["activatedTime"], CLVDateTransform())
-        reseller <- map["reseller"]
-        currentRom <- map["currentRom"]
-        currentSecureBoardRom <- map["currentSecureBoardRom"]
-  }
-}
-
- 
-public enum DeviceProvisionState: String {
-  case NOT_ASSOCIATED
-  case DISASSOCIATED
-  case ASSOCIATED
-}
-
- 
-open class LimitedDevice: NSObject, NSCoding, Mappable {
-    /// Unique identifier
-    open var id: String?
-    /// Name of the device (if entered)
-    open var name: String?
-    /// The device's serial number.
-    open var serial: String?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(serial, forKey: "serial")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        name = aDecoder.decodeObject(forKey:"name") as? String
-        serial = aDecoder.decodeObject(forKey:"serial") as? String
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      id <- map["id"]
-        name <- map["name"]
-        serial <- map["serial"]
-  }
-}
-
- 
 open class Rom: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// When the ROM was created
-    open var createdAt: Int?
-    open var version_: Int?
-    open var versionName: String?
-    open var description_: String?
-    open var buildType: CLVModels.Device.RomBuildType?
-    open var isCritical: Bool?
-    open var published: Bool?
-    open var enabled: Bool?
+  open var createdAt: Int?
+  open var version_: Int?
+  open var versionName: String?
+  open var description_: String?
+  open var buildType: CLVModels.Device.RomBuildType?
+  open var isCritical: Bool?
+  open var published: Bool?
+  open var enabled: Bool?
     /// When the ROM was associated with a merchant group
-    open var associationTime: Date?
+  open var associationTime: Date?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -361,46 +239,6 @@ public func mapping(map: Map) {
 public enum RomBuildType: String {
   case ENG
   case USER
-}
-
- 
-open class SwapRequestEvent: NSObject, NSCoding, Mappable {
-    /// Unique identifier
-    open var id: String?
-    open var type_: String?
-    open var serialNumber: String?
-    open var createdTime: Date?
-    open var merchant: CLVModels.Base.Reference?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(type_, forKey: "type_")
-  aCoder.encode(serialNumber, forKey: "serialNumber")
-  aCoder.encode(createdTime, forKey: "createdTime")
-  aCoder.encode(merchant, forKey: "merchant")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        type_ = aDecoder.decodeObject(forKey:"type_") as? String
-        serialNumber = aDecoder.decodeObject(forKey:"serialNumber") as? String
-        createdTime = aDecoder.decodeObject(forKey:"createdTime") as? Date
-        merchant = aDecoder.decodeObject(forKey:"merchant") as? CLVModels.Base.Reference
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      id <- map["id"]
-        type_ <- map["type"]
-        serialNumber <- map["serialNumber"]
-        createdTime <- (map["createdTime"], CLVDateTransform())
-        merchant <- map["merchant"]
-  }
 }
 
 }

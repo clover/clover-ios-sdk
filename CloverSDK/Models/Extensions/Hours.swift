@@ -11,8 +11,8 @@ extension CLVModels {
 public class Hours {
  
 open class HourRange: NSObject, NSCoding, Mappable {
-    open var start: Int?
-    open var end: Int?
+  open var start: Int?
+  open var end: Int?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(start, forKey: "start")
@@ -39,17 +39,17 @@ public func mapping(map: Map) {
  
 open class HoursSet: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// Friendly name to describe the hours
-    open var name: String?
-    open var reference: CLVModels.Hours.Reference?
-    open var sunday: [CLVModels.Hours.HourRange]?
-    open var monday: [CLVModels.Hours.HourRange]?
-    open var tuesday: [CLVModels.Hours.HourRange]?
-    open var wednesday: [CLVModels.Hours.HourRange]?
-    open var thursday: [CLVModels.Hours.HourRange]?
-    open var friday: [CLVModels.Hours.HourRange]?
-    open var saturday: [CLVModels.Hours.HourRange]?
+  open var name: String?
+  open var reference: CLVModels.Hours.Reference?
+  open var sunday: [CLVModels.Hours.HourRange]?
+  open var monday: [CLVModels.Hours.HourRange]?
+  open var tuesday: [CLVModels.Hours.HourRange]?
+  open var wednesday: [CLVModels.Hours.HourRange]?
+  open var thursday: [CLVModels.Hours.HourRange]?
+  open var friday: [CLVModels.Hours.HourRange]?
+  open var saturday: [CLVModels.Hours.HourRange]?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -100,9 +100,9 @@ public func mapping(map: Map) {
  
 open class Reference: NSObject, NSCoding, Mappable {
     /// ID of the reference that uses this set of hours
-    open var id: String?
+  open var id: String?
     /// External type that these hours reference
-    open var type_: CLVModels.Hours.ReferenceType?
+  open var type_: CLVModels.Hours.ReferenceType?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")

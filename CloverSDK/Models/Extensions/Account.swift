@@ -11,27 +11,27 @@ extension CLVModels {
 public class Account {
  
 open class Account: NSObject, NSCoding, Mappable {
-    open var id: String?
-    open var name: String?
-    open var email: String?
+  open var id: String?
+  open var name: String?
+  open var email: String?
     /// The primary merchant
-    open var primaryMerchant: CLVModels.Merchant.Merchant?
+  open var primaryMerchant: CLVModels.Base.Reference?
     /// The primary developer
-    open var primaryDeveloper: CLVModels.Developer.Developer?
+  open var primaryDeveloper: CLVModels.Base.Reference?
     /// The primary reseller
-    open var primaryReseller: CLVModels.Base.Reference?
-    open var isActive: Bool?
-    open var createdTime: Date?
-    open var claimedTime: Date?
-    open var lastLogin: Int?
-    open var inviteSent: Bool?
-    open var status: String?
-    open var role: CLVModels.Employees.Role?
-    open var merchants: [CLVModels.Merchant.Merchant]?
-    open var developers: [CLVModels.Developer.Developer]?
-    open var resellers: [CLVModels.Base.Reference]?
-    open var csrfToken: String?
-    open var authFactors: [CLVModels.Account.AuthFactor]?
+  open var primaryReseller: CLVModels.Base.Reference?
+  open var isActive: Bool?
+  open var createdTime: Date?
+  open var claimedTime: Date?
+  open var lastLogin: Int?
+  open var inviteSent: Bool?
+  open var status: String?
+  open var role: CLVModels.Base.Reference?
+  open var merchants: [CLVModels.Base.Reference]?
+  open var developers: [CLVModels.Base.Reference]?
+  open var resellers: [CLVModels.Base.Reference]?
+  open var csrfToken: String?
+  open var authFactors: [CLVModels.Base.Reference]?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -58,8 +58,8 @@ required public init(coder aDecoder: NSCoder) {
       id = aDecoder.decodeObject(forKey:"id") as? String
         name = aDecoder.decodeObject(forKey:"name") as? String
         email = aDecoder.decodeObject(forKey:"email") as? String
-        primaryMerchant = aDecoder.decodeObject(forKey:"primaryMerchant") as? CLVModels.Merchant.Merchant
-        primaryDeveloper = aDecoder.decodeObject(forKey:"primaryDeveloper") as? CLVModels.Developer.Developer
+        primaryMerchant = aDecoder.decodeObject(forKey:"primaryMerchant") as? CLVModels.Base.Reference
+        primaryDeveloper = aDecoder.decodeObject(forKey:"primaryDeveloper") as? CLVModels.Base.Reference
         primaryReseller = aDecoder.decodeObject(forKey:"primaryReseller") as? CLVModels.Base.Reference
         isActive = aDecoder.decodeObject(forKey:"isActive") as? Bool
         createdTime = aDecoder.decodeObject(forKey:"createdTime") as? Date
@@ -67,12 +67,12 @@ required public init(coder aDecoder: NSCoder) {
         lastLogin = aDecoder.decodeObject(forKey:"lastLogin") as? Int
         inviteSent = aDecoder.decodeObject(forKey:"inviteSent") as? Bool
         status = aDecoder.decodeObject(forKey:"status") as? String
-        role = aDecoder.decodeObject(forKey:"role") as? CLVModels.Employees.Role
-        merchants = aDecoder.decodeObject(forKey:"merchants") as? [CLVModels.Merchant.Merchant]
-        developers = aDecoder.decodeObject(forKey:"developers") as? [CLVModels.Developer.Developer]
+        role = aDecoder.decodeObject(forKey:"role") as? CLVModels.Base.Reference
+        merchants = aDecoder.decodeObject(forKey:"merchants") as? [CLVModels.Base.Reference]
+        developers = aDecoder.decodeObject(forKey:"developers") as? [CLVModels.Base.Reference]
         resellers = aDecoder.decodeObject(forKey:"resellers") as? [CLVModels.Base.Reference]
         csrfToken = aDecoder.decodeObject(forKey:"csrfToken") as? String
-        authFactors = aDecoder.decodeObject(forKey:"authFactors") as? [CLVModels.Account.AuthFactor]
+        authFactors = aDecoder.decodeObject(forKey:"authFactors") as? [CLVModels.Base.Reference]
   }
 
 override public init() {}
@@ -106,12 +106,12 @@ public func mapping(map: Map) {
  
 open class AuthFactor: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
-    open var type_: CLVModels.Account.AuthFactorType?
-    open var phoneNumber: String?
-    open var backupCodes: String?
-    open var totpKey: String?
-    open var createdTime: Date?
+  open var id: String?
+  open var type_: CLVModels.Account.AuthFactorType?
+  open var phoneNumber: String?
+  open var backupCodes: String?
+  open var totpKey: String?
+  open var createdTime: Date?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")

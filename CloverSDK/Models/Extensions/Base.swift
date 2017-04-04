@@ -11,14 +11,14 @@ extension CLVModels {
 public class Base {
  
 open class Address: NSObject, NSCoding, Mappable {
-    open var address1: String?
-    open var address2: String?
-    open var address3: String?
-    open var city: String?
-    open var country: String?
-    open var phoneNumber: String?
-    open var state: String?
-    open var zip: String?
+  open var address1: String?
+  open var address2: String?
+  open var address3: String?
+  open var city: String?
+  open var country: String?
+  open var phoneNumber: String?
+  open var state: String?
+  open var zip: String?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(address1, forKey: "address1")
@@ -100,307 +100,9 @@ public enum BusinessTypeCode: String {
 }
 
  
-open class CardData: NSObject, NSCoding, Mappable {
-    /// The track1 data from the card.
-    open var track1: String?
-    /// The track2 data from the card.
-    open var track2: String?
-    /// The track3 data from the card.
-    open var track3: String?
-    /// Indicates if the data is encrypted.
-    open var encrypted: Bool?
-    /// The track1 data from the card.
-    open var maskedTrack1: String?
-    /// The track2 data from the card.
-    open var maskedTrack2: String?
-    /// The track3 data from the card.
-    open var maskedTrack3: String?
-    /// The pan data from the card.
-    open var pan: String?
-    /// The cardholderName data from the card.
-    open var cardholderName: String?
-    /// The firstName data from the card.
-    open var firstName: String?
-    /// The lastName data from the card.
-    open var lastName: String?
-    /// The exp data from the card.
-    open var exp: String?
-    /// The last4 data from the card.
-    open var last4: String?
-    /// The first6 data from the card.
-    open var first6: String?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(track1, forKey: "track1")
-  aCoder.encode(track2, forKey: "track2")
-  aCoder.encode(track3, forKey: "track3")
-  aCoder.encode(encrypted, forKey: "encrypted")
-  aCoder.encode(maskedTrack1, forKey: "maskedTrack1")
-  aCoder.encode(maskedTrack2, forKey: "maskedTrack2")
-  aCoder.encode(maskedTrack3, forKey: "maskedTrack3")
-  aCoder.encode(pan, forKey: "pan")
-  aCoder.encode(cardholderName, forKey: "cardholderName")
-  aCoder.encode(firstName, forKey: "firstName")
-  aCoder.encode(lastName, forKey: "lastName")
-  aCoder.encode(exp, forKey: "exp")
-  aCoder.encode(last4, forKey: "last4")
-  aCoder.encode(first6, forKey: "first6")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      track1 = aDecoder.decodeObject(forKey:"track1") as? String
-        track2 = aDecoder.decodeObject(forKey:"track2") as? String
-        track3 = aDecoder.decodeObject(forKey:"track3") as? String
-        encrypted = aDecoder.decodeObject(forKey:"encrypted") as? Bool
-        maskedTrack1 = aDecoder.decodeObject(forKey:"maskedTrack1") as? String
-        maskedTrack2 = aDecoder.decodeObject(forKey:"maskedTrack2") as? String
-        maskedTrack3 = aDecoder.decodeObject(forKey:"maskedTrack3") as? String
-        pan = aDecoder.decodeObject(forKey:"pan") as? String
-        cardholderName = aDecoder.decodeObject(forKey:"cardholderName") as? String
-        firstName = aDecoder.decodeObject(forKey:"firstName") as? String
-        lastName = aDecoder.decodeObject(forKey:"lastName") as? String
-        exp = aDecoder.decodeObject(forKey:"exp") as? String
-        last4 = aDecoder.decodeObject(forKey:"last4") as? String
-        first6 = aDecoder.decodeObject(forKey:"first6") as? String
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      track1 <- map["track1"]
-        track2 <- map["track2"]
-        track3 <- map["track3"]
-        encrypted <- map["encrypted"]
-        maskedTrack1 <- map["maskedTrack1"]
-        maskedTrack2 <- map["maskedTrack2"]
-        maskedTrack3 <- map["maskedTrack3"]
-        pan <- map["pan"]
-        cardholderName <- map["cardholderName"]
-        firstName <- map["firstName"]
-        lastName <- map["lastName"]
-        exp <- map["exp"]
-        last4 <- map["last4"]
-        first6 <- map["first6"]
-  }
-}
-
- 
-open class Challenge: NSObject, NSCoding, Mappable {
-    /// The type of the challenge.
-    open var type_: CLVModels.Base.ChallengeType?
-    /// If the challenge is not accepted, then this reason can be used when responding.  The response could be an explicit void of the payment, or some other message, that may or may not use this reason.
-    open var reason: CLVModels.Order.VoidReason?
-    /// A default message that indicates what the challenge is in a user friendly format.
-    open var message: String?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(type_?.rawValue, forKey: "type_")
-  aCoder.encode(reason?.rawValue, forKey: "reason")
-  aCoder.encode(message, forKey: "message")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      type_ = (aDecoder.decodeObject(forKey:"type_") as? String) != nil ?
-      CLVModels.Base.ChallengeType(rawValue: (aDecoder.decodeObject(forKey:"type_") as! String)) : nil
-        reason = (aDecoder.decodeObject(forKey:"reason") as? String) != nil ?
-      CLVModels.Order.VoidReason(rawValue: (aDecoder.decodeObject(forKey:"reason") as! String)) : nil
-        message = aDecoder.decodeObject(forKey:"message") as? String
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      type_ <- map["type"]
-        reason <- map["reason"]
-        message <- map["message"]
-  }
-}
-
- 
-public enum ChallengeType: String {
-  case DUPLICATE_CHALLENGE
-  case OFFLINE_CHALLENGE
-}
-
- 
-open class ChallengeTypeEnum: NSObject, NSCoding, Mappable {
-    open var challengeType: CLVModels.Base.ChallengeType?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(challengeType?.rawValue, forKey: "challengeType")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      challengeType = (aDecoder.decodeObject(forKey:"challengeType") as? String) != nil ?
-      CLVModels.Base.ChallengeType(rawValue: (aDecoder.decodeObject(forKey:"challengeType") as! String)) : nil
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      challengeType <- map["challengeType"]
-  }
-}
-
- 
-open class CountryInfo: NSObject, NSCoding, Mappable {
-    /// ISO 3166-1-alpha-2 code
-    open var countryCode: String?
-    open var displayName: String?
-    open var localDisplayName: String?
-    open var defaultCurrency: String?
-    open var defaultTimezone: String?
-    /// Indicates whether the state/province field is required when creating the address
-    open var stateProvinceRequired: Bool?
-    /// Indicates whether the ZIP/Postal code field is required when creating the address
-    open var zipPostalRequired: Bool?
-    /// Indicates whether the county field is required when creating the address
-    open var countyRequired: Bool?
-    open var defaultLocale: String?
-    /// Indicates whether the country is enabled for app market billing
-    open var appMarketBillingEnabled: Bool?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(countryCode, forKey: "countryCode")
-  aCoder.encode(displayName, forKey: "displayName")
-  aCoder.encode(localDisplayName, forKey: "localDisplayName")
-  aCoder.encode(defaultCurrency, forKey: "defaultCurrency")
-  aCoder.encode(defaultTimezone, forKey: "defaultTimezone")
-  aCoder.encode(stateProvinceRequired, forKey: "stateProvinceRequired")
-  aCoder.encode(zipPostalRequired, forKey: "zipPostalRequired")
-  aCoder.encode(countyRequired, forKey: "countyRequired")
-  aCoder.encode(defaultLocale, forKey: "defaultLocale")
-  aCoder.encode(appMarketBillingEnabled, forKey: "appMarketBillingEnabled")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      countryCode = aDecoder.decodeObject(forKey:"countryCode") as? String
-        displayName = aDecoder.decodeObject(forKey:"displayName") as? String
-        localDisplayName = aDecoder.decodeObject(forKey:"localDisplayName") as? String
-        defaultCurrency = aDecoder.decodeObject(forKey:"defaultCurrency") as? String
-        defaultTimezone = aDecoder.decodeObject(forKey:"defaultTimezone") as? String
-        stateProvinceRequired = aDecoder.decodeObject(forKey:"stateProvinceRequired") as? Bool
-        zipPostalRequired = aDecoder.decodeObject(forKey:"zipPostalRequired") as? Bool
-        countyRequired = aDecoder.decodeObject(forKey:"countyRequired") as? Bool
-        defaultLocale = aDecoder.decodeObject(forKey:"defaultLocale") as? String
-        appMarketBillingEnabled = aDecoder.decodeObject(forKey:"appMarketBillingEnabled") as? Bool
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      countryCode <- map["countryCode"]
-        displayName <- map["displayName"]
-        localDisplayName <- map["localDisplayName"]
-        defaultCurrency <- map["defaultCurrency"]
-        defaultTimezone <- map["defaultTimezone"]
-        stateProvinceRequired <- map["stateProvinceRequired"]
-        zipPostalRequired <- map["zipPostalRequired"]
-        countyRequired <- map["countyRequired"]
-        defaultLocale <- map["defaultLocale"]
-        appMarketBillingEnabled <- map["appMarketBillingEnabled"]
-  }
-}
-
- 
-open class PendingPaymentEntry: NSObject, NSCoding, Mappable {
-    /// Total amount paid
-    open var amount: Int?
-    /// Unique identifier for a payment
-    open var paymentId: String?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(amount, forKey: "amount")
-  aCoder.encode(paymentId, forKey: "paymentId")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      amount = aDecoder.decodeObject(forKey:"amount") as? Int
-        paymentId = aDecoder.decodeObject(forKey:"paymentId") as? String
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      amount <- map["amount"]
-        paymentId <- map["paymentId"]
-  }
-}
-
- 
-open class Point: NSObject, NSCoding, Mappable {
-    open var x: Int?
-    open var y: Int?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(x, forKey: "x")
-  aCoder.encode(y, forKey: "y")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      x = aDecoder.decodeObject(forKey:"x") as? Int
-        y = aDecoder.decodeObject(forKey:"y") as? Int
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      x <- map["x"]
-        y <- map["y"]
-  }
-}
-
- 
-open class Points: NSObject, NSCoding, Mappable {
-    open var points: [CLVModels.Base.Point]?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(points, forKey: "points")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      points = aDecoder.decodeObject(forKey:"points") as? [CLVModels.Base.Point]
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      points <- map["points.elements"]
-  }
-}
-
- 
 open class Reference: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -424,17 +126,17 @@ public func mapping(map: Map) {
  
 open class ServiceCharge: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// The order with which the service charge is associated
-    open var orderRef: CLVModels.Order.Order?
+  open var orderRef: CLVModels.Base.Reference?
     /// Service charge name
-    open var name: String?
+  open var name: String?
     /// If this service charge is enabled
-    open var enabled: Bool?
+  open var enabled: Bool?
     /// DEPRECATED
-    open var percentage: Int?
+  open var percentage: Int?
     /// Percent to charge times 10000, e.g. 12.5% will be 125000
-    open var percentageDecimal: Int?
+  open var percentageDecimal: Int?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -447,7 +149,7 @@ open func encode(with aCoder: NSCoder) {
 
 required public init(coder aDecoder: NSCoder) {
       id = aDecoder.decodeObject(forKey:"id") as? String
-        orderRef = aDecoder.decodeObject(forKey:"orderRef") as? CLVModels.Order.Order
+        orderRef = aDecoder.decodeObject(forKey:"orderRef") as? CLVModels.Base.Reference
         name = aDecoder.decodeObject(forKey:"name") as? String
         enabled = aDecoder.decodeObject(forKey:"enabled") as? Bool
         percentage = aDecoder.decodeObject(forKey:"percentage") as? Int
@@ -471,59 +173,25 @@ public func mapping(map: Map) {
 }
 
  
-open class Signature: NSObject, NSCoding, Mappable {
-    /// A series of strokes representing a signature
-    open var strokes: [CLVModels.Base.Points]?
-    /// The pixel width of the signature
-    open var width: Int?
-    /// The pixel height of the signature
-    open var height: Int?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(strokes, forKey: "strokes")
-  aCoder.encode(width, forKey: "width")
-  aCoder.encode(height, forKey: "height")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      strokes = aDecoder.decodeObject(forKey:"strokes") as? [CLVModels.Base.Points]
-        width = aDecoder.decodeObject(forKey:"width") as? Int
-        height = aDecoder.decodeObject(forKey:"height") as? Int
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      strokes <- map["strokes.elements"]
-        width <- map["width"]
-        height <- map["height"]
-  }
-}
-
- 
 open class Tender: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// If this merchant tender is editable
-    open var editable: Bool?
+  open var editable: Bool?
     /// Label Key
-    open var labelKey: String?
+  open var labelKey: String?
     /// Label Key
-    open var label: String?
+  open var label: String?
     /// If this tender opens the cash drawer
-    open var opensCashDrawer: Bool?
+  open var opensCashDrawer: Bool?
     /// Allow tipping on payment from tender
-    open var supportsTipping: Bool?
+  open var supportsTipping: Bool?
     /// If this merchant tender is enabled
-    open var enabled: Bool?
+  open var enabled: Bool?
     /// If this merchant tender is visible
-    open var visible: Bool?
+  open var visible: Bool?
     /// Label Key
-    open var instructions: String?
+  open var instructions: String?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")

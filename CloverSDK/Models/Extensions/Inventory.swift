@@ -12,13 +12,13 @@ public class Inventory {
  
 open class Attribute: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// Name of this attribute
-    open var name: String?
+  open var name: String?
     /// The item group this attribute belongs to
-    open var itemGroup: CLVModels.Inventory.ItemGroup?
+  open var itemGroup: CLVModels.Base.Reference?
     /// Options associated with this attribute
-    open var options: [CLVModels.Inventory.Option]?
+  open var options: [CLVModels.Inventory.Option]?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -30,7 +30,7 @@ open func encode(with aCoder: NSCoder) {
 required public init(coder aDecoder: NSCoder) {
       id = aDecoder.decodeObject(forKey:"id") as? String
         name = aDecoder.decodeObject(forKey:"name") as? String
-        itemGroup = aDecoder.decodeObject(forKey:"itemGroup") as? CLVModels.Inventory.ItemGroup
+        itemGroup = aDecoder.decodeObject(forKey:"itemGroup") as? CLVModels.Base.Reference
         options = aDecoder.decodeObject(forKey:"options") as? [CLVModels.Inventory.Option]
   }
 
@@ -51,13 +51,13 @@ public func mapping(map: Map) {
  
 open class Category: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// The name of the category which will appear in Clover Register App.
-    open var name: String?
+  open var name: String?
     /// Integer used to determine how this category is sorted against other categories.
-    open var sortOrder: Int?
+  open var sortOrder: Int?
     /// Ordered list of items associated with this category.
-    open var items: [CLVModels.Inventory.Item]?
+  open var items: [CLVModels.Base.Reference]?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -70,7 +70,7 @@ required public init(coder aDecoder: NSCoder) {
       id = aDecoder.decodeObject(forKey:"id") as? String
         name = aDecoder.decodeObject(forKey:"name") as? String
         sortOrder = aDecoder.decodeObject(forKey:"sortOrder") as? Int
-        items = aDecoder.decodeObject(forKey:"items") as? [CLVModels.Inventory.Item]
+        items = aDecoder.decodeObject(forKey:"items") as? [CLVModels.Base.Reference]
   }
 
 override public init() {}
@@ -88,42 +88,15 @@ public func mapping(map: Map) {
 }
 
  
-open class CategoryItem: NSObject, NSCoding, Mappable {
-    open var item: CLVModels.Inventory.Item?
-    open var category: CLVModels.Inventory.Category?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(item, forKey: "item")
-  aCoder.encode(category, forKey: "category")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      item = aDecoder.decodeObject(forKey:"item") as? CLVModels.Inventory.Item
-        category = aDecoder.decodeObject(forKey:"category") as? CLVModels.Inventory.Category
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      item <- map["item"]
-        category <- map["category"]
-  }
-}
-
- 
 open class Discount: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// Name of the discount
-    open var name: String?
+  open var name: String?
     /// Discount amount in fraction of currency unit (e.g. cents) based on currency fraction digits supported
-    open var amount: Int?
+  open var amount: Int?
     /// Discount amount in percent
-    open var percentage: Int?
+  open var percentage: Int?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -156,43 +129,43 @@ public func mapping(map: Map) {
  
 open class Item: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// True if this item is hidden from Clover Register App
-    open var hidden: Bool?
+  open var hidden: Bool?
     /// Reference to an item group
-    open var itemGroup: CLVModels.Inventory.ItemGroup?
+  open var itemGroup: CLVModels.Base.Reference?
     /// List of options pertaining to this item's attribute variation
-    open var options: [CLVModels.Inventory.Option]?
+  open var options: [CLVModels.Inventory.Option]?
     /// Name of the item
-    open var name: String?
+  open var name: String?
     /// Alternate name of the item
-    open var alternateName: String?
+  open var alternateName: String?
     /// Product code, e.g. UPC or EAN
-    open var code: String?
+  open var code: String?
     /// SKU of the item
-    open var sku: String?
+  open var sku: String?
     /// Price of the item, typically in cents; use priceType and merchant currency to determine actual item price
-    open var price: Int?
-    open var priceType: CLVModels.Inventory.PriceType?
+  open var price: Int?
+  open var priceType: CLVModels.Inventory.PriceType?
     /// Flag to indicate whether or not to use default tax rates
-    open var defaultTaxRates: Bool?
+  open var defaultTaxRates: Bool?
     /// Unit name, e.g. oz, lb
-    open var unitName: String?
+  open var unitName: String?
     /// Cost of the item to merchant, as opposed to customer price
-    open var cost: Int?
+  open var cost: Int?
     /// True if this item should be counted as revenue, for example gift cards and donations would not
-    open var isRevenue: Bool?
+  open var isRevenue: Bool?
     /// DEPRECATED: use itemStock instead
-    open var stockCount: Int?
-    open var taxRates: [CLVModels.Inventory.TaxRate]?
-    open var modifierGroups: [CLVModels.Inventory.ModifierGroup]?
+  open var stockCount: Int?
+  open var taxRates: [CLVModels.Inventory.TaxRate]?
+  open var modifierGroups: [CLVModels.Inventory.ModifierGroup]?
     /// Categories associated with this item
-    open var categories: [CLVModels.Inventory.Category]?
+  open var categories: [CLVModels.Inventory.Category]?
     /// Tags associated with this item
-    open var tags: [CLVModels.Inventory.Tag]?
+  open var tags: [CLVModels.Inventory.Tag]?
     /// Item stock attribute that can be expanded to show stock quantity
-    open var itemStock: CLVModels.Inventory.ItemStock?
-    open var modifiedTime: Date?
+  open var itemStock: CLVModels.Inventory.ItemStock?
+  open var modifiedTime: Date?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -221,7 +194,7 @@ open func encode(with aCoder: NSCoder) {
 required public init(coder aDecoder: NSCoder) {
       id = aDecoder.decodeObject(forKey:"id") as? String
         hidden = aDecoder.decodeObject(forKey:"hidden") as? Bool
-        itemGroup = aDecoder.decodeObject(forKey:"itemGroup") as? CLVModels.Inventory.ItemGroup
+        itemGroup = aDecoder.decodeObject(forKey:"itemGroup") as? CLVModels.Base.Reference
         options = aDecoder.decodeObject(forKey:"options") as? [CLVModels.Inventory.Option]
         name = aDecoder.decodeObject(forKey:"name") as? String
         alternateName = aDecoder.decodeObject(forKey:"alternateName") as? String
@@ -277,13 +250,13 @@ public func mapping(map: Map) {
  
 open class ItemGroup: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// Name of the option
-    open var name: String?
+  open var name: String?
     /// Items that are members of this group
-    open var items: [CLVModels.Inventory.Item]?
+  open var items: [CLVModels.Base.Reference]?
     /// Attributes that belong to this group
-    open var attributes: [CLVModels.Inventory.Attribute]?
+  open var attributes: [CLVModels.Base.Reference]?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -295,8 +268,8 @@ open func encode(with aCoder: NSCoder) {
 required public init(coder aDecoder: NSCoder) {
       id = aDecoder.decodeObject(forKey:"id") as? String
         name = aDecoder.decodeObject(forKey:"name") as? String
-        items = aDecoder.decodeObject(forKey:"items") as? [CLVModels.Inventory.Item]
-        attributes = aDecoder.decodeObject(forKey:"attributes") as? [CLVModels.Inventory.Attribute]
+        items = aDecoder.decodeObject(forKey:"items") as? [CLVModels.Base.Reference]
+        attributes = aDecoder.decodeObject(forKey:"attributes") as? [CLVModels.Base.Reference]
   }
 
 override public init() {}
@@ -314,41 +287,14 @@ public func mapping(map: Map) {
 }
 
  
-open class ItemModifierGroup: NSObject, NSCoding, Mappable {
-    open var item: CLVModels.Inventory.Item?
-    open var modifierGroup: CLVModels.Inventory.ModifierGroup?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(item, forKey: "item")
-  aCoder.encode(modifierGroup, forKey: "modifierGroup")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      item = aDecoder.decodeObject(forKey:"item") as? CLVModels.Inventory.Item
-        modifierGroup = aDecoder.decodeObject(forKey:"modifierGroup") as? CLVModels.Inventory.ModifierGroup
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      item <- map["item"]
-        modifierGroup <- map["modifierGroup"]
-  }
-}
-
- 
 /// The class is used to update the item stock.
 open class ItemStock: NSObject, NSCoding, Mappable {
     /// Reference to an item
-    open var item: CLVModels.Inventory.Item?
+  open var item: CLVModels.Base.Reference?
     /// DEPRECATED: use quantity instead
-    open var stockCount: Int?
+  open var stockCount: Int?
     /// Current count of this item in stock
-    open var quantity: Double?
+  open var quantity: Double?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(item, forKey: "item")
@@ -357,7 +303,7 @@ open func encode(with aCoder: NSCoder) {
 }
 
 required public init(coder aDecoder: NSCoder) {
-      item = aDecoder.decodeObject(forKey:"item") as? CLVModels.Inventory.Item
+      item = aDecoder.decodeObject(forKey:"item") as? CLVModels.Base.Reference
         stockCount = aDecoder.decodeObject(forKey:"stockCount") as? Int
         quantity = aDecoder.decodeObject(forKey:"quantity") as? Double
   }
@@ -378,14 +324,14 @@ public func mapping(map: Map) {
  
 open class Modifier: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// Name of the modifier
-    open var name: String?
+  open var name: String?
     /// Alternate name of the modifier
-    open var alternateName: String?
+  open var alternateName: String?
     /// Additional cost when used
-    open var price: Int?
-    open var modifierGroup: CLVModels.Inventory.ModifierGroup?
+  open var price: Int?
+  open var modifierGroup: CLVModels.Base.Reference?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -400,7 +346,7 @@ required public init(coder aDecoder: NSCoder) {
         name = aDecoder.decodeObject(forKey:"name") as? String
         alternateName = aDecoder.decodeObject(forKey:"alternateName") as? String
         price = aDecoder.decodeObject(forKey:"price") as? Int
-        modifierGroup = aDecoder.decodeObject(forKey:"modifierGroup") as? CLVModels.Inventory.ModifierGroup
+        modifierGroup = aDecoder.decodeObject(forKey:"modifierGroup") as? CLVModels.Base.Reference
   }
 
 override public init() {}
@@ -421,22 +367,22 @@ public func mapping(map: Map) {
  
 open class ModifierGroup: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// Name of the modifier group
-    open var name: String?
-    open var alternateName: String?
+  open var name: String?
+  open var alternateName: String?
     /// The minimum amount of modifiers from this group that must be applied to associated lineItems when using Register
-    open var minRequired: Int?
+  open var minRequired: Int?
     /// The maximum amount of modifiers from this group that can be applied to associated lineItems when using Register
-    open var maxAllowed: Int?
+  open var maxAllowed: Int?
     /// Whether employees will be automatically prompted to add modifiers from this category when using Register
-    open var showByDefault: Bool?
-    open var modifiers: [CLVModels.Inventory.Modifier]?
+  open var showByDefault: Bool?
+  open var modifiers: [CLVModels.Inventory.Modifier]?
     /// An ordered, comma-separated list of modifier ids in this group. (READ ONLY)
-    open var modifierIds: String?
-    open var items: [CLVModels.Inventory.Item]?
+  open var modifierIds: String?
+  open var items: [CLVModels.Base.Reference]?
     /// The relative order that this modifier group should appear in the list of modifier groups. Lower values will appear first and modifier groups without a priority assigned will appear in alphabetical order after those with one.
-    open var priority: String?
+  open var priority: String?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -460,7 +406,7 @@ required public init(coder aDecoder: NSCoder) {
         showByDefault = aDecoder.decodeObject(forKey:"showByDefault") as? Bool
         modifiers = aDecoder.decodeObject(forKey:"modifiers") as? [CLVModels.Inventory.Modifier]
         modifierIds = aDecoder.decodeObject(forKey:"modifierIds") as? String
-        items = aDecoder.decodeObject(forKey:"items") as? [CLVModels.Inventory.Item]
+        items = aDecoder.decodeObject(forKey:"items") as? [CLVModels.Base.Reference]
         priority = aDecoder.decodeObject(forKey:"priority") as? String
   }
 
@@ -487,12 +433,12 @@ public func mapping(map: Map) {
  
 open class Option: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// Name of the option
-    open var name: String?
-    open var attribute: CLVModels.Inventory.Attribute?
+  open var name: String?
+  open var attribute: CLVModels.Base.Reference?
     /// Items associated with this option
-    open var items: [CLVModels.Base.Reference]?
+  open var items: [CLVModels.Base.Reference]?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -504,7 +450,7 @@ open func encode(with aCoder: NSCoder) {
 required public init(coder aDecoder: NSCoder) {
       id = aDecoder.decodeObject(forKey:"id") as? String
         name = aDecoder.decodeObject(forKey:"name") as? String
-        attribute = aDecoder.decodeObject(forKey:"attribute") as? CLVModels.Inventory.Attribute
+        attribute = aDecoder.decodeObject(forKey:"attribute") as? CLVModels.Base.Reference
         items = aDecoder.decodeObject(forKey:"items") as? [CLVModels.Base.Reference]
   }
 
@@ -523,36 +469,6 @@ public func mapping(map: Map) {
 }
 
  
-/// This class represents the association between an item and an option
-open class OptionItem: NSObject, NSCoding, Mappable {
-    /// Reference to an option
-    open var option: CLVModels.Inventory.Option?
-    /// Reference to an item
-    open var item: CLVModels.Inventory.Item?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(option, forKey: "option")
-  aCoder.encode(item, forKey: "item")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      option = aDecoder.decodeObject(forKey:"option") as? CLVModels.Inventory.Option
-        item = aDecoder.decodeObject(forKey:"item") as? CLVModels.Inventory.Item
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      option <- map["option"]
-        item <- map["item"]
-  }
-}
-
- 
 public enum PriceType: String {
   case FIXED
   case VARIABLE
@@ -562,13 +478,13 @@ public enum PriceType: String {
  
 open class Tag: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// Tag name
-    open var name: String?
+  open var name: String?
     /// Items associated with this tag
-    open var items: [CLVModels.Inventory.Item]?
+  open var items: [CLVModels.Base.Reference]?
     /// Printers associated with this tag
-    open var printers: [CLVModels.Printer.Printer]?
+  open var printers: [CLVModels.Base.Reference]?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -580,8 +496,8 @@ open func encode(with aCoder: NSCoder) {
 required public init(coder aDecoder: NSCoder) {
       id = aDecoder.decodeObject(forKey:"id") as? String
         name = aDecoder.decodeObject(forKey:"name") as? String
-        items = aDecoder.decodeObject(forKey:"items") as? [CLVModels.Inventory.Item]
-        printers = aDecoder.decodeObject(forKey:"printers") as? [CLVModels.Printer.Printer]
+        items = aDecoder.decodeObject(forKey:"items") as? [CLVModels.Base.Reference]
+        printers = aDecoder.decodeObject(forKey:"printers") as? [CLVModels.Base.Reference]
   }
 
 override public init() {}
@@ -599,69 +515,15 @@ public func mapping(map: Map) {
 }
 
  
-open class TagItem: NSObject, NSCoding, Mappable {
-    open var tag: CLVModels.Inventory.Tag?
-    open var item: CLVModels.Inventory.Item?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(tag, forKey: "tag")
-  aCoder.encode(item, forKey: "item")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      tag = aDecoder.decodeObject(forKey:"tag") as? CLVModels.Inventory.Tag
-        item = aDecoder.decodeObject(forKey:"item") as? CLVModels.Inventory.Item
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      tag <- map["tag"]
-        item <- map["item"]
-  }
-}
-
- 
-open class TagPrinter: NSObject, NSCoding, Mappable {
-    open var tag: CLVModels.Inventory.Tag?
-    open var printer: CLVModels.Printer.Printer?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(tag, forKey: "tag")
-  aCoder.encode(printer, forKey: "printer")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      tag = aDecoder.decodeObject(forKey:"tag") as? CLVModels.Inventory.Tag
-        printer = aDecoder.decodeObject(forKey:"printer") as? CLVModels.Printer.Printer
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      tag <- map["tag"]
-        printer <- map["printer"]
-  }
-}
-
- 
 open class TaxRate: NSObject, NSCoding, Mappable {
-    open var id: String?
+  open var id: String?
     /// The line item with which the tax rate is associated
-    open var lineItemRef: CLVModels.Order.LineItem?
-    open var name: String?
-    open var rate: Int?
-    open var isDefault: Bool?
+  open var lineItemRef: CLVModels.Base.Reference?
+  open var name: String?
+  open var rate: Int?
+  open var isDefault: Bool?
     /// Items associated with this tax rate
-    open var items: [CLVModels.Inventory.Item]?
+  open var items: [CLVModels.Base.Reference]?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -674,11 +536,11 @@ open func encode(with aCoder: NSCoder) {
 
 required public init(coder aDecoder: NSCoder) {
       id = aDecoder.decodeObject(forKey:"id") as? String
-        lineItemRef = aDecoder.decodeObject(forKey:"lineItemRef") as? CLVModels.Order.LineItem
+        lineItemRef = aDecoder.decodeObject(forKey:"lineItemRef") as? CLVModels.Base.Reference
         name = aDecoder.decodeObject(forKey:"name") as? String
         rate = aDecoder.decodeObject(forKey:"rate") as? Int
         isDefault = aDecoder.decodeObject(forKey:"isDefault") as? Bool
-        items = aDecoder.decodeObject(forKey:"items") as? [CLVModels.Inventory.Item]
+        items = aDecoder.decodeObject(forKey:"items") as? [CLVModels.Base.Reference]
   }
 
 override public init() {}
@@ -694,33 +556,6 @@ public func mapping(map: Map) {
         rate <- map["rate"]
         isDefault <- map["isDefault"]
         items <- map["items.elements"]
-  }
-}
-
- 
-open class TaxRateItem: NSObject, NSCoding, Mappable {
-    open var taxRate: CLVModels.Inventory.TaxRate?
-    open var item: CLVModels.Inventory.Item?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(taxRate, forKey: "taxRate")
-  aCoder.encode(item, forKey: "item")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      taxRate = aDecoder.decodeObject(forKey:"taxRate") as? CLVModels.Inventory.TaxRate
-        item = aDecoder.decodeObject(forKey:"item") as? CLVModels.Inventory.Item
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      taxRate <- map["taxRate"]
-        item <- map["item"]
   }
 }
 

@@ -12,15 +12,15 @@ public class Printer {
  
 open class Printer: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// MAC address of a network printer
-    open var mac: String?
-    open var model: String?
-    open var name: String?
+  open var mac: String?
+  open var model: String?
+  open var name: String?
     /// IP address of a network printer
-    open var ipAddress: String?
+  open var ipAddress: String?
     /// NETWORK is a printer that's directly connected to the network.  MY_LOCAL represents the printer that's connected to the device that's making the request.
-    open var type_: CLVModels.Printer.PrinterType?
+  open var type_: CLVModels.Printer.PrinterType?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")

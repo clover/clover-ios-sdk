@@ -10,366 +10,32 @@ extension CLVModels {
 
 public class Merchant {
  
-public enum AggregationStatus: String {
-  case PENDING_CREATION
-  case PENDING
-  case IN_PROGRESS
-  case DONE
-  case FAILED
-  case EXPIRED
-  case PENDING_CANCELLATION
-  case CANCELLED
-}
-
- 
-open class CustomerContactEmailVerifiedStatus: NSObject, NSCoding, Mappable {
-    /// Merchant ID of merchant to be verified
-    open var merchantId: Int?
-    /// Email address for customers to contact merchant through
-    open var email: String?
-    /// UUID that expires in 24 hours used for verifying customer contact email address
-    open var verifyCode: String?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(merchantId, forKey: "merchantId")
-  aCoder.encode(email, forKey: "email")
-  aCoder.encode(verifyCode, forKey: "verifyCode")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      merchantId = aDecoder.decodeObject(forKey:"merchantId") as? Int
-        email = aDecoder.decodeObject(forKey:"email") as? String
-        verifyCode = aDecoder.decodeObject(forKey:"verifyCode") as? String
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      merchantId <- map["merchantId"]
-        email <- map["email"]
-        verifyCode <- map["verifyCode"]
-  }
-}
-
- 
-/// The state of a particular active device with respect to billing.
-public enum DeviceOperatingMode: String {
-  case POS_MODE
-  case CFD_MODE
-}
-
- 
-/// A bulk export of merchant data.
-open class Export: NSObject, NSCoding, Mappable {
-    /// Unique identifier
-    open var id: String?
-    /// The type of data to be exported
-    open var type_: CLVModels.Merchant.ExportType?
-    /// The current status of the export
-    open var status: CLVModels.Merchant.ExportStatus?
-    /// Additional information about the current state of the export
-    open var statusDescription: String?
-    /// A percentage indicating the progress of the export
-    open var percentComplete: Int?
-    /// The time at which the exported files will expire. After this time, you will not be able to access the urls listed in exportUrls.
-    open var availableUntil: Int?
-    /// The start (lower-bound) of the export time window
-    open var startTime: Date?
-    /// The end (upper-bound) of the export time window
-    open var endTime: Date?
-    /// The time at which this export was created
-    open var createdTime: Date?
-    /// The time at which this export was last modified
-    open var modifiedTime: Date?
-    /// A list of urls that can be used to download the exported merchant data
-    open var exportUrls: [CLVModels.Merchant.ExportUrl]?
-    /// (Optional) The developer app that requested this export
-    open var developerApp: CLVModels.Base.Reference?
-    /// The merchant whose data is being exported
-    open var merchantRef: CLVModels.Base.Reference?
-    /// A text based payload that stores report parameters
-    open var payload: String?
-    /// The aggregation job that has created this export
-    open var aggregationRef: CLVModels.Base.Reference?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(type_?.rawValue, forKey: "type_")
-  aCoder.encode(status?.rawValue, forKey: "status")
-  aCoder.encode(statusDescription, forKey: "statusDescription")
-  aCoder.encode(percentComplete, forKey: "percentComplete")
-  aCoder.encode(availableUntil, forKey: "availableUntil")
-  aCoder.encode(startTime, forKey: "startTime")
-  aCoder.encode(endTime, forKey: "endTime")
-  aCoder.encode(createdTime, forKey: "createdTime")
-  aCoder.encode(modifiedTime, forKey: "modifiedTime")
-  aCoder.encode(exportUrls, forKey: "exportUrls")
-  aCoder.encode(developerApp, forKey: "developerApp")
-  aCoder.encode(merchantRef, forKey: "merchantRef")
-  aCoder.encode(payload, forKey: "payload")
-  aCoder.encode(aggregationRef, forKey: "aggregationRef")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        type_ = (aDecoder.decodeObject(forKey:"type_") as? String) != nil ?
-      CLVModels.Merchant.ExportType(rawValue: (aDecoder.decodeObject(forKey:"type_") as! String)) : nil
-        status = (aDecoder.decodeObject(forKey:"status") as? String) != nil ?
-      CLVModels.Merchant.ExportStatus(rawValue: (aDecoder.decodeObject(forKey:"status") as! String)) : nil
-        statusDescription = aDecoder.decodeObject(forKey:"statusDescription") as? String
-        percentComplete = aDecoder.decodeObject(forKey:"percentComplete") as? Int
-        availableUntil = aDecoder.decodeObject(forKey:"availableUntil") as? Int
-        startTime = aDecoder.decodeObject(forKey:"startTime") as? Date
-        endTime = aDecoder.decodeObject(forKey:"endTime") as? Date
-        createdTime = aDecoder.decodeObject(forKey:"createdTime") as? Date
-        modifiedTime = aDecoder.decodeObject(forKey:"modifiedTime") as? Date
-        exportUrls = aDecoder.decodeObject(forKey:"exportUrls") as? [CLVModels.Merchant.ExportUrl]
-        developerApp = aDecoder.decodeObject(forKey:"developerApp") as? CLVModels.Base.Reference
-        merchantRef = aDecoder.decodeObject(forKey:"merchantRef") as? CLVModels.Base.Reference
-        payload = aDecoder.decodeObject(forKey:"payload") as? String
-        aggregationRef = aDecoder.decodeObject(forKey:"aggregationRef") as? CLVModels.Base.Reference
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      id <- map["id"]
-        type_ <- map["type"]
-        status <- map["status"]
-        statusDescription <- map["statusDescription"]
-        percentComplete <- map["percentComplete"]
-        availableUntil <- map["availableUntil"]
-        startTime <- (map["startTime"], CLVDateTransform())
-        endTime <- (map["endTime"], CLVDateTransform())
-        createdTime <- (map["createdTime"], CLVDateTransform())
-        modifiedTime <- (map["modifiedTime"], CLVDateTransform())
-        exportUrls <- map["exportUrls.elements"]
-        developerApp <- map["developerApp"]
-        merchantRef <- map["merchantRef"]
-        payload <- map["payload"]
-        aggregationRef <- map["aggregationRef"]
-  }
-}
-
- 
-/// An aggregator individual for merchant.Export jobs
-open class ExportAggregation: NSObject, NSCoding, Mappable {
-    /// Unique identifier
-    open var id: String?
-    /// Type type of export being aggregated
-    open var type_: CLVModels.Merchant.ExportType?
-    /// The current status of the aggregation
-    open var status: CLVModels.Merchant.AggregationStatus?
-    /// A percentage indicating the progress of the entire aggregated job.
-    open var percentComplete: Int?
-    /// The time at which the exported files will expire. After this time you will not be able to access the URL any longer.
-    open var availableUtil: Int?
-    /// The start (lower-bound) of the export time window (inclusive)
-    open var startTime: Date?
-    /// The end (upper-bound) of the export time window (exclusive)
-    open var endTime: Date?
-    /// The last time we checked on the processing status of this aggregation's exports.
-    open var checkupTime: Date?
-    /// The time at which this export was created
-    open var createdTime: Date?
-    /// The time at which this export was last modified
-    open var modifiedTime: Date?
-    /// The enterprise whose data is being exported.
-    open var enterpriseRef: CLVModels.Base.Reference?
-    /// A text based payload that stores report parameters
-    open var payload: String?
-    /// The list of per-merchant exports created by this aggregation job
-    open var exports: [CLVModels.Merchant.Export]?
-    /// The list of merchants for whom export jobs will be created.
-    open var merchants: [CLVModels.Base.Reference]?
-    /// A list of urls that can be used to download the aggregated report data
-    open var aggregationUrls: [CLVModels.Merchant.ExportAggregationUrl]?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(type_?.rawValue, forKey: "type_")
-  aCoder.encode(status?.rawValue, forKey: "status")
-  aCoder.encode(percentComplete, forKey: "percentComplete")
-  aCoder.encode(availableUtil, forKey: "availableUtil")
-  aCoder.encode(startTime, forKey: "startTime")
-  aCoder.encode(endTime, forKey: "endTime")
-  aCoder.encode(checkupTime, forKey: "checkupTime")
-  aCoder.encode(createdTime, forKey: "createdTime")
-  aCoder.encode(modifiedTime, forKey: "modifiedTime")
-  aCoder.encode(enterpriseRef, forKey: "enterpriseRef")
-  aCoder.encode(payload, forKey: "payload")
-  aCoder.encode(exports, forKey: "exports")
-  aCoder.encode(merchants, forKey: "merchants")
-  aCoder.encode(aggregationUrls, forKey: "aggregationUrls")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        type_ = (aDecoder.decodeObject(forKey:"type_") as? String) != nil ?
-      CLVModels.Merchant.ExportType(rawValue: (aDecoder.decodeObject(forKey:"type_") as! String)) : nil
-        status = (aDecoder.decodeObject(forKey:"status") as? String) != nil ?
-      CLVModels.Merchant.AggregationStatus(rawValue: (aDecoder.decodeObject(forKey:"status") as! String)) : nil
-        percentComplete = aDecoder.decodeObject(forKey:"percentComplete") as? Int
-        availableUtil = aDecoder.decodeObject(forKey:"availableUtil") as? Int
-        startTime = aDecoder.decodeObject(forKey:"startTime") as? Date
-        endTime = aDecoder.decodeObject(forKey:"endTime") as? Date
-        checkupTime = aDecoder.decodeObject(forKey:"checkupTime") as? Date
-        createdTime = aDecoder.decodeObject(forKey:"createdTime") as? Date
-        modifiedTime = aDecoder.decodeObject(forKey:"modifiedTime") as? Date
-        enterpriseRef = aDecoder.decodeObject(forKey:"enterpriseRef") as? CLVModels.Base.Reference
-        payload = aDecoder.decodeObject(forKey:"payload") as? String
-        exports = aDecoder.decodeObject(forKey:"exports") as? [CLVModels.Merchant.Export]
-        merchants = aDecoder.decodeObject(forKey:"merchants") as? [CLVModels.Base.Reference]
-        aggregationUrls = aDecoder.decodeObject(forKey:"aggregationUrls") as? [CLVModels.Merchant.ExportAggregationUrl]
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      id <- map["id"]
-        type_ <- map["type"]
-        status <- map["status"]
-        percentComplete <- map["percentComplete"]
-        availableUtil <- map["availableUtil"]
-        startTime <- (map["startTime"], CLVDateTransform())
-        endTime <- (map["endTime"], CLVDateTransform())
-        checkupTime <- (map["checkupTime"], CLVDateTransform())
-        createdTime <- (map["createdTime"], CLVDateTransform())
-        modifiedTime <- (map["modifiedTime"], CLVDateTransform())
-        enterpriseRef <- map["enterpriseRef"]
-        payload <- map["payload"]
-        exports <- map["exports.elements"]
-        merchants <- map["merchants.elements"]
-        aggregationUrls <- map["aggregationUrls.elements"]
-  }
-}
-
- 
-/// A URL from which exported data can be download.
-open class ExportAggregationUrl: NSObject, NSCoding, Mappable {
-    /// The URL from which exported data can be downloaded
-    open var url: String?
-    /// The Google Cloud Storage resource name associated with this URL. In the format: "/<bucket>/<object_name>"
-    open var resourceName: String?
-    /// The export aggregation that this URL is associated with
-    open var aggregationRef: CLVModels.Base.Reference?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(url, forKey: "url")
-  aCoder.encode(resourceName, forKey: "resourceName")
-  aCoder.encode(aggregationRef, forKey: "aggregationRef")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      url = aDecoder.decodeObject(forKey:"url") as? String
-        resourceName = aDecoder.decodeObject(forKey:"resourceName") as? String
-        aggregationRef = aDecoder.decodeObject(forKey:"aggregationRef") as? CLVModels.Base.Reference
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      url <- map["url"]
-        resourceName <- map["resourceName"]
-        aggregationRef <- map["aggregationRef"]
-  }
-}
-
- 
-public enum ExportStatus: String {
-  case PENDING
-  case IN_PROGRESS
-  case DONE
-  case FAILED
-  case EXPIRED
-  case CANCELLED
-}
-
- 
-public enum ExportType: String {
-  case PAYMENTS
-  case ORDERS
-  case PAYMENT_SUMMARIES
-}
-
- 
-/// A URL from which exported data can be download.
-open class ExportUrl: NSObject, NSCoding, Mappable {
-    /// The URL from which exported data can be downloaded
-    open var url: String?
-    /// The Google Cloud Storage resource name associated with this URL. In the format: "/<bucket>/<object_name>"
-    open var resourceName: String?
-    /// The export that this URL is associated with
-    open var export: CLVModels.Base.Reference?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(url, forKey: "url")
-  aCoder.encode(resourceName, forKey: "resourceName")
-  aCoder.encode(export, forKey: "export")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      url = aDecoder.decodeObject(forKey:"url") as? String
-        resourceName = aDecoder.decodeObject(forKey:"resourceName") as? String
-        export = aDecoder.decodeObject(forKey:"export") as? CLVModels.Base.Reference
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      url <- map["url"]
-        resourceName <- map["resourceName"]
-        export <- map["export"]
-  }
-}
-
- 
 open class Gateway: NSObject, NSCoding, Mappable {
-    open var paymentProcessorName: String?
-    open var authorizationFrontEnd: String?
-    open var acquiringBackEnd: String?
-    open var paymentGatewayApi: String?
-    open var accountName: String?
-    open var altMid: String?
-    open var mid: String?
-    open var fns: String?
-    open var tid: String?
-    open var storeId: String?
-    open var supportsTipping: Bool?
-    open var frontendMid: String?
-    open var backendMid: String?
+  open var paymentProcessorName: String?
+  open var authorizationFrontEnd: String?
+  open var acquiringBackEnd: String?
+  open var paymentGatewayApi: String?
+  open var accountName: String?
+  open var altMid: String?
+  open var mid: String?
+  open var fns: String?
+  open var tid: String?
+  open var storeId: String?
+  open var supportsTipping: Bool?
+  open var frontendMid: String?
+  open var backendMid: String?
     /// Merchant Category Code
-    open var mcc: String?
-    open var tokenType: String?
-    open var groupId: String?
-    open var debitKeyCode: String?
-    open var supportsTipAdjust: Bool?
-    open var supportsNakedCredit: Bool?
-    open var supportsMultiPayToken: Bool?
-    open var keyPrefix: String?
-    open var keyInfo: [String:String]?
-    open var closingTime: String?
-    open var newBatchCloseEnabled: Bool?
+  open var mcc: String?
+  open var tokenType: String?
+  open var groupId: String?
+  open var debitKeyCode: String?
+  open var supportsTipAdjust: Bool?
+  open var supportsNakedCredit: Bool?
+  open var supportsMultiPayToken: Bool?
+  open var keyPrefix: String?
+  open var keyInfo: [String:String]?
+  open var closingTime: String?
+  open var newBatchCloseEnabled: Bool?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(paymentProcessorName, forKey: "paymentProcessorName")
@@ -462,11 +128,11 @@ public func mapping(map: Map) {
  
 open class Logo: NSObject, NSCoding, Mappable {
     /// The type of merchant logo
-    open var logoType: CLVModels.Merchant.LogoType?
+  open var logoType: CLVModels.Merchant.LogoType?
     /// The filename of the logo
-    open var logoFilename: String?
+  open var logoFilename: String?
     /// URL of the logo file. Generated from filename.
-    open var url: String?
+  open var url: String?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(logoType?.rawValue, forKey: "logoType")
@@ -503,56 +169,56 @@ public enum LogoType: String {
  
 open class Merchant: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// Name of the merchant
-    open var name: String?
+  open var name: String?
     /// The account that owns this merchant
-    open var owner: CLVModels.Employees.Employee?
+  open var owner: CLVModels.Employees.Employee?
     /// The address of the merchant.
-    open var address: CLVModels.Base.Address?
-    open var merchantPlan: CLVModels.Merchant.MerchantPlan?
-    open var defaultCurrency: String?
-    open var phoneNumber: String?
-    open var website: String?
+  open var address: CLVModels.Base.Address?
+  open var merchantPlan: CLVModels.Merchant.MerchantPlan?
+  open var defaultCurrency: String?
+  open var phoneNumber: String?
+  open var website: String?
     /// Email address for customers to contact merchant through
-    open var customerContactEmail: String?
-    open var logos: [CLVModels.Merchant.Logo]?
-    open var createdTime: Date?
-    open var properties: CLVModels.Merchant.MerchantProperties?
-    open var gateway: CLVModels.Merchant.Gateway?
-    open var tipSuggestions: [CLVModels.Merchant.TipSuggestion]?
+  open var customerContactEmail: String?
+  open var logos: [CLVModels.Merchant.Logo]?
+  open var createdTime: Date?
+  open var properties: CLVModels.Merchant.MerchantProperties?
+  open var gateway: CLVModels.Merchant.Gateway?
+  open var tipSuggestions: [CLVModels.Merchant.TipSuggestion]?
     /// This merchant's employees
-    open var employees: [CLVModels.Employees.Employee]?
+  open var employees: [CLVModels.Employees.Employee]?
     /// This merchant's inventory items
-    open var items: [CLVModels.Inventory.Item]?
+  open var items: [CLVModels.Inventory.Item]?
     /// This merchant's inventory tags
-    open var tags: [CLVModels.Inventory.Tag]?
+  open var tags: [CLVModels.Inventory.Tag]?
     /// This merchant's supported tenders
-    open var tenders: [CLVModels.Base.Tender]?
+  open var tenders: [CLVModels.Base.Tender]?
     /// This merchant's employees' shifts
-    open var shifts: [CLVModels.Employees.Shift]?
+  open var shifts: [CLVModels.Employees.Shift]?
     /// This merchant's orders
-    open var orders: [CLVModels.Order.Order]?
+  open var orders: [CLVModels.Order.Order]?
     /// This merchant's order payments
-    open var payments: [CLVModels.Payments.Payment]?
-    open var taxRates: [CLVModels.Inventory.TaxRate]?
-    open var printers: [CLVModels.Printer.Printer]?
-    open var modifierGroups: [CLVModels.Inventory.ModifierGroup]?
-    open var orderTypes: [CLVModels.Order.OrderType]?
+  open var payments: [CLVModels.Payments.Payment]?
+  open var taxRates: [CLVModels.Inventory.TaxRate]?
+  open var printers: [CLVModels.Printer.Printer]?
+  open var modifierGroups: [CLVModels.Inventory.ModifierGroup]?
+  open var orderTypes: [CLVModels.Order.OrderType]?
     /// The merchant's reseller
-    open var reseller: CLVModels.Base.Reference?
+  open var reseller: CLVModels.Base.Reference?
     /// This merchant's opening hours
-    open var opening_hours: [CLVModels.Hours.HoursSet]?
+  open var opening_hours: [CLVModels.Hours.HoursSet]?
     /// The business type of the merchant
-    open var businessTypeCode: CLVModels.Base.BusinessTypeCode?
+  open var businessTypeCode: CLVModels.Base.BusinessTypeCode?
     /// Returns true when the merchant is billable.
-    open var isBillable: Bool?
+  open var isBillable: Bool?
     /// A list of devices a merchant owns
-    open var devices: [CLVModels.Device.Device]?
+  open var devices: [CLVModels.Base.Reference]?
     /// A list of merchant groups a merchant belongs to
-    open var merchantGroups: [CLVModels.Developer.MerchantGroup]?
+  open var merchantGroups: [CLVModels.Base.Reference]?
     /// The partner app/solution with which this merchant is primarily associated
-    open var partnerApp: CLVModels.Apps.App?
+  open var partnerApp: CLVModels.Base.Reference?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -620,9 +286,9 @@ required public init(coder aDecoder: NSCoder) {
         businessTypeCode = (aDecoder.decodeObject(forKey:"businessTypeCode") as? String) != nil ?
       CLVModels.Base.BusinessTypeCode(rawValue: (aDecoder.decodeObject(forKey:"businessTypeCode") as! String)) : nil
         isBillable = aDecoder.decodeObject(forKey:"isBillable") as? Bool
-        devices = aDecoder.decodeObject(forKey:"devices") as? [CLVModels.Device.Device]
-        merchantGroups = aDecoder.decodeObject(forKey:"merchantGroups") as? [CLVModels.Developer.MerchantGroup]
-        partnerApp = aDecoder.decodeObject(forKey:"partnerApp") as? CLVModels.Apps.App
+        devices = aDecoder.decodeObject(forKey:"devices") as? [CLVModels.Base.Reference]
+        merchantGroups = aDecoder.decodeObject(forKey:"merchantGroups") as? [CLVModels.Base.Reference]
+        partnerApp = aDecoder.decodeObject(forKey:"partnerApp") as? CLVModels.Base.Reference
   }
 
 override public init() {}
@@ -668,77 +334,18 @@ public func mapping(map: Map) {
 }
 
  
-open class MerchantAppEvent: NSObject, NSCoding, Mappable {
-    open var createdTime: Date?
-    open var deletedTime: Date?
-    open var appSubscription: CLVModels.Base.Reference?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(createdTime, forKey: "createdTime")
-  aCoder.encode(deletedTime, forKey: "deletedTime")
-  aCoder.encode(appSubscription, forKey: "appSubscription")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      createdTime = aDecoder.decodeObject(forKey:"createdTime") as? Date
-        deletedTime = aDecoder.decodeObject(forKey:"deletedTime") as? Date
-        appSubscription = aDecoder.decodeObject(forKey:"appSubscription") as? CLVModels.Base.Reference
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      createdTime <- (map["createdTime"], CLVDateTransform())
-        deletedTime <- (map["deletedTime"], CLVDateTransform())
-        appSubscription <- map["appSubscription"]
-  }
-}
-
- 
-open class MerchantBoarding: NSObject, NSCoding, Mappable {
-    open var merchantRef: CLVModels.Merchant.Merchant?
-    /// The name to bill the merchant to
-    open var billToName: String?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(merchantRef, forKey: "merchantRef")
-  aCoder.encode(billToName, forKey: "billToName")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      merchantRef = aDecoder.decodeObject(forKey:"merchantRef") as? CLVModels.Merchant.Merchant
-        billToName = aDecoder.decodeObject(forKey:"billToName") as? String
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      merchantRef <- map["merchantRef"]
-        billToName <- map["billToName"]
-  }
-}
-
- 
 open class MerchantPlan: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
+  open var id: String?
     /// The name of the merchant plan
-    open var name: String?
+  open var name: String?
     /// Description of the plan
-    open var description_: String?
-    open var price: Int?
-    open var modules: [CLVModels.Merchant.Module]?
-    open var appBundle: CLVModels.Apps.AppBundle?
+  open var description_: String?
+  open var price: Int?
+  open var modules: [CLVModels.Merchant.Module]?
+  open var appBundle: CLVModels.Apps.AppBundle?
     /// First data plan code
-    open var planCode: String?
+  open var planCode: String?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -779,69 +386,69 @@ public func mapping(map: Map) {
 
  
 open class MerchantProperties: NSObject, NSCoding, Mappable {
-    open var merchantRef: CLVModels.Merchant.Merchant?
-    open var defaultCurrency: String?
-    open var tipsEnabled: Bool?
-    open var receiptProperties: String?
-    open var summaryHour: Int?
-    open var signatureThreshold: Int?
-    open var hasDefaultEmployee: Bool?
-    open var tipRateDefault: Int?
-    open var onPaperTipSignatures: Bool?
-    open var autoLogout: Bool?
-    open var orderTitle: CLVModels.Merchant.OrderTitle?
-    open var orderTitleMax: Int?
-    open var resetOnReportingTime: Bool?
-    open var notesOnOrders: Bool?
-    open var deleteOrders: Bool?
-    open var removeTaxEnabled: Bool?
-    open var groupLineItems: Bool?
-    open var alternateInventoryNames: Bool?
-    open var autoPrint: Bool?
-    open var hardwareProfile: String?
-    open var infoleaseSuppressBilling: Bool?
-    open var infoleaseSuppressPlanBilling: Bool?
-    open var shippingAddress: String?
-    open var marketingEnabled: Bool?
-    open var marketingPreferenceText: String?
-    open var bankMarker: Int?
-    open var supportPhone: String?
-    open var supportEmail: String?
-    open var manualCloseout: Bool?
-    open var showCloseoutOrders: Bool?
-    open var sendCloseoutEmail: Bool?
-    open var stayInCategory: Bool?
+  open var merchantRef: CLVModels.Base.Reference?
+  open var defaultCurrency: String?
+  open var tipsEnabled: Bool?
+  open var receiptProperties: String?
+  open var summaryHour: Int?
+  open var signatureThreshold: Int?
+  open var hasDefaultEmployee: Bool?
+  open var tipRateDefault: Int?
+  open var onPaperTipSignatures: Bool?
+  open var autoLogout: Bool?
+  open var orderTitle: CLVModels.Merchant.OrderTitle?
+  open var orderTitleMax: Int?
+  open var resetOnReportingTime: Bool?
+  open var notesOnOrders: Bool?
+  open var deleteOrders: Bool?
+  open var removeTaxEnabled: Bool?
+  open var groupLineItems: Bool?
+  open var alternateInventoryNames: Bool?
+  open var autoPrint: Bool?
+  open var hardwareProfile: String?
+  open var infoleaseSuppressBilling: Bool?
+  open var infoleaseSuppressPlanBilling: Bool?
+  open var shippingAddress: String?
+  open var marketingEnabled: Bool?
+  open var marketingPreferenceText: String?
+  open var bankMarker: Int?
+  open var supportPhone: String?
+  open var supportEmail: String?
+  open var manualCloseout: Bool?
+  open var showCloseoutOrders: Bool?
+  open var sendCloseoutEmail: Bool?
+  open var stayInCategory: Bool?
     /// The locale of the merchant.
-    open var locale: String?
-    open var timezone: String?
+  open var locale: String?
+  open var timezone: String?
     /// Whether this merchant is in a VAT country
-    open var vat: Bool?
+  open var vat: Bool?
     /// The VAT tax name that is shown on receipts
-    open var vatTaxName: String?
+  open var vatTaxName: String?
     /// Temporary while we are switching US billing systems
-    open var appBillingSystem: String?
+  open var appBillingSystem: String?
     /// The ABA Account Number.  Supplied by First Data.
-    open var abaAccountNumber: String?
+  open var abaAccountNumber: String?
     /// The Masked DDA Account Number.  Supplied by First Data.
-    open var ddaAccountNumber: String?
-    open var trackStock: Bool?
-    open var updateStock: Bool?
-    open var allowClockOutWithOpenOrders: Bool?
-    open var logInClockInPrompt: Bool?
-    open var accountType: String?
+  open var ddaAccountNumber: String?
+  open var trackStock: Bool?
+  open var updateStock: Bool?
+  open var allowClockOutWithOpenOrders: Bool?
+  open var logInClockInPrompt: Bool?
+  open var accountType: String?
     /// The business type of the merchant
-    open var businessTypeCode: CLVModels.Base.BusinessTypeCode?
-    open var pinLength: Int?
+  open var businessTypeCode: CLVModels.Base.BusinessTypeCode?
+  open var pinLength: Int?
     /// Whether cash back is enabled for this merchant
-    open var cashBackEnabled: Bool?
+  open var cashBackEnabled: Bool?
     /// List of cash back possible cash back amounts
-    open var cashBackOptions: String?
+  open var cashBackOptions: String?
     /// The maximum amount of cash back that the customer can select.
-    open var maxCashBack: Int?
+  open var maxCashBack: Int?
     /// Merchant hierarchy (Business, Bank, Agent, Corp, Chain). Supplied by First Data.
-    open var hierarchy: String?
+  open var hierarchy: String?
     /// Whether or not merchant has consented to infolease billing
-    open var hasConsented: Bool?
+  open var hasConsented: Bool?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(merchantRef, forKey: "merchantRef")
@@ -898,7 +505,7 @@ open func encode(with aCoder: NSCoder) {
 }
 
 required public init(coder aDecoder: NSCoder) {
-      merchantRef = aDecoder.decodeObject(forKey:"merchantRef") as? CLVModels.Merchant.Merchant
+      merchantRef = aDecoder.decodeObject(forKey:"merchantRef") as? CLVModels.Base.Reference
         defaultCurrency = aDecoder.decodeObject(forKey:"defaultCurrency") as? String
         tipsEnabled = aDecoder.decodeObject(forKey:"tipsEnabled") as? Bool
         receiptProperties = aDecoder.decodeObject(forKey:"receiptProperties") as? String
@@ -1017,8 +624,8 @@ public func mapping(map: Map) {
  
 open class Module: NSObject, NSCoding, Mappable {
     /// Unique identifier
-    open var id: String?
-    open var name: String?
+  open var id: String?
+  open var name: String?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -1050,166 +657,13 @@ public enum OrderTitle: String {
 }
 
  
-open class Setting: NSObject, NSCoding, Mappable {
-    /// Unique identifier
-    open var id: String?
-    open var name: String?
-    open var value: String?
-    open var readOnly: Bool?
-    open var createdTime: Date?
-    open var modifiedTime: Date?
-    open var deletedTime: Date?
-    open var merchantRef: CLVModels.Base.Reference?
-    open var device: CLVModels.Base.Reference?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(value, forKey: "value")
-  aCoder.encode(readOnly, forKey: "readOnly")
-  aCoder.encode(createdTime, forKey: "createdTime")
-  aCoder.encode(modifiedTime, forKey: "modifiedTime")
-  aCoder.encode(deletedTime, forKey: "deletedTime")
-  aCoder.encode(merchantRef, forKey: "merchantRef")
-  aCoder.encode(device, forKey: "device")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        name = aDecoder.decodeObject(forKey:"name") as? String
-        value = aDecoder.decodeObject(forKey:"value") as? String
-        readOnly = aDecoder.decodeObject(forKey:"readOnly") as? Bool
-        createdTime = aDecoder.decodeObject(forKey:"createdTime") as? Date
-        modifiedTime = aDecoder.decodeObject(forKey:"modifiedTime") as? Date
-        deletedTime = aDecoder.decodeObject(forKey:"deletedTime") as? Date
-        merchantRef = aDecoder.decodeObject(forKey:"merchantRef") as? CLVModels.Base.Reference
-        device = aDecoder.decodeObject(forKey:"device") as? CLVModels.Base.Reference
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      id <- map["id"]
-        name <- map["name"]
-        value <- map["value"]
-        readOnly <- map["readOnly"]
-        createdTime <- (map["createdTime"], CLVDateTransform())
-        modifiedTime <- (map["modifiedTime"], CLVDateTransform())
-        deletedTime <- (map["deletedTime"], CLVDateTransform())
-        merchantRef <- map["merchantRef"]
-        device <- map["device"]
-  }
-}
-
- 
-public enum SettingName: String {
-  case TIPS_ENABLED
-  case SIGNATURE_THRESHOLD
-  case RECEIPT_PROPERTIES
-  case TIP_RATE_DEFAULT
-  case ON_PAPER_TIP_SIGNATURES
-  case AUTO_LOGOUT
-  case ORDER_TITLE
-  case ORDER_TITLE_MAX
-  case RESET_ON_REPORTING_TIME
-  case NOTES_ON_ORDERS
-  case DELETE_ORDERS
-  case CASH_MANAGEMENT_ENABLED
-  case REMOVE_TAX_ENABLED
-  case AUTO_PRINT
-  case HARDWARE_PROFILE
-  case GROUP_LINE_ITEMS
-  case ALTERNATE_INVENTORY_NAMES
-  case STAY_IN_CATEGORY
-  case TRACK_STOCK
-  case UPDATE_STOCK
-  case ALLOW_CLOCK_OUT_WITH_OPEN_ORDERS
-  case LOG_IN_CLOCK_IN_PROMPT
-  case SUMMARY_HOUR
-  case SHIPPING_ADDRESS
-  case BUSINESS_TYPE_CODE
-  case MAX_CASH_BACK
-  case CLICK_TO_CALL_SUPPORT
-  case BROADCAST_PUSH_ENABLED
-  case TIP_THRESHOLD_TYPE
-  case TIP_THRESHOLD_LOW
-  case TIP_THRESHOLD_HIGH
-  case PIN_DISABLED
-  case DEFAULT_CURRENCY
-  case FAST_PAY_ENABLED
-  case TASK_QUEUE_SYNC_THROTTLE_MILLIS
-  case DBA_ATTENTION
-  case SEND_PROMO_BUTTON_ENABLED
-  case DESTINATIONS_TO_VERIFY
-  case TOS_BILLING_MODEL
-  case DEVICE_OPERATING_MODE
-  case ORDERS_COMBINED_SYNC
-  case ACCEPTED_BILLING_TERMS
-  case ACTIVITY_AWARE_SYNC_CONFIG
-  case APP_PERMISSIONS_IMPL
-  case LAZY_FETCH_APP_TOKENS
-}
-
- 
-public enum SyncLevel: String {
-  case LOW
-  case MEDIUM
-  case HIGH
-  case NONE
-}
-
- 
-open class SyncSettings: NSObject, NSCoding, Mappable {
-    /// Sync authority
-    open var authority: String?
-    /// The minimum sync level required for this authority
-    open var level: CLVModels.Merchant.SyncLevel?
-    /// Determines whether or not a device provisioned to this merchant should periodically sync this authority
-    open var periodicEnabled: Bool?
-    /// Determines whether a certain authority should be synced across all devices or just for a single device for this merchant
-    open var multiDeviceEnabled: Bool?
-
-open func encode(with aCoder: NSCoder) {
-  aCoder.encode(authority, forKey: "authority")
-  aCoder.encode(level?.rawValue, forKey: "level")
-  aCoder.encode(periodicEnabled, forKey: "periodicEnabled")
-  aCoder.encode(multiDeviceEnabled, forKey: "multiDeviceEnabled")
-}
-
-required public init(coder aDecoder: NSCoder) {
-      authority = aDecoder.decodeObject(forKey:"authority") as? String
-        level = (aDecoder.decodeObject(forKey:"level") as? String) != nil ?
-      CLVModels.Merchant.SyncLevel(rawValue: (aDecoder.decodeObject(forKey:"level") as! String)) : nil
-        periodicEnabled = aDecoder.decodeObject(forKey:"periodicEnabled") as? Bool
-        multiDeviceEnabled = aDecoder.decodeObject(forKey:"multiDeviceEnabled") as? Bool
-  }
-
-override public init() {}
-
-// Mappable
-
-required public init?(map: Map) {}
-
-public func mapping(map: Map) {
-      authority <- map["authority"]
-        level <- map["level"]
-        periodicEnabled <- map["periodicEnabled"]
-        multiDeviceEnabled <- map["multiDeviceEnabled"]
-  }
-}
-
- 
 open class TipSuggestion: NSObject, NSCoding, Mappable {
-    open var id: String?
+  open var id: String?
     /// Name of the tip
-    open var name: String?
+  open var name: String?
     /// Suggested tip percentage
-    open var percentage: Int?
-    open var isEnabled: Bool?
+  open var percentage: Int?
+  open var isEnabled: Bool?
 
 open func encode(with aCoder: NSCoder) {
   aCoder.encode(id, forKey: "id")
@@ -1237,13 +691,6 @@ public func mapping(map: Map) {
         percentage <- map["percentage"]
         isEnabled <- map["isEnabled"]
   }
-}
-
- 
-/// Billing Terms of Service, V1_0=UNSELECTED, GRANDFATHER, V1_1=CUSTOMER FACING DEVICES ARE FREE
-public enum TosBillingModel: String {
-  case V1_0
-  case V1_1
 }
 
 }
