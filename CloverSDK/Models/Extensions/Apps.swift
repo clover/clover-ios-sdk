@@ -11,19 +11,21 @@ extension CLVModels {
 public class Apps {
  
 open class AndroidPermission: NSObject, NSCoding, Mappable {
+  
     /// Unique identifier
   open var id: String?
+      
   open var permission: String?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(permission, forKey: "permission")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(permission, forKey: "permission")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        permission = aDecoder.decodeObject(forKey:"permission") as? String
-  }
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              permission = aDecoder.decodeObject(forKey:"permission") as? String
+      }
 
 override public init() {}
 
@@ -32,86 +34,104 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        permission <- map["permission"]
-  }
+        id <- map["id"]
+              permission <- map["permission"]
+      }
 }
 
  
 open class AndroidVersion: NSObject, NSCoding, Mappable {
+  
   open var id: String?
+      
     /// Creation timestamp
   open var createdAt: Int?
+      
     /// Unique identifier
   open var version_: Int?
+      
   open var versionName: String?
+      
   open var approved: Bool?
+      
   open var hash_: String?
+      
   open var deviceInstallCount: Int?
+      
   open var hashOriginal: String?
+      
   open var approvalStatus: CLVModels.Base.ApprovalStatus?
+      
     /// VirusTotal scan status
   open var scanStatus: CLVModels.Apps.ScanStatus?
+      
     /// VirusTotal scan_id field, which is the sha256 hash joined with the timestamp by a hyphen
   open var scanId: String?
+      
     /// The minSdkVersion attribute parsed from the AndroidManifest.xml
   open var minSdkVersion: Int?
+      
     /// The message digest algorithm used to digest the entries of the APK
   open var digestAlg: String?
+      
     /// Url to download the APK
   open var apkUrl: String?
+      
     /// List of android permissions
   open var permissions: [String]?
+      
     /// Reference to the app this Android version belongs to
   open var app: CLVModels.Base.Reference?
+      
     /// Reference to the release note for this Android Version
   open var releaseNote: CLVModels.Base.Reference?
+      
     /// The merchant groups that the Android version belongs to
   open var merchantGroups: [CLVModels.Base.Reference]?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(createdAt, forKey: "createdAt")
-  aCoder.encode(version_, forKey: "version_")
-  aCoder.encode(versionName, forKey: "versionName")
-  aCoder.encode(approved, forKey: "approved")
-  aCoder.encode(hash_, forKey: "hash_")
-  aCoder.encode(deviceInstallCount, forKey: "deviceInstallCount")
-  aCoder.encode(hashOriginal, forKey: "hashOriginal")
-  aCoder.encode(approvalStatus?.rawValue, forKey: "approvalStatus")
-  aCoder.encode(scanStatus?.rawValue, forKey: "scanStatus")
-  aCoder.encode(scanId, forKey: "scanId")
-  aCoder.encode(minSdkVersion, forKey: "minSdkVersion")
-  aCoder.encode(digestAlg, forKey: "digestAlg")
-  aCoder.encode(apkUrl, forKey: "apkUrl")
-  aCoder.encode(permissions, forKey: "permissions")
-  aCoder.encode(app, forKey: "app")
-  aCoder.encode(releaseNote, forKey: "releaseNote")
-  aCoder.encode(merchantGroups, forKey: "merchantGroups")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(createdAt, forKey: "createdAt")
+      aCoder.encode(version_, forKey: "version_")
+      aCoder.encode(versionName, forKey: "versionName")
+      aCoder.encode(approved, forKey: "approved")
+      aCoder.encode(hash_, forKey: "hash_")
+      aCoder.encode(deviceInstallCount, forKey: "deviceInstallCount")
+      aCoder.encode(hashOriginal, forKey: "hashOriginal")
+      aCoder.encode(approvalStatus?.rawValue, forKey: "approvalStatus")
+      aCoder.encode(scanStatus?.rawValue, forKey: "scanStatus")
+      aCoder.encode(scanId, forKey: "scanId")
+      aCoder.encode(minSdkVersion, forKey: "minSdkVersion")
+      aCoder.encode(digestAlg, forKey: "digestAlg")
+      aCoder.encode(apkUrl, forKey: "apkUrl")
+      aCoder.encode(permissions, forKey: "permissions")
+      aCoder.encode(app, forKey: "app")
+      aCoder.encode(releaseNote, forKey: "releaseNote")
+      aCoder.encode(merchantGroups, forKey: "merchantGroups")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        createdAt = aDecoder.decodeObject(forKey:"createdAt") as? Int
-        version_ = aDecoder.decodeObject(forKey:"version_") as? Int
-        versionName = aDecoder.decodeObject(forKey:"versionName") as? String
-        approved = aDecoder.decodeObject(forKey:"approved") as? Bool
-        hash_ = aDecoder.decodeObject(forKey:"hash_") as? String
-        deviceInstallCount = aDecoder.decodeObject(forKey:"deviceInstallCount") as? Int
-        hashOriginal = aDecoder.decodeObject(forKey:"hashOriginal") as? String
-        approvalStatus = (aDecoder.decodeObject(forKey:"approvalStatus") as? String) != nil ?
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              createdAt = aDecoder.decodeObject(forKey:"createdAt") as? Int
+              version_ = aDecoder.decodeObject(forKey:"version_") as? Int
+              versionName = aDecoder.decodeObject(forKey:"versionName") as? String
+              approved = aDecoder.decodeObject(forKey:"approved") as? Bool
+              hash_ = aDecoder.decodeObject(forKey:"hash_") as? String
+              deviceInstallCount = aDecoder.decodeObject(forKey:"deviceInstallCount") as? Int
+              hashOriginal = aDecoder.decodeObject(forKey:"hashOriginal") as? String
+              approvalStatus = (aDecoder.decodeObject(forKey:"approvalStatus") as? String) != nil ?
       CLVModels.Base.ApprovalStatus(rawValue: (aDecoder.decodeObject(forKey:"approvalStatus") as! String)) : nil
-        scanStatus = (aDecoder.decodeObject(forKey:"scanStatus") as? String) != nil ?
+              scanStatus = (aDecoder.decodeObject(forKey:"scanStatus") as? String) != nil ?
       CLVModels.Apps.ScanStatus(rawValue: (aDecoder.decodeObject(forKey:"scanStatus") as! String)) : nil
-        scanId = aDecoder.decodeObject(forKey:"scanId") as? String
-        minSdkVersion = aDecoder.decodeObject(forKey:"minSdkVersion") as? Int
-        digestAlg = aDecoder.decodeObject(forKey:"digestAlg") as? String
-        apkUrl = aDecoder.decodeObject(forKey:"apkUrl") as? String
-        permissions = aDecoder.decodeObject(forKey:"permissions") as? [String]
-        app = aDecoder.decodeObject(forKey:"app") as? CLVModels.Base.Reference
-        releaseNote = aDecoder.decodeObject(forKey:"releaseNote") as? CLVModels.Base.Reference
-        merchantGroups = aDecoder.decodeObject(forKey:"merchantGroups") as? [CLVModels.Base.Reference]
-  }
+              scanId = aDecoder.decodeObject(forKey:"scanId") as? String
+              minSdkVersion = aDecoder.decodeObject(forKey:"minSdkVersion") as? Int
+              digestAlg = aDecoder.decodeObject(forKey:"digestAlg") as? String
+              apkUrl = aDecoder.decodeObject(forKey:"apkUrl") as? String
+              permissions = aDecoder.decodeObject(forKey:"permissions") as? [String]
+              app = aDecoder.decodeObject(forKey:"app") as? CLVModels.Base.Reference
+              releaseNote = aDecoder.decodeObject(forKey:"releaseNote") as? CLVModels.Base.Reference
+              merchantGroups = aDecoder.decodeObject(forKey:"merchantGroups") as? [CLVModels.Base.Reference]
+      }
 
 override public init() {}
 
@@ -120,290 +140,362 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        createdAt <- map["createdAt"]
-        version_ <- map["version"]
-        versionName <- map["versionName"]
-        approved <- map["approved"]
-        hash_ <- map["hash"]
-        deviceInstallCount <- map["deviceInstallCount"]
-        hashOriginal <- map["hashOriginal"]
-        approvalStatus <- map["approvalStatus"]
-        scanStatus <- map["scanStatus"]
-        scanId <- map["scanId"]
-        minSdkVersion <- map["minSdkVersion"]
-        digestAlg <- map["digestAlg"]
-        apkUrl <- map["apkUrl"]
-        permissions <- map["permissions.elements"]
-        app <- map["app"]
-        releaseNote <- map["releaseNote"]
-        merchantGroups <- map["merchantGroups.elements"]
-  }
+        id <- map["id"]
+              createdAt <- map["createdAt"]
+              version_ <- map["version"]
+              versionName <- map["versionName"]
+              approved <- map["approved"]
+              hash_ <- map["hash"]
+              deviceInstallCount <- map["deviceInstallCount"]
+              hashOriginal <- map["hashOriginal"]
+              approvalStatus <- map["approvalStatus"]
+              scanStatus <- map["scanStatus"]
+              scanId <- map["scanId"]
+              minSdkVersion <- map["minSdkVersion"]
+              digestAlg <- map["digestAlg"]
+              apkUrl <- map["apkUrl"]
+              permissions <- map["permissions.elements"]
+              app <- map["app"]
+              releaseNote <- map["releaseNote"]
+              merchantGroups <- map["merchantGroups.elements"]
+      }
 }
 
  
 open class App: NSObject, NSCoding, Mappable {
+  
   open var id: String?
+      
     /// Name of the app
   open var name: String?
+      
   open var published: Bool?
+      
   open var developer: CLVModels.Developer.Developer?
+      
     /// Only available when app is installed to a merchant
   open var merchant: CLVModels.Merchant.Merchant?
+      
     /// App Description
   open var description_: String?
+      
     /// Short tagline for the app
   open var tagline: String?
+      
     /// URL for embedded video
   open var videoUrl: String?
+      
     /// Activation url for redirecting users after app installation.
   open var activationUrl: String?
+      
     /// Site url for oauth redirect and web app launch from appmarket.
   open var siteUrl: String?
+      
     /// Default oauth response type.
   open var defaultResponseType: CLVModels.Apps.OAuthResponseType?
+      
   open var appDomain: String?
+      
   open var androidVersion: CLVModels.Apps.AndroidVersion?
+      
   open var packageName: String?
+      
   open var approved: Bool?
+      
   open var systemApp: Bool?
+      
   open var hidden: Bool?
+      
   open var filenameIcon: String?
+      
     /// URL to the icon of the app. Generated from filenameIcon.
   open var filenameIconSmall: String?
+      
     /// URL to the icon of the app. Generated from filenameIcon.
   open var filenameIconLarge: String?
+      
   open var installCount: Int?
+      
   open var sortOrder: Int?
+      
   open var permissionMerchantRead: Bool?
+      
   open var permissionMerchantWrite: Bool?
+      
   open var permissionCustomersRead: Bool?
+      
   open var permissionCustomersWrite: Bool?
+      
   open var permissionInventoryRead: Bool?
+      
   open var permissionInventoryWrite: Bool?
+      
   open var permissionOrdersRead: Bool?
+      
   open var permissionOrdersWrite: Bool?
+      
   open var permissionPaymentsRead: Bool?
+      
   open var permissionPaymentsWrite: Bool?
+      
   open var permissionEmployeesRead: Bool?
+      
   open var permissionEmployeesWrite: Bool?
+      
   open var permissionProcessCards: Bool?
+      
   open var permissionMidRead: Bool?
+      
   open var privacyPolicy: String?
+      
   open var eula: String?
+      
   open var supportPhone: String?
+      
   open var supportPhoneHours: String?
+      
   open var supportEmail: String?
+      
   open var supportUrl: String?
+      
   open var approvalStatus: CLVModels.Base.ApprovalStatus?
+      
     /// The app's android permissions
   open var androidPermissions: [CLVModels.Apps.AndroidPermission]?
+      
     /// The app's screenshots
   open var screenshots: [CLVModels.Apps.Screenshot]?
+      
     /// Available subscription options for this app
   open var availableSubscriptions: [CLVModels.Apps.AppSubscription]?
+      
     /// Subscription options for this app
   open var subscriptions: [CLVModels.Apps.AppSubscription]?
+      
     /// Available metered options for this app
   open var availableMetereds: [CLVModels.Apps.AppMetered]?
+      
     /// Metered options for this app
   open var metereds: [CLVModels.Apps.AppMetered]?
+      
     /// USB devices with which this app will communicate
   open var usbDevices: [CLVModels.Apps.AppUsbDevice]?
+      
     /// DEPRECATED: This is now derived directly from billingStartTime (if future -> in trial; if past -> not in trial).  So it is now unnecessary.  Please update client code to not use it.
   open var isMerchantInTrial: Bool?
+      
     /// The merchant's current subscription for this app
   open var currentSubscription: CLVModels.Apps.AppSubscription?
+      
     /// The app's web hook
   open var webhook: CLVModels.Apps.WebHook?
+      
     /// The app's uploaded apks
   open var androidVersions: [CLVModels.Apps.AndroidVersion]?
+      
     ///  Whether the app is installed 
   open var installed: Bool?
+      
     /// If the merchant has the app installed, this is the timestamp of when they installed the app.
   open var installedTime: Date?
+      
     /// If the app is a paid app, this tells whether it currently offers a 30 day free trial or not.  Developer can toggle at will.
   open var paidAppHasTrial: Bool?
+      
     /// Records the time that the approval status last changed
   open var approvalStatusModifiedTime: Date?
+      
     /// Text will print on printed receipts for this app
   open var smartReceiptText: String?
+      
     /// URL we will expose on printed and web receipts for this app
   open var smartReceiptUrl: String?
+      
     /// If the merchant has the app installed, this is the timestamp of when they start/started paying.  If the merchant doesn't have the app installed, this is the timestamp of when they would start paying.  In UTC.  Applies to paid apps only.
   open var billingStartTime: Date?
+      
     /// App's client secret for use with oauth
   open var appSecret: String?
+      
     /// App's associated business types
   open var businessTypes: [CLVModels.Apps.BusinessType]?
+      
     /// App's supported device types
   open var deviceTypes: [CLVModels.Apps.DeviceType]?
+      
   open var modules: [CLVModels.Merchant.Module]?
+      
   open var taxClassificationCode: String?
+      
     /// When set, this provides a friendly id that can be used to link an external application to this app.
   open var applicationId: String?
+      
     /// True if the app developer handles the billing for this app.
   open var nonCloverBilling: Bool?
+      
     /// Used to associate this developer/app combination with a specific equipment code in First Data back office systems
   open var equipmentCode: String?
+      
     /// Used to associate this developer/app combination with a specific equipment code in First Data back office systems
   open var equipmentName: String?
+      
     /// Timestamp of first time this app transitions to approvalStatus PUBLISHED
   open var firstPublishedTime: Date?
+      
     /// Timestamp of first time this app transitions to approvalStatus APPROVED
   open var firstApprovalTime: Date?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(published, forKey: "published")
-  aCoder.encode(developer, forKey: "developer")
-  aCoder.encode(merchant, forKey: "merchant")
-  aCoder.encode(description_, forKey: "description_")
-  aCoder.encode(tagline, forKey: "tagline")
-  aCoder.encode(videoUrl, forKey: "videoUrl")
-  aCoder.encode(activationUrl, forKey: "activationUrl")
-  aCoder.encode(siteUrl, forKey: "siteUrl")
-  aCoder.encode(defaultResponseType?.rawValue, forKey: "defaultResponseType")
-  aCoder.encode(appDomain, forKey: "appDomain")
-  aCoder.encode(androidVersion, forKey: "androidVersion")
-  aCoder.encode(packageName, forKey: "packageName")
-  aCoder.encode(approved, forKey: "approved")
-  aCoder.encode(systemApp, forKey: "systemApp")
-  aCoder.encode(hidden, forKey: "hidden")
-  aCoder.encode(filenameIcon, forKey: "filenameIcon")
-  aCoder.encode(filenameIconSmall, forKey: "filenameIconSmall")
-  aCoder.encode(filenameIconLarge, forKey: "filenameIconLarge")
-  aCoder.encode(installCount, forKey: "installCount")
-  aCoder.encode(sortOrder, forKey: "sortOrder")
-  aCoder.encode(permissionMerchantRead, forKey: "permissionMerchantRead")
-  aCoder.encode(permissionMerchantWrite, forKey: "permissionMerchantWrite")
-  aCoder.encode(permissionCustomersRead, forKey: "permissionCustomersRead")
-  aCoder.encode(permissionCustomersWrite, forKey: "permissionCustomersWrite")
-  aCoder.encode(permissionInventoryRead, forKey: "permissionInventoryRead")
-  aCoder.encode(permissionInventoryWrite, forKey: "permissionInventoryWrite")
-  aCoder.encode(permissionOrdersRead, forKey: "permissionOrdersRead")
-  aCoder.encode(permissionOrdersWrite, forKey: "permissionOrdersWrite")
-  aCoder.encode(permissionPaymentsRead, forKey: "permissionPaymentsRead")
-  aCoder.encode(permissionPaymentsWrite, forKey: "permissionPaymentsWrite")
-  aCoder.encode(permissionEmployeesRead, forKey: "permissionEmployeesRead")
-  aCoder.encode(permissionEmployeesWrite, forKey: "permissionEmployeesWrite")
-  aCoder.encode(permissionProcessCards, forKey: "permissionProcessCards")
-  aCoder.encode(permissionMidRead, forKey: "permissionMidRead")
-  aCoder.encode(privacyPolicy, forKey: "privacyPolicy")
-  aCoder.encode(eula, forKey: "eula")
-  aCoder.encode(supportPhone, forKey: "supportPhone")
-  aCoder.encode(supportPhoneHours, forKey: "supportPhoneHours")
-  aCoder.encode(supportEmail, forKey: "supportEmail")
-  aCoder.encode(supportUrl, forKey: "supportUrl")
-  aCoder.encode(approvalStatus?.rawValue, forKey: "approvalStatus")
-  aCoder.encode(androidPermissions, forKey: "androidPermissions")
-  aCoder.encode(screenshots, forKey: "screenshots")
-  aCoder.encode(availableSubscriptions, forKey: "availableSubscriptions")
-  aCoder.encode(subscriptions, forKey: "subscriptions")
-  aCoder.encode(availableMetereds, forKey: "availableMetereds")
-  aCoder.encode(metereds, forKey: "metereds")
-  aCoder.encode(usbDevices, forKey: "usbDevices")
-  aCoder.encode(isMerchantInTrial, forKey: "isMerchantInTrial")
-  aCoder.encode(currentSubscription, forKey: "currentSubscription")
-  aCoder.encode(webhook, forKey: "webhook")
-  aCoder.encode(androidVersions, forKey: "androidVersions")
-  aCoder.encode(installed, forKey: "installed")
-  aCoder.encode(installedTime, forKey: "installedTime")
-  aCoder.encode(paidAppHasTrial, forKey: "paidAppHasTrial")
-  aCoder.encode(approvalStatusModifiedTime, forKey: "approvalStatusModifiedTime")
-  aCoder.encode(smartReceiptText, forKey: "smartReceiptText")
-  aCoder.encode(smartReceiptUrl, forKey: "smartReceiptUrl")
-  aCoder.encode(billingStartTime, forKey: "billingStartTime")
-  aCoder.encode(appSecret, forKey: "appSecret")
-  aCoder.encode(businessTypes, forKey: "businessTypes")
-  aCoder.encode(deviceTypes, forKey: "deviceTypes")
-  aCoder.encode(modules, forKey: "modules")
-  aCoder.encode(taxClassificationCode, forKey: "taxClassificationCode")
-  aCoder.encode(applicationId, forKey: "applicationId")
-  aCoder.encode(nonCloverBilling, forKey: "nonCloverBilling")
-  aCoder.encode(equipmentCode, forKey: "equipmentCode")
-  aCoder.encode(equipmentName, forKey: "equipmentName")
-  aCoder.encode(firstPublishedTime, forKey: "firstPublishedTime")
-  aCoder.encode(firstApprovalTime, forKey: "firstApprovalTime")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(name, forKey: "name")
+      aCoder.encode(published, forKey: "published")
+      aCoder.encode(developer, forKey: "developer")
+      aCoder.encode(merchant, forKey: "merchant")
+      aCoder.encode(description_, forKey: "description_")
+      aCoder.encode(tagline, forKey: "tagline")
+      aCoder.encode(videoUrl, forKey: "videoUrl")
+      aCoder.encode(activationUrl, forKey: "activationUrl")
+      aCoder.encode(siteUrl, forKey: "siteUrl")
+      aCoder.encode(defaultResponseType?.rawValue, forKey: "defaultResponseType")
+      aCoder.encode(appDomain, forKey: "appDomain")
+      aCoder.encode(androidVersion, forKey: "androidVersion")
+      aCoder.encode(packageName, forKey: "packageName")
+      aCoder.encode(approved, forKey: "approved")
+      aCoder.encode(systemApp, forKey: "systemApp")
+      aCoder.encode(hidden, forKey: "hidden")
+      aCoder.encode(filenameIcon, forKey: "filenameIcon")
+      aCoder.encode(filenameIconSmall, forKey: "filenameIconSmall")
+      aCoder.encode(filenameIconLarge, forKey: "filenameIconLarge")
+      aCoder.encode(installCount, forKey: "installCount")
+      aCoder.encode(sortOrder, forKey: "sortOrder")
+      aCoder.encode(permissionMerchantRead, forKey: "permissionMerchantRead")
+      aCoder.encode(permissionMerchantWrite, forKey: "permissionMerchantWrite")
+      aCoder.encode(permissionCustomersRead, forKey: "permissionCustomersRead")
+      aCoder.encode(permissionCustomersWrite, forKey: "permissionCustomersWrite")
+      aCoder.encode(permissionInventoryRead, forKey: "permissionInventoryRead")
+      aCoder.encode(permissionInventoryWrite, forKey: "permissionInventoryWrite")
+      aCoder.encode(permissionOrdersRead, forKey: "permissionOrdersRead")
+      aCoder.encode(permissionOrdersWrite, forKey: "permissionOrdersWrite")
+      aCoder.encode(permissionPaymentsRead, forKey: "permissionPaymentsRead")
+      aCoder.encode(permissionPaymentsWrite, forKey: "permissionPaymentsWrite")
+      aCoder.encode(permissionEmployeesRead, forKey: "permissionEmployeesRead")
+      aCoder.encode(permissionEmployeesWrite, forKey: "permissionEmployeesWrite")
+      aCoder.encode(permissionProcessCards, forKey: "permissionProcessCards")
+      aCoder.encode(permissionMidRead, forKey: "permissionMidRead")
+      aCoder.encode(privacyPolicy, forKey: "privacyPolicy")
+      aCoder.encode(eula, forKey: "eula")
+      aCoder.encode(supportPhone, forKey: "supportPhone")
+      aCoder.encode(supportPhoneHours, forKey: "supportPhoneHours")
+      aCoder.encode(supportEmail, forKey: "supportEmail")
+      aCoder.encode(supportUrl, forKey: "supportUrl")
+      aCoder.encode(approvalStatus?.rawValue, forKey: "approvalStatus")
+      aCoder.encode(androidPermissions, forKey: "androidPermissions")
+      aCoder.encode(screenshots, forKey: "screenshots")
+      aCoder.encode(availableSubscriptions, forKey: "availableSubscriptions")
+      aCoder.encode(subscriptions, forKey: "subscriptions")
+      aCoder.encode(availableMetereds, forKey: "availableMetereds")
+      aCoder.encode(metereds, forKey: "metereds")
+      aCoder.encode(usbDevices, forKey: "usbDevices")
+      aCoder.encode(isMerchantInTrial, forKey: "isMerchantInTrial")
+      aCoder.encode(currentSubscription, forKey: "currentSubscription")
+      aCoder.encode(webhook, forKey: "webhook")
+      aCoder.encode(androidVersions, forKey: "androidVersions")
+      aCoder.encode(installed, forKey: "installed")
+      aCoder.encode(installedTime, forKey: "installedTime")
+      aCoder.encode(paidAppHasTrial, forKey: "paidAppHasTrial")
+      aCoder.encode(approvalStatusModifiedTime, forKey: "approvalStatusModifiedTime")
+      aCoder.encode(smartReceiptText, forKey: "smartReceiptText")
+      aCoder.encode(smartReceiptUrl, forKey: "smartReceiptUrl")
+      aCoder.encode(billingStartTime, forKey: "billingStartTime")
+      aCoder.encode(appSecret, forKey: "appSecret")
+      aCoder.encode(businessTypes, forKey: "businessTypes")
+      aCoder.encode(deviceTypes, forKey: "deviceTypes")
+      aCoder.encode(modules, forKey: "modules")
+      aCoder.encode(taxClassificationCode, forKey: "taxClassificationCode")
+      aCoder.encode(applicationId, forKey: "applicationId")
+      aCoder.encode(nonCloverBilling, forKey: "nonCloverBilling")
+      aCoder.encode(equipmentCode, forKey: "equipmentCode")
+      aCoder.encode(equipmentName, forKey: "equipmentName")
+      aCoder.encode(firstPublishedTime, forKey: "firstPublishedTime")
+      aCoder.encode(firstApprovalTime, forKey: "firstApprovalTime")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        name = aDecoder.decodeObject(forKey:"name") as? String
-        published = aDecoder.decodeObject(forKey:"published") as? Bool
-        developer = aDecoder.decodeObject(forKey:"developer") as? CLVModels.Developer.Developer
-        merchant = aDecoder.decodeObject(forKey:"merchant") as? CLVModels.Merchant.Merchant
-        description_ = aDecoder.decodeObject(forKey:"description_") as? String
-        tagline = aDecoder.decodeObject(forKey:"tagline") as? String
-        videoUrl = aDecoder.decodeObject(forKey:"videoUrl") as? String
-        activationUrl = aDecoder.decodeObject(forKey:"activationUrl") as? String
-        siteUrl = aDecoder.decodeObject(forKey:"siteUrl") as? String
-        defaultResponseType = (aDecoder.decodeObject(forKey:"defaultResponseType") as? String) != nil ?
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              name = aDecoder.decodeObject(forKey:"name") as? String
+              published = aDecoder.decodeObject(forKey:"published") as? Bool
+              developer = aDecoder.decodeObject(forKey:"developer") as? CLVModels.Developer.Developer
+              merchant = aDecoder.decodeObject(forKey:"merchant") as? CLVModels.Merchant.Merchant
+              description_ = aDecoder.decodeObject(forKey:"description_") as? String
+              tagline = aDecoder.decodeObject(forKey:"tagline") as? String
+              videoUrl = aDecoder.decodeObject(forKey:"videoUrl") as? String
+              activationUrl = aDecoder.decodeObject(forKey:"activationUrl") as? String
+              siteUrl = aDecoder.decodeObject(forKey:"siteUrl") as? String
+              defaultResponseType = (aDecoder.decodeObject(forKey:"defaultResponseType") as? String) != nil ?
       CLVModels.Apps.OAuthResponseType(rawValue: (aDecoder.decodeObject(forKey:"defaultResponseType") as! String)) : nil
-        appDomain = aDecoder.decodeObject(forKey:"appDomain") as? String
-        androidVersion = aDecoder.decodeObject(forKey:"androidVersion") as? CLVModels.Apps.AndroidVersion
-        packageName = aDecoder.decodeObject(forKey:"packageName") as? String
-        approved = aDecoder.decodeObject(forKey:"approved") as? Bool
-        systemApp = aDecoder.decodeObject(forKey:"systemApp") as? Bool
-        hidden = aDecoder.decodeObject(forKey:"hidden") as? Bool
-        filenameIcon = aDecoder.decodeObject(forKey:"filenameIcon") as? String
-        filenameIconSmall = aDecoder.decodeObject(forKey:"filenameIconSmall") as? String
-        filenameIconLarge = aDecoder.decodeObject(forKey:"filenameIconLarge") as? String
-        installCount = aDecoder.decodeObject(forKey:"installCount") as? Int
-        sortOrder = aDecoder.decodeObject(forKey:"sortOrder") as? Int
-        permissionMerchantRead = aDecoder.decodeObject(forKey:"permissionMerchantRead") as? Bool
-        permissionMerchantWrite = aDecoder.decodeObject(forKey:"permissionMerchantWrite") as? Bool
-        permissionCustomersRead = aDecoder.decodeObject(forKey:"permissionCustomersRead") as? Bool
-        permissionCustomersWrite = aDecoder.decodeObject(forKey:"permissionCustomersWrite") as? Bool
-        permissionInventoryRead = aDecoder.decodeObject(forKey:"permissionInventoryRead") as? Bool
-        permissionInventoryWrite = aDecoder.decodeObject(forKey:"permissionInventoryWrite") as? Bool
-        permissionOrdersRead = aDecoder.decodeObject(forKey:"permissionOrdersRead") as? Bool
-        permissionOrdersWrite = aDecoder.decodeObject(forKey:"permissionOrdersWrite") as? Bool
-        permissionPaymentsRead = aDecoder.decodeObject(forKey:"permissionPaymentsRead") as? Bool
-        permissionPaymentsWrite = aDecoder.decodeObject(forKey:"permissionPaymentsWrite") as? Bool
-        permissionEmployeesRead = aDecoder.decodeObject(forKey:"permissionEmployeesRead") as? Bool
-        permissionEmployeesWrite = aDecoder.decodeObject(forKey:"permissionEmployeesWrite") as? Bool
-        permissionProcessCards = aDecoder.decodeObject(forKey:"permissionProcessCards") as? Bool
-        permissionMidRead = aDecoder.decodeObject(forKey:"permissionMidRead") as? Bool
-        privacyPolicy = aDecoder.decodeObject(forKey:"privacyPolicy") as? String
-        eula = aDecoder.decodeObject(forKey:"eula") as? String
-        supportPhone = aDecoder.decodeObject(forKey:"supportPhone") as? String
-        supportPhoneHours = aDecoder.decodeObject(forKey:"supportPhoneHours") as? String
-        supportEmail = aDecoder.decodeObject(forKey:"supportEmail") as? String
-        supportUrl = aDecoder.decodeObject(forKey:"supportUrl") as? String
-        approvalStatus = (aDecoder.decodeObject(forKey:"approvalStatus") as? String) != nil ?
+              appDomain = aDecoder.decodeObject(forKey:"appDomain") as? String
+              androidVersion = aDecoder.decodeObject(forKey:"androidVersion") as? CLVModels.Apps.AndroidVersion
+              packageName = aDecoder.decodeObject(forKey:"packageName") as? String
+              approved = aDecoder.decodeObject(forKey:"approved") as? Bool
+              systemApp = aDecoder.decodeObject(forKey:"systemApp") as? Bool
+              hidden = aDecoder.decodeObject(forKey:"hidden") as? Bool
+              filenameIcon = aDecoder.decodeObject(forKey:"filenameIcon") as? String
+              filenameIconSmall = aDecoder.decodeObject(forKey:"filenameIconSmall") as? String
+              filenameIconLarge = aDecoder.decodeObject(forKey:"filenameIconLarge") as? String
+              installCount = aDecoder.decodeObject(forKey:"installCount") as? Int
+              sortOrder = aDecoder.decodeObject(forKey:"sortOrder") as? Int
+              permissionMerchantRead = aDecoder.decodeObject(forKey:"permissionMerchantRead") as? Bool
+              permissionMerchantWrite = aDecoder.decodeObject(forKey:"permissionMerchantWrite") as? Bool
+              permissionCustomersRead = aDecoder.decodeObject(forKey:"permissionCustomersRead") as? Bool
+              permissionCustomersWrite = aDecoder.decodeObject(forKey:"permissionCustomersWrite") as? Bool
+              permissionInventoryRead = aDecoder.decodeObject(forKey:"permissionInventoryRead") as? Bool
+              permissionInventoryWrite = aDecoder.decodeObject(forKey:"permissionInventoryWrite") as? Bool
+              permissionOrdersRead = aDecoder.decodeObject(forKey:"permissionOrdersRead") as? Bool
+              permissionOrdersWrite = aDecoder.decodeObject(forKey:"permissionOrdersWrite") as? Bool
+              permissionPaymentsRead = aDecoder.decodeObject(forKey:"permissionPaymentsRead") as? Bool
+              permissionPaymentsWrite = aDecoder.decodeObject(forKey:"permissionPaymentsWrite") as? Bool
+              permissionEmployeesRead = aDecoder.decodeObject(forKey:"permissionEmployeesRead") as? Bool
+              permissionEmployeesWrite = aDecoder.decodeObject(forKey:"permissionEmployeesWrite") as? Bool
+              permissionProcessCards = aDecoder.decodeObject(forKey:"permissionProcessCards") as? Bool
+              permissionMidRead = aDecoder.decodeObject(forKey:"permissionMidRead") as? Bool
+              privacyPolicy = aDecoder.decodeObject(forKey:"privacyPolicy") as? String
+              eula = aDecoder.decodeObject(forKey:"eula") as? String
+              supportPhone = aDecoder.decodeObject(forKey:"supportPhone") as? String
+              supportPhoneHours = aDecoder.decodeObject(forKey:"supportPhoneHours") as? String
+              supportEmail = aDecoder.decodeObject(forKey:"supportEmail") as? String
+              supportUrl = aDecoder.decodeObject(forKey:"supportUrl") as? String
+              approvalStatus = (aDecoder.decodeObject(forKey:"approvalStatus") as? String) != nil ?
       CLVModels.Base.ApprovalStatus(rawValue: (aDecoder.decodeObject(forKey:"approvalStatus") as! String)) : nil
-        androidPermissions = aDecoder.decodeObject(forKey:"androidPermissions") as? [CLVModels.Apps.AndroidPermission]
-        screenshots = aDecoder.decodeObject(forKey:"screenshots") as? [CLVModels.Apps.Screenshot]
-        availableSubscriptions = aDecoder.decodeObject(forKey:"availableSubscriptions") as? [CLVModels.Apps.AppSubscription]
-        subscriptions = aDecoder.decodeObject(forKey:"subscriptions") as? [CLVModels.Apps.AppSubscription]
-        availableMetereds = aDecoder.decodeObject(forKey:"availableMetereds") as? [CLVModels.Apps.AppMetered]
-        metereds = aDecoder.decodeObject(forKey:"metereds") as? [CLVModels.Apps.AppMetered]
-        usbDevices = aDecoder.decodeObject(forKey:"usbDevices") as? [CLVModels.Apps.AppUsbDevice]
-        isMerchantInTrial = aDecoder.decodeObject(forKey:"isMerchantInTrial") as? Bool
-        currentSubscription = aDecoder.decodeObject(forKey:"currentSubscription") as? CLVModels.Apps.AppSubscription
-        webhook = aDecoder.decodeObject(forKey:"webhook") as? CLVModels.Apps.WebHook
-        androidVersions = aDecoder.decodeObject(forKey:"androidVersions") as? [CLVModels.Apps.AndroidVersion]
-        installed = aDecoder.decodeObject(forKey:"installed") as? Bool
-        installedTime = aDecoder.decodeObject(forKey:"installedTime") as? Date
-        paidAppHasTrial = aDecoder.decodeObject(forKey:"paidAppHasTrial") as? Bool
-        approvalStatusModifiedTime = aDecoder.decodeObject(forKey:"approvalStatusModifiedTime") as? Date
-        smartReceiptText = aDecoder.decodeObject(forKey:"smartReceiptText") as? String
-        smartReceiptUrl = aDecoder.decodeObject(forKey:"smartReceiptUrl") as? String
-        billingStartTime = aDecoder.decodeObject(forKey:"billingStartTime") as? Date
-        appSecret = aDecoder.decodeObject(forKey:"appSecret") as? String
-        businessTypes = aDecoder.decodeObject(forKey:"businessTypes") as? [CLVModels.Apps.BusinessType]
-        deviceTypes = aDecoder.decodeObject(forKey:"deviceTypes") as? [CLVModels.Apps.DeviceType]
-        modules = aDecoder.decodeObject(forKey:"modules") as? [CLVModels.Merchant.Module]
-        taxClassificationCode = aDecoder.decodeObject(forKey:"taxClassificationCode") as? String
-        applicationId = aDecoder.decodeObject(forKey:"applicationId") as? String
-        nonCloverBilling = aDecoder.decodeObject(forKey:"nonCloverBilling") as? Bool
-        equipmentCode = aDecoder.decodeObject(forKey:"equipmentCode") as? String
-        equipmentName = aDecoder.decodeObject(forKey:"equipmentName") as? String
-        firstPublishedTime = aDecoder.decodeObject(forKey:"firstPublishedTime") as? Date
-        firstApprovalTime = aDecoder.decodeObject(forKey:"firstApprovalTime") as? Date
-  }
+              androidPermissions = aDecoder.decodeObject(forKey:"androidPermissions") as? [CLVModels.Apps.AndroidPermission]
+              screenshots = aDecoder.decodeObject(forKey:"screenshots") as? [CLVModels.Apps.Screenshot]
+              availableSubscriptions = aDecoder.decodeObject(forKey:"availableSubscriptions") as? [CLVModels.Apps.AppSubscription]
+              subscriptions = aDecoder.decodeObject(forKey:"subscriptions") as? [CLVModels.Apps.AppSubscription]
+              availableMetereds = aDecoder.decodeObject(forKey:"availableMetereds") as? [CLVModels.Apps.AppMetered]
+              metereds = aDecoder.decodeObject(forKey:"metereds") as? [CLVModels.Apps.AppMetered]
+              usbDevices = aDecoder.decodeObject(forKey:"usbDevices") as? [CLVModels.Apps.AppUsbDevice]
+              isMerchantInTrial = aDecoder.decodeObject(forKey:"isMerchantInTrial") as? Bool
+              currentSubscription = aDecoder.decodeObject(forKey:"currentSubscription") as? CLVModels.Apps.AppSubscription
+              webhook = aDecoder.decodeObject(forKey:"webhook") as? CLVModels.Apps.WebHook
+              androidVersions = aDecoder.decodeObject(forKey:"androidVersions") as? [CLVModels.Apps.AndroidVersion]
+              installed = aDecoder.decodeObject(forKey:"installed") as? Bool
+              installedTime = aDecoder.decodeObject(forKey:"installedTime") as? Date
+              paidAppHasTrial = aDecoder.decodeObject(forKey:"paidAppHasTrial") as? Bool
+              approvalStatusModifiedTime = aDecoder.decodeObject(forKey:"approvalStatusModifiedTime") as? Date
+              smartReceiptText = aDecoder.decodeObject(forKey:"smartReceiptText") as? String
+              smartReceiptUrl = aDecoder.decodeObject(forKey:"smartReceiptUrl") as? String
+              billingStartTime = aDecoder.decodeObject(forKey:"billingStartTime") as? Date
+              appSecret = aDecoder.decodeObject(forKey:"appSecret") as? String
+              businessTypes = aDecoder.decodeObject(forKey:"businessTypes") as? [CLVModels.Apps.BusinessType]
+              deviceTypes = aDecoder.decodeObject(forKey:"deviceTypes") as? [CLVModels.Apps.DeviceType]
+              modules = aDecoder.decodeObject(forKey:"modules") as? [CLVModels.Merchant.Module]
+              taxClassificationCode = aDecoder.decodeObject(forKey:"taxClassificationCode") as? String
+              applicationId = aDecoder.decodeObject(forKey:"applicationId") as? String
+              nonCloverBilling = aDecoder.decodeObject(forKey:"nonCloverBilling") as? Bool
+              equipmentCode = aDecoder.decodeObject(forKey:"equipmentCode") as? String
+              equipmentName = aDecoder.decodeObject(forKey:"equipmentName") as? String
+              firstPublishedTime = aDecoder.decodeObject(forKey:"firstPublishedTime") as? Date
+              firstApprovalTime = aDecoder.decodeObject(forKey:"firstApprovalTime") as? Date
+      }
 
 override public init() {}
 
@@ -412,110 +504,115 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        name <- map["name"]
-        published <- map["published"]
-        developer <- map["developer"]
-        merchant <- map["merchant"]
-        description_ <- map["description"]
-        tagline <- map["tagline"]
-        videoUrl <- map["videoUrl"]
-        activationUrl <- map["activationUrl"]
-        siteUrl <- map["siteUrl"]
-        defaultResponseType <- map["defaultResponseType"]
-        appDomain <- map["appDomain"]
-        androidVersion <- map["androidVersion"]
-        packageName <- map["packageName"]
-        approved <- map["approved"]
-        systemApp <- map["systemApp"]
-        hidden <- map["hidden"]
-        filenameIcon <- map["filenameIcon"]
-        filenameIconSmall <- map["filenameIconSmall"]
-        filenameIconLarge <- map["filenameIconLarge"]
-        installCount <- map["installCount"]
-        sortOrder <- map["sortOrder"]
-        permissionMerchantRead <- map["permissionMerchantRead"]
-        permissionMerchantWrite <- map["permissionMerchantWrite"]
-        permissionCustomersRead <- map["permissionCustomersRead"]
-        permissionCustomersWrite <- map["permissionCustomersWrite"]
-        permissionInventoryRead <- map["permissionInventoryRead"]
-        permissionInventoryWrite <- map["permissionInventoryWrite"]
-        permissionOrdersRead <- map["permissionOrdersRead"]
-        permissionOrdersWrite <- map["permissionOrdersWrite"]
-        permissionPaymentsRead <- map["permissionPaymentsRead"]
-        permissionPaymentsWrite <- map["permissionPaymentsWrite"]
-        permissionEmployeesRead <- map["permissionEmployeesRead"]
-        permissionEmployeesWrite <- map["permissionEmployeesWrite"]
-        permissionProcessCards <- map["permissionProcessCards"]
-        permissionMidRead <- map["permissionMidRead"]
-        privacyPolicy <- map["privacyPolicy"]
-        eula <- map["eula"]
-        supportPhone <- map["supportPhone"]
-        supportPhoneHours <- map["supportPhoneHours"]
-        supportEmail <- map["supportEmail"]
-        supportUrl <- map["supportUrl"]
-        approvalStatus <- map["approvalStatus"]
-        androidPermissions <- map["androidPermissions.elements"]
-        screenshots <- map["screenshots.elements"]
-        availableSubscriptions <- map["availableSubscriptions.elements"]
-        subscriptions <- map["subscriptions.elements"]
-        availableMetereds <- map["availableMetereds.elements"]
-        metereds <- map["metereds.elements"]
-        usbDevices <- map["usbDevices.elements"]
-        isMerchantInTrial <- map["isMerchantInTrial"]
-        currentSubscription <- map["currentSubscription"]
-        webhook <- map["webhook"]
-        androidVersions <- map["androidVersions.elements"]
-        installed <- map["installed"]
-        installedTime <- (map["installedTime"], CLVDateTransform())
-        paidAppHasTrial <- map["paidAppHasTrial"]
-        approvalStatusModifiedTime <- (map["approvalStatusModifiedTime"], CLVDateTransform())
-        smartReceiptText <- map["smartReceiptText"]
-        smartReceiptUrl <- map["smartReceiptUrl"]
-        billingStartTime <- (map["billingStartTime"], CLVDateTransform())
-        appSecret <- map["appSecret"]
-        businessTypes <- map["businessTypes.elements"]
-        deviceTypes <- map["deviceTypes.elements"]
-        modules <- map["modules.elements"]
-        taxClassificationCode <- map["taxClassificationCode"]
-        applicationId <- map["applicationId"]
-        nonCloverBilling <- map["nonCloverBilling"]
-        equipmentCode <- map["equipmentCode"]
-        equipmentName <- map["equipmentName"]
-        firstPublishedTime <- (map["firstPublishedTime"], CLVDateTransform())
-        firstApprovalTime <- (map["firstApprovalTime"], CLVDateTransform())
-  }
+        id <- map["id"]
+              name <- map["name"]
+              published <- map["published"]
+              developer <- map["developer"]
+              merchant <- map["merchant"]
+              description_ <- map["description"]
+              tagline <- map["tagline"]
+              videoUrl <- map["videoUrl"]
+              activationUrl <- map["activationUrl"]
+              siteUrl <- map["siteUrl"]
+              defaultResponseType <- map["defaultResponseType"]
+              appDomain <- map["appDomain"]
+              androidVersion <- map["androidVersion"]
+              packageName <- map["packageName"]
+              approved <- map["approved"]
+              systemApp <- map["systemApp"]
+              hidden <- map["hidden"]
+              filenameIcon <- map["filenameIcon"]
+              filenameIconSmall <- map["filenameIconSmall"]
+              filenameIconLarge <- map["filenameIconLarge"]
+              installCount <- map["installCount"]
+              sortOrder <- map["sortOrder"]
+              permissionMerchantRead <- map["permissionMerchantRead"]
+              permissionMerchantWrite <- map["permissionMerchantWrite"]
+              permissionCustomersRead <- map["permissionCustomersRead"]
+              permissionCustomersWrite <- map["permissionCustomersWrite"]
+              permissionInventoryRead <- map["permissionInventoryRead"]
+              permissionInventoryWrite <- map["permissionInventoryWrite"]
+              permissionOrdersRead <- map["permissionOrdersRead"]
+              permissionOrdersWrite <- map["permissionOrdersWrite"]
+              permissionPaymentsRead <- map["permissionPaymentsRead"]
+              permissionPaymentsWrite <- map["permissionPaymentsWrite"]
+              permissionEmployeesRead <- map["permissionEmployeesRead"]
+              permissionEmployeesWrite <- map["permissionEmployeesWrite"]
+              permissionProcessCards <- map["permissionProcessCards"]
+              permissionMidRead <- map["permissionMidRead"]
+              privacyPolicy <- map["privacyPolicy"]
+              eula <- map["eula"]
+              supportPhone <- map["supportPhone"]
+              supportPhoneHours <- map["supportPhoneHours"]
+              supportEmail <- map["supportEmail"]
+              supportUrl <- map["supportUrl"]
+              approvalStatus <- map["approvalStatus"]
+              androidPermissions <- map["androidPermissions.elements"]
+              screenshots <- map["screenshots.elements"]
+              availableSubscriptions <- map["availableSubscriptions.elements"]
+              subscriptions <- map["subscriptions.elements"]
+              availableMetereds <- map["availableMetereds.elements"]
+              metereds <- map["metereds.elements"]
+              usbDevices <- map["usbDevices.elements"]
+              isMerchantInTrial <- map["isMerchantInTrial"]
+              currentSubscription <- map["currentSubscription"]
+              webhook <- map["webhook"]
+              androidVersions <- map["androidVersions.elements"]
+              installed <- map["installed"]
+              installedTime <- (map["installedTime"], CLVDateTransform())
+              paidAppHasTrial <- map["paidAppHasTrial"]
+              approvalStatusModifiedTime <- (map["approvalStatusModifiedTime"], CLVDateTransform())
+              smartReceiptText <- map["smartReceiptText"]
+              smartReceiptUrl <- map["smartReceiptUrl"]
+              billingStartTime <- (map["billingStartTime"], CLVDateTransform())
+              appSecret <- map["appSecret"]
+              businessTypes <- map["businessTypes.elements"]
+              deviceTypes <- map["deviceTypes.elements"]
+              modules <- map["modules.elements"]
+              taxClassificationCode <- map["taxClassificationCode"]
+              applicationId <- map["applicationId"]
+              nonCloverBilling <- map["nonCloverBilling"]
+              equipmentCode <- map["equipmentCode"]
+              equipmentName <- map["equipmentName"]
+              firstPublishedTime <- (map["firstPublishedTime"], CLVDateTransform())
+              firstApprovalTime <- (map["firstApprovalTime"], CLVDateTransform())
+      }
 }
 
  
 open class AppBillingInfo: NSObject, NSCoding, Mappable {
+  
     /// Current subscription level of the merchant for this app
   open var appSubscription: CLVModels.Apps.AppSubscription?
+      
     /// Returns true if the merchant is in trial for this app.  Only valid for paid apps that offer trials.  Trials apply to app metereds and app subscriptions
   open var isInTrial: Bool?
+      
     /// When the merchant's trial ends.  Only valid for paid apps that offer trials
   open var billingStartTime: Date?
+      
     /// Returns active if a merchant has a credit card on file, and if it's currently authorizing properly.  Returns lapsed if their card is absent or most recently declined
   open var status: CLVModels.Apps.MerchantBillingStatus?
+      
     /// If the merchant's account is lapsed (i.e. merchant is behind on paying), the number of days since it lapsed
   open var daysLapsed: Int?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(appSubscription, forKey: "appSubscription")
-  aCoder.encode(isInTrial, forKey: "isInTrial")
-  aCoder.encode(billingStartTime, forKey: "billingStartTime")
-  aCoder.encode(status?.rawValue, forKey: "status")
-  aCoder.encode(daysLapsed, forKey: "daysLapsed")
-}
+    aCoder.encode(appSubscription, forKey: "appSubscription")
+      aCoder.encode(isInTrial, forKey: "isInTrial")
+      aCoder.encode(billingStartTime, forKey: "billingStartTime")
+      aCoder.encode(status?.rawValue, forKey: "status")
+      aCoder.encode(daysLapsed, forKey: "daysLapsed")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      appSubscription = aDecoder.decodeObject(forKey:"appSubscription") as? CLVModels.Apps.AppSubscription
-        isInTrial = aDecoder.decodeObject(forKey:"isInTrial") as? Bool
-        billingStartTime = aDecoder.decodeObject(forKey:"billingStartTime") as? Date
-        status = (aDecoder.decodeObject(forKey:"status") as? String) != nil ?
+        appSubscription = aDecoder.decodeObject(forKey:"appSubscription") as? CLVModels.Apps.AppSubscription
+              isInTrial = aDecoder.decodeObject(forKey:"isInTrial") as? Bool
+              billingStartTime = aDecoder.decodeObject(forKey:"billingStartTime") as? Date
+              status = (aDecoder.decodeObject(forKey:"status") as? String) != nil ?
       CLVModels.Apps.MerchantBillingStatus(rawValue: (aDecoder.decodeObject(forKey:"status") as! String)) : nil
-        daysLapsed = aDecoder.decodeObject(forKey:"daysLapsed") as? Int
-  }
+              daysLapsed = aDecoder.decodeObject(forKey:"daysLapsed") as? Int
+      }
 
 override public init() {}
 
@@ -524,45 +621,51 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      appSubscription <- map["appSubscription"]
-        isInTrial <- map["isInTrial"]
-        billingStartTime <- (map["billingStartTime"], CLVDateTransform())
-        status <- map["status"]
-        daysLapsed <- map["daysLapsed"]
-  }
+        appSubscription <- map["appSubscription"]
+              isInTrial <- map["isInTrial"]
+              billingStartTime <- (map["billingStartTime"], CLVDateTransform())
+              status <- map["status"]
+              daysLapsed <- map["daysLapsed"]
+      }
 }
 
  
 open class AppBundle: NSObject, NSCoding, Mappable {
+  
     /// Unique identifier
   open var id: String?
+      
     /// The name of the bundle
   open var name: String?
+      
     /// DEPRECATED: Instead use per country pricing in bundleCountries
   open var price: Int?
+      
     /// DEPRECATED: Instead use per country pricing in bundleCountries
   open var pricePerDevice: Int?
+      
   open var includedApps: [CLVModels.Base.Reference]?
+      
     /// Bundle country options for this app bundle
   open var bundleCountries: [CLVModels.Apps.AppBundleCountry]?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(price, forKey: "price")
-  aCoder.encode(pricePerDevice, forKey: "pricePerDevice")
-  aCoder.encode(includedApps, forKey: "includedApps")
-  aCoder.encode(bundleCountries, forKey: "bundleCountries")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(name, forKey: "name")
+      aCoder.encode(price, forKey: "price")
+      aCoder.encode(pricePerDevice, forKey: "pricePerDevice")
+      aCoder.encode(includedApps, forKey: "includedApps")
+      aCoder.encode(bundleCountries, forKey: "bundleCountries")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        name = aDecoder.decodeObject(forKey:"name") as? String
-        price = aDecoder.decodeObject(forKey:"price") as? Int
-        pricePerDevice = aDecoder.decodeObject(forKey:"pricePerDevice") as? Int
-        includedApps = aDecoder.decodeObject(forKey:"includedApps") as? [CLVModels.Base.Reference]
-        bundleCountries = aDecoder.decodeObject(forKey:"bundleCountries") as? [CLVModels.Apps.AppBundleCountry]
-  }
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              name = aDecoder.decodeObject(forKey:"name") as? String
+              price = aDecoder.decodeObject(forKey:"price") as? Int
+              pricePerDevice = aDecoder.decodeObject(forKey:"pricePerDevice") as? Int
+              includedApps = aDecoder.decodeObject(forKey:"includedApps") as? [CLVModels.Base.Reference]
+              bundleCountries = aDecoder.decodeObject(forKey:"bundleCountries") as? [CLVModels.Apps.AppBundleCountry]
+      }
 
 override public init() {}
 
@@ -571,37 +674,41 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        name <- map["name"]
-        price <- map["price"]
-        pricePerDevice <- map["pricePerDevice"]
-        includedApps <- map["includedApps.elements"]
-        bundleCountries <- map["bundleCountries.elements"]
-  }
+        id <- map["id"]
+              name <- map["name"]
+              price <- map["price"]
+              pricePerDevice <- map["pricePerDevice"]
+              includedApps <- map["includedApps.elements"]
+              bundleCountries <- map["bundleCountries.elements"]
+      }
 }
 
  
 open class AppBundleCountry: NSObject, NSCoding, Mappable {
+  
     /// Unique identifier
   open var id: String?
+      
   open var price: Int?
+      
   open var pricePerDevice: Int?
+      
     /// The country of the app bundle country
   open var country: String?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(price, forKey: "price")
-  aCoder.encode(pricePerDevice, forKey: "pricePerDevice")
-  aCoder.encode(country, forKey: "country")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(price, forKey: "price")
+      aCoder.encode(pricePerDevice, forKey: "pricePerDevice")
+      aCoder.encode(country, forKey: "country")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        price = aDecoder.decodeObject(forKey:"price") as? Int
-        pricePerDevice = aDecoder.decodeObject(forKey:"pricePerDevice") as? Int
-        country = aDecoder.decodeObject(forKey:"country") as? String
-  }
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              price = aDecoder.decodeObject(forKey:"price") as? Int
+              pricePerDevice = aDecoder.decodeObject(forKey:"pricePerDevice") as? Int
+              country = aDecoder.decodeObject(forKey:"country") as? String
+      }
 
 override public init() {}
 
@@ -610,49 +717,56 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        price <- map["price"]
-        pricePerDevice <- map["pricePerDevice"]
-        country <- map["country"]
-  }
+        id <- map["id"]
+              price <- map["price"]
+              pricePerDevice <- map["pricePerDevice"]
+              country <- map["country"]
+      }
 }
 
  
 open class AppMetered: NSObject, NSCoding, Mappable {
+  
     /// Unique identifier
   open var id: String?
+      
     /// DEPRECATED: App metered amount. Instead use per country pricing in meteredCountries
   open var amount: Int?
+      
     /// DEPRECATED: App metered action. Instead use per country pricing in meteredCountries
   open var action: String?
+      
     /// DEPRECATED: App metered active status. Instead use per country pricing in meteredCountries
   open var active: Bool?
+      
     /// Metered country options for this app metered
   open var meteredCountries: [CLVModels.Apps.AppMeteredCountry]?
+      
     /// Reference to the app this metered belongs to
   open var app: CLVModels.Base.Reference?
+      
     /// A label used to identify this metered action
   open var label: String?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(amount, forKey: "amount")
-  aCoder.encode(action, forKey: "action")
-  aCoder.encode(active, forKey: "active")
-  aCoder.encode(meteredCountries, forKey: "meteredCountries")
-  aCoder.encode(app, forKey: "app")
-  aCoder.encode(label, forKey: "label")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(amount, forKey: "amount")
+      aCoder.encode(action, forKey: "action")
+      aCoder.encode(active, forKey: "active")
+      aCoder.encode(meteredCountries, forKey: "meteredCountries")
+      aCoder.encode(app, forKey: "app")
+      aCoder.encode(label, forKey: "label")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        amount = aDecoder.decodeObject(forKey:"amount") as? Int
-        action = aDecoder.decodeObject(forKey:"action") as? String
-        active = aDecoder.decodeObject(forKey:"active") as? Bool
-        meteredCountries = aDecoder.decodeObject(forKey:"meteredCountries") as? [CLVModels.Apps.AppMeteredCountry]
-        app = aDecoder.decodeObject(forKey:"app") as? CLVModels.Base.Reference
-        label = aDecoder.decodeObject(forKey:"label") as? String
-  }
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              amount = aDecoder.decodeObject(forKey:"amount") as? Int
+              action = aDecoder.decodeObject(forKey:"action") as? String
+              active = aDecoder.decodeObject(forKey:"active") as? Bool
+              meteredCountries = aDecoder.decodeObject(forKey:"meteredCountries") as? [CLVModels.Apps.AppMeteredCountry]
+              app = aDecoder.decodeObject(forKey:"app") as? CLVModels.Base.Reference
+              label = aDecoder.decodeObject(forKey:"label") as? String
+      }
 
 override public init() {}
 
@@ -661,48 +775,54 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        amount <- map["amount"]
-        action <- map["action"]
-        active <- map["active"]
-        meteredCountries <- map["meteredCountries.elements"]
-        app <- map["app"]
-        label <- map["label"]
-  }
+        id <- map["id"]
+              amount <- map["amount"]
+              action <- map["action"]
+              active <- map["active"]
+              meteredCountries <- map["meteredCountries.elements"]
+              app <- map["app"]
+              label <- map["label"]
+      }
 }
 
  
 open class AppMeteredCountry: NSObject, NSCoding, Mappable {
+  
     /// Unique identifier
   open var id: String?
+      
     /// App metered action
   open var action: String?
+      
     /// The cost of the metered country
   open var amount: Int?
+      
     /// The country of the metered country
   open var country: String?
+      
     /// App metered country active status
   open var active: Bool?
+      
     /// Reference to metered this metered country belongs to
   open var appMetered: CLVModels.Base.Reference?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(action, forKey: "action")
-  aCoder.encode(amount, forKey: "amount")
-  aCoder.encode(country, forKey: "country")
-  aCoder.encode(active, forKey: "active")
-  aCoder.encode(appMetered, forKey: "appMetered")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(action, forKey: "action")
+      aCoder.encode(amount, forKey: "amount")
+      aCoder.encode(country, forKey: "country")
+      aCoder.encode(active, forKey: "active")
+      aCoder.encode(appMetered, forKey: "appMetered")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        action = aDecoder.decodeObject(forKey:"action") as? String
-        amount = aDecoder.decodeObject(forKey:"amount") as? Int
-        country = aDecoder.decodeObject(forKey:"country") as? String
-        active = aDecoder.decodeObject(forKey:"active") as? Bool
-        appMetered = aDecoder.decodeObject(forKey:"appMetered") as? CLVModels.Base.Reference
-  }
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              action = aDecoder.decodeObject(forKey:"action") as? String
+              amount = aDecoder.decodeObject(forKey:"amount") as? Int
+              country = aDecoder.decodeObject(forKey:"country") as? String
+              active = aDecoder.decodeObject(forKey:"active") as? Bool
+              appMetered = aDecoder.decodeObject(forKey:"appMetered") as? CLVModels.Base.Reference
+      }
 
 override public init() {}
 
@@ -711,55 +831,63 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        action <- map["action"]
-        amount <- map["amount"]
-        country <- map["country"]
-        active <- map["active"]
-        appMetered <- map["appMetered"]
-  }
+        id <- map["id"]
+              action <- map["action"]
+              amount <- map["amount"]
+              country <- map["country"]
+              active <- map["active"]
+              appMetered <- map["appMetered"]
+      }
 }
 
  
 open class AppSubscription: NSObject, NSCoding, Mappable {
+  
     /// Unique identifier
   open var id: String?
+      
     /// DEPRECATED: App subscription name.  Per country pricing in subscriptionCountries.
   open var name: String?
+      
     /// DEPRECATED: The cost of the subscription.  Per country pricing in subscriptionCountries.
   open var amount: Int?
+      
     /// DEPRECATED: App subscription name.  Per country pricing in subscriptionCountries.
   open var description_: String?
+      
     /// DEPRECATED: App subscription active status.  Per country pricing in subscriptionCountries.
   open var active: Bool?
+      
     /// Subscription country options for this app subscription
   open var subscriptionCountries: [CLVModels.Apps.AppSubscriptionCountry]?
+      
     /// Reference to app this subscription belongs to
   open var app: CLVModels.Base.Reference?
+      
     /// App subscription label
   open var label: String?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(amount, forKey: "amount")
-  aCoder.encode(description_, forKey: "description_")
-  aCoder.encode(active, forKey: "active")
-  aCoder.encode(subscriptionCountries, forKey: "subscriptionCountries")
-  aCoder.encode(app, forKey: "app")
-  aCoder.encode(label, forKey: "label")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(name, forKey: "name")
+      aCoder.encode(amount, forKey: "amount")
+      aCoder.encode(description_, forKey: "description_")
+      aCoder.encode(active, forKey: "active")
+      aCoder.encode(subscriptionCountries, forKey: "subscriptionCountries")
+      aCoder.encode(app, forKey: "app")
+      aCoder.encode(label, forKey: "label")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        name = aDecoder.decodeObject(forKey:"name") as? String
-        amount = aDecoder.decodeObject(forKey:"amount") as? Int
-        description_ = aDecoder.decodeObject(forKey:"description_") as? String
-        active = aDecoder.decodeObject(forKey:"active") as? Bool
-        subscriptionCountries = aDecoder.decodeObject(forKey:"subscriptionCountries") as? [CLVModels.Apps.AppSubscriptionCountry]
-        app = aDecoder.decodeObject(forKey:"app") as? CLVModels.Base.Reference
-        label = aDecoder.decodeObject(forKey:"label") as? String
-  }
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              name = aDecoder.decodeObject(forKey:"name") as? String
+              amount = aDecoder.decodeObject(forKey:"amount") as? Int
+              description_ = aDecoder.decodeObject(forKey:"description_") as? String
+              active = aDecoder.decodeObject(forKey:"active") as? Bool
+              subscriptionCountries = aDecoder.decodeObject(forKey:"subscriptionCountries") as? [CLVModels.Apps.AppSubscriptionCountry]
+              app = aDecoder.decodeObject(forKey:"app") as? CLVModels.Base.Reference
+              label = aDecoder.decodeObject(forKey:"label") as? String
+      }
 
 override public init() {}
 
@@ -768,57 +896,65 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        name <- map["name"]
-        amount <- map["amount"]
-        description_ <- map["description"]
-        active <- map["active"]
-        subscriptionCountries <- map["subscriptionCountries.elements"]
-        app <- map["app"]
-        label <- map["label"]
-  }
+        id <- map["id"]
+              name <- map["name"]
+              amount <- map["amount"]
+              description_ <- map["description"]
+              active <- map["active"]
+              subscriptionCountries <- map["subscriptionCountries.elements"]
+              app <- map["app"]
+              label <- map["label"]
+      }
 }
 
  
 open class AppSubscriptionCountry: NSObject, NSCoding, Mappable {
+  
     /// Unique identifier
   open var id: String?
+      
     /// App subscription country name
   open var name: String?
+      
     /// The cost of the subscription country
   open var amount: Int?
+      
     /// The country of the subscription country
   open var country: String?
+      
     /// App subscription country name
   open var description_: String?
+      
     /// App subscription country active status
   open var active: Bool?
+      
     /// Reference to subscription this subscription country belongs to
   open var appSubscription: CLVModels.Base.Reference?
+      
     /// The number of merchants that have this app subscription country installed
   open var installCount: Int?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(amount, forKey: "amount")
-  aCoder.encode(country, forKey: "country")
-  aCoder.encode(description_, forKey: "description_")
-  aCoder.encode(active, forKey: "active")
-  aCoder.encode(appSubscription, forKey: "appSubscription")
-  aCoder.encode(installCount, forKey: "installCount")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(name, forKey: "name")
+      aCoder.encode(amount, forKey: "amount")
+      aCoder.encode(country, forKey: "country")
+      aCoder.encode(description_, forKey: "description_")
+      aCoder.encode(active, forKey: "active")
+      aCoder.encode(appSubscription, forKey: "appSubscription")
+      aCoder.encode(installCount, forKey: "installCount")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        name = aDecoder.decodeObject(forKey:"name") as? String
-        amount = aDecoder.decodeObject(forKey:"amount") as? Int
-        country = aDecoder.decodeObject(forKey:"country") as? String
-        description_ = aDecoder.decodeObject(forKey:"description_") as? String
-        active = aDecoder.decodeObject(forKey:"active") as? Bool
-        appSubscription = aDecoder.decodeObject(forKey:"appSubscription") as? CLVModels.Base.Reference
-        installCount = aDecoder.decodeObject(forKey:"installCount") as? Int
-  }
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              name = aDecoder.decodeObject(forKey:"name") as? String
+              amount = aDecoder.decodeObject(forKey:"amount") as? Int
+              country = aDecoder.decodeObject(forKey:"country") as? String
+              description_ = aDecoder.decodeObject(forKey:"description_") as? String
+              active = aDecoder.decodeObject(forKey:"active") as? Bool
+              appSubscription = aDecoder.decodeObject(forKey:"appSubscription") as? CLVModels.Base.Reference
+              installCount = aDecoder.decodeObject(forKey:"installCount") as? Int
+      }
 
 override public init() {}
 
@@ -827,58 +963,56 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        name <- map["name"]
-        amount <- map["amount"]
-        country <- map["country"]
-        description_ <- map["description"]
-        active <- map["active"]
-        appSubscription <- map["appSubscription"]
-        installCount <- map["installCount"]
-  }
+        id <- map["id"]
+              name <- map["name"]
+              amount <- map["amount"]
+              country <- map["country"]
+              description_ <- map["description"]
+              active <- map["active"]
+              appSubscription <- map["appSubscription"]
+              installCount <- map["installCount"]
+      }
 }
 
  
 /// Used to track the origin of a distributed call.
 open class AppTracking: NSObject, NSCoding, Mappable {
+  
     /// The uuid from the developer application.  This is typically populated and used only on the back end.
   open var developerAppId: String?
+      
     /// The name of the developer application.
   open var applicationName: String?
+      
     /// A string representing an application
   open var applicationID: String?
+      
     /// A string representing a semanticversion.  See http://semver.org/
   open var applicationVersion: String?
+      
     /// A string representing a SDK
   open var sourceSDK: String?
+      
     /// A string representing a semanticversion.  See http://semver.org/
   open var sourceSDKVersion: String?
-    /// The payment with which this app tracking info is associated
-  open var paymentRef: CLVModels.Base.Reference?
-    /// The credit with which this app tracking info is associated
-  open var creditRef: CLVModels.Base.Reference?
-
+        
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(developerAppId, forKey: "developerAppId")
-  aCoder.encode(applicationName, forKey: "applicationName")
-  aCoder.encode(applicationID, forKey: "applicationID")
-  aCoder.encode(applicationVersion, forKey: "applicationVersion")
-  aCoder.encode(sourceSDK, forKey: "sourceSDK")
-  aCoder.encode(sourceSDKVersion, forKey: "sourceSDKVersion")
-  aCoder.encode(paymentRef, forKey: "paymentRef")
-  aCoder.encode(creditRef, forKey: "creditRef")
-}
+    aCoder.encode(developerAppId, forKey: "developerAppId")
+      aCoder.encode(applicationName, forKey: "applicationName")
+      aCoder.encode(applicationID, forKey: "applicationID")
+      aCoder.encode(applicationVersion, forKey: "applicationVersion")
+      aCoder.encode(sourceSDK, forKey: "sourceSDK")
+      aCoder.encode(sourceSDKVersion, forKey: "sourceSDKVersion")
+      }
 
 required public init(coder aDecoder: NSCoder) {
-      developerAppId = aDecoder.decodeObject(forKey:"developerAppId") as? String
-        applicationName = aDecoder.decodeObject(forKey:"applicationName") as? String
-        applicationID = aDecoder.decodeObject(forKey:"applicationID") as? String
-        applicationVersion = aDecoder.decodeObject(forKey:"applicationVersion") as? String
-        sourceSDK = aDecoder.decodeObject(forKey:"sourceSDK") as? String
-        sourceSDKVersion = aDecoder.decodeObject(forKey:"sourceSDKVersion") as? String
-        paymentRef = aDecoder.decodeObject(forKey:"paymentRef") as? CLVModels.Base.Reference
-        creditRef = aDecoder.decodeObject(forKey:"creditRef") as? CLVModels.Base.Reference
-  }
+        developerAppId = aDecoder.decodeObject(forKey:"developerAppId") as? String
+              applicationName = aDecoder.decodeObject(forKey:"applicationName") as? String
+              applicationID = aDecoder.decodeObject(forKey:"applicationID") as? String
+              applicationVersion = aDecoder.decodeObject(forKey:"applicationVersion") as? String
+              sourceSDK = aDecoder.decodeObject(forKey:"sourceSDK") as? String
+              sourceSDKVersion = aDecoder.decodeObject(forKey:"sourceSDKVersion") as? String
+          }
 
 override public init() {}
 
@@ -887,40 +1021,43 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      developerAppId <- map["developerAppId"]
-        applicationName <- map["applicationName"]
-        applicationID <- map["applicationID"]
-        applicationVersion <- map["applicationVersion"]
-        sourceSDK <- map["sourceSDK"]
-        sourceSDKVersion <- map["sourceSDKVersion"]
-        paymentRef <- map["paymentRef"]
-        creditRef <- map["creditRef"]
-  }
+        developerAppId <- map["developerAppId"]
+              applicationName <- map["applicationName"]
+              applicationID <- map["applicationID"]
+              applicationVersion <- map["applicationVersion"]
+              sourceSDK <- map["sourceSDK"]
+              sourceSDKVersion <- map["sourceSDKVersion"]
+          }
 }
 
  
 open class AppUsbDevice: NSObject, NSCoding, Mappable {
+  
   open var packageName: String?
+      
   open var vendorId: Int?
+      
   open var productId: Int?
+      
   open var app: CLVModels.Base.Reference?
+      
   open var openAppMarketIfNotInstalled: Bool?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(packageName, forKey: "packageName")
-  aCoder.encode(vendorId, forKey: "vendorId")
-  aCoder.encode(productId, forKey: "productId")
-  aCoder.encode(app, forKey: "app")
-  aCoder.encode(openAppMarketIfNotInstalled, forKey: "openAppMarketIfNotInstalled")
-}
+    aCoder.encode(packageName, forKey: "packageName")
+      aCoder.encode(vendorId, forKey: "vendorId")
+      aCoder.encode(productId, forKey: "productId")
+      aCoder.encode(app, forKey: "app")
+      aCoder.encode(openAppMarketIfNotInstalled, forKey: "openAppMarketIfNotInstalled")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      packageName = aDecoder.decodeObject(forKey:"packageName") as? String
-        vendorId = aDecoder.decodeObject(forKey:"vendorId") as? Int
-        productId = aDecoder.decodeObject(forKey:"productId") as? Int
-        app = aDecoder.decodeObject(forKey:"app") as? CLVModels.Base.Reference
-        openAppMarketIfNotInstalled = aDecoder.decodeObject(forKey:"openAppMarketIfNotInstalled") as? Bool
-  }
+        packageName = aDecoder.decodeObject(forKey:"packageName") as? String
+              vendorId = aDecoder.decodeObject(forKey:"vendorId") as? Int
+              productId = aDecoder.decodeObject(forKey:"productId") as? Int
+              app = aDecoder.decodeObject(forKey:"app") as? CLVModels.Base.Reference
+              openAppMarketIfNotInstalled = aDecoder.decodeObject(forKey:"openAppMarketIfNotInstalled") as? Bool
+      }
 
 override public init() {}
 
@@ -929,38 +1066,42 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      packageName <- map["packageName"]
-        vendorId <- map["vendorId"]
-        productId <- map["productId"]
-        app <- map["app"]
-        openAppMarketIfNotInstalled <- map["openAppMarketIfNotInstalled"]
-  }
+        packageName <- map["packageName"]
+              vendorId <- map["vendorId"]
+              productId <- map["productId"]
+              app <- map["app"]
+              openAppMarketIfNotInstalled <- map["openAppMarketIfNotInstalled"]
+      }
 }
 
  
 open class BusinessType: NSObject, NSCoding, Mappable {
+  
   open var businessTypeGroupCode: CLVModels.Apps.BusinessTypeGroupCode?
+      
     /// localized business type group
   open var businessTypeGroupName: String?
+      
   open var code: CLVModels.Base.BusinessTypeCode?
+      
     /// Localized business type
   open var name: String?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(businessTypeGroupCode?.rawValue, forKey: "businessTypeGroupCode")
-  aCoder.encode(businessTypeGroupName, forKey: "businessTypeGroupName")
-  aCoder.encode(code?.rawValue, forKey: "code")
-  aCoder.encode(name, forKey: "name")
-}
+    aCoder.encode(businessTypeGroupCode?.rawValue, forKey: "businessTypeGroupCode")
+      aCoder.encode(businessTypeGroupName, forKey: "businessTypeGroupName")
+      aCoder.encode(code?.rawValue, forKey: "code")
+      aCoder.encode(name, forKey: "name")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      businessTypeGroupCode = (aDecoder.decodeObject(forKey:"businessTypeGroupCode") as? String) != nil ?
+        businessTypeGroupCode = (aDecoder.decodeObject(forKey:"businessTypeGroupCode") as? String) != nil ?
       CLVModels.Apps.BusinessTypeGroupCode(rawValue: (aDecoder.decodeObject(forKey:"businessTypeGroupCode") as! String)) : nil
-        businessTypeGroupName = aDecoder.decodeObject(forKey:"businessTypeGroupName") as? String
-        code = (aDecoder.decodeObject(forKey:"code") as? String) != nil ?
+              businessTypeGroupName = aDecoder.decodeObject(forKey:"businessTypeGroupName") as? String
+              code = (aDecoder.decodeObject(forKey:"code") as? String) != nil ?
       CLVModels.Base.BusinessTypeCode(rawValue: (aDecoder.decodeObject(forKey:"code") as! String)) : nil
-        name = aDecoder.decodeObject(forKey:"name") as? String
-  }
+              name = aDecoder.decodeObject(forKey:"name") as? String
+      }
 
 override public init() {}
 
@@ -969,11 +1110,11 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      businessTypeGroupCode <- map["businessTypeGroupCode"]
-        businessTypeGroupName <- map["businessTypeGroupName"]
-        code <- map["code"]
-        name <- map["name"]
-  }
+        businessTypeGroupCode <- map["businessTypeGroupCode"]
+              businessTypeGroupName <- map["businessTypeGroupName"]
+              code <- map["code"]
+              name <- map["name"]
+      }
 }
 
  
@@ -985,25 +1126,29 @@ public enum BusinessTypeGroupCode: String {
 
  
 open class DeviceType: NSObject, NSCoding, Mappable {
+  
     /// Unique identifier
   open var id: String?
+      
   open var name: String?
+      
   open var displayName: String?
+      
   open var models: String?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(displayName, forKey: "displayName")
-  aCoder.encode(models, forKey: "models")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(name, forKey: "name")
+      aCoder.encode(displayName, forKey: "displayName")
+      aCoder.encode(models, forKey: "models")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        name = aDecoder.decodeObject(forKey:"name") as? String
-        displayName = aDecoder.decodeObject(forKey:"displayName") as? String
-        models = aDecoder.decodeObject(forKey:"models") as? String
-  }
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              name = aDecoder.decodeObject(forKey:"name") as? String
+              displayName = aDecoder.decodeObject(forKey:"displayName") as? String
+              models = aDecoder.decodeObject(forKey:"models") as? String
+      }
 
 override public init() {}
 
@@ -1012,11 +1157,11 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        name <- map["name"]
-        displayName <- map["displayName"]
-        models <- map["models"]
-  }
+        id <- map["id"]
+              name <- map["name"]
+              displayName <- map["displayName"]
+              models <- map["models"]
+      }
 }
 
  
@@ -1041,28 +1186,32 @@ public enum ScanStatus: String {
 
  
 open class Screenshot: NSObject, NSCoding, Mappable {
+  
     /// URL for the app screenshot
   open var name: String?
+      
     /// URL for the small version (80 x 80) of the app screenshot
   open var small: String?
+      
     /// URL for the medium version (200 x 200) of the app screenshot
   open var medium: String?
+      
     /// URL for the large version (800 x 800) of the app screenshot
   open var large: String?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(small, forKey: "small")
-  aCoder.encode(medium, forKey: "medium")
-  aCoder.encode(large, forKey: "large")
-}
+    aCoder.encode(name, forKey: "name")
+      aCoder.encode(small, forKey: "small")
+      aCoder.encode(medium, forKey: "medium")
+      aCoder.encode(large, forKey: "large")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      name = aDecoder.decodeObject(forKey:"name") as? String
-        small = aDecoder.decodeObject(forKey:"small") as? String
-        medium = aDecoder.decodeObject(forKey:"medium") as? String
-        large = aDecoder.decodeObject(forKey:"large") as? String
-  }
+        name = aDecoder.decodeObject(forKey:"name") as? String
+              small = aDecoder.decodeObject(forKey:"small") as? String
+              medium = aDecoder.decodeObject(forKey:"medium") as? String
+              large = aDecoder.decodeObject(forKey:"large") as? String
+      }
 
 override public init() {}
 
@@ -1071,59 +1220,71 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      name <- map["name"]
-        small <- map["small"]
-        medium <- map["medium"]
-        large <- map["large"]
-  }
+        name <- map["name"]
+              small <- map["small"]
+              medium <- map["medium"]
+              large <- map["large"]
+      }
 }
 
  
 open class WebHook: NSObject, NSCoding, Mappable {
+  
   open var url: String?
+      
     /// A secret string included as a header in the HTTP request from Clover to the developer's web hook callback URL.
   open var secret: String?
+      
   open var valid: Bool?
+      
     /// The verification code that was sent to the developer's web hook callback URL.
   open var verification: String?
+      
   open var orders: Bool?
+      
   open var app: Bool?
+      
   open var payments: Bool?
+      
   open var inventory: Bool?
+      
   open var customers: Bool?
+      
   open var merchants: Bool?
+      
   open var cashAdjustment: Bool?
+      
   open var exports: Bool?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(url, forKey: "url")
-  aCoder.encode(secret, forKey: "secret")
-  aCoder.encode(valid, forKey: "valid")
-  aCoder.encode(verification, forKey: "verification")
-  aCoder.encode(orders, forKey: "orders")
-  aCoder.encode(app, forKey: "app")
-  aCoder.encode(payments, forKey: "payments")
-  aCoder.encode(inventory, forKey: "inventory")
-  aCoder.encode(customers, forKey: "customers")
-  aCoder.encode(merchants, forKey: "merchants")
-  aCoder.encode(cashAdjustment, forKey: "cashAdjustment")
-  aCoder.encode(exports, forKey: "exports")
-}
+    aCoder.encode(url, forKey: "url")
+      aCoder.encode(secret, forKey: "secret")
+      aCoder.encode(valid, forKey: "valid")
+      aCoder.encode(verification, forKey: "verification")
+      aCoder.encode(orders, forKey: "orders")
+      aCoder.encode(app, forKey: "app")
+      aCoder.encode(payments, forKey: "payments")
+      aCoder.encode(inventory, forKey: "inventory")
+      aCoder.encode(customers, forKey: "customers")
+      aCoder.encode(merchants, forKey: "merchants")
+      aCoder.encode(cashAdjustment, forKey: "cashAdjustment")
+      aCoder.encode(exports, forKey: "exports")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      url = aDecoder.decodeObject(forKey:"url") as? String
-        secret = aDecoder.decodeObject(forKey:"secret") as? String
-        valid = aDecoder.decodeObject(forKey:"valid") as? Bool
-        verification = aDecoder.decodeObject(forKey:"verification") as? String
-        orders = aDecoder.decodeObject(forKey:"orders") as? Bool
-        app = aDecoder.decodeObject(forKey:"app") as? Bool
-        payments = aDecoder.decodeObject(forKey:"payments") as? Bool
-        inventory = aDecoder.decodeObject(forKey:"inventory") as? Bool
-        customers = aDecoder.decodeObject(forKey:"customers") as? Bool
-        merchants = aDecoder.decodeObject(forKey:"merchants") as? Bool
-        cashAdjustment = aDecoder.decodeObject(forKey:"cashAdjustment") as? Bool
-        exports = aDecoder.decodeObject(forKey:"exports") as? Bool
-  }
+        url = aDecoder.decodeObject(forKey:"url") as? String
+              secret = aDecoder.decodeObject(forKey:"secret") as? String
+              valid = aDecoder.decodeObject(forKey:"valid") as? Bool
+              verification = aDecoder.decodeObject(forKey:"verification") as? String
+              orders = aDecoder.decodeObject(forKey:"orders") as? Bool
+              app = aDecoder.decodeObject(forKey:"app") as? Bool
+              payments = aDecoder.decodeObject(forKey:"payments") as? Bool
+              inventory = aDecoder.decodeObject(forKey:"inventory") as? Bool
+              customers = aDecoder.decodeObject(forKey:"customers") as? Bool
+              merchants = aDecoder.decodeObject(forKey:"merchants") as? Bool
+              cashAdjustment = aDecoder.decodeObject(forKey:"cashAdjustment") as? Bool
+              exports = aDecoder.decodeObject(forKey:"exports") as? Bool
+      }
 
 override public init() {}
 
@@ -1132,19 +1293,19 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      url <- map["url"]
-        secret <- map["secret"]
-        valid <- map["valid"]
-        verification <- map["verification"]
-        orders <- map["orders"]
-        app <- map["app"]
-        payments <- map["payments"]
-        inventory <- map["inventory"]
-        customers <- map["customers"]
-        merchants <- map["merchants"]
-        cashAdjustment <- map["cashAdjustment"]
-        exports <- map["exports"]
-  }
+        url <- map["url"]
+              secret <- map["secret"]
+              valid <- map["valid"]
+              verification <- map["verification"]
+              orders <- map["orders"]
+              app <- map["app"]
+              payments <- map["payments"]
+              inventory <- map["inventory"]
+              customers <- map["customers"]
+              merchants <- map["merchants"]
+              cashAdjustment <- map["cashAdjustment"]
+              exports <- map["exports"]
+      }
 }
 
 }

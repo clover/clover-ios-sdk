@@ -11,56 +11,67 @@ extension CLVModels {
 public class Payments {
  
 open class Authorization: NSObject, NSCoding, Mappable {
+  
     /// Unique identifier
   open var id: String?
+      
     /// Payment that the auth was opened with
   open var payment: CLVModels.Payments.Payment?
+      
     /// Name of tab
   open var tabName: String?
+      
     /// Amount authorized
   open var amount: Int?
+      
     /// Type of credit card used for authorization
   open var cardType: CLVModels.Payments.CardType?
+      
     /// Last 4 digits of credit card used for authorization
   open var last4: String?
+      
     /// Authorization code
   open var authcode: String?
+      
   open var type_: CLVModels.Payments.Type_?
+      
   open var note: String?
+      
     /// Payment that the auth was closed with
   open var closingPayment: CLVModels.Payments.Payment?
+      
     /// Time authorization was recorded on server
   open var createdTime: Date?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(payment, forKey: "payment")
-  aCoder.encode(tabName, forKey: "tabName")
-  aCoder.encode(amount, forKey: "amount")
-  aCoder.encode(cardType?.rawValue, forKey: "cardType")
-  aCoder.encode(last4, forKey: "last4")
-  aCoder.encode(authcode, forKey: "authcode")
-  aCoder.encode(type_?.rawValue, forKey: "type_")
-  aCoder.encode(note, forKey: "note")
-  aCoder.encode(closingPayment, forKey: "closingPayment")
-  aCoder.encode(createdTime, forKey: "createdTime")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(payment, forKey: "payment")
+      aCoder.encode(tabName, forKey: "tabName")
+      aCoder.encode(amount, forKey: "amount")
+      aCoder.encode(cardType?.rawValue, forKey: "cardType")
+      aCoder.encode(last4, forKey: "last4")
+      aCoder.encode(authcode, forKey: "authcode")
+      aCoder.encode(type_?.rawValue, forKey: "type_")
+      aCoder.encode(note, forKey: "note")
+      aCoder.encode(closingPayment, forKey: "closingPayment")
+      aCoder.encode(createdTime, forKey: "createdTime")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        payment = aDecoder.decodeObject(forKey:"payment") as? CLVModels.Payments.Payment
-        tabName = aDecoder.decodeObject(forKey:"tabName") as? String
-        amount = aDecoder.decodeObject(forKey:"amount") as? Int
-        cardType = (aDecoder.decodeObject(forKey:"cardType") as? String) != nil ?
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              payment = aDecoder.decodeObject(forKey:"payment") as? CLVModels.Payments.Payment
+              tabName = aDecoder.decodeObject(forKey:"tabName") as? String
+              amount = aDecoder.decodeObject(forKey:"amount") as? Int
+              cardType = (aDecoder.decodeObject(forKey:"cardType") as? String) != nil ?
       CLVModels.Payments.CardType(rawValue: (aDecoder.decodeObject(forKey:"cardType") as! String)) : nil
-        last4 = aDecoder.decodeObject(forKey:"last4") as? String
-        authcode = aDecoder.decodeObject(forKey:"authcode") as? String
-        type_ = (aDecoder.decodeObject(forKey:"type_") as? String) != nil ?
+              last4 = aDecoder.decodeObject(forKey:"last4") as? String
+              authcode = aDecoder.decodeObject(forKey:"authcode") as? String
+              type_ = (aDecoder.decodeObject(forKey:"type_") as? String) != nil ?
       CLVModels.Payments.Type_(rawValue: (aDecoder.decodeObject(forKey:"type_") as! String)) : nil
-        note = aDecoder.decodeObject(forKey:"note") as? String
-        closingPayment = aDecoder.decodeObject(forKey:"closingPayment") as? CLVModels.Payments.Payment
-        createdTime = aDecoder.decodeObject(forKey:"createdTime") as? Date
-  }
+              note = aDecoder.decodeObject(forKey:"note") as? String
+              closingPayment = aDecoder.decodeObject(forKey:"closingPayment") as? CLVModels.Payments.Payment
+              createdTime = aDecoder.decodeObject(forKey:"createdTime") as? Date
+      }
 
 override public init() {}
 
@@ -69,18 +80,18 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        payment <- map["payment"]
-        tabName <- map["tabName"]
-        amount <- map["amount"]
-        cardType <- map["cardType"]
-        last4 <- map["last4"]
-        authcode <- map["authcode"]
-        type_ <- map["type"]
-        note <- map["note"]
-        closingPayment <- map["closingPayment"]
-        createdTime <- (map["createdTime"], CLVDateTransform())
-  }
+        id <- map["id"]
+              payment <- map["payment"]
+              tabName <- map["tabName"]
+              amount <- map["amount"]
+              cardType <- map["cardType"]
+              last4 <- map["last4"]
+              authcode <- map["authcode"]
+              type_ <- map["type"]
+              note <- map["note"]
+              closingPayment <- map["closingPayment"]
+              createdTime <- (map["createdTime"], CLVDateTransform())
+      }
 }
 
  
@@ -100,60 +111,56 @@ public enum AVSResult: String {
 
  
 open class Batch: NSObject, NSCoding, Mappable {
+  
   open var id: String?
-  open var merchantId: Int?
-  open var firstGatewayTxId: Int?
-  open var lastGatewayTxId: Int?
-    /// The id of employee who executed batch
-  open var accountId: Int?
+              
     /// The number of transactions being batched
   open var txCount: Int?
+      
     /// Total amount closed
   open var totalBatchAmount: Int?
+      
     /// List of devices in batch
   open var devices: String?
+      
   open var state: CLVModels.Payments.BatchState?
+      
   open var batchType: CLVModels.Payments.BatchType?
+      
     /// Created time of batch
   open var createdTime: Date?
+      
     /// Modified time of batch
   open var modifiedTime: Date?
+      
     /// Details split based on card / employees
   open var batchDetails: CLVModels.Payments.BatchDetail?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(merchantId, forKey: "merchantId")
-  aCoder.encode(firstGatewayTxId, forKey: "firstGatewayTxId")
-  aCoder.encode(lastGatewayTxId, forKey: "lastGatewayTxId")
-  aCoder.encode(accountId, forKey: "accountId")
-  aCoder.encode(txCount, forKey: "txCount")
-  aCoder.encode(totalBatchAmount, forKey: "totalBatchAmount")
-  aCoder.encode(devices, forKey: "devices")
-  aCoder.encode(state?.rawValue, forKey: "state")
-  aCoder.encode(batchType?.rawValue, forKey: "batchType")
-  aCoder.encode(createdTime, forKey: "createdTime")
-  aCoder.encode(modifiedTime, forKey: "modifiedTime")
-  aCoder.encode(batchDetails, forKey: "batchDetails")
-}
+    aCoder.encode(id, forKey: "id")
+              aCoder.encode(txCount, forKey: "txCount")
+      aCoder.encode(totalBatchAmount, forKey: "totalBatchAmount")
+      aCoder.encode(devices, forKey: "devices")
+      aCoder.encode(state?.rawValue, forKey: "state")
+      aCoder.encode(batchType?.rawValue, forKey: "batchType")
+      aCoder.encode(createdTime, forKey: "createdTime")
+      aCoder.encode(modifiedTime, forKey: "modifiedTime")
+      aCoder.encode(batchDetails, forKey: "batchDetails")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        merchantId = aDecoder.decodeObject(forKey:"merchantId") as? Int
-        firstGatewayTxId = aDecoder.decodeObject(forKey:"firstGatewayTxId") as? Int
-        lastGatewayTxId = aDecoder.decodeObject(forKey:"lastGatewayTxId") as? Int
-        accountId = aDecoder.decodeObject(forKey:"accountId") as? Int
-        txCount = aDecoder.decodeObject(forKey:"txCount") as? Int
-        totalBatchAmount = aDecoder.decodeObject(forKey:"totalBatchAmount") as? Int
-        devices = aDecoder.decodeObject(forKey:"devices") as? String
-        state = (aDecoder.decodeObject(forKey:"state") as? String) != nil ?
+        id = aDecoder.decodeObject(forKey:"id") as? String
+                      txCount = aDecoder.decodeObject(forKey:"txCount") as? Int
+              totalBatchAmount = aDecoder.decodeObject(forKey:"totalBatchAmount") as? Int
+              devices = aDecoder.decodeObject(forKey:"devices") as? String
+              state = (aDecoder.decodeObject(forKey:"state") as? String) != nil ?
       CLVModels.Payments.BatchState(rawValue: (aDecoder.decodeObject(forKey:"state") as! String)) : nil
-        batchType = (aDecoder.decodeObject(forKey:"batchType") as? String) != nil ?
+              batchType = (aDecoder.decodeObject(forKey:"batchType") as? String) != nil ?
       CLVModels.Payments.BatchType(rawValue: (aDecoder.decodeObject(forKey:"batchType") as! String)) : nil
-        createdTime = aDecoder.decodeObject(forKey:"createdTime") as? Date
-        modifiedTime = aDecoder.decodeObject(forKey:"modifiedTime") as? Date
-        batchDetails = aDecoder.decodeObject(forKey:"batchDetails") as? CLVModels.Payments.BatchDetail
-  }
+              createdTime = aDecoder.decodeObject(forKey:"createdTime") as? Date
+              modifiedTime = aDecoder.decodeObject(forKey:"modifiedTime") as? Date
+              batchDetails = aDecoder.decodeObject(forKey:"batchDetails") as? CLVModels.Payments.BatchDetail
+      }
 
 override public init() {}
 
@@ -162,42 +169,41 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        merchantId <- map["merchantId"]
-        firstGatewayTxId <- map["firstGatewayTxId"]
-        lastGatewayTxId <- map["lastGatewayTxId"]
-        accountId <- map["accountId"]
-        txCount <- map["txCount"]
-        totalBatchAmount <- map["totalBatchAmount"]
-        devices <- map["devices"]
-        state <- map["state"]
-        batchType <- map["batchType"]
-        createdTime <- (map["createdTime"], CLVDateTransform())
-        modifiedTime <- (map["modifiedTime"], CLVDateTransform())
-        batchDetails <- map["batchDetails"]
-  }
+        id <- map["id"]
+                      txCount <- map["txCount"]
+              totalBatchAmount <- map["totalBatchAmount"]
+              devices <- map["devices"]
+              state <- map["state"]
+              batchType <- map["batchType"]
+              createdTime <- (map["createdTime"], CLVDateTransform())
+              modifiedTime <- (map["modifiedTime"], CLVDateTransform())
+              batchDetails <- map["batchDetails"]
+      }
 }
 
  
 open class BatchCardTotal: NSObject, NSCoding, Mappable {
+  
   open var cardType: CLVModels.Payments.CardType?
+      
     /// Total count of types
   open var count: Int?
+      
     /// Total amount for type
   open var total: Int?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(cardType?.rawValue, forKey: "cardType")
-  aCoder.encode(count, forKey: "count")
-  aCoder.encode(total, forKey: "total")
-}
+    aCoder.encode(cardType?.rawValue, forKey: "cardType")
+      aCoder.encode(count, forKey: "count")
+      aCoder.encode(total, forKey: "total")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      cardType = (aDecoder.decodeObject(forKey:"cardType") as? String) != nil ?
+        cardType = (aDecoder.decodeObject(forKey:"cardType") as? String) != nil ?
       CLVModels.Payments.CardType(rawValue: (aDecoder.decodeObject(forKey:"cardType") as! String)) : nil
-        count = aDecoder.decodeObject(forKey:"count") as? Int
-        total = aDecoder.decodeObject(forKey:"total") as? Int
-  }
+              count = aDecoder.decodeObject(forKey:"count") as? Int
+              total = aDecoder.decodeObject(forKey:"total") as? Int
+      }
 
 override public init() {}
 
@@ -206,37 +212,42 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      cardType <- map["cardType"]
-        count <- map["count"]
-        total <- map["total"]
-  }
+        cardType <- map["cardType"]
+              count <- map["count"]
+              total <- map["total"]
+      }
 }
 
  
 open class BatchDetail: NSObject, NSCoding, Mappable {
+  
   open var batchTotals: CLVModels.Payments.BatchTotalStats?
+      
   open var serverTotals: [CLVModels.Payments.ServerTotalStats]?
+      
   open var cardTotals: [CLVModels.Payments.BatchCardTotal]?
+      
     /// Number of open tips.
   open var openTips: Int?
+      
     /// Number of open tabs.
   open var openTabs: Int?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(batchTotals, forKey: "batchTotals")
-  aCoder.encode(serverTotals, forKey: "serverTotals")
-  aCoder.encode(cardTotals, forKey: "cardTotals")
-  aCoder.encode(openTips, forKey: "openTips")
-  aCoder.encode(openTabs, forKey: "openTabs")
-}
+    aCoder.encode(batchTotals, forKey: "batchTotals")
+      aCoder.encode(serverTotals, forKey: "serverTotals")
+      aCoder.encode(cardTotals, forKey: "cardTotals")
+      aCoder.encode(openTips, forKey: "openTips")
+      aCoder.encode(openTabs, forKey: "openTabs")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      batchTotals = aDecoder.decodeObject(forKey:"batchTotals") as? CLVModels.Payments.BatchTotalStats
-        serverTotals = aDecoder.decodeObject(forKey:"serverTotals") as? [CLVModels.Payments.ServerTotalStats]
-        cardTotals = aDecoder.decodeObject(forKey:"cardTotals") as? [CLVModels.Payments.BatchCardTotal]
-        openTips = aDecoder.decodeObject(forKey:"openTips") as? Int
-        openTabs = aDecoder.decodeObject(forKey:"openTabs") as? Int
-  }
+        batchTotals = aDecoder.decodeObject(forKey:"batchTotals") as? CLVModels.Payments.BatchTotalStats
+              serverTotals = aDecoder.decodeObject(forKey:"serverTotals") as? [CLVModels.Payments.ServerTotalStats]
+              cardTotals = aDecoder.decodeObject(forKey:"cardTotals") as? [CLVModels.Payments.BatchCardTotal]
+              openTips = aDecoder.decodeObject(forKey:"openTips") as? Int
+              openTabs = aDecoder.decodeObject(forKey:"openTabs") as? Int
+      }
 
 override public init() {}
 
@@ -245,25 +256,26 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      batchTotals <- map["batchTotals"]
-        serverTotals <- map["serverTotals.elements"]
-        cardTotals <- map["cardTotals.elements"]
-        openTips <- map["openTips"]
-        openTabs <- map["openTabs"]
-  }
+        batchTotals <- map["batchTotals"]
+              serverTotals <- map["serverTotals.elements"]
+              cardTotals <- map["cardTotals.elements"]
+              openTips <- map["openTips"]
+              openTabs <- map["openTabs"]
+      }
 }
 
  
 open class BatchRequest: NSObject, NSCoding, Mappable {
+  
   open var devices: [String]?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(devices, forKey: "devices")
-}
+    aCoder.encode(devices, forKey: "devices")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      devices = aDecoder.decodeObject(forKey:"devices") as? [String]
-  }
+        devices = aDecoder.decodeObject(forKey:"devices") as? [String]
+      }
 
 override public init() {}
 
@@ -272,8 +284,8 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      devices <- map["devices.elements"]
-  }
+        devices <- map["devices.elements"]
+      }
 }
 
  
@@ -287,33 +299,40 @@ public enum BatchState: String {
 
  
 open class BatchTotalStats: NSObject, NSCoding, Mappable {
+  
   open var sales: CLVModels.Payments.BatchTotalType?
+      
   open var refunds: CLVModels.Payments.BatchTotalType?
+      
   open var net: CLVModels.Payments.BatchTotalType?
+      
   open var giftCardLoads: CLVModels.Payments.BatchTotalType?
+      
   open var giftCardCashOuts: CLVModels.Payments.BatchTotalType?
+      
   open var tax: CLVModels.Payments.BatchTotalType?
+      
   open var tips: CLVModels.Payments.BatchTotalType?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(sales, forKey: "sales")
-  aCoder.encode(refunds, forKey: "refunds")
-  aCoder.encode(net, forKey: "net")
-  aCoder.encode(giftCardLoads, forKey: "giftCardLoads")
-  aCoder.encode(giftCardCashOuts, forKey: "giftCardCashOuts")
-  aCoder.encode(tax, forKey: "tax")
-  aCoder.encode(tips, forKey: "tips")
-}
+    aCoder.encode(sales, forKey: "sales")
+      aCoder.encode(refunds, forKey: "refunds")
+      aCoder.encode(net, forKey: "net")
+      aCoder.encode(giftCardLoads, forKey: "giftCardLoads")
+      aCoder.encode(giftCardCashOuts, forKey: "giftCardCashOuts")
+      aCoder.encode(tax, forKey: "tax")
+      aCoder.encode(tips, forKey: "tips")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      sales = aDecoder.decodeObject(forKey:"sales") as? CLVModels.Payments.BatchTotalType
-        refunds = aDecoder.decodeObject(forKey:"refunds") as? CLVModels.Payments.BatchTotalType
-        net = aDecoder.decodeObject(forKey:"net") as? CLVModels.Payments.BatchTotalType
-        giftCardLoads = aDecoder.decodeObject(forKey:"giftCardLoads") as? CLVModels.Payments.BatchTotalType
-        giftCardCashOuts = aDecoder.decodeObject(forKey:"giftCardCashOuts") as? CLVModels.Payments.BatchTotalType
-        tax = aDecoder.decodeObject(forKey:"tax") as? CLVModels.Payments.BatchTotalType
-        tips = aDecoder.decodeObject(forKey:"tips") as? CLVModels.Payments.BatchTotalType
-  }
+        sales = aDecoder.decodeObject(forKey:"sales") as? CLVModels.Payments.BatchTotalType
+              refunds = aDecoder.decodeObject(forKey:"refunds") as? CLVModels.Payments.BatchTotalType
+              net = aDecoder.decodeObject(forKey:"net") as? CLVModels.Payments.BatchTotalType
+              giftCardLoads = aDecoder.decodeObject(forKey:"giftCardLoads") as? CLVModels.Payments.BatchTotalType
+              giftCardCashOuts = aDecoder.decodeObject(forKey:"giftCardCashOuts") as? CLVModels.Payments.BatchTotalType
+              tax = aDecoder.decodeObject(forKey:"tax") as? CLVModels.Payments.BatchTotalType
+              tips = aDecoder.decodeObject(forKey:"tips") as? CLVModels.Payments.BatchTotalType
+      }
 
 override public init() {}
 
@@ -322,32 +341,34 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      sales <- map["sales"]
-        refunds <- map["refunds"]
-        net <- map["net"]
-        giftCardLoads <- map["giftCardLoads"]
-        giftCardCashOuts <- map["giftCardCashOuts"]
-        tax <- map["tax"]
-        tips <- map["tips"]
-  }
+        sales <- map["sales"]
+              refunds <- map["refunds"]
+              net <- map["net"]
+              giftCardLoads <- map["giftCardLoads"]
+              giftCardCashOuts <- map["giftCardCashOuts"]
+              tax <- map["tax"]
+              tips <- map["tips"]
+      }
 }
 
  
 open class BatchTotalType: NSObject, NSCoding, Mappable {
+  
     /// Total count of types
   open var count: Int?
+      
     /// Total amount for type
   open var total: Int?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(count, forKey: "count")
-  aCoder.encode(total, forKey: "total")
-}
+    aCoder.encode(count, forKey: "count")
+      aCoder.encode(total, forKey: "total")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      count = aDecoder.decodeObject(forKey:"count") as? Int
-        total = aDecoder.decodeObject(forKey:"total") as? Int
-  }
+        count = aDecoder.decodeObject(forKey:"count") as? Int
+              total = aDecoder.decodeObject(forKey:"total") as? Int
+      }
 
 override public init() {}
 
@@ -356,9 +377,9 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      count <- map["count"]
-        total <- map["total"]
-  }
+        count <- map["count"]
+              total <- map["total"]
+      }
 }
 
  
@@ -383,78 +404,86 @@ public enum CardEntryType: String {
 
  
 open class CardTransaction: NSObject, NSCoding, Mappable {
-    /// The payment with which the card transaction is associated
-  open var paymentRef: CLVModels.Base.Reference?
-    /// The credit with which the card transaction is associated
-  open var creditRef: CLVModels.Base.Reference?
+      
   open var cardType: CLVModels.Payments.CardType?
+      
   open var entryType: CLVModels.Payments.CardEntryType?
+      
     /// The first four digits of the card number
   open var first6: String?
+      
     /// The last four digits of the card number
   open var last4: String?
+      
   open var type_: CLVModels.Payments.CardTransactionType?
+      
     /// Authorization code (if successful)
   open var authCode: String?
+      
   open var referenceId: String?
+      
   open var transactionNo: String?
+      
   open var state: CLVModels.Payments.CardTransactionState?
+      
     /// Extra info to be stored as part of gateway/card transaction
   open var extra: [String:String]?
+      
   open var begBalance: Int?
+      
   open var endBalance: Int?
+      
   open var avsResult: CLVModels.Payments.AVSResult?
+      
   open var cardholderName: String?
+      
   open var token: String?
+      
     /// Vaulted card which can be used for subsequent transactions
   open var vaultedCard: CLVModels.Payments.VaultedCard?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(paymentRef, forKey: "paymentRef")
-  aCoder.encode(creditRef, forKey: "creditRef")
-  aCoder.encode(cardType?.rawValue, forKey: "cardType")
-  aCoder.encode(entryType?.rawValue, forKey: "entryType")
-  aCoder.encode(first6, forKey: "first6")
-  aCoder.encode(last4, forKey: "last4")
-  aCoder.encode(type_?.rawValue, forKey: "type_")
-  aCoder.encode(authCode, forKey: "authCode")
-  aCoder.encode(referenceId, forKey: "referenceId")
-  aCoder.encode(transactionNo, forKey: "transactionNo")
-  aCoder.encode(state?.rawValue, forKey: "state")
-  aCoder.encode(extra, forKey: "extra")
-  aCoder.encode(begBalance, forKey: "begBalance")
-  aCoder.encode(endBalance, forKey: "endBalance")
-  aCoder.encode(avsResult?.rawValue, forKey: "avsResult")
-  aCoder.encode(cardholderName, forKey: "cardholderName")
-  aCoder.encode(token, forKey: "token")
-  aCoder.encode(vaultedCard, forKey: "vaultedCard")
-}
+        aCoder.encode(cardType?.rawValue, forKey: "cardType")
+      aCoder.encode(entryType?.rawValue, forKey: "entryType")
+      aCoder.encode(first6, forKey: "first6")
+      aCoder.encode(last4, forKey: "last4")
+      aCoder.encode(type_?.rawValue, forKey: "type_")
+      aCoder.encode(authCode, forKey: "authCode")
+      aCoder.encode(referenceId, forKey: "referenceId")
+      aCoder.encode(transactionNo, forKey: "transactionNo")
+      aCoder.encode(state?.rawValue, forKey: "state")
+      aCoder.encode(extra, forKey: "extra")
+      aCoder.encode(begBalance, forKey: "begBalance")
+      aCoder.encode(endBalance, forKey: "endBalance")
+      aCoder.encode(avsResult?.rawValue, forKey: "avsResult")
+      aCoder.encode(cardholderName, forKey: "cardholderName")
+      aCoder.encode(token, forKey: "token")
+      aCoder.encode(vaultedCard, forKey: "vaultedCard")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      paymentRef = aDecoder.decodeObject(forKey:"paymentRef") as? CLVModels.Base.Reference
-        creditRef = aDecoder.decodeObject(forKey:"creditRef") as? CLVModels.Base.Reference
-        cardType = (aDecoder.decodeObject(forKey:"cardType") as? String) != nil ?
+            cardType = (aDecoder.decodeObject(forKey:"cardType") as? String) != nil ?
       CLVModels.Payments.CardType(rawValue: (aDecoder.decodeObject(forKey:"cardType") as! String)) : nil
-        entryType = (aDecoder.decodeObject(forKey:"entryType") as? String) != nil ?
+              entryType = (aDecoder.decodeObject(forKey:"entryType") as? String) != nil ?
       CLVModels.Payments.CardEntryType(rawValue: (aDecoder.decodeObject(forKey:"entryType") as! String)) : nil
-        first6 = aDecoder.decodeObject(forKey:"first6") as? String
-        last4 = aDecoder.decodeObject(forKey:"last4") as? String
-        type_ = (aDecoder.decodeObject(forKey:"type_") as? String) != nil ?
+              first6 = aDecoder.decodeObject(forKey:"first6") as? String
+              last4 = aDecoder.decodeObject(forKey:"last4") as? String
+              type_ = (aDecoder.decodeObject(forKey:"type_") as? String) != nil ?
       CLVModels.Payments.CardTransactionType(rawValue: (aDecoder.decodeObject(forKey:"type_") as! String)) : nil
-        authCode = aDecoder.decodeObject(forKey:"authCode") as? String
-        referenceId = aDecoder.decodeObject(forKey:"referenceId") as? String
-        transactionNo = aDecoder.decodeObject(forKey:"transactionNo") as? String
-        state = (aDecoder.decodeObject(forKey:"state") as? String) != nil ?
+              authCode = aDecoder.decodeObject(forKey:"authCode") as? String
+              referenceId = aDecoder.decodeObject(forKey:"referenceId") as? String
+              transactionNo = aDecoder.decodeObject(forKey:"transactionNo") as? String
+              state = (aDecoder.decodeObject(forKey:"state") as? String) != nil ?
       CLVModels.Payments.CardTransactionState(rawValue: (aDecoder.decodeObject(forKey:"state") as! String)) : nil
-        extra = aDecoder.decodeObject(forKey:"extra") as? [String:String]
-        begBalance = aDecoder.decodeObject(forKey:"begBalance") as? Int
-        endBalance = aDecoder.decodeObject(forKey:"endBalance") as? Int
-        avsResult = (aDecoder.decodeObject(forKey:"avsResult") as? String) != nil ?
+              extra = aDecoder.decodeObject(forKey:"extra") as? [String:String]
+              begBalance = aDecoder.decodeObject(forKey:"begBalance") as? Int
+              endBalance = aDecoder.decodeObject(forKey:"endBalance") as? Int
+              avsResult = (aDecoder.decodeObject(forKey:"avsResult") as? String) != nil ?
       CLVModels.Payments.AVSResult(rawValue: (aDecoder.decodeObject(forKey:"avsResult") as! String)) : nil
-        cardholderName = aDecoder.decodeObject(forKey:"cardholderName") as? String
-        token = aDecoder.decodeObject(forKey:"token") as? String
-        vaultedCard = aDecoder.decodeObject(forKey:"vaultedCard") as? CLVModels.Payments.VaultedCard
-  }
+              cardholderName = aDecoder.decodeObject(forKey:"cardholderName") as? String
+              token = aDecoder.decodeObject(forKey:"token") as? String
+              vaultedCard = aDecoder.decodeObject(forKey:"vaultedCard") as? CLVModels.Payments.VaultedCard
+      }
 
 override public init() {}
 
@@ -463,25 +492,23 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      paymentRef <- map["paymentRef"]
-        creditRef <- map["creditRef"]
-        cardType <- map["cardType"]
-        entryType <- map["entryType"]
-        first6 <- map["first6"]
-        last4 <- map["last4"]
-        type_ <- map["type"]
-        authCode <- map["authCode"]
-        referenceId <- map["referenceId"]
-        transactionNo <- map["transactionNo"]
-        state <- map["state"]
-        extra <- map["extra"]
-        begBalance <- map["begBalance"]
-        endBalance <- map["endBalance"]
-        avsResult <- map["avsResult"]
-        cardholderName <- map["cardholderName"]
-        token <- map["token"]
-        vaultedCard <- map["vaultedCard"]
-  }
+            cardType <- map["cardType"]
+              entryType <- map["entryType"]
+              first6 <- map["first6"]
+              last4 <- map["last4"]
+              type_ <- map["type"]
+              authCode <- map["authCode"]
+              referenceId <- map["referenceId"]
+              transactionNo <- map["transactionNo"]
+              state <- map["state"]
+              extra <- map["extra"]
+              begBalance <- map["begBalance"]
+              endBalance <- map["endBalance"]
+              avsResult <- map["avsResult"]
+              cardholderName <- map["cardholderName"]
+              token <- map["token"]
+              vaultedCard <- map["vaultedCard"]
+      }
 }
 
  
@@ -533,84 +560,103 @@ public enum CardType: String {
 
  
 open class Credit: NSObject, NSCoding, Mappable {
+  
     /// Unique identifier
   open var id: String?
+      
     /// The order with which the credit is associated
   open var orderRef: CLVModels.Base.Reference?
+      
     /// Device which processed this credit
   open var device: CLVModels.Base.Reference?
+      
     /// The tender type associated with this payment, e.g. credit card, cash, etc.
   open var tender: CLVModels.Base.Tender?
+      
     /// The employee who processed the payment
   open var employee: CLVModels.Base.Reference?
+      
     /// Customer who received the credit/refund
   open var customers: CLVModels.Customers.Customer?
+      
     /// Amount paid
   open var amount: Int?
+      
     /// Amount paid in tax
   open var taxAmount: Int?
+      
   open var taxRates: [CLVModels.Payments.TaxableAmountRate]?
+      
     /// Time payment was recorded on server
   open var createdTime: Date?
+      
   open var clientCreatedTime: Date?
+      
     /// Information about the card used for credit/debit card payments
   open var cardTransaction: CLVModels.Payments.CardTransaction?
+      
   open var voided: Bool?
+      
   open var voidReason: String?
+      
     /// Dynamic Currency Conversion information
   open var dccInfo: CLVModels.Payments.DCCInfo?
+      
     /// Per transaction settings for the payment
   open var transactionSettings: CLVModels.Payments.TransactionSettings?
+      
     /// German region-specific information
   open var germanInfo: CLVModels.Payments.GermanInfo?
+      
     /// Tracking information for the app that created this payment.
   open var appTracking: CLVModels.Apps.AppTracking?
+      
   open var result: CLVModels.Payments.Result?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(orderRef, forKey: "orderRef")
-  aCoder.encode(device, forKey: "device")
-  aCoder.encode(tender, forKey: "tender")
-  aCoder.encode(employee, forKey: "employee")
-  aCoder.encode(customers, forKey: "customers")
-  aCoder.encode(amount, forKey: "amount")
-  aCoder.encode(taxAmount, forKey: "taxAmount")
-  aCoder.encode(taxRates, forKey: "taxRates")
-  aCoder.encode(createdTime, forKey: "createdTime")
-  aCoder.encode(clientCreatedTime, forKey: "clientCreatedTime")
-  aCoder.encode(cardTransaction, forKey: "cardTransaction")
-  aCoder.encode(voided, forKey: "voided")
-  aCoder.encode(voidReason, forKey: "voidReason")
-  aCoder.encode(dccInfo, forKey: "dccInfo")
-  aCoder.encode(transactionSettings, forKey: "transactionSettings")
-  aCoder.encode(germanInfo, forKey: "germanInfo")
-  aCoder.encode(appTracking, forKey: "appTracking")
-  aCoder.encode(result?.rawValue, forKey: "result")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(orderRef, forKey: "orderRef")
+      aCoder.encode(device, forKey: "device")
+      aCoder.encode(tender, forKey: "tender")
+      aCoder.encode(employee, forKey: "employee")
+      aCoder.encode(customers, forKey: "customers")
+      aCoder.encode(amount, forKey: "amount")
+      aCoder.encode(taxAmount, forKey: "taxAmount")
+      aCoder.encode(taxRates, forKey: "taxRates")
+      aCoder.encode(createdTime, forKey: "createdTime")
+      aCoder.encode(clientCreatedTime, forKey: "clientCreatedTime")
+      aCoder.encode(cardTransaction, forKey: "cardTransaction")
+      aCoder.encode(voided, forKey: "voided")
+      aCoder.encode(voidReason, forKey: "voidReason")
+      aCoder.encode(dccInfo, forKey: "dccInfo")
+      aCoder.encode(transactionSettings, forKey: "transactionSettings")
+      aCoder.encode(germanInfo, forKey: "germanInfo")
+      aCoder.encode(appTracking, forKey: "appTracking")
+      aCoder.encode(result?.rawValue, forKey: "result")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        orderRef = aDecoder.decodeObject(forKey:"orderRef") as? CLVModels.Base.Reference
-        device = aDecoder.decodeObject(forKey:"device") as? CLVModels.Base.Reference
-        tender = aDecoder.decodeObject(forKey:"tender") as? CLVModels.Base.Tender
-        employee = aDecoder.decodeObject(forKey:"employee") as? CLVModels.Base.Reference
-        customers = aDecoder.decodeObject(forKey:"customers") as? CLVModels.Customers.Customer
-        amount = aDecoder.decodeObject(forKey:"amount") as? Int
-        taxAmount = aDecoder.decodeObject(forKey:"taxAmount") as? Int
-        taxRates = aDecoder.decodeObject(forKey:"taxRates") as? [CLVModels.Payments.TaxableAmountRate]
-        createdTime = aDecoder.decodeObject(forKey:"createdTime") as? Date
-        clientCreatedTime = aDecoder.decodeObject(forKey:"clientCreatedTime") as? Date
-        cardTransaction = aDecoder.decodeObject(forKey:"cardTransaction") as? CLVModels.Payments.CardTransaction
-        voided = aDecoder.decodeObject(forKey:"voided") as? Bool
-        voidReason = aDecoder.decodeObject(forKey:"voidReason") as? String
-        dccInfo = aDecoder.decodeObject(forKey:"dccInfo") as? CLVModels.Payments.DCCInfo
-        transactionSettings = aDecoder.decodeObject(forKey:"transactionSettings") as? CLVModels.Payments.TransactionSettings
-        germanInfo = aDecoder.decodeObject(forKey:"germanInfo") as? CLVModels.Payments.GermanInfo
-        appTracking = aDecoder.decodeObject(forKey:"appTracking") as? CLVModels.Apps.AppTracking
-        result = (aDecoder.decodeObject(forKey:"result") as? String) != nil ?
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              orderRef = aDecoder.decodeObject(forKey:"orderRef") as? CLVModels.Base.Reference
+              device = aDecoder.decodeObject(forKey:"device") as? CLVModels.Base.Reference
+              tender = aDecoder.decodeObject(forKey:"tender") as? CLVModels.Base.Tender
+              employee = aDecoder.decodeObject(forKey:"employee") as? CLVModels.Base.Reference
+              customers = aDecoder.decodeObject(forKey:"customers") as? CLVModels.Customers.Customer
+              amount = aDecoder.decodeObject(forKey:"amount") as? Int
+              taxAmount = aDecoder.decodeObject(forKey:"taxAmount") as? Int
+              taxRates = aDecoder.decodeObject(forKey:"taxRates") as? [CLVModels.Payments.TaxableAmountRate]
+              createdTime = aDecoder.decodeObject(forKey:"createdTime") as? Date
+              clientCreatedTime = aDecoder.decodeObject(forKey:"clientCreatedTime") as? Date
+              cardTransaction = aDecoder.decodeObject(forKey:"cardTransaction") as? CLVModels.Payments.CardTransaction
+              voided = aDecoder.decodeObject(forKey:"voided") as? Bool
+              voidReason = aDecoder.decodeObject(forKey:"voidReason") as? String
+              dccInfo = aDecoder.decodeObject(forKey:"dccInfo") as? CLVModels.Payments.DCCInfo
+              transactionSettings = aDecoder.decodeObject(forKey:"transactionSettings") as? CLVModels.Payments.TransactionSettings
+              germanInfo = aDecoder.decodeObject(forKey:"germanInfo") as? CLVModels.Payments.GermanInfo
+              appTracking = aDecoder.decodeObject(forKey:"appTracking") as? CLVModels.Apps.AppTracking
+              result = (aDecoder.decodeObject(forKey:"result") as? String) != nil ?
       CLVModels.Payments.Result(rawValue: (aDecoder.decodeObject(forKey:"result") as! String)) : nil
-  }
+      }
 
 override public init() {}
 
@@ -619,26 +665,26 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        orderRef <- map["orderRef"]
-        device <- map["device"]
-        tender <- map["tender"]
-        employee <- map["employee"]
-        customers <- map["customers"]
-        amount <- map["amount"]
-        taxAmount <- map["taxAmount"]
-        taxRates <- map["taxRates.elements"]
-        createdTime <- (map["createdTime"], CLVDateTransform())
-        clientCreatedTime <- (map["clientCreatedTime"], CLVDateTransform())
-        cardTransaction <- map["cardTransaction"]
-        voided <- map["voided"]
-        voidReason <- map["voidReason"]
-        dccInfo <- map["dccInfo"]
-        transactionSettings <- map["transactionSettings"]
-        germanInfo <- map["germanInfo"]
-        appTracking <- map["appTracking"]
-        result <- map["result"]
-  }
+        id <- map["id"]
+              orderRef <- map["orderRef"]
+              device <- map["device"]
+              tender <- map["tender"]
+              employee <- map["employee"]
+              customers <- map["customers"]
+              amount <- map["amount"]
+              taxAmount <- map["taxAmount"]
+              taxRates <- map["taxRates.elements"]
+              createdTime <- (map["createdTime"], CLVDateTransform())
+              clientCreatedTime <- (map["clientCreatedTime"], CLVDateTransform())
+              cardTransaction <- map["cardTransaction"]
+              voided <- map["voided"]
+              voidReason <- map["voidReason"]
+              dccInfo <- map["dccInfo"]
+              transactionSettings <- map["transactionSettings"]
+              germanInfo <- map["germanInfo"]
+              appTracking <- map["appTracking"]
+              result <- map["result"]
+      }
 }
 
  
@@ -650,52 +696,52 @@ public enum DataEntryLocation: String {
 
  
 open class DCCInfo: NSObject, NSCoding, Mappable {
+  
     /// Inquiry Rate ID (IPG)
   open var inquiryRateId: Int?
+      
     /// Flag indicating whether DCC was applied on this txn
   open var dccApplied: Bool?
+      
     /// Foreign currency code
   open var foreignCurrencyCode: String?
+      
     /// Foreign (transaction) amount
   open var foreignAmount: Int?
+      
     /// Exchange Rate
   open var exchangeRate: Double?
+      
     /// Margin Rate Percentage
   open var marginRatePercentage: String?
+      
     /// Exchange Rate Source Name
   open var exchangeRateSourceName: String?
+      
     /// Exchange Rate Source Timestamp
   open var exchangeRateSourceTimeStamp: String?
-    /// The payment with which this DCC info is associated
-  open var paymentRef: CLVModels.Base.Reference?
-    /// The credit (manual refund) with which this DCC info is associated
-  open var creditRef: CLVModels.Base.Reference?
-
+        
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(inquiryRateId, forKey: "inquiryRateId")
-  aCoder.encode(dccApplied, forKey: "dccApplied")
-  aCoder.encode(foreignCurrencyCode, forKey: "foreignCurrencyCode")
-  aCoder.encode(foreignAmount, forKey: "foreignAmount")
-  aCoder.encode(exchangeRate, forKey: "exchangeRate")
-  aCoder.encode(marginRatePercentage, forKey: "marginRatePercentage")
-  aCoder.encode(exchangeRateSourceName, forKey: "exchangeRateSourceName")
-  aCoder.encode(exchangeRateSourceTimeStamp, forKey: "exchangeRateSourceTimeStamp")
-  aCoder.encode(paymentRef, forKey: "paymentRef")
-  aCoder.encode(creditRef, forKey: "creditRef")
-}
+    aCoder.encode(inquiryRateId, forKey: "inquiryRateId")
+      aCoder.encode(dccApplied, forKey: "dccApplied")
+      aCoder.encode(foreignCurrencyCode, forKey: "foreignCurrencyCode")
+      aCoder.encode(foreignAmount, forKey: "foreignAmount")
+      aCoder.encode(exchangeRate, forKey: "exchangeRate")
+      aCoder.encode(marginRatePercentage, forKey: "marginRatePercentage")
+      aCoder.encode(exchangeRateSourceName, forKey: "exchangeRateSourceName")
+      aCoder.encode(exchangeRateSourceTimeStamp, forKey: "exchangeRateSourceTimeStamp")
+      }
 
 required public init(coder aDecoder: NSCoder) {
-      inquiryRateId = aDecoder.decodeObject(forKey:"inquiryRateId") as? Int
-        dccApplied = aDecoder.decodeObject(forKey:"dccApplied") as? Bool
-        foreignCurrencyCode = aDecoder.decodeObject(forKey:"foreignCurrencyCode") as? String
-        foreignAmount = aDecoder.decodeObject(forKey:"foreignAmount") as? Int
-        exchangeRate = aDecoder.decodeObject(forKey:"exchangeRate") as? Double
-        marginRatePercentage = aDecoder.decodeObject(forKey:"marginRatePercentage") as? String
-        exchangeRateSourceName = aDecoder.decodeObject(forKey:"exchangeRateSourceName") as? String
-        exchangeRateSourceTimeStamp = aDecoder.decodeObject(forKey:"exchangeRateSourceTimeStamp") as? String
-        paymentRef = aDecoder.decodeObject(forKey:"paymentRef") as? CLVModels.Base.Reference
-        creditRef = aDecoder.decodeObject(forKey:"creditRef") as? CLVModels.Base.Reference
-  }
+        inquiryRateId = aDecoder.decodeObject(forKey:"inquiryRateId") as? Int
+              dccApplied = aDecoder.decodeObject(forKey:"dccApplied") as? Bool
+              foreignCurrencyCode = aDecoder.decodeObject(forKey:"foreignCurrencyCode") as? String
+              foreignAmount = aDecoder.decodeObject(forKey:"foreignAmount") as? Int
+              exchangeRate = aDecoder.decodeObject(forKey:"exchangeRate") as? Double
+              marginRatePercentage = aDecoder.decodeObject(forKey:"marginRatePercentage") as? String
+              exchangeRateSourceName = aDecoder.decodeObject(forKey:"exchangeRateSourceName") as? String
+              exchangeRateSourceTimeStamp = aDecoder.decodeObject(forKey:"exchangeRateSourceTimeStamp") as? String
+          }
 
 override public init() {}
 
@@ -704,95 +750,105 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      inquiryRateId <- map["inquiryRateId"]
-        dccApplied <- map["dccApplied"]
-        foreignCurrencyCode <- map["foreignCurrencyCode"]
-        foreignAmount <- map["foreignAmount"]
-        exchangeRate <- map["exchangeRate"]
-        marginRatePercentage <- map["marginRatePercentage"]
-        exchangeRateSourceName <- map["exchangeRateSourceName"]
-        exchangeRateSourceTimeStamp <- map["exchangeRateSourceTimeStamp"]
-        paymentRef <- map["paymentRef"]
-        creditRef <- map["creditRef"]
-  }
+        inquiryRateId <- map["inquiryRateId"]
+              dccApplied <- map["dccApplied"]
+              foreignCurrencyCode <- map["foreignCurrencyCode"]
+              foreignAmount <- map["foreignAmount"]
+              exchangeRate <- map["exchangeRate"]
+              marginRatePercentage <- map["marginRatePercentage"]
+              exchangeRateSourceName <- map["exchangeRateSourceName"]
+              exchangeRateSourceTimeStamp <- map["exchangeRateSourceTimeStamp"]
+          }
 }
 
  
 open class GermanInfo: NSObject, NSCoding, Mappable {
+  
   open var cardTrack2: String?
+      
   open var cardSequenceNumber: String?
+      
   open var transactionCaseGermany: String?
+      
   open var transactionTypeGermany: String?
+      
   open var terminalID: String?
+      
   open var traceNumber: String?
+      
   open var oldTraceNumber: String?
+      
   open var receiptNumber: String?
+      
   open var transactionAID: String?
+      
   open var transactionMSApp: String?
+      
   open var transactionScriptResults: String?
+      
   open var receiptType: String?
+      
   open var customerTransactionDOLValues: String?
+      
   open var merchantTransactionDOLValues: String?
+      
   open var merchantJournalDOL: String?
+      
   open var merchantJournalDOLValues: String?
+      
   open var configMerchantId: String?
+      
   open var configProductLabel: String?
+      
   open var hostResponseAidParBMP53: String?
+      
   open var hostResponsePrintDataBM60: String?
-    /// The payment with which this German info is associated
-  open var paymentRef: CLVModels.Base.Reference?
-    /// The credit with which this German info is associated
-  open var creditRef: CLVModels.Base.Reference?
-
+        
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(cardTrack2, forKey: "cardTrack2")
-  aCoder.encode(cardSequenceNumber, forKey: "cardSequenceNumber")
-  aCoder.encode(transactionCaseGermany, forKey: "transactionCaseGermany")
-  aCoder.encode(transactionTypeGermany, forKey: "transactionTypeGermany")
-  aCoder.encode(terminalID, forKey: "terminalID")
-  aCoder.encode(traceNumber, forKey: "traceNumber")
-  aCoder.encode(oldTraceNumber, forKey: "oldTraceNumber")
-  aCoder.encode(receiptNumber, forKey: "receiptNumber")
-  aCoder.encode(transactionAID, forKey: "transactionAID")
-  aCoder.encode(transactionMSApp, forKey: "transactionMSApp")
-  aCoder.encode(transactionScriptResults, forKey: "transactionScriptResults")
-  aCoder.encode(receiptType, forKey: "receiptType")
-  aCoder.encode(customerTransactionDOLValues, forKey: "customerTransactionDOLValues")
-  aCoder.encode(merchantTransactionDOLValues, forKey: "merchantTransactionDOLValues")
-  aCoder.encode(merchantJournalDOL, forKey: "merchantJournalDOL")
-  aCoder.encode(merchantJournalDOLValues, forKey: "merchantJournalDOLValues")
-  aCoder.encode(configMerchantId, forKey: "configMerchantId")
-  aCoder.encode(configProductLabel, forKey: "configProductLabel")
-  aCoder.encode(hostResponseAidParBMP53, forKey: "hostResponseAidParBMP53")
-  aCoder.encode(hostResponsePrintDataBM60, forKey: "hostResponsePrintDataBM60")
-  aCoder.encode(paymentRef, forKey: "paymentRef")
-  aCoder.encode(creditRef, forKey: "creditRef")
-}
+    aCoder.encode(cardTrack2, forKey: "cardTrack2")
+      aCoder.encode(cardSequenceNumber, forKey: "cardSequenceNumber")
+      aCoder.encode(transactionCaseGermany, forKey: "transactionCaseGermany")
+      aCoder.encode(transactionTypeGermany, forKey: "transactionTypeGermany")
+      aCoder.encode(terminalID, forKey: "terminalID")
+      aCoder.encode(traceNumber, forKey: "traceNumber")
+      aCoder.encode(oldTraceNumber, forKey: "oldTraceNumber")
+      aCoder.encode(receiptNumber, forKey: "receiptNumber")
+      aCoder.encode(transactionAID, forKey: "transactionAID")
+      aCoder.encode(transactionMSApp, forKey: "transactionMSApp")
+      aCoder.encode(transactionScriptResults, forKey: "transactionScriptResults")
+      aCoder.encode(receiptType, forKey: "receiptType")
+      aCoder.encode(customerTransactionDOLValues, forKey: "customerTransactionDOLValues")
+      aCoder.encode(merchantTransactionDOLValues, forKey: "merchantTransactionDOLValues")
+      aCoder.encode(merchantJournalDOL, forKey: "merchantJournalDOL")
+      aCoder.encode(merchantJournalDOLValues, forKey: "merchantJournalDOLValues")
+      aCoder.encode(configMerchantId, forKey: "configMerchantId")
+      aCoder.encode(configProductLabel, forKey: "configProductLabel")
+      aCoder.encode(hostResponseAidParBMP53, forKey: "hostResponseAidParBMP53")
+      aCoder.encode(hostResponsePrintDataBM60, forKey: "hostResponsePrintDataBM60")
+      }
 
 required public init(coder aDecoder: NSCoder) {
-      cardTrack2 = aDecoder.decodeObject(forKey:"cardTrack2") as? String
-        cardSequenceNumber = aDecoder.decodeObject(forKey:"cardSequenceNumber") as? String
-        transactionCaseGermany = aDecoder.decodeObject(forKey:"transactionCaseGermany") as? String
-        transactionTypeGermany = aDecoder.decodeObject(forKey:"transactionTypeGermany") as? String
-        terminalID = aDecoder.decodeObject(forKey:"terminalID") as? String
-        traceNumber = aDecoder.decodeObject(forKey:"traceNumber") as? String
-        oldTraceNumber = aDecoder.decodeObject(forKey:"oldTraceNumber") as? String
-        receiptNumber = aDecoder.decodeObject(forKey:"receiptNumber") as? String
-        transactionAID = aDecoder.decodeObject(forKey:"transactionAID") as? String
-        transactionMSApp = aDecoder.decodeObject(forKey:"transactionMSApp") as? String
-        transactionScriptResults = aDecoder.decodeObject(forKey:"transactionScriptResults") as? String
-        receiptType = aDecoder.decodeObject(forKey:"receiptType") as? String
-        customerTransactionDOLValues = aDecoder.decodeObject(forKey:"customerTransactionDOLValues") as? String
-        merchantTransactionDOLValues = aDecoder.decodeObject(forKey:"merchantTransactionDOLValues") as? String
-        merchantJournalDOL = aDecoder.decodeObject(forKey:"merchantJournalDOL") as? String
-        merchantJournalDOLValues = aDecoder.decodeObject(forKey:"merchantJournalDOLValues") as? String
-        configMerchantId = aDecoder.decodeObject(forKey:"configMerchantId") as? String
-        configProductLabel = aDecoder.decodeObject(forKey:"configProductLabel") as? String
-        hostResponseAidParBMP53 = aDecoder.decodeObject(forKey:"hostResponseAidParBMP53") as? String
-        hostResponsePrintDataBM60 = aDecoder.decodeObject(forKey:"hostResponsePrintDataBM60") as? String
-        paymentRef = aDecoder.decodeObject(forKey:"paymentRef") as? CLVModels.Base.Reference
-        creditRef = aDecoder.decodeObject(forKey:"creditRef") as? CLVModels.Base.Reference
-  }
+        cardTrack2 = aDecoder.decodeObject(forKey:"cardTrack2") as? String
+              cardSequenceNumber = aDecoder.decodeObject(forKey:"cardSequenceNumber") as? String
+              transactionCaseGermany = aDecoder.decodeObject(forKey:"transactionCaseGermany") as? String
+              transactionTypeGermany = aDecoder.decodeObject(forKey:"transactionTypeGermany") as? String
+              terminalID = aDecoder.decodeObject(forKey:"terminalID") as? String
+              traceNumber = aDecoder.decodeObject(forKey:"traceNumber") as? String
+              oldTraceNumber = aDecoder.decodeObject(forKey:"oldTraceNumber") as? String
+              receiptNumber = aDecoder.decodeObject(forKey:"receiptNumber") as? String
+              transactionAID = aDecoder.decodeObject(forKey:"transactionAID") as? String
+              transactionMSApp = aDecoder.decodeObject(forKey:"transactionMSApp") as? String
+              transactionScriptResults = aDecoder.decodeObject(forKey:"transactionScriptResults") as? String
+              receiptType = aDecoder.decodeObject(forKey:"receiptType") as? String
+              customerTransactionDOLValues = aDecoder.decodeObject(forKey:"customerTransactionDOLValues") as? String
+              merchantTransactionDOLValues = aDecoder.decodeObject(forKey:"merchantTransactionDOLValues") as? String
+              merchantJournalDOL = aDecoder.decodeObject(forKey:"merchantJournalDOL") as? String
+              merchantJournalDOLValues = aDecoder.decodeObject(forKey:"merchantJournalDOLValues") as? String
+              configMerchantId = aDecoder.decodeObject(forKey:"configMerchantId") as? String
+              configProductLabel = aDecoder.decodeObject(forKey:"configProductLabel") as? String
+              hostResponseAidParBMP53 = aDecoder.decodeObject(forKey:"hostResponseAidParBMP53") as? String
+              hostResponsePrintDataBM60 = aDecoder.decodeObject(forKey:"hostResponsePrintDataBM60") as? String
+          }
 
 override public init() {}
 
@@ -801,63 +857,57 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      cardTrack2 <- map["cardTrack2"]
-        cardSequenceNumber <- map["cardSequenceNumber"]
-        transactionCaseGermany <- map["transactionCaseGermany"]
-        transactionTypeGermany <- map["transactionTypeGermany"]
-        terminalID <- map["terminalID"]
-        traceNumber <- map["traceNumber"]
-        oldTraceNumber <- map["oldTraceNumber"]
-        receiptNumber <- map["receiptNumber"]
-        transactionAID <- map["transactionAID"]
-        transactionMSApp <- map["transactionMSApp"]
-        transactionScriptResults <- map["transactionScriptResults"]
-        receiptType <- map["receiptType"]
-        customerTransactionDOLValues <- map["customerTransactionDOLValues"]
-        merchantTransactionDOLValues <- map["merchantTransactionDOLValues"]
-        merchantJournalDOL <- map["merchantJournalDOL"]
-        merchantJournalDOLValues <- map["merchantJournalDOLValues"]
-        configMerchantId <- map["configMerchantId"]
-        configProductLabel <- map["configProductLabel"]
-        hostResponseAidParBMP53 <- map["hostResponseAidParBMP53"]
-        hostResponsePrintDataBM60 <- map["hostResponsePrintDataBM60"]
-        paymentRef <- map["paymentRef"]
-        creditRef <- map["creditRef"]
-  }
+        cardTrack2 <- map["cardTrack2"]
+              cardSequenceNumber <- map["cardSequenceNumber"]
+              transactionCaseGermany <- map["transactionCaseGermany"]
+              transactionTypeGermany <- map["transactionTypeGermany"]
+              terminalID <- map["terminalID"]
+              traceNumber <- map["traceNumber"]
+              oldTraceNumber <- map["oldTraceNumber"]
+              receiptNumber <- map["receiptNumber"]
+              transactionAID <- map["transactionAID"]
+              transactionMSApp <- map["transactionMSApp"]
+              transactionScriptResults <- map["transactionScriptResults"]
+              receiptType <- map["receiptType"]
+              customerTransactionDOLValues <- map["customerTransactionDOLValues"]
+              merchantTransactionDOLValues <- map["merchantTransactionDOLValues"]
+              merchantJournalDOL <- map["merchantJournalDOL"]
+              merchantJournalDOLValues <- map["merchantJournalDOLValues"]
+              configMerchantId <- map["configMerchantId"]
+              configProductLabel <- map["configProductLabel"]
+              hostResponseAidParBMP53 <- map["hostResponseAidParBMP53"]
+              hostResponsePrintDataBM60 <- map["hostResponsePrintDataBM60"]
+          }
 }
 
  
 open class LineItemPayment: NSObject, NSCoding, Mappable {
+  
     /// Unique identifier; TBD this is confusing because it's used as either line item id or payment id
   open var id: String?
-    /// The line item with which the line item payment is associated
-  open var lineItemRef: CLVModels.Base.Reference?
-    /// The payment with which the line item payment is associated
-  open var paymentRef: CLVModels.Base.Reference?
+          
     /// Percent of this line item covered by this payment
   open var percentage: Int?
+      
     /// Bin this line item payment was for
   open var binName: String?
+      
     /// Payment has been refunded
   open var refunded: Bool?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(lineItemRef, forKey: "lineItemRef")
-  aCoder.encode(paymentRef, forKey: "paymentRef")
-  aCoder.encode(percentage, forKey: "percentage")
-  aCoder.encode(binName, forKey: "binName")
-  aCoder.encode(refunded, forKey: "refunded")
-}
+    aCoder.encode(id, forKey: "id")
+          aCoder.encode(percentage, forKey: "percentage")
+      aCoder.encode(binName, forKey: "binName")
+      aCoder.encode(refunded, forKey: "refunded")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        lineItemRef = aDecoder.decodeObject(forKey:"lineItemRef") as? CLVModels.Base.Reference
-        paymentRef = aDecoder.decodeObject(forKey:"paymentRef") as? CLVModels.Base.Reference
-        percentage = aDecoder.decodeObject(forKey:"percentage") as? Int
-        binName = aDecoder.decodeObject(forKey:"binName") as? String
-        refunded = aDecoder.decodeObject(forKey:"refunded") as? Bool
-  }
+        id = aDecoder.decodeObject(forKey:"id") as? String
+                  percentage = aDecoder.decodeObject(forKey:"percentage") as? Int
+              binName = aDecoder.decodeObject(forKey:"binName") as? String
+              refunded = aDecoder.decodeObject(forKey:"refunded") as? Bool
+      }
 
 override public init() {}
 
@@ -866,125 +916,150 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        lineItemRef <- map["lineItemRef"]
-        paymentRef <- map["paymentRef"]
-        percentage <- map["percentage"]
-        binName <- map["binName"]
-        refunded <- map["refunded"]
-  }
+        id <- map["id"]
+                  percentage <- map["percentage"]
+              binName <- map["binName"]
+              refunded <- map["refunded"]
+      }
 }
 
  
 open class Payment: NSObject, NSCoding, Mappable {
+  
     /// Unique identifier
   open var id: String?
+      
     /// The order with which the payment is associated
   open var order: CLVModels.Base.Reference?
+      
     /// Device which processed the transaction for this payment
   open var device: CLVModels.Base.Reference?
+      
     /// The tender type associated with this payment, e.g. credit card, cash, etc.
   open var tender: CLVModels.Base.Tender?
+      
     /// Total amount paid
   open var amount: Int?
+      
     /// Amount paid in tips
   open var tipAmount: Int?
+      
     /// Amount paid in tax
   open var taxAmount: Int?
+      
     /// Amount given back in a cash back transaction
   open var cashbackAmount: Int?
+      
     /// Amount of cash given by the customer
   open var cashTendered: Int?
+      
   open var externalPaymentId: String?
+      
     /// The employee who processed the payment
   open var employee: CLVModels.Base.Reference?
+      
     /// Time payment was recorded on server
   open var createdTime: Date?
+      
   open var clientCreatedTime: Date?
+      
     /// Last modified time of the payment
   open var modifiedTime: Date?
+      
   open var offline: Bool?
+      
   open var result: CLVModels.Payments.Result?
+      
     /// Information about the card used for credit/debit card payments
   open var cardTransaction: CLVModels.Payments.CardTransaction?
+      
     /// Amount record as a service charge
   open var serviceCharge: CLVModels.Payments.ServiceChargeAmount?
+      
   open var taxRates: [CLVModels.Payments.PaymentTaxRate]?
+      
   open var refunds: [CLVModels.Payments.Refund]?
+      
   open var note: String?
+      
   open var lineItemPayments: [CLVModels.Payments.LineItemPayment]?
+      
     /// If voided, the reason why (when available)
   open var voidReason: CLVModels.Order.VoidReason?
+      
     /// Dynamic Currency Conversion information
   open var dccInfo: CLVModels.Payments.DCCInfo?
+      
     /// Per transaction settings for the payment
   open var transactionSettings: CLVModels.Payments.TransactionSettings?
+      
     /// German region-specific information
   open var germanInfo: CLVModels.Payments.GermanInfo?
+      
     /// Tracking information for the app that created this payment.
   open var appTracking: CLVModels.Apps.AppTracking?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(order, forKey: "order")
-  aCoder.encode(device, forKey: "device")
-  aCoder.encode(tender, forKey: "tender")
-  aCoder.encode(amount, forKey: "amount")
-  aCoder.encode(tipAmount, forKey: "tipAmount")
-  aCoder.encode(taxAmount, forKey: "taxAmount")
-  aCoder.encode(cashbackAmount, forKey: "cashbackAmount")
-  aCoder.encode(cashTendered, forKey: "cashTendered")
-  aCoder.encode(externalPaymentId, forKey: "externalPaymentId")
-  aCoder.encode(employee, forKey: "employee")
-  aCoder.encode(createdTime, forKey: "createdTime")
-  aCoder.encode(clientCreatedTime, forKey: "clientCreatedTime")
-  aCoder.encode(modifiedTime, forKey: "modifiedTime")
-  aCoder.encode(offline, forKey: "offline")
-  aCoder.encode(result?.rawValue, forKey: "result")
-  aCoder.encode(cardTransaction, forKey: "cardTransaction")
-  aCoder.encode(serviceCharge, forKey: "serviceCharge")
-  aCoder.encode(taxRates, forKey: "taxRates")
-  aCoder.encode(refunds, forKey: "refunds")
-  aCoder.encode(note, forKey: "note")
-  aCoder.encode(lineItemPayments, forKey: "lineItemPayments")
-  aCoder.encode(voidReason?.rawValue, forKey: "voidReason")
-  aCoder.encode(dccInfo, forKey: "dccInfo")
-  aCoder.encode(transactionSettings, forKey: "transactionSettings")
-  aCoder.encode(germanInfo, forKey: "germanInfo")
-  aCoder.encode(appTracking, forKey: "appTracking")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(order, forKey: "order")
+      aCoder.encode(device, forKey: "device")
+      aCoder.encode(tender, forKey: "tender")
+      aCoder.encode(amount, forKey: "amount")
+      aCoder.encode(tipAmount, forKey: "tipAmount")
+      aCoder.encode(taxAmount, forKey: "taxAmount")
+      aCoder.encode(cashbackAmount, forKey: "cashbackAmount")
+      aCoder.encode(cashTendered, forKey: "cashTendered")
+      aCoder.encode(externalPaymentId, forKey: "externalPaymentId")
+      aCoder.encode(employee, forKey: "employee")
+      aCoder.encode(createdTime, forKey: "createdTime")
+      aCoder.encode(clientCreatedTime, forKey: "clientCreatedTime")
+      aCoder.encode(modifiedTime, forKey: "modifiedTime")
+      aCoder.encode(offline, forKey: "offline")
+      aCoder.encode(result?.rawValue, forKey: "result")
+      aCoder.encode(cardTransaction, forKey: "cardTransaction")
+      aCoder.encode(serviceCharge, forKey: "serviceCharge")
+      aCoder.encode(taxRates, forKey: "taxRates")
+      aCoder.encode(refunds, forKey: "refunds")
+      aCoder.encode(note, forKey: "note")
+      aCoder.encode(lineItemPayments, forKey: "lineItemPayments")
+      aCoder.encode(voidReason?.rawValue, forKey: "voidReason")
+      aCoder.encode(dccInfo, forKey: "dccInfo")
+      aCoder.encode(transactionSettings, forKey: "transactionSettings")
+      aCoder.encode(germanInfo, forKey: "germanInfo")
+      aCoder.encode(appTracking, forKey: "appTracking")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        order = aDecoder.decodeObject(forKey:"order") as? CLVModels.Base.Reference
-        device = aDecoder.decodeObject(forKey:"device") as? CLVModels.Base.Reference
-        tender = aDecoder.decodeObject(forKey:"tender") as? CLVModels.Base.Tender
-        amount = aDecoder.decodeObject(forKey:"amount") as? Int
-        tipAmount = aDecoder.decodeObject(forKey:"tipAmount") as? Int
-        taxAmount = aDecoder.decodeObject(forKey:"taxAmount") as? Int
-        cashbackAmount = aDecoder.decodeObject(forKey:"cashbackAmount") as? Int
-        cashTendered = aDecoder.decodeObject(forKey:"cashTendered") as? Int
-        externalPaymentId = aDecoder.decodeObject(forKey:"externalPaymentId") as? String
-        employee = aDecoder.decodeObject(forKey:"employee") as? CLVModels.Base.Reference
-        createdTime = aDecoder.decodeObject(forKey:"createdTime") as? Date
-        clientCreatedTime = aDecoder.decodeObject(forKey:"clientCreatedTime") as? Date
-        modifiedTime = aDecoder.decodeObject(forKey:"modifiedTime") as? Date
-        offline = aDecoder.decodeObject(forKey:"offline") as? Bool
-        result = (aDecoder.decodeObject(forKey:"result") as? String) != nil ?
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              order = aDecoder.decodeObject(forKey:"order") as? CLVModels.Base.Reference
+              device = aDecoder.decodeObject(forKey:"device") as? CLVModels.Base.Reference
+              tender = aDecoder.decodeObject(forKey:"tender") as? CLVModels.Base.Tender
+              amount = aDecoder.decodeObject(forKey:"amount") as? Int
+              tipAmount = aDecoder.decodeObject(forKey:"tipAmount") as? Int
+              taxAmount = aDecoder.decodeObject(forKey:"taxAmount") as? Int
+              cashbackAmount = aDecoder.decodeObject(forKey:"cashbackAmount") as? Int
+              cashTendered = aDecoder.decodeObject(forKey:"cashTendered") as? Int
+              externalPaymentId = aDecoder.decodeObject(forKey:"externalPaymentId") as? String
+              employee = aDecoder.decodeObject(forKey:"employee") as? CLVModels.Base.Reference
+              createdTime = aDecoder.decodeObject(forKey:"createdTime") as? Date
+              clientCreatedTime = aDecoder.decodeObject(forKey:"clientCreatedTime") as? Date
+              modifiedTime = aDecoder.decodeObject(forKey:"modifiedTime") as? Date
+              offline = aDecoder.decodeObject(forKey:"offline") as? Bool
+              result = (aDecoder.decodeObject(forKey:"result") as? String) != nil ?
       CLVModels.Payments.Result(rawValue: (aDecoder.decodeObject(forKey:"result") as! String)) : nil
-        cardTransaction = aDecoder.decodeObject(forKey:"cardTransaction") as? CLVModels.Payments.CardTransaction
-        serviceCharge = aDecoder.decodeObject(forKey:"serviceCharge") as? CLVModels.Payments.ServiceChargeAmount
-        taxRates = aDecoder.decodeObject(forKey:"taxRates") as? [CLVModels.Payments.PaymentTaxRate]
-        refunds = aDecoder.decodeObject(forKey:"refunds") as? [CLVModels.Payments.Refund]
-        note = aDecoder.decodeObject(forKey:"note") as? String
-        lineItemPayments = aDecoder.decodeObject(forKey:"lineItemPayments") as? [CLVModels.Payments.LineItemPayment]
-        voidReason = (aDecoder.decodeObject(forKey:"voidReason") as? String) != nil ?
+              cardTransaction = aDecoder.decodeObject(forKey:"cardTransaction") as? CLVModels.Payments.CardTransaction
+              serviceCharge = aDecoder.decodeObject(forKey:"serviceCharge") as? CLVModels.Payments.ServiceChargeAmount
+              taxRates = aDecoder.decodeObject(forKey:"taxRates") as? [CLVModels.Payments.PaymentTaxRate]
+              refunds = aDecoder.decodeObject(forKey:"refunds") as? [CLVModels.Payments.Refund]
+              note = aDecoder.decodeObject(forKey:"note") as? String
+              lineItemPayments = aDecoder.decodeObject(forKey:"lineItemPayments") as? [CLVModels.Payments.LineItemPayment]
+              voidReason = (aDecoder.decodeObject(forKey:"voidReason") as? String) != nil ?
       CLVModels.Order.VoidReason(rawValue: (aDecoder.decodeObject(forKey:"voidReason") as! String)) : nil
-        dccInfo = aDecoder.decodeObject(forKey:"dccInfo") as? CLVModels.Payments.DCCInfo
-        transactionSettings = aDecoder.decodeObject(forKey:"transactionSettings") as? CLVModels.Payments.TransactionSettings
-        germanInfo = aDecoder.decodeObject(forKey:"germanInfo") as? CLVModels.Payments.GermanInfo
-        appTracking = aDecoder.decodeObject(forKey:"appTracking") as? CLVModels.Apps.AppTracking
-  }
+              dccInfo = aDecoder.decodeObject(forKey:"dccInfo") as? CLVModels.Payments.DCCInfo
+              transactionSettings = aDecoder.decodeObject(forKey:"transactionSettings") as? CLVModels.Payments.TransactionSettings
+              germanInfo = aDecoder.decodeObject(forKey:"germanInfo") as? CLVModels.Payments.GermanInfo
+              appTracking = aDecoder.decodeObject(forKey:"appTracking") as? CLVModels.Apps.AppTracking
+      }
 
 override public init() {}
 
@@ -993,63 +1068,64 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        order <- map["order"]
-        device <- map["device"]
-        tender <- map["tender"]
-        amount <- map["amount"]
-        tipAmount <- map["tipAmount"]
-        taxAmount <- map["taxAmount"]
-        cashbackAmount <- map["cashbackAmount"]
-        cashTendered <- map["cashTendered"]
-        externalPaymentId <- map["externalPaymentId"]
-        employee <- map["employee"]
-        createdTime <- (map["createdTime"], CLVDateTransform())
-        clientCreatedTime <- (map["clientCreatedTime"], CLVDateTransform())
-        modifiedTime <- (map["modifiedTime"], CLVDateTransform())
-        offline <- map["offline"]
-        result <- map["result"]
-        cardTransaction <- map["cardTransaction"]
-        serviceCharge <- map["serviceCharge"]
-        taxRates <- map["taxRates.elements"]
-        refunds <- map["refunds.elements"]
-        note <- map["note"]
-        lineItemPayments <- map["lineItemPayments.elements"]
-        voidReason <- map["voidReason"]
-        dccInfo <- map["dccInfo"]
-        transactionSettings <- map["transactionSettings"]
-        germanInfo <- map["germanInfo"]
-        appTracking <- map["appTracking"]
-  }
+        id <- map["id"]
+              order <- map["order"]
+              device <- map["device"]
+              tender <- map["tender"]
+              amount <- map["amount"]
+              tipAmount <- map["tipAmount"]
+              taxAmount <- map["taxAmount"]
+              cashbackAmount <- map["cashbackAmount"]
+              cashTendered <- map["cashTendered"]
+              externalPaymentId <- map["externalPaymentId"]
+              employee <- map["employee"]
+              createdTime <- (map["createdTime"], CLVDateTransform())
+              clientCreatedTime <- (map["clientCreatedTime"], CLVDateTransform())
+              modifiedTime <- (map["modifiedTime"], CLVDateTransform())
+              offline <- map["offline"]
+              result <- map["result"]
+              cardTransaction <- map["cardTransaction"]
+              serviceCharge <- map["serviceCharge"]
+              taxRates <- map["taxRates.elements"]
+              refunds <- map["refunds.elements"]
+              note <- map["note"]
+              lineItemPayments <- map["lineItemPayments.elements"]
+              voidReason <- map["voidReason"]
+              dccInfo <- map["dccInfo"]
+              transactionSettings <- map["transactionSettings"]
+              germanInfo <- map["germanInfo"]
+              appTracking <- map["appTracking"]
+      }
 }
 
  
 open class PaymentTaxRate: NSObject, NSCoding, Mappable {
+  
   open var id: String?
-    /// The payment with which the payment tax rate is associated
-  open var paymentRef: CLVModels.Base.Reference?
+        
   open var name: String?
+      
   open var rate: Int?
+      
   open var isDefault: Bool?
+      
   open var taxableAmount: Int?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(paymentRef, forKey: "paymentRef")
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(rate, forKey: "rate")
-  aCoder.encode(isDefault, forKey: "isDefault")
-  aCoder.encode(taxableAmount, forKey: "taxableAmount")
-}
+    aCoder.encode(id, forKey: "id")
+        aCoder.encode(name, forKey: "name")
+      aCoder.encode(rate, forKey: "rate")
+      aCoder.encode(isDefault, forKey: "isDefault")
+      aCoder.encode(taxableAmount, forKey: "taxableAmount")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        paymentRef = aDecoder.decodeObject(forKey:"paymentRef") as? CLVModels.Base.Reference
-        name = aDecoder.decodeObject(forKey:"name") as? String
-        rate = aDecoder.decodeObject(forKey:"rate") as? Int
-        isDefault = aDecoder.decodeObject(forKey:"isDefault") as? Bool
-        taxableAmount = aDecoder.decodeObject(forKey:"taxableAmount") as? Int
-  }
+        id = aDecoder.decodeObject(forKey:"id") as? String
+                name = aDecoder.decodeObject(forKey:"name") as? String
+              rate = aDecoder.decodeObject(forKey:"rate") as? Int
+              isDefault = aDecoder.decodeObject(forKey:"isDefault") as? Bool
+              taxableAmount = aDecoder.decodeObject(forKey:"taxableAmount") as? Int
+      }
 
 override public init() {}
 
@@ -1058,75 +1134,88 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        paymentRef <- map["paymentRef"]
-        name <- map["name"]
-        rate <- map["rate"]
-        isDefault <- map["isDefault"]
-        taxableAmount <- map["taxableAmount"]
-  }
+        id <- map["id"]
+                name <- map["name"]
+              rate <- map["rate"]
+              isDefault <- map["isDefault"]
+              taxableAmount <- map["taxableAmount"]
+      }
 }
 
  
 open class Refund: NSObject, NSCoding, Mappable {
+  
     /// Unique identifier
   open var id: String?
+      
     /// The order with which the refund is associated
   open var orderRef: CLVModels.Base.Reference?
+      
     /// Device which processed the transaction for this refund
   open var device: CLVModels.Base.Reference?
+      
     /// Total amount refunded, including tax and tip
   open var amount: Int?
+      
     /// Tax amount refunded
   open var taxAmount: Int?
+      
     /// Tip amount refunded
   open var tipAmount: Int?
+      
     /// The time when the refund was recorded on the server
   open var createdTime: Date?
+      
     /// The time when the refund was recorded on the client
   open var clientCreatedTime: Date?
+      
     /// The payment with which the refund is associated
   open var payment: CLVModels.Base.Reference?
+      
   open var employee: CLVModels.Base.Reference?
+      
   open var lineItems: [CLVModels.Base.Reference]?
+      
     /// The tender type associated with this payment, e.g. credit card, cash, etc.
   open var overrideMerchantTender: CLVModels.Base.Tender?
+      
   open var taxableAmountRates: [CLVModels.Payments.TaxableAmountRate]?
+      
   open var serviceChargeAmount: CLVModels.Payments.ServiceChargeAmount?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(orderRef, forKey: "orderRef")
-  aCoder.encode(device, forKey: "device")
-  aCoder.encode(amount, forKey: "amount")
-  aCoder.encode(taxAmount, forKey: "taxAmount")
-  aCoder.encode(tipAmount, forKey: "tipAmount")
-  aCoder.encode(createdTime, forKey: "createdTime")
-  aCoder.encode(clientCreatedTime, forKey: "clientCreatedTime")
-  aCoder.encode(payment, forKey: "payment")
-  aCoder.encode(employee, forKey: "employee")
-  aCoder.encode(lineItems, forKey: "lineItems")
-  aCoder.encode(overrideMerchantTender, forKey: "overrideMerchantTender")
-  aCoder.encode(taxableAmountRates, forKey: "taxableAmountRates")
-  aCoder.encode(serviceChargeAmount, forKey: "serviceChargeAmount")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(orderRef, forKey: "orderRef")
+      aCoder.encode(device, forKey: "device")
+      aCoder.encode(amount, forKey: "amount")
+      aCoder.encode(taxAmount, forKey: "taxAmount")
+      aCoder.encode(tipAmount, forKey: "tipAmount")
+      aCoder.encode(createdTime, forKey: "createdTime")
+      aCoder.encode(clientCreatedTime, forKey: "clientCreatedTime")
+      aCoder.encode(payment, forKey: "payment")
+      aCoder.encode(employee, forKey: "employee")
+      aCoder.encode(lineItems, forKey: "lineItems")
+      aCoder.encode(overrideMerchantTender, forKey: "overrideMerchantTender")
+      aCoder.encode(taxableAmountRates, forKey: "taxableAmountRates")
+      aCoder.encode(serviceChargeAmount, forKey: "serviceChargeAmount")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        orderRef = aDecoder.decodeObject(forKey:"orderRef") as? CLVModels.Base.Reference
-        device = aDecoder.decodeObject(forKey:"device") as? CLVModels.Base.Reference
-        amount = aDecoder.decodeObject(forKey:"amount") as? Int
-        taxAmount = aDecoder.decodeObject(forKey:"taxAmount") as? Int
-        tipAmount = aDecoder.decodeObject(forKey:"tipAmount") as? Int
-        createdTime = aDecoder.decodeObject(forKey:"createdTime") as? Date
-        clientCreatedTime = aDecoder.decodeObject(forKey:"clientCreatedTime") as? Date
-        payment = aDecoder.decodeObject(forKey:"payment") as? CLVModels.Base.Reference
-        employee = aDecoder.decodeObject(forKey:"employee") as? CLVModels.Base.Reference
-        lineItems = aDecoder.decodeObject(forKey:"lineItems") as? [CLVModels.Base.Reference]
-        overrideMerchantTender = aDecoder.decodeObject(forKey:"overrideMerchantTender") as? CLVModels.Base.Tender
-        taxableAmountRates = aDecoder.decodeObject(forKey:"taxableAmountRates") as? [CLVModels.Payments.TaxableAmountRate]
-        serviceChargeAmount = aDecoder.decodeObject(forKey:"serviceChargeAmount") as? CLVModels.Payments.ServiceChargeAmount
-  }
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              orderRef = aDecoder.decodeObject(forKey:"orderRef") as? CLVModels.Base.Reference
+              device = aDecoder.decodeObject(forKey:"device") as? CLVModels.Base.Reference
+              amount = aDecoder.decodeObject(forKey:"amount") as? Int
+              taxAmount = aDecoder.decodeObject(forKey:"taxAmount") as? Int
+              tipAmount = aDecoder.decodeObject(forKey:"tipAmount") as? Int
+              createdTime = aDecoder.decodeObject(forKey:"createdTime") as? Date
+              clientCreatedTime = aDecoder.decodeObject(forKey:"clientCreatedTime") as? Date
+              payment = aDecoder.decodeObject(forKey:"payment") as? CLVModels.Base.Reference
+              employee = aDecoder.decodeObject(forKey:"employee") as? CLVModels.Base.Reference
+              lineItems = aDecoder.decodeObject(forKey:"lineItems") as? [CLVModels.Base.Reference]
+              overrideMerchantTender = aDecoder.decodeObject(forKey:"overrideMerchantTender") as? CLVModels.Base.Tender
+              taxableAmountRates = aDecoder.decodeObject(forKey:"taxableAmountRates") as? [CLVModels.Payments.TaxableAmountRate]
+              serviceChargeAmount = aDecoder.decodeObject(forKey:"serviceChargeAmount") as? CLVModels.Payments.ServiceChargeAmount
+      }
 
 override public init() {}
 
@@ -1135,21 +1224,21 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        orderRef <- map["orderRef"]
-        device <- map["device"]
-        amount <- map["amount"]
-        taxAmount <- map["taxAmount"]
-        tipAmount <- map["tipAmount"]
-        createdTime <- (map["createdTime"], CLVDateTransform())
-        clientCreatedTime <- (map["clientCreatedTime"], CLVDateTransform())
-        payment <- map["payment"]
-        employee <- map["employee"]
-        lineItems <- map["lineItems.elements"]
-        overrideMerchantTender <- map["overrideMerchantTender"]
-        taxableAmountRates <- map["taxableAmountRates.elements"]
-        serviceChargeAmount <- map["serviceChargeAmount"]
-  }
+        id <- map["id"]
+              orderRef <- map["orderRef"]
+              device <- map["device"]
+              amount <- map["amount"]
+              taxAmount <- map["taxAmount"]
+              tipAmount <- map["tipAmount"]
+              createdTime <- (map["createdTime"], CLVDateTransform())
+              clientCreatedTime <- (map["clientCreatedTime"], CLVDateTransform())
+              payment <- map["payment"]
+              employee <- map["employee"]
+              lineItems <- map["lineItems.elements"]
+              overrideMerchantTender <- map["overrideMerchantTender"]
+              taxableAmountRates <- map["taxableAmountRates.elements"]
+              serviceChargeAmount <- map["serviceChargeAmount"]
+      }
 }
 
  
@@ -1167,40 +1256,49 @@ public enum Result: String {
 
  
 open class ServerTotalStats: NSObject, NSCoding, Mappable {
+  
     /// Employee corresponding to these stats
   open var employeeId: String?
+      
   open var employeeName: String?
+      
   open var sales: CLVModels.Payments.BatchTotalType?
+      
   open var refunds: CLVModels.Payments.BatchTotalType?
+      
   open var net: CLVModels.Payments.BatchTotalType?
+      
   open var giftCardLoads: CLVModels.Payments.BatchTotalType?
+      
   open var giftCardCashOuts: CLVModels.Payments.BatchTotalType?
+      
   open var tax: CLVModels.Payments.BatchTotalType?
+      
   open var tips: CLVModels.Payments.BatchTotalType?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(employeeId, forKey: "employeeId")
-  aCoder.encode(employeeName, forKey: "employeeName")
-  aCoder.encode(sales, forKey: "sales")
-  aCoder.encode(refunds, forKey: "refunds")
-  aCoder.encode(net, forKey: "net")
-  aCoder.encode(giftCardLoads, forKey: "giftCardLoads")
-  aCoder.encode(giftCardCashOuts, forKey: "giftCardCashOuts")
-  aCoder.encode(tax, forKey: "tax")
-  aCoder.encode(tips, forKey: "tips")
-}
+    aCoder.encode(employeeId, forKey: "employeeId")
+      aCoder.encode(employeeName, forKey: "employeeName")
+      aCoder.encode(sales, forKey: "sales")
+      aCoder.encode(refunds, forKey: "refunds")
+      aCoder.encode(net, forKey: "net")
+      aCoder.encode(giftCardLoads, forKey: "giftCardLoads")
+      aCoder.encode(giftCardCashOuts, forKey: "giftCardCashOuts")
+      aCoder.encode(tax, forKey: "tax")
+      aCoder.encode(tips, forKey: "tips")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      employeeId = aDecoder.decodeObject(forKey:"employeeId") as? String
-        employeeName = aDecoder.decodeObject(forKey:"employeeName") as? String
-        sales = aDecoder.decodeObject(forKey:"sales") as? CLVModels.Payments.BatchTotalType
-        refunds = aDecoder.decodeObject(forKey:"refunds") as? CLVModels.Payments.BatchTotalType
-        net = aDecoder.decodeObject(forKey:"net") as? CLVModels.Payments.BatchTotalType
-        giftCardLoads = aDecoder.decodeObject(forKey:"giftCardLoads") as? CLVModels.Payments.BatchTotalType
-        giftCardCashOuts = aDecoder.decodeObject(forKey:"giftCardCashOuts") as? CLVModels.Payments.BatchTotalType
-        tax = aDecoder.decodeObject(forKey:"tax") as? CLVModels.Payments.BatchTotalType
-        tips = aDecoder.decodeObject(forKey:"tips") as? CLVModels.Payments.BatchTotalType
-  }
+        employeeId = aDecoder.decodeObject(forKey:"employeeId") as? String
+              employeeName = aDecoder.decodeObject(forKey:"employeeName") as? String
+              sales = aDecoder.decodeObject(forKey:"sales") as? CLVModels.Payments.BatchTotalType
+              refunds = aDecoder.decodeObject(forKey:"refunds") as? CLVModels.Payments.BatchTotalType
+              net = aDecoder.decodeObject(forKey:"net") as? CLVModels.Payments.BatchTotalType
+              giftCardLoads = aDecoder.decodeObject(forKey:"giftCardLoads") as? CLVModels.Payments.BatchTotalType
+              giftCardCashOuts = aDecoder.decodeObject(forKey:"giftCardCashOuts") as? CLVModels.Payments.BatchTotalType
+              tax = aDecoder.decodeObject(forKey:"tax") as? CLVModels.Payments.BatchTotalType
+              tips = aDecoder.decodeObject(forKey:"tips") as? CLVModels.Payments.BatchTotalType
+      }
 
 override public init() {}
 
@@ -1209,39 +1307,38 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      employeeId <- map["employeeId"]
-        employeeName <- map["employeeName"]
-        sales <- map["sales"]
-        refunds <- map["refunds"]
-        net <- map["net"]
-        giftCardLoads <- map["giftCardLoads"]
-        giftCardCashOuts <- map["giftCardCashOuts"]
-        tax <- map["tax"]
-        tips <- map["tips"]
-  }
+        employeeId <- map["employeeId"]
+              employeeName <- map["employeeName"]
+              sales <- map["sales"]
+              refunds <- map["refunds"]
+              net <- map["net"]
+              giftCardLoads <- map["giftCardLoads"]
+              giftCardCashOuts <- map["giftCardCashOuts"]
+              tax <- map["tax"]
+              tips <- map["tips"]
+      }
 }
 
  
 open class ServiceChargeAmount: NSObject, NSCoding, Mappable {
+  
   open var id: String?
+      
   open var name: String?
+      
   open var amount: Int?
-    /// The payment with which the payment tax rate is associated
-  open var paymentRef: CLVModels.Base.Reference?
-
+      
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(amount, forKey: "amount")
-  aCoder.encode(paymentRef, forKey: "paymentRef")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(name, forKey: "name")
+      aCoder.encode(amount, forKey: "amount")
+    }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        name = aDecoder.decodeObject(forKey:"name") as? String
-        amount = aDecoder.decodeObject(forKey:"amount") as? Int
-        paymentRef = aDecoder.decodeObject(forKey:"paymentRef") as? CLVModels.Base.Reference
-  }
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              name = aDecoder.decodeObject(forKey:"name") as? String
+              amount = aDecoder.decodeObject(forKey:"amount") as? Int
+        }
 
 override public init() {}
 
@@ -1250,36 +1347,40 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        name <- map["name"]
-        amount <- map["amount"]
-        paymentRef <- map["paymentRef"]
-  }
+        id <- map["id"]
+              name <- map["name"]
+              amount <- map["amount"]
+        }
 }
 
  
 open class TaxableAmountRate: NSObject, NSCoding, Mappable {
+  
   open var id: String?
+      
   open var name: String?
+      
   open var taxableAmount: Int?
+      
   open var rate: Int?
+      
   open var isVat: Bool?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(taxableAmount, forKey: "taxableAmount")
-  aCoder.encode(rate, forKey: "rate")
-  aCoder.encode(isVat, forKey: "isVat")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(name, forKey: "name")
+      aCoder.encode(taxableAmount, forKey: "taxableAmount")
+      aCoder.encode(rate, forKey: "rate")
+      aCoder.encode(isVat, forKey: "isVat")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        name = aDecoder.decodeObject(forKey:"name") as? String
-        taxableAmount = aDecoder.decodeObject(forKey:"taxableAmount") as? Int
-        rate = aDecoder.decodeObject(forKey:"rate") as? Int
-        isVat = aDecoder.decodeObject(forKey:"isVat") as? Bool
-  }
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              name = aDecoder.decodeObject(forKey:"name") as? String
+              taxableAmount = aDecoder.decodeObject(forKey:"taxableAmount") as? Int
+              rate = aDecoder.decodeObject(forKey:"rate") as? Int
+              isVat = aDecoder.decodeObject(forKey:"isVat") as? Bool
+      }
 
 override public init() {}
 
@@ -1288,12 +1389,12 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        name <- map["name"]
-        taxableAmount <- map["taxableAmount"]
-        rate <- map["rate"]
-        isVat <- map["isVat"]
-  }
+        id <- map["id"]
+              name <- map["name"]
+              taxableAmount <- map["taxableAmount"]
+              rate <- map["rate"]
+              isVat <- map["isVat"]
+      }
 }
 
  
@@ -1307,59 +1408,74 @@ public enum TipMode: String {
 
  
 open class TransactionSettings: NSObject, NSCoding, Mappable {
+  
   open var cardEntryMethods: Int?
+      
   open var disableCashBack: Bool?
+      
   open var cloverShouldHandleReceipts: Bool?
+      
   open var forcePinEntryOnSwipe: Bool?
+      
   open var disableRestartTransactionOnFailure: Bool?
+      
   open var allowOfflinePayment: Bool?
+      
   open var approveOfflinePaymentWithoutPrompt: Bool?
+      
   open var signatureThreshold: Int?
+      
   open var signatureEntryLocation: CLVModels.Payments.DataEntryLocation?
+      
   open var tipMode: CLVModels.Payments.TipMode?
+      
   open var tippableAmount: Int?
+      
   open var disableReceiptSelection: Bool?
+      
   open var disableDuplicateCheck: Bool?
+      
   open var autoAcceptPaymentConfirmations: Bool?
+      
   open var autoAcceptSignature: Bool?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(cardEntryMethods, forKey: "cardEntryMethods")
-  aCoder.encode(disableCashBack, forKey: "disableCashBack")
-  aCoder.encode(cloverShouldHandleReceipts, forKey: "cloverShouldHandleReceipts")
-  aCoder.encode(forcePinEntryOnSwipe, forKey: "forcePinEntryOnSwipe")
-  aCoder.encode(disableRestartTransactionOnFailure, forKey: "disableRestartTransactionOnFailure")
-  aCoder.encode(allowOfflinePayment, forKey: "allowOfflinePayment")
-  aCoder.encode(approveOfflinePaymentWithoutPrompt, forKey: "approveOfflinePaymentWithoutPrompt")
-  aCoder.encode(signatureThreshold, forKey: "signatureThreshold")
-  aCoder.encode(signatureEntryLocation?.rawValue, forKey: "signatureEntryLocation")
-  aCoder.encode(tipMode?.rawValue, forKey: "tipMode")
-  aCoder.encode(tippableAmount, forKey: "tippableAmount")
-  aCoder.encode(disableReceiptSelection, forKey: "disableReceiptSelection")
-  aCoder.encode(disableDuplicateCheck, forKey: "disableDuplicateCheck")
-  aCoder.encode(autoAcceptPaymentConfirmations, forKey: "autoAcceptPaymentConfirmations")
-  aCoder.encode(autoAcceptSignature, forKey: "autoAcceptSignature")
-}
+    aCoder.encode(cardEntryMethods, forKey: "cardEntryMethods")
+      aCoder.encode(disableCashBack, forKey: "disableCashBack")
+      aCoder.encode(cloverShouldHandleReceipts, forKey: "cloverShouldHandleReceipts")
+      aCoder.encode(forcePinEntryOnSwipe, forKey: "forcePinEntryOnSwipe")
+      aCoder.encode(disableRestartTransactionOnFailure, forKey: "disableRestartTransactionOnFailure")
+      aCoder.encode(allowOfflinePayment, forKey: "allowOfflinePayment")
+      aCoder.encode(approveOfflinePaymentWithoutPrompt, forKey: "approveOfflinePaymentWithoutPrompt")
+      aCoder.encode(signatureThreshold, forKey: "signatureThreshold")
+      aCoder.encode(signatureEntryLocation?.rawValue, forKey: "signatureEntryLocation")
+      aCoder.encode(tipMode?.rawValue, forKey: "tipMode")
+      aCoder.encode(tippableAmount, forKey: "tippableAmount")
+      aCoder.encode(disableReceiptSelection, forKey: "disableReceiptSelection")
+      aCoder.encode(disableDuplicateCheck, forKey: "disableDuplicateCheck")
+      aCoder.encode(autoAcceptPaymentConfirmations, forKey: "autoAcceptPaymentConfirmations")
+      aCoder.encode(autoAcceptSignature, forKey: "autoAcceptSignature")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      cardEntryMethods = aDecoder.decodeObject(forKey:"cardEntryMethods") as? Int
-        disableCashBack = aDecoder.decodeObject(forKey:"disableCashBack") as? Bool
-        cloverShouldHandleReceipts = aDecoder.decodeObject(forKey:"cloverShouldHandleReceipts") as? Bool
-        forcePinEntryOnSwipe = aDecoder.decodeObject(forKey:"forcePinEntryOnSwipe") as? Bool
-        disableRestartTransactionOnFailure = aDecoder.decodeObject(forKey:"disableRestartTransactionOnFailure") as? Bool
-        allowOfflinePayment = aDecoder.decodeObject(forKey:"allowOfflinePayment") as? Bool
-        approveOfflinePaymentWithoutPrompt = aDecoder.decodeObject(forKey:"approveOfflinePaymentWithoutPrompt") as? Bool
-        signatureThreshold = aDecoder.decodeObject(forKey:"signatureThreshold") as? Int
-        signatureEntryLocation = (aDecoder.decodeObject(forKey:"signatureEntryLocation") as? String) != nil ?
+        cardEntryMethods = aDecoder.decodeObject(forKey:"cardEntryMethods") as? Int
+              disableCashBack = aDecoder.decodeObject(forKey:"disableCashBack") as? Bool
+              cloverShouldHandleReceipts = aDecoder.decodeObject(forKey:"cloverShouldHandleReceipts") as? Bool
+              forcePinEntryOnSwipe = aDecoder.decodeObject(forKey:"forcePinEntryOnSwipe") as? Bool
+              disableRestartTransactionOnFailure = aDecoder.decodeObject(forKey:"disableRestartTransactionOnFailure") as? Bool
+              allowOfflinePayment = aDecoder.decodeObject(forKey:"allowOfflinePayment") as? Bool
+              approveOfflinePaymentWithoutPrompt = aDecoder.decodeObject(forKey:"approveOfflinePaymentWithoutPrompt") as? Bool
+              signatureThreshold = aDecoder.decodeObject(forKey:"signatureThreshold") as? Int
+              signatureEntryLocation = (aDecoder.decodeObject(forKey:"signatureEntryLocation") as? String) != nil ?
       CLVModels.Payments.DataEntryLocation(rawValue: (aDecoder.decodeObject(forKey:"signatureEntryLocation") as! String)) : nil
-        tipMode = (aDecoder.decodeObject(forKey:"tipMode") as? String) != nil ?
+              tipMode = (aDecoder.decodeObject(forKey:"tipMode") as? String) != nil ?
       CLVModels.Payments.TipMode(rawValue: (aDecoder.decodeObject(forKey:"tipMode") as! String)) : nil
-        tippableAmount = aDecoder.decodeObject(forKey:"tippableAmount") as? Int
-        disableReceiptSelection = aDecoder.decodeObject(forKey:"disableReceiptSelection") as? Bool
-        disableDuplicateCheck = aDecoder.decodeObject(forKey:"disableDuplicateCheck") as? Bool
-        autoAcceptPaymentConfirmations = aDecoder.decodeObject(forKey:"autoAcceptPaymentConfirmations") as? Bool
-        autoAcceptSignature = aDecoder.decodeObject(forKey:"autoAcceptSignature") as? Bool
-  }
+              tippableAmount = aDecoder.decodeObject(forKey:"tippableAmount") as? Int
+              disableReceiptSelection = aDecoder.decodeObject(forKey:"disableReceiptSelection") as? Bool
+              disableDuplicateCheck = aDecoder.decodeObject(forKey:"disableDuplicateCheck") as? Bool
+              autoAcceptPaymentConfirmations = aDecoder.decodeObject(forKey:"autoAcceptPaymentConfirmations") as? Bool
+              autoAcceptSignature = aDecoder.decodeObject(forKey:"autoAcceptSignature") as? Bool
+      }
 
 override public init() {}
 
@@ -1368,22 +1484,22 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      cardEntryMethods <- map["cardEntryMethods"]
-        disableCashBack <- map["disableCashBack"]
-        cloverShouldHandleReceipts <- map["cloverShouldHandleReceipts"]
-        forcePinEntryOnSwipe <- map["forcePinEntryOnSwipe"]
-        disableRestartTransactionOnFailure <- map["disableRestartTransactionOnFailure"]
-        allowOfflinePayment <- map["allowOfflinePayment"]
-        approveOfflinePaymentWithoutPrompt <- map["approveOfflinePaymentWithoutPrompt"]
-        signatureThreshold <- map["signatureThreshold"]
-        signatureEntryLocation <- map["signatureEntryLocation"]
-        tipMode <- map["tipMode"]
-        tippableAmount <- map["tippableAmount"]
-        disableReceiptSelection <- map["disableReceiptSelection"]
-        disableDuplicateCheck <- map["disableDuplicateCheck"]
-        autoAcceptPaymentConfirmations <- map["autoAcceptPaymentConfirmations"]
-        autoAcceptSignature <- map["autoAcceptSignature"]
-  }
+        cardEntryMethods <- map["cardEntryMethods"]
+              disableCashBack <- map["disableCashBack"]
+              cloverShouldHandleReceipts <- map["cloverShouldHandleReceipts"]
+              forcePinEntryOnSwipe <- map["forcePinEntryOnSwipe"]
+              disableRestartTransactionOnFailure <- map["disableRestartTransactionOnFailure"]
+              allowOfflinePayment <- map["allowOfflinePayment"]
+              approveOfflinePaymentWithoutPrompt <- map["approveOfflinePaymentWithoutPrompt"]
+              signatureThreshold <- map["signatureThreshold"]
+              signatureEntryLocation <- map["signatureEntryLocation"]
+              tipMode <- map["tipMode"]
+              tippableAmount <- map["tippableAmount"]
+              disableReceiptSelection <- map["disableReceiptSelection"]
+              disableDuplicateCheck <- map["disableDuplicateCheck"]
+              autoAcceptPaymentConfirmations <- map["autoAcceptPaymentConfirmations"]
+              autoAcceptSignature <- map["autoAcceptSignature"]
+      }
 }
 
  
@@ -1394,27 +1510,32 @@ public enum Type_: String {
 
  
 open class VaultedCard: NSObject, NSCoding, Mappable {
+  
   open var first6: String?
+      
   open var last4: String?
+      
   open var cardholderName: String?
+      
   open var expirationDate: String?
+      
   open var token: String?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(first6, forKey: "first6")
-  aCoder.encode(last4, forKey: "last4")
-  aCoder.encode(cardholderName, forKey: "cardholderName")
-  aCoder.encode(expirationDate, forKey: "expirationDate")
-  aCoder.encode(token, forKey: "token")
-}
+    aCoder.encode(first6, forKey: "first6")
+      aCoder.encode(last4, forKey: "last4")
+      aCoder.encode(cardholderName, forKey: "cardholderName")
+      aCoder.encode(expirationDate, forKey: "expirationDate")
+      aCoder.encode(token, forKey: "token")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      first6 = aDecoder.decodeObject(forKey:"first6") as? String
-        last4 = aDecoder.decodeObject(forKey:"last4") as? String
-        cardholderName = aDecoder.decodeObject(forKey:"cardholderName") as? String
-        expirationDate = aDecoder.decodeObject(forKey:"expirationDate") as? String
-        token = aDecoder.decodeObject(forKey:"token") as? String
-  }
+        first6 = aDecoder.decodeObject(forKey:"first6") as? String
+              last4 = aDecoder.decodeObject(forKey:"last4") as? String
+              cardholderName = aDecoder.decodeObject(forKey:"cardholderName") as? String
+              expirationDate = aDecoder.decodeObject(forKey:"expirationDate") as? String
+              token = aDecoder.decodeObject(forKey:"token") as? String
+      }
 
 override public init() {}
 
@@ -1423,12 +1544,12 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      first6 <- map["first6"]
-        last4 <- map["last4"]
-        cardholderName <- map["cardholderName"]
-        expirationDate <- map["expirationDate"]
-        token <- map["token"]
-  }
+        first6 <- map["first6"]
+              last4 <- map["last4"]
+              cardholderName <- map["cardholderName"]
+              expirationDate <- map["expirationDate"]
+              token <- map["token"]
+      }
 }
 
 }

@@ -11,85 +11,101 @@ extension CLVModels {
 public class Merchant {
  
 open class Gateway: NSObject, NSCoding, Mappable {
+  
   open var paymentProcessorName: String?
+      
   open var authorizationFrontEnd: String?
+      
   open var acquiringBackEnd: String?
+      
   open var paymentGatewayApi: String?
+      
   open var accountName: String?
+      
   open var altMid: String?
+      
   open var mid: String?
+      
   open var fns: String?
+      
   open var tid: String?
+      
   open var storeId: String?
+      
   open var supportsTipping: Bool?
+      
   open var frontendMid: String?
+      
   open var backendMid: String?
+      
     /// Merchant Category Code
   open var mcc: String?
+      
   open var tokenType: String?
+      
   open var groupId: String?
+      
   open var debitKeyCode: String?
+      
   open var supportsTipAdjust: Bool?
+      
   open var supportsNakedCredit: Bool?
+      
   open var supportsMultiPayToken: Bool?
-  open var keyPrefix: String?
-  open var keyInfo: [String:String]?
+          
   open var closingTime: String?
+      
   open var newBatchCloseEnabled: Bool?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(paymentProcessorName, forKey: "paymentProcessorName")
-  aCoder.encode(authorizationFrontEnd, forKey: "authorizationFrontEnd")
-  aCoder.encode(acquiringBackEnd, forKey: "acquiringBackEnd")
-  aCoder.encode(paymentGatewayApi, forKey: "paymentGatewayApi")
-  aCoder.encode(accountName, forKey: "accountName")
-  aCoder.encode(altMid, forKey: "altMid")
-  aCoder.encode(mid, forKey: "mid")
-  aCoder.encode(fns, forKey: "fns")
-  aCoder.encode(tid, forKey: "tid")
-  aCoder.encode(storeId, forKey: "storeId")
-  aCoder.encode(supportsTipping, forKey: "supportsTipping")
-  aCoder.encode(frontendMid, forKey: "frontendMid")
-  aCoder.encode(backendMid, forKey: "backendMid")
-  aCoder.encode(mcc, forKey: "mcc")
-  aCoder.encode(tokenType, forKey: "tokenType")
-  aCoder.encode(groupId, forKey: "groupId")
-  aCoder.encode(debitKeyCode, forKey: "debitKeyCode")
-  aCoder.encode(supportsTipAdjust, forKey: "supportsTipAdjust")
-  aCoder.encode(supportsNakedCredit, forKey: "supportsNakedCredit")
-  aCoder.encode(supportsMultiPayToken, forKey: "supportsMultiPayToken")
-  aCoder.encode(keyPrefix, forKey: "keyPrefix")
-  aCoder.encode(keyInfo, forKey: "keyInfo")
-  aCoder.encode(closingTime, forKey: "closingTime")
-  aCoder.encode(newBatchCloseEnabled, forKey: "newBatchCloseEnabled")
-}
+    aCoder.encode(paymentProcessorName, forKey: "paymentProcessorName")
+      aCoder.encode(authorizationFrontEnd, forKey: "authorizationFrontEnd")
+      aCoder.encode(acquiringBackEnd, forKey: "acquiringBackEnd")
+      aCoder.encode(paymentGatewayApi, forKey: "paymentGatewayApi")
+      aCoder.encode(accountName, forKey: "accountName")
+      aCoder.encode(altMid, forKey: "altMid")
+      aCoder.encode(mid, forKey: "mid")
+      aCoder.encode(fns, forKey: "fns")
+      aCoder.encode(tid, forKey: "tid")
+      aCoder.encode(storeId, forKey: "storeId")
+      aCoder.encode(supportsTipping, forKey: "supportsTipping")
+      aCoder.encode(frontendMid, forKey: "frontendMid")
+      aCoder.encode(backendMid, forKey: "backendMid")
+      aCoder.encode(mcc, forKey: "mcc")
+      aCoder.encode(tokenType, forKey: "tokenType")
+      aCoder.encode(groupId, forKey: "groupId")
+      aCoder.encode(debitKeyCode, forKey: "debitKeyCode")
+      aCoder.encode(supportsTipAdjust, forKey: "supportsTipAdjust")
+      aCoder.encode(supportsNakedCredit, forKey: "supportsNakedCredit")
+      aCoder.encode(supportsMultiPayToken, forKey: "supportsMultiPayToken")
+          aCoder.encode(closingTime, forKey: "closingTime")
+      aCoder.encode(newBatchCloseEnabled, forKey: "newBatchCloseEnabled")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      paymentProcessorName = aDecoder.decodeObject(forKey:"paymentProcessorName") as? String
-        authorizationFrontEnd = aDecoder.decodeObject(forKey:"authorizationFrontEnd") as? String
-        acquiringBackEnd = aDecoder.decodeObject(forKey:"acquiringBackEnd") as? String
-        paymentGatewayApi = aDecoder.decodeObject(forKey:"paymentGatewayApi") as? String
-        accountName = aDecoder.decodeObject(forKey:"accountName") as? String
-        altMid = aDecoder.decodeObject(forKey:"altMid") as? String
-        mid = aDecoder.decodeObject(forKey:"mid") as? String
-        fns = aDecoder.decodeObject(forKey:"fns") as? String
-        tid = aDecoder.decodeObject(forKey:"tid") as? String
-        storeId = aDecoder.decodeObject(forKey:"storeId") as? String
-        supportsTipping = aDecoder.decodeObject(forKey:"supportsTipping") as? Bool
-        frontendMid = aDecoder.decodeObject(forKey:"frontendMid") as? String
-        backendMid = aDecoder.decodeObject(forKey:"backendMid") as? String
-        mcc = aDecoder.decodeObject(forKey:"mcc") as? String
-        tokenType = aDecoder.decodeObject(forKey:"tokenType") as? String
-        groupId = aDecoder.decodeObject(forKey:"groupId") as? String
-        debitKeyCode = aDecoder.decodeObject(forKey:"debitKeyCode") as? String
-        supportsTipAdjust = aDecoder.decodeObject(forKey:"supportsTipAdjust") as? Bool
-        supportsNakedCredit = aDecoder.decodeObject(forKey:"supportsNakedCredit") as? Bool
-        supportsMultiPayToken = aDecoder.decodeObject(forKey:"supportsMultiPayToken") as? Bool
-        keyPrefix = aDecoder.decodeObject(forKey:"keyPrefix") as? String
-        keyInfo = aDecoder.decodeObject(forKey:"keyInfo") as? [String:String]
-        closingTime = aDecoder.decodeObject(forKey:"closingTime") as? String
-        newBatchCloseEnabled = aDecoder.decodeObject(forKey:"newBatchCloseEnabled") as? Bool
-  }
+        paymentProcessorName = aDecoder.decodeObject(forKey:"paymentProcessorName") as? String
+              authorizationFrontEnd = aDecoder.decodeObject(forKey:"authorizationFrontEnd") as? String
+              acquiringBackEnd = aDecoder.decodeObject(forKey:"acquiringBackEnd") as? String
+              paymentGatewayApi = aDecoder.decodeObject(forKey:"paymentGatewayApi") as? String
+              accountName = aDecoder.decodeObject(forKey:"accountName") as? String
+              altMid = aDecoder.decodeObject(forKey:"altMid") as? String
+              mid = aDecoder.decodeObject(forKey:"mid") as? String
+              fns = aDecoder.decodeObject(forKey:"fns") as? String
+              tid = aDecoder.decodeObject(forKey:"tid") as? String
+              storeId = aDecoder.decodeObject(forKey:"storeId") as? String
+              supportsTipping = aDecoder.decodeObject(forKey:"supportsTipping") as? Bool
+              frontendMid = aDecoder.decodeObject(forKey:"frontendMid") as? String
+              backendMid = aDecoder.decodeObject(forKey:"backendMid") as? String
+              mcc = aDecoder.decodeObject(forKey:"mcc") as? String
+              tokenType = aDecoder.decodeObject(forKey:"tokenType") as? String
+              groupId = aDecoder.decodeObject(forKey:"groupId") as? String
+              debitKeyCode = aDecoder.decodeObject(forKey:"debitKeyCode") as? String
+              supportsTipAdjust = aDecoder.decodeObject(forKey:"supportsTipAdjust") as? Bool
+              supportsNakedCredit = aDecoder.decodeObject(forKey:"supportsNakedCredit") as? Bool
+              supportsMultiPayToken = aDecoder.decodeObject(forKey:"supportsMultiPayToken") as? Bool
+                  closingTime = aDecoder.decodeObject(forKey:"closingTime") as? String
+              newBatchCloseEnabled = aDecoder.decodeObject(forKey:"newBatchCloseEnabled") as? Bool
+      }
 
 override public init() {}
 
@@ -98,54 +114,55 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      paymentProcessorName <- map["paymentProcessorName"]
-        authorizationFrontEnd <- map["authorizationFrontEnd"]
-        acquiringBackEnd <- map["acquiringBackEnd"]
-        paymentGatewayApi <- map["paymentGatewayApi"]
-        accountName <- map["accountName"]
-        altMid <- map["altMid"]
-        mid <- map["mid"]
-        fns <- map["fns"]
-        tid <- map["tid"]
-        storeId <- map["storeId"]
-        supportsTipping <- map["supportsTipping"]
-        frontendMid <- map["frontendMid"]
-        backendMid <- map["backendMid"]
-        mcc <- map["mcc"]
-        tokenType <- map["tokenType"]
-        groupId <- map["groupId"]
-        debitKeyCode <- map["debitKeyCode"]
-        supportsTipAdjust <- map["supportsTipAdjust"]
-        supportsNakedCredit <- map["supportsNakedCredit"]
-        supportsMultiPayToken <- map["supportsMultiPayToken"]
-        keyPrefix <- map["keyPrefix"]
-        keyInfo <- map["keyInfo"]
-        closingTime <- map["closingTime"]
-        newBatchCloseEnabled <- map["newBatchCloseEnabled"]
-  }
+        paymentProcessorName <- map["paymentProcessorName"]
+              authorizationFrontEnd <- map["authorizationFrontEnd"]
+              acquiringBackEnd <- map["acquiringBackEnd"]
+              paymentGatewayApi <- map["paymentGatewayApi"]
+              accountName <- map["accountName"]
+              altMid <- map["altMid"]
+              mid <- map["mid"]
+              fns <- map["fns"]
+              tid <- map["tid"]
+              storeId <- map["storeId"]
+              supportsTipping <- map["supportsTipping"]
+              frontendMid <- map["frontendMid"]
+              backendMid <- map["backendMid"]
+              mcc <- map["mcc"]
+              tokenType <- map["tokenType"]
+              groupId <- map["groupId"]
+              debitKeyCode <- map["debitKeyCode"]
+              supportsTipAdjust <- map["supportsTipAdjust"]
+              supportsNakedCredit <- map["supportsNakedCredit"]
+              supportsMultiPayToken <- map["supportsMultiPayToken"]
+                  closingTime <- map["closingTime"]
+              newBatchCloseEnabled <- map["newBatchCloseEnabled"]
+      }
 }
 
  
 open class Logo: NSObject, NSCoding, Mappable {
+  
     /// The type of merchant logo
   open var logoType: CLVModels.Merchant.LogoType?
+      
     /// The filename of the logo
   open var logoFilename: String?
+      
     /// URL of the logo file. Generated from filename.
   open var url: String?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(logoType?.rawValue, forKey: "logoType")
-  aCoder.encode(logoFilename, forKey: "logoFilename")
-  aCoder.encode(url, forKey: "url")
-}
+    aCoder.encode(logoType?.rawValue, forKey: "logoType")
+      aCoder.encode(logoFilename, forKey: "logoFilename")
+      aCoder.encode(url, forKey: "url")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      logoType = (aDecoder.decodeObject(forKey:"logoType") as? String) != nil ?
+        logoType = (aDecoder.decodeObject(forKey:"logoType") as? String) != nil ?
       CLVModels.Merchant.LogoType(rawValue: (aDecoder.decodeObject(forKey:"logoType") as! String)) : nil
-        logoFilename = aDecoder.decodeObject(forKey:"logoFilename") as? String
-        url = aDecoder.decodeObject(forKey:"url") as? String
-  }
+              logoFilename = aDecoder.decodeObject(forKey:"logoFilename") as? String
+              url = aDecoder.decodeObject(forKey:"url") as? String
+      }
 
 override public init() {}
 
@@ -154,10 +171,10 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      logoType <- map["logoType"]
-        logoFilename <- map["logoFilename"]
-        url <- map["url"]
-  }
+        logoType <- map["logoType"]
+              logoFilename <- map["logoFilename"]
+              url <- map["url"]
+      }
 }
 
  
@@ -168,128 +185,160 @@ public enum LogoType: String {
 
  
 open class Merchant: NSObject, NSCoding, Mappable {
+  
     /// Unique identifier
   open var id: String?
+      
     /// Name of the merchant
   open var name: String?
+      
     /// The account that owns this merchant
   open var owner: CLVModels.Employees.Employee?
+      
     /// The address of the merchant.
   open var address: CLVModels.Base.Address?
+      
   open var merchantPlan: CLVModels.Merchant.MerchantPlan?
+      
   open var defaultCurrency: String?
+      
   open var phoneNumber: String?
+      
   open var website: String?
+      
     /// Email address for customers to contact merchant through
   open var customerContactEmail: String?
+      
   open var logos: [CLVModels.Merchant.Logo]?
+      
   open var createdTime: Date?
+      
   open var properties: CLVModels.Merchant.MerchantProperties?
+      
   open var gateway: CLVModels.Merchant.Gateway?
+      
   open var tipSuggestions: [CLVModels.Merchant.TipSuggestion]?
+      
     /// This merchant's employees
   open var employees: [CLVModels.Employees.Employee]?
+      
     /// This merchant's inventory items
   open var items: [CLVModels.Inventory.Item]?
+      
     /// This merchant's inventory tags
   open var tags: [CLVModels.Inventory.Tag]?
+      
     /// This merchant's supported tenders
   open var tenders: [CLVModels.Base.Tender]?
+      
     /// This merchant's employees' shifts
   open var shifts: [CLVModels.Employees.Shift]?
+      
     /// This merchant's orders
   open var orders: [CLVModels.Order.Order]?
+      
     /// This merchant's order payments
   open var payments: [CLVModels.Payments.Payment]?
+      
   open var taxRates: [CLVModels.Inventory.TaxRate]?
+      
   open var printers: [CLVModels.Printer.Printer]?
+      
   open var modifierGroups: [CLVModels.Inventory.ModifierGroup]?
+      
   open var orderTypes: [CLVModels.Order.OrderType]?
+      
     /// The merchant's reseller
   open var reseller: CLVModels.Base.Reference?
+      
     /// This merchant's opening hours
   open var opening_hours: [CLVModels.Hours.HoursSet]?
+      
     /// The business type of the merchant
   open var businessTypeCode: CLVModels.Base.BusinessTypeCode?
+      
     /// Returns true when the merchant is billable.
   open var isBillable: Bool?
+      
     /// A list of devices a merchant owns
   open var devices: [CLVModels.Base.Reference]?
+      
     /// A list of merchant groups a merchant belongs to
   open var merchantGroups: [CLVModels.Base.Reference]?
+      
     /// The partner app/solution with which this merchant is primarily associated
   open var partnerApp: CLVModels.Base.Reference?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(owner, forKey: "owner")
-  aCoder.encode(address, forKey: "address")
-  aCoder.encode(merchantPlan, forKey: "merchantPlan")
-  aCoder.encode(defaultCurrency, forKey: "defaultCurrency")
-  aCoder.encode(phoneNumber, forKey: "phoneNumber")
-  aCoder.encode(website, forKey: "website")
-  aCoder.encode(customerContactEmail, forKey: "customerContactEmail")
-  aCoder.encode(logos, forKey: "logos")
-  aCoder.encode(createdTime, forKey: "createdTime")
-  aCoder.encode(properties, forKey: "properties")
-  aCoder.encode(gateway, forKey: "gateway")
-  aCoder.encode(tipSuggestions, forKey: "tipSuggestions")
-  aCoder.encode(employees, forKey: "employees")
-  aCoder.encode(items, forKey: "items")
-  aCoder.encode(tags, forKey: "tags")
-  aCoder.encode(tenders, forKey: "tenders")
-  aCoder.encode(shifts, forKey: "shifts")
-  aCoder.encode(orders, forKey: "orders")
-  aCoder.encode(payments, forKey: "payments")
-  aCoder.encode(taxRates, forKey: "taxRates")
-  aCoder.encode(printers, forKey: "printers")
-  aCoder.encode(modifierGroups, forKey: "modifierGroups")
-  aCoder.encode(orderTypes, forKey: "orderTypes")
-  aCoder.encode(reseller, forKey: "reseller")
-  aCoder.encode(opening_hours, forKey: "opening_hours")
-  aCoder.encode(businessTypeCode?.rawValue, forKey: "businessTypeCode")
-  aCoder.encode(isBillable, forKey: "isBillable")
-  aCoder.encode(devices, forKey: "devices")
-  aCoder.encode(merchantGroups, forKey: "merchantGroups")
-  aCoder.encode(partnerApp, forKey: "partnerApp")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(name, forKey: "name")
+      aCoder.encode(owner, forKey: "owner")
+      aCoder.encode(address, forKey: "address")
+      aCoder.encode(merchantPlan, forKey: "merchantPlan")
+      aCoder.encode(defaultCurrency, forKey: "defaultCurrency")
+      aCoder.encode(phoneNumber, forKey: "phoneNumber")
+      aCoder.encode(website, forKey: "website")
+      aCoder.encode(customerContactEmail, forKey: "customerContactEmail")
+      aCoder.encode(logos, forKey: "logos")
+      aCoder.encode(createdTime, forKey: "createdTime")
+      aCoder.encode(properties, forKey: "properties")
+      aCoder.encode(gateway, forKey: "gateway")
+      aCoder.encode(tipSuggestions, forKey: "tipSuggestions")
+      aCoder.encode(employees, forKey: "employees")
+      aCoder.encode(items, forKey: "items")
+      aCoder.encode(tags, forKey: "tags")
+      aCoder.encode(tenders, forKey: "tenders")
+      aCoder.encode(shifts, forKey: "shifts")
+      aCoder.encode(orders, forKey: "orders")
+      aCoder.encode(payments, forKey: "payments")
+      aCoder.encode(taxRates, forKey: "taxRates")
+      aCoder.encode(printers, forKey: "printers")
+      aCoder.encode(modifierGroups, forKey: "modifierGroups")
+      aCoder.encode(orderTypes, forKey: "orderTypes")
+      aCoder.encode(reseller, forKey: "reseller")
+      aCoder.encode(opening_hours, forKey: "opening_hours")
+      aCoder.encode(businessTypeCode?.rawValue, forKey: "businessTypeCode")
+      aCoder.encode(isBillable, forKey: "isBillable")
+      aCoder.encode(devices, forKey: "devices")
+      aCoder.encode(merchantGroups, forKey: "merchantGroups")
+      aCoder.encode(partnerApp, forKey: "partnerApp")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        name = aDecoder.decodeObject(forKey:"name") as? String
-        owner = aDecoder.decodeObject(forKey:"owner") as? CLVModels.Employees.Employee
-        address = aDecoder.decodeObject(forKey:"address") as? CLVModels.Base.Address
-        merchantPlan = aDecoder.decodeObject(forKey:"merchantPlan") as? CLVModels.Merchant.MerchantPlan
-        defaultCurrency = aDecoder.decodeObject(forKey:"defaultCurrency") as? String
-        phoneNumber = aDecoder.decodeObject(forKey:"phoneNumber") as? String
-        website = aDecoder.decodeObject(forKey:"website") as? String
-        customerContactEmail = aDecoder.decodeObject(forKey:"customerContactEmail") as? String
-        logos = aDecoder.decodeObject(forKey:"logos") as? [CLVModels.Merchant.Logo]
-        createdTime = aDecoder.decodeObject(forKey:"createdTime") as? Date
-        properties = aDecoder.decodeObject(forKey:"properties") as? CLVModels.Merchant.MerchantProperties
-        gateway = aDecoder.decodeObject(forKey:"gateway") as? CLVModels.Merchant.Gateway
-        tipSuggestions = aDecoder.decodeObject(forKey:"tipSuggestions") as? [CLVModels.Merchant.TipSuggestion]
-        employees = aDecoder.decodeObject(forKey:"employees") as? [CLVModels.Employees.Employee]
-        items = aDecoder.decodeObject(forKey:"items") as? [CLVModels.Inventory.Item]
-        tags = aDecoder.decodeObject(forKey:"tags") as? [CLVModels.Inventory.Tag]
-        tenders = aDecoder.decodeObject(forKey:"tenders") as? [CLVModels.Base.Tender]
-        shifts = aDecoder.decodeObject(forKey:"shifts") as? [CLVModels.Employees.Shift]
-        orders = aDecoder.decodeObject(forKey:"orders") as? [CLVModels.Order.Order]
-        payments = aDecoder.decodeObject(forKey:"payments") as? [CLVModels.Payments.Payment]
-        taxRates = aDecoder.decodeObject(forKey:"taxRates") as? [CLVModels.Inventory.TaxRate]
-        printers = aDecoder.decodeObject(forKey:"printers") as? [CLVModels.Printer.Printer]
-        modifierGroups = aDecoder.decodeObject(forKey:"modifierGroups") as? [CLVModels.Inventory.ModifierGroup]
-        orderTypes = aDecoder.decodeObject(forKey:"orderTypes") as? [CLVModels.Order.OrderType]
-        reseller = aDecoder.decodeObject(forKey:"reseller") as? CLVModels.Base.Reference
-        opening_hours = aDecoder.decodeObject(forKey:"opening_hours") as? [CLVModels.Hours.HoursSet]
-        businessTypeCode = (aDecoder.decodeObject(forKey:"businessTypeCode") as? String) != nil ?
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              name = aDecoder.decodeObject(forKey:"name") as? String
+              owner = aDecoder.decodeObject(forKey:"owner") as? CLVModels.Employees.Employee
+              address = aDecoder.decodeObject(forKey:"address") as? CLVModels.Base.Address
+              merchantPlan = aDecoder.decodeObject(forKey:"merchantPlan") as? CLVModels.Merchant.MerchantPlan
+              defaultCurrency = aDecoder.decodeObject(forKey:"defaultCurrency") as? String
+              phoneNumber = aDecoder.decodeObject(forKey:"phoneNumber") as? String
+              website = aDecoder.decodeObject(forKey:"website") as? String
+              customerContactEmail = aDecoder.decodeObject(forKey:"customerContactEmail") as? String
+              logos = aDecoder.decodeObject(forKey:"logos") as? [CLVModels.Merchant.Logo]
+              createdTime = aDecoder.decodeObject(forKey:"createdTime") as? Date
+              properties = aDecoder.decodeObject(forKey:"properties") as? CLVModels.Merchant.MerchantProperties
+              gateway = aDecoder.decodeObject(forKey:"gateway") as? CLVModels.Merchant.Gateway
+              tipSuggestions = aDecoder.decodeObject(forKey:"tipSuggestions") as? [CLVModels.Merchant.TipSuggestion]
+              employees = aDecoder.decodeObject(forKey:"employees") as? [CLVModels.Employees.Employee]
+              items = aDecoder.decodeObject(forKey:"items") as? [CLVModels.Inventory.Item]
+              tags = aDecoder.decodeObject(forKey:"tags") as? [CLVModels.Inventory.Tag]
+              tenders = aDecoder.decodeObject(forKey:"tenders") as? [CLVModels.Base.Tender]
+              shifts = aDecoder.decodeObject(forKey:"shifts") as? [CLVModels.Employees.Shift]
+              orders = aDecoder.decodeObject(forKey:"orders") as? [CLVModels.Order.Order]
+              payments = aDecoder.decodeObject(forKey:"payments") as? [CLVModels.Payments.Payment]
+              taxRates = aDecoder.decodeObject(forKey:"taxRates") as? [CLVModels.Inventory.TaxRate]
+              printers = aDecoder.decodeObject(forKey:"printers") as? [CLVModels.Printer.Printer]
+              modifierGroups = aDecoder.decodeObject(forKey:"modifierGroups") as? [CLVModels.Inventory.ModifierGroup]
+              orderTypes = aDecoder.decodeObject(forKey:"orderTypes") as? [CLVModels.Order.OrderType]
+              reseller = aDecoder.decodeObject(forKey:"reseller") as? CLVModels.Base.Reference
+              opening_hours = aDecoder.decodeObject(forKey:"opening_hours") as? [CLVModels.Hours.HoursSet]
+              businessTypeCode = (aDecoder.decodeObject(forKey:"businessTypeCode") as? String) != nil ?
       CLVModels.Base.BusinessTypeCode(rawValue: (aDecoder.decodeObject(forKey:"businessTypeCode") as! String)) : nil
-        isBillable = aDecoder.decodeObject(forKey:"isBillable") as? Bool
-        devices = aDecoder.decodeObject(forKey:"devices") as? [CLVModels.Base.Reference]
-        merchantGroups = aDecoder.decodeObject(forKey:"merchantGroups") as? [CLVModels.Base.Reference]
-        partnerApp = aDecoder.decodeObject(forKey:"partnerApp") as? CLVModels.Base.Reference
-  }
+              isBillable = aDecoder.decodeObject(forKey:"isBillable") as? Bool
+              devices = aDecoder.decodeObject(forKey:"devices") as? [CLVModels.Base.Reference]
+              merchantGroups = aDecoder.decodeObject(forKey:"merchantGroups") as? [CLVModels.Base.Reference]
+              partnerApp = aDecoder.decodeObject(forKey:"partnerApp") as? CLVModels.Base.Reference
+      }
 
 override public init() {}
 
@@ -298,74 +347,81 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        name <- map["name"]
-        owner <- map["owner"]
-        address <- map["address"]
-        merchantPlan <- map["merchantPlan"]
-        defaultCurrency <- map["defaultCurrency"]
-        phoneNumber <- map["phoneNumber"]
-        website <- map["website"]
-        customerContactEmail <- map["customerContactEmail"]
-        logos <- map["logos.elements"]
-        createdTime <- (map["createdTime"], CLVDateTransform())
-        properties <- map["properties"]
-        gateway <- map["gateway"]
-        tipSuggestions <- map["tipSuggestions.elements"]
-        employees <- map["employees.elements"]
-        items <- map["items.elements"]
-        tags <- map["tags.elements"]
-        tenders <- map["tenders.elements"]
-        shifts <- map["shifts.elements"]
-        orders <- map["orders.elements"]
-        payments <- map["payments.elements"]
-        taxRates <- map["taxRates.elements"]
-        printers <- map["printers.elements"]
-        modifierGroups <- map["modifierGroups.elements"]
-        orderTypes <- map["orderTypes.elements"]
-        reseller <- map["reseller"]
-        opening_hours <- map["opening_hours.elements"]
-        businessTypeCode <- map["businessTypeCode"]
-        isBillable <- map["isBillable"]
-        devices <- map["devices.elements"]
-        merchantGroups <- map["merchantGroups.elements"]
-        partnerApp <- map["partnerApp"]
-  }
+        id <- map["id"]
+              name <- map["name"]
+              owner <- map["owner"]
+              address <- map["address"]
+              merchantPlan <- map["merchantPlan"]
+              defaultCurrency <- map["defaultCurrency"]
+              phoneNumber <- map["phoneNumber"]
+              website <- map["website"]
+              customerContactEmail <- map["customerContactEmail"]
+              logos <- map["logos.elements"]
+              createdTime <- (map["createdTime"], CLVDateTransform())
+              properties <- map["properties"]
+              gateway <- map["gateway"]
+              tipSuggestions <- map["tipSuggestions.elements"]
+              employees <- map["employees.elements"]
+              items <- map["items.elements"]
+              tags <- map["tags.elements"]
+              tenders <- map["tenders.elements"]
+              shifts <- map["shifts.elements"]
+              orders <- map["orders.elements"]
+              payments <- map["payments.elements"]
+              taxRates <- map["taxRates.elements"]
+              printers <- map["printers.elements"]
+              modifierGroups <- map["modifierGroups.elements"]
+              orderTypes <- map["orderTypes.elements"]
+              reseller <- map["reseller"]
+              opening_hours <- map["opening_hours.elements"]
+              businessTypeCode <- map["businessTypeCode"]
+              isBillable <- map["isBillable"]
+              devices <- map["devices.elements"]
+              merchantGroups <- map["merchantGroups.elements"]
+              partnerApp <- map["partnerApp"]
+      }
 }
 
  
 open class MerchantPlan: NSObject, NSCoding, Mappable {
+  
     /// Unique identifier
   open var id: String?
+      
     /// The name of the merchant plan
   open var name: String?
+      
     /// Description of the plan
   open var description_: String?
+      
   open var price: Int?
+      
   open var modules: [CLVModels.Merchant.Module]?
+      
   open var appBundle: CLVModels.Apps.AppBundle?
+      
     /// First data plan code
   open var planCode: String?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(description_, forKey: "description_")
-  aCoder.encode(price, forKey: "price")
-  aCoder.encode(modules, forKey: "modules")
-  aCoder.encode(appBundle, forKey: "appBundle")
-  aCoder.encode(planCode, forKey: "planCode")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(name, forKey: "name")
+      aCoder.encode(description_, forKey: "description_")
+      aCoder.encode(price, forKey: "price")
+      aCoder.encode(modules, forKey: "modules")
+      aCoder.encode(appBundle, forKey: "appBundle")
+      aCoder.encode(planCode, forKey: "planCode")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        name = aDecoder.decodeObject(forKey:"name") as? String
-        description_ = aDecoder.decodeObject(forKey:"description_") as? String
-        price = aDecoder.decodeObject(forKey:"price") as? Int
-        modules = aDecoder.decodeObject(forKey:"modules") as? [CLVModels.Merchant.Module]
-        appBundle = aDecoder.decodeObject(forKey:"appBundle") as? CLVModels.Apps.AppBundle
-        planCode = aDecoder.decodeObject(forKey:"planCode") as? String
-  }
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              name = aDecoder.decodeObject(forKey:"name") as? String
+              description_ = aDecoder.decodeObject(forKey:"description_") as? String
+              price = aDecoder.decodeObject(forKey:"price") as? Int
+              modules = aDecoder.decodeObject(forKey:"modules") as? [CLVModels.Merchant.Module]
+              appBundle = aDecoder.decodeObject(forKey:"appBundle") as? CLVModels.Apps.AppBundle
+              planCode = aDecoder.decodeObject(forKey:"planCode") as? String
+      }
 
 override public init() {}
 
@@ -374,191 +430,242 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        name <- map["name"]
-        description_ <- map["description"]
-        price <- map["price"]
-        modules <- map["modules.elements"]
-        appBundle <- map["appBundle"]
-        planCode <- map["planCode"]
-  }
+        id <- map["id"]
+              name <- map["name"]
+              description_ <- map["description"]
+              price <- map["price"]
+              modules <- map["modules.elements"]
+              appBundle <- map["appBundle"]
+              planCode <- map["planCode"]
+      }
 }
 
  
 open class MerchantProperties: NSObject, NSCoding, Mappable {
+  
   open var merchantRef: CLVModels.Base.Reference?
+      
   open var defaultCurrency: String?
+      
   open var tipsEnabled: Bool?
+      
   open var receiptProperties: String?
+      
   open var summaryHour: Int?
+      
   open var signatureThreshold: Int?
+      
   open var hasDefaultEmployee: Bool?
+      
   open var tipRateDefault: Int?
+      
   open var onPaperTipSignatures: Bool?
+      
   open var autoLogout: Bool?
+      
   open var orderTitle: CLVModels.Merchant.OrderTitle?
+      
   open var orderTitleMax: Int?
+      
   open var resetOnReportingTime: Bool?
+      
   open var notesOnOrders: Bool?
+      
   open var deleteOrders: Bool?
+      
   open var removeTaxEnabled: Bool?
+      
   open var groupLineItems: Bool?
+      
   open var alternateInventoryNames: Bool?
+      
   open var autoPrint: Bool?
+      
   open var hardwareProfile: String?
+      
   open var infoleaseSuppressBilling: Bool?
+      
   open var infoleaseSuppressPlanBilling: Bool?
+      
   open var shippingAddress: String?
+      
   open var marketingEnabled: Bool?
+      
   open var marketingPreferenceText: String?
+      
   open var bankMarker: Int?
+      
   open var supportPhone: String?
+      
   open var supportEmail: String?
+      
   open var manualCloseout: Bool?
+      
   open var showCloseoutOrders: Bool?
+      
   open var sendCloseoutEmail: Bool?
+      
   open var stayInCategory: Bool?
+      
     /// The locale of the merchant.
   open var locale: String?
+      
   open var timezone: String?
+      
     /// Whether this merchant is in a VAT country
   open var vat: Bool?
+      
     /// The VAT tax name that is shown on receipts
   open var vatTaxName: String?
+      
     /// Temporary while we are switching US billing systems
   open var appBillingSystem: String?
+      
     /// The ABA Account Number.  Supplied by First Data.
   open var abaAccountNumber: String?
+      
     /// The Masked DDA Account Number.  Supplied by First Data.
   open var ddaAccountNumber: String?
+      
   open var trackStock: Bool?
+      
   open var updateStock: Bool?
+      
   open var allowClockOutWithOpenOrders: Bool?
+      
   open var logInClockInPrompt: Bool?
+      
   open var accountType: String?
+      
     /// The business type of the merchant
   open var businessTypeCode: CLVModels.Base.BusinessTypeCode?
+      
   open var pinLength: Int?
+      
     /// Whether cash back is enabled for this merchant
   open var cashBackEnabled: Bool?
+      
     /// List of cash back possible cash back amounts
   open var cashBackOptions: String?
+      
     /// The maximum amount of cash back that the customer can select.
   open var maxCashBack: Int?
+      
     /// Merchant hierarchy (Business, Bank, Agent, Corp, Chain). Supplied by First Data.
   open var hierarchy: String?
+      
     /// Whether or not merchant has consented to infolease billing
   open var hasConsented: Bool?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(merchantRef, forKey: "merchantRef")
-  aCoder.encode(defaultCurrency, forKey: "defaultCurrency")
-  aCoder.encode(tipsEnabled, forKey: "tipsEnabled")
-  aCoder.encode(receiptProperties, forKey: "receiptProperties")
-  aCoder.encode(summaryHour, forKey: "summaryHour")
-  aCoder.encode(signatureThreshold, forKey: "signatureThreshold")
-  aCoder.encode(hasDefaultEmployee, forKey: "hasDefaultEmployee")
-  aCoder.encode(tipRateDefault, forKey: "tipRateDefault")
-  aCoder.encode(onPaperTipSignatures, forKey: "onPaperTipSignatures")
-  aCoder.encode(autoLogout, forKey: "autoLogout")
-  aCoder.encode(orderTitle?.rawValue, forKey: "orderTitle")
-  aCoder.encode(orderTitleMax, forKey: "orderTitleMax")
-  aCoder.encode(resetOnReportingTime, forKey: "resetOnReportingTime")
-  aCoder.encode(notesOnOrders, forKey: "notesOnOrders")
-  aCoder.encode(deleteOrders, forKey: "deleteOrders")
-  aCoder.encode(removeTaxEnabled, forKey: "removeTaxEnabled")
-  aCoder.encode(groupLineItems, forKey: "groupLineItems")
-  aCoder.encode(alternateInventoryNames, forKey: "alternateInventoryNames")
-  aCoder.encode(autoPrint, forKey: "autoPrint")
-  aCoder.encode(hardwareProfile, forKey: "hardwareProfile")
-  aCoder.encode(infoleaseSuppressBilling, forKey: "infoleaseSuppressBilling")
-  aCoder.encode(infoleaseSuppressPlanBilling, forKey: "infoleaseSuppressPlanBilling")
-  aCoder.encode(shippingAddress, forKey: "shippingAddress")
-  aCoder.encode(marketingEnabled, forKey: "marketingEnabled")
-  aCoder.encode(marketingPreferenceText, forKey: "marketingPreferenceText")
-  aCoder.encode(bankMarker, forKey: "bankMarker")
-  aCoder.encode(supportPhone, forKey: "supportPhone")
-  aCoder.encode(supportEmail, forKey: "supportEmail")
-  aCoder.encode(manualCloseout, forKey: "manualCloseout")
-  aCoder.encode(showCloseoutOrders, forKey: "showCloseoutOrders")
-  aCoder.encode(sendCloseoutEmail, forKey: "sendCloseoutEmail")
-  aCoder.encode(stayInCategory, forKey: "stayInCategory")
-  aCoder.encode(locale, forKey: "locale")
-  aCoder.encode(timezone, forKey: "timezone")
-  aCoder.encode(vat, forKey: "vat")
-  aCoder.encode(vatTaxName, forKey: "vatTaxName")
-  aCoder.encode(appBillingSystem, forKey: "appBillingSystem")
-  aCoder.encode(abaAccountNumber, forKey: "abaAccountNumber")
-  aCoder.encode(ddaAccountNumber, forKey: "ddaAccountNumber")
-  aCoder.encode(trackStock, forKey: "trackStock")
-  aCoder.encode(updateStock, forKey: "updateStock")
-  aCoder.encode(allowClockOutWithOpenOrders, forKey: "allowClockOutWithOpenOrders")
-  aCoder.encode(logInClockInPrompt, forKey: "logInClockInPrompt")
-  aCoder.encode(accountType, forKey: "accountType")
-  aCoder.encode(businessTypeCode?.rawValue, forKey: "businessTypeCode")
-  aCoder.encode(pinLength, forKey: "pinLength")
-  aCoder.encode(cashBackEnabled, forKey: "cashBackEnabled")
-  aCoder.encode(cashBackOptions, forKey: "cashBackOptions")
-  aCoder.encode(maxCashBack, forKey: "maxCashBack")
-  aCoder.encode(hierarchy, forKey: "hierarchy")
-  aCoder.encode(hasConsented, forKey: "hasConsented")
-}
+    aCoder.encode(merchantRef, forKey: "merchantRef")
+      aCoder.encode(defaultCurrency, forKey: "defaultCurrency")
+      aCoder.encode(tipsEnabled, forKey: "tipsEnabled")
+      aCoder.encode(receiptProperties, forKey: "receiptProperties")
+      aCoder.encode(summaryHour, forKey: "summaryHour")
+      aCoder.encode(signatureThreshold, forKey: "signatureThreshold")
+      aCoder.encode(hasDefaultEmployee, forKey: "hasDefaultEmployee")
+      aCoder.encode(tipRateDefault, forKey: "tipRateDefault")
+      aCoder.encode(onPaperTipSignatures, forKey: "onPaperTipSignatures")
+      aCoder.encode(autoLogout, forKey: "autoLogout")
+      aCoder.encode(orderTitle?.rawValue, forKey: "orderTitle")
+      aCoder.encode(orderTitleMax, forKey: "orderTitleMax")
+      aCoder.encode(resetOnReportingTime, forKey: "resetOnReportingTime")
+      aCoder.encode(notesOnOrders, forKey: "notesOnOrders")
+      aCoder.encode(deleteOrders, forKey: "deleteOrders")
+      aCoder.encode(removeTaxEnabled, forKey: "removeTaxEnabled")
+      aCoder.encode(groupLineItems, forKey: "groupLineItems")
+      aCoder.encode(alternateInventoryNames, forKey: "alternateInventoryNames")
+      aCoder.encode(autoPrint, forKey: "autoPrint")
+      aCoder.encode(hardwareProfile, forKey: "hardwareProfile")
+      aCoder.encode(infoleaseSuppressBilling, forKey: "infoleaseSuppressBilling")
+      aCoder.encode(infoleaseSuppressPlanBilling, forKey: "infoleaseSuppressPlanBilling")
+      aCoder.encode(shippingAddress, forKey: "shippingAddress")
+      aCoder.encode(marketingEnabled, forKey: "marketingEnabled")
+      aCoder.encode(marketingPreferenceText, forKey: "marketingPreferenceText")
+      aCoder.encode(bankMarker, forKey: "bankMarker")
+      aCoder.encode(supportPhone, forKey: "supportPhone")
+      aCoder.encode(supportEmail, forKey: "supportEmail")
+      aCoder.encode(manualCloseout, forKey: "manualCloseout")
+      aCoder.encode(showCloseoutOrders, forKey: "showCloseoutOrders")
+      aCoder.encode(sendCloseoutEmail, forKey: "sendCloseoutEmail")
+      aCoder.encode(stayInCategory, forKey: "stayInCategory")
+      aCoder.encode(locale, forKey: "locale")
+      aCoder.encode(timezone, forKey: "timezone")
+      aCoder.encode(vat, forKey: "vat")
+      aCoder.encode(vatTaxName, forKey: "vatTaxName")
+      aCoder.encode(appBillingSystem, forKey: "appBillingSystem")
+      aCoder.encode(abaAccountNumber, forKey: "abaAccountNumber")
+      aCoder.encode(ddaAccountNumber, forKey: "ddaAccountNumber")
+      aCoder.encode(trackStock, forKey: "trackStock")
+      aCoder.encode(updateStock, forKey: "updateStock")
+      aCoder.encode(allowClockOutWithOpenOrders, forKey: "allowClockOutWithOpenOrders")
+      aCoder.encode(logInClockInPrompt, forKey: "logInClockInPrompt")
+      aCoder.encode(accountType, forKey: "accountType")
+      aCoder.encode(businessTypeCode?.rawValue, forKey: "businessTypeCode")
+      aCoder.encode(pinLength, forKey: "pinLength")
+      aCoder.encode(cashBackEnabled, forKey: "cashBackEnabled")
+      aCoder.encode(cashBackOptions, forKey: "cashBackOptions")
+      aCoder.encode(maxCashBack, forKey: "maxCashBack")
+      aCoder.encode(hierarchy, forKey: "hierarchy")
+      aCoder.encode(hasConsented, forKey: "hasConsented")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      merchantRef = aDecoder.decodeObject(forKey:"merchantRef") as? CLVModels.Base.Reference
-        defaultCurrency = aDecoder.decodeObject(forKey:"defaultCurrency") as? String
-        tipsEnabled = aDecoder.decodeObject(forKey:"tipsEnabled") as? Bool
-        receiptProperties = aDecoder.decodeObject(forKey:"receiptProperties") as? String
-        summaryHour = aDecoder.decodeObject(forKey:"summaryHour") as? Int
-        signatureThreshold = aDecoder.decodeObject(forKey:"signatureThreshold") as? Int
-        hasDefaultEmployee = aDecoder.decodeObject(forKey:"hasDefaultEmployee") as? Bool
-        tipRateDefault = aDecoder.decodeObject(forKey:"tipRateDefault") as? Int
-        onPaperTipSignatures = aDecoder.decodeObject(forKey:"onPaperTipSignatures") as? Bool
-        autoLogout = aDecoder.decodeObject(forKey:"autoLogout") as? Bool
-        orderTitle = (aDecoder.decodeObject(forKey:"orderTitle") as? String) != nil ?
+        merchantRef = aDecoder.decodeObject(forKey:"merchantRef") as? CLVModels.Base.Reference
+              defaultCurrency = aDecoder.decodeObject(forKey:"defaultCurrency") as? String
+              tipsEnabled = aDecoder.decodeObject(forKey:"tipsEnabled") as? Bool
+              receiptProperties = aDecoder.decodeObject(forKey:"receiptProperties") as? String
+              summaryHour = aDecoder.decodeObject(forKey:"summaryHour") as? Int
+              signatureThreshold = aDecoder.decodeObject(forKey:"signatureThreshold") as? Int
+              hasDefaultEmployee = aDecoder.decodeObject(forKey:"hasDefaultEmployee") as? Bool
+              tipRateDefault = aDecoder.decodeObject(forKey:"tipRateDefault") as? Int
+              onPaperTipSignatures = aDecoder.decodeObject(forKey:"onPaperTipSignatures") as? Bool
+              autoLogout = aDecoder.decodeObject(forKey:"autoLogout") as? Bool
+              orderTitle = (aDecoder.decodeObject(forKey:"orderTitle") as? String) != nil ?
       CLVModels.Merchant.OrderTitle(rawValue: (aDecoder.decodeObject(forKey:"orderTitle") as! String)) : nil
-        orderTitleMax = aDecoder.decodeObject(forKey:"orderTitleMax") as? Int
-        resetOnReportingTime = aDecoder.decodeObject(forKey:"resetOnReportingTime") as? Bool
-        notesOnOrders = aDecoder.decodeObject(forKey:"notesOnOrders") as? Bool
-        deleteOrders = aDecoder.decodeObject(forKey:"deleteOrders") as? Bool
-        removeTaxEnabled = aDecoder.decodeObject(forKey:"removeTaxEnabled") as? Bool
-        groupLineItems = aDecoder.decodeObject(forKey:"groupLineItems") as? Bool
-        alternateInventoryNames = aDecoder.decodeObject(forKey:"alternateInventoryNames") as? Bool
-        autoPrint = aDecoder.decodeObject(forKey:"autoPrint") as? Bool
-        hardwareProfile = aDecoder.decodeObject(forKey:"hardwareProfile") as? String
-        infoleaseSuppressBilling = aDecoder.decodeObject(forKey:"infoleaseSuppressBilling") as? Bool
-        infoleaseSuppressPlanBilling = aDecoder.decodeObject(forKey:"infoleaseSuppressPlanBilling") as? Bool
-        shippingAddress = aDecoder.decodeObject(forKey:"shippingAddress") as? String
-        marketingEnabled = aDecoder.decodeObject(forKey:"marketingEnabled") as? Bool
-        marketingPreferenceText = aDecoder.decodeObject(forKey:"marketingPreferenceText") as? String
-        bankMarker = aDecoder.decodeObject(forKey:"bankMarker") as? Int
-        supportPhone = aDecoder.decodeObject(forKey:"supportPhone") as? String
-        supportEmail = aDecoder.decodeObject(forKey:"supportEmail") as? String
-        manualCloseout = aDecoder.decodeObject(forKey:"manualCloseout") as? Bool
-        showCloseoutOrders = aDecoder.decodeObject(forKey:"showCloseoutOrders") as? Bool
-        sendCloseoutEmail = aDecoder.decodeObject(forKey:"sendCloseoutEmail") as? Bool
-        stayInCategory = aDecoder.decodeObject(forKey:"stayInCategory") as? Bool
-        locale = aDecoder.decodeObject(forKey:"locale") as? String
-        timezone = aDecoder.decodeObject(forKey:"timezone") as? String
-        vat = aDecoder.decodeObject(forKey:"vat") as? Bool
-        vatTaxName = aDecoder.decodeObject(forKey:"vatTaxName") as? String
-        appBillingSystem = aDecoder.decodeObject(forKey:"appBillingSystem") as? String
-        abaAccountNumber = aDecoder.decodeObject(forKey:"abaAccountNumber") as? String
-        ddaAccountNumber = aDecoder.decodeObject(forKey:"ddaAccountNumber") as? String
-        trackStock = aDecoder.decodeObject(forKey:"trackStock") as? Bool
-        updateStock = aDecoder.decodeObject(forKey:"updateStock") as? Bool
-        allowClockOutWithOpenOrders = aDecoder.decodeObject(forKey:"allowClockOutWithOpenOrders") as? Bool
-        logInClockInPrompt = aDecoder.decodeObject(forKey:"logInClockInPrompt") as? Bool
-        accountType = aDecoder.decodeObject(forKey:"accountType") as? String
-        businessTypeCode = (aDecoder.decodeObject(forKey:"businessTypeCode") as? String) != nil ?
+              orderTitleMax = aDecoder.decodeObject(forKey:"orderTitleMax") as? Int
+              resetOnReportingTime = aDecoder.decodeObject(forKey:"resetOnReportingTime") as? Bool
+              notesOnOrders = aDecoder.decodeObject(forKey:"notesOnOrders") as? Bool
+              deleteOrders = aDecoder.decodeObject(forKey:"deleteOrders") as? Bool
+              removeTaxEnabled = aDecoder.decodeObject(forKey:"removeTaxEnabled") as? Bool
+              groupLineItems = aDecoder.decodeObject(forKey:"groupLineItems") as? Bool
+              alternateInventoryNames = aDecoder.decodeObject(forKey:"alternateInventoryNames") as? Bool
+              autoPrint = aDecoder.decodeObject(forKey:"autoPrint") as? Bool
+              hardwareProfile = aDecoder.decodeObject(forKey:"hardwareProfile") as? String
+              infoleaseSuppressBilling = aDecoder.decodeObject(forKey:"infoleaseSuppressBilling") as? Bool
+              infoleaseSuppressPlanBilling = aDecoder.decodeObject(forKey:"infoleaseSuppressPlanBilling") as? Bool
+              shippingAddress = aDecoder.decodeObject(forKey:"shippingAddress") as? String
+              marketingEnabled = aDecoder.decodeObject(forKey:"marketingEnabled") as? Bool
+              marketingPreferenceText = aDecoder.decodeObject(forKey:"marketingPreferenceText") as? String
+              bankMarker = aDecoder.decodeObject(forKey:"bankMarker") as? Int
+              supportPhone = aDecoder.decodeObject(forKey:"supportPhone") as? String
+              supportEmail = aDecoder.decodeObject(forKey:"supportEmail") as? String
+              manualCloseout = aDecoder.decodeObject(forKey:"manualCloseout") as? Bool
+              showCloseoutOrders = aDecoder.decodeObject(forKey:"showCloseoutOrders") as? Bool
+              sendCloseoutEmail = aDecoder.decodeObject(forKey:"sendCloseoutEmail") as? Bool
+              stayInCategory = aDecoder.decodeObject(forKey:"stayInCategory") as? Bool
+              locale = aDecoder.decodeObject(forKey:"locale") as? String
+              timezone = aDecoder.decodeObject(forKey:"timezone") as? String
+              vat = aDecoder.decodeObject(forKey:"vat") as? Bool
+              vatTaxName = aDecoder.decodeObject(forKey:"vatTaxName") as? String
+              appBillingSystem = aDecoder.decodeObject(forKey:"appBillingSystem") as? String
+              abaAccountNumber = aDecoder.decodeObject(forKey:"abaAccountNumber") as? String
+              ddaAccountNumber = aDecoder.decodeObject(forKey:"ddaAccountNumber") as? String
+              trackStock = aDecoder.decodeObject(forKey:"trackStock") as? Bool
+              updateStock = aDecoder.decodeObject(forKey:"updateStock") as? Bool
+              allowClockOutWithOpenOrders = aDecoder.decodeObject(forKey:"allowClockOutWithOpenOrders") as? Bool
+              logInClockInPrompt = aDecoder.decodeObject(forKey:"logInClockInPrompt") as? Bool
+              accountType = aDecoder.decodeObject(forKey:"accountType") as? String
+              businessTypeCode = (aDecoder.decodeObject(forKey:"businessTypeCode") as? String) != nil ?
       CLVModels.Base.BusinessTypeCode(rawValue: (aDecoder.decodeObject(forKey:"businessTypeCode") as! String)) : nil
-        pinLength = aDecoder.decodeObject(forKey:"pinLength") as? Int
-        cashBackEnabled = aDecoder.decodeObject(forKey:"cashBackEnabled") as? Bool
-        cashBackOptions = aDecoder.decodeObject(forKey:"cashBackOptions") as? String
-        maxCashBack = aDecoder.decodeObject(forKey:"maxCashBack") as? Int
-        hierarchy = aDecoder.decodeObject(forKey:"hierarchy") as? String
-        hasConsented = aDecoder.decodeObject(forKey:"hasConsented") as? Bool
-  }
+              pinLength = aDecoder.decodeObject(forKey:"pinLength") as? Int
+              cashBackEnabled = aDecoder.decodeObject(forKey:"cashBackEnabled") as? Bool
+              cashBackOptions = aDecoder.decodeObject(forKey:"cashBackOptions") as? String
+              maxCashBack = aDecoder.decodeObject(forKey:"maxCashBack") as? Int
+              hierarchy = aDecoder.decodeObject(forKey:"hierarchy") as? String
+              hasConsented = aDecoder.decodeObject(forKey:"hasConsented") as? Bool
+      }
 
 override public init() {}
 
@@ -567,75 +674,77 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      merchantRef <- map["merchantRef"]
-        defaultCurrency <- map["defaultCurrency"]
-        tipsEnabled <- map["tipsEnabled"]
-        receiptProperties <- map["receiptProperties"]
-        summaryHour <- map["summaryHour"]
-        signatureThreshold <- map["signatureThreshold"]
-        hasDefaultEmployee <- map["hasDefaultEmployee"]
-        tipRateDefault <- map["tipRateDefault"]
-        onPaperTipSignatures <- map["onPaperTipSignatures"]
-        autoLogout <- map["autoLogout"]
-        orderTitle <- map["orderTitle"]
-        orderTitleMax <- map["orderTitleMax"]
-        resetOnReportingTime <- map["resetOnReportingTime"]
-        notesOnOrders <- map["notesOnOrders"]
-        deleteOrders <- map["deleteOrders"]
-        removeTaxEnabled <- map["removeTaxEnabled"]
-        groupLineItems <- map["groupLineItems"]
-        alternateInventoryNames <- map["alternateInventoryNames"]
-        autoPrint <- map["autoPrint"]
-        hardwareProfile <- map["hardwareProfile"]
-        infoleaseSuppressBilling <- map["infoleaseSuppressBilling"]
-        infoleaseSuppressPlanBilling <- map["infoleaseSuppressPlanBilling"]
-        shippingAddress <- map["shippingAddress"]
-        marketingEnabled <- map["marketingEnabled"]
-        marketingPreferenceText <- map["marketingPreferenceText"]
-        bankMarker <- map["bankMarker"]
-        supportPhone <- map["supportPhone"]
-        supportEmail <- map["supportEmail"]
-        manualCloseout <- map["manualCloseout"]
-        showCloseoutOrders <- map["showCloseoutOrders"]
-        sendCloseoutEmail <- map["sendCloseoutEmail"]
-        stayInCategory <- map["stayInCategory"]
-        locale <- map["locale"]
-        timezone <- map["timezone"]
-        vat <- map["vat"]
-        vatTaxName <- map["vatTaxName"]
-        appBillingSystem <- map["appBillingSystem"]
-        abaAccountNumber <- map["abaAccountNumber"]
-        ddaAccountNumber <- map["ddaAccountNumber"]
-        trackStock <- map["trackStock"]
-        updateStock <- map["updateStock"]
-        allowClockOutWithOpenOrders <- map["allowClockOutWithOpenOrders"]
-        logInClockInPrompt <- map["logInClockInPrompt"]
-        accountType <- map["accountType"]
-        businessTypeCode <- map["businessTypeCode"]
-        pinLength <- map["pinLength"]
-        cashBackEnabled <- map["cashBackEnabled"]
-        cashBackOptions <- map["cashBackOptions"]
-        maxCashBack <- map["maxCashBack"]
-        hierarchy <- map["hierarchy"]
-        hasConsented <- map["hasConsented"]
-  }
+        merchantRef <- map["merchantRef"]
+              defaultCurrency <- map["defaultCurrency"]
+              tipsEnabled <- map["tipsEnabled"]
+              receiptProperties <- map["receiptProperties"]
+              summaryHour <- map["summaryHour"]
+              signatureThreshold <- map["signatureThreshold"]
+              hasDefaultEmployee <- map["hasDefaultEmployee"]
+              tipRateDefault <- map["tipRateDefault"]
+              onPaperTipSignatures <- map["onPaperTipSignatures"]
+              autoLogout <- map["autoLogout"]
+              orderTitle <- map["orderTitle"]
+              orderTitleMax <- map["orderTitleMax"]
+              resetOnReportingTime <- map["resetOnReportingTime"]
+              notesOnOrders <- map["notesOnOrders"]
+              deleteOrders <- map["deleteOrders"]
+              removeTaxEnabled <- map["removeTaxEnabled"]
+              groupLineItems <- map["groupLineItems"]
+              alternateInventoryNames <- map["alternateInventoryNames"]
+              autoPrint <- map["autoPrint"]
+              hardwareProfile <- map["hardwareProfile"]
+              infoleaseSuppressBilling <- map["infoleaseSuppressBilling"]
+              infoleaseSuppressPlanBilling <- map["infoleaseSuppressPlanBilling"]
+              shippingAddress <- map["shippingAddress"]
+              marketingEnabled <- map["marketingEnabled"]
+              marketingPreferenceText <- map["marketingPreferenceText"]
+              bankMarker <- map["bankMarker"]
+              supportPhone <- map["supportPhone"]
+              supportEmail <- map["supportEmail"]
+              manualCloseout <- map["manualCloseout"]
+              showCloseoutOrders <- map["showCloseoutOrders"]
+              sendCloseoutEmail <- map["sendCloseoutEmail"]
+              stayInCategory <- map["stayInCategory"]
+              locale <- map["locale"]
+              timezone <- map["timezone"]
+              vat <- map["vat"]
+              vatTaxName <- map["vatTaxName"]
+              appBillingSystem <- map["appBillingSystem"]
+              abaAccountNumber <- map["abaAccountNumber"]
+              ddaAccountNumber <- map["ddaAccountNumber"]
+              trackStock <- map["trackStock"]
+              updateStock <- map["updateStock"]
+              allowClockOutWithOpenOrders <- map["allowClockOutWithOpenOrders"]
+              logInClockInPrompt <- map["logInClockInPrompt"]
+              accountType <- map["accountType"]
+              businessTypeCode <- map["businessTypeCode"]
+              pinLength <- map["pinLength"]
+              cashBackEnabled <- map["cashBackEnabled"]
+              cashBackOptions <- map["cashBackOptions"]
+              maxCashBack <- map["maxCashBack"]
+              hierarchy <- map["hierarchy"]
+              hasConsented <- map["hasConsented"]
+      }
 }
 
  
 open class Module: NSObject, NSCoding, Mappable {
+  
     /// Unique identifier
   open var id: String?
+      
   open var name: String?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(name, forKey: "name")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(name, forKey: "name")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        name = aDecoder.decodeObject(forKey:"name") as? String
-  }
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              name = aDecoder.decodeObject(forKey:"name") as? String
+      }
 
 override public init() {}
 
@@ -644,9 +753,9 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        name <- map["name"]
-  }
+        id <- map["id"]
+              name <- map["name"]
+      }
 }
 
  
@@ -658,26 +767,30 @@ public enum OrderTitle: String {
 
  
 open class TipSuggestion: NSObject, NSCoding, Mappable {
+  
   open var id: String?
+      
     /// Name of the tip
   open var name: String?
+      
     /// Suggested tip percentage
   open var percentage: Int?
+      
   open var isEnabled: Bool?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(percentage, forKey: "percentage")
-  aCoder.encode(isEnabled, forKey: "isEnabled")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(name, forKey: "name")
+      aCoder.encode(percentage, forKey: "percentage")
+      aCoder.encode(isEnabled, forKey: "isEnabled")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        name = aDecoder.decodeObject(forKey:"name") as? String
-        percentage = aDecoder.decodeObject(forKey:"percentage") as? Int
-        isEnabled = aDecoder.decodeObject(forKey:"isEnabled") as? Bool
-  }
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              name = aDecoder.decodeObject(forKey:"name") as? String
+              percentage = aDecoder.decodeObject(forKey:"percentage") as? Int
+              isEnabled = aDecoder.decodeObject(forKey:"isEnabled") as? Bool
+      }
 
 override public init() {}
 
@@ -686,11 +799,11 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        name <- map["name"]
-        percentage <- map["percentage"]
-        isEnabled <- map["isEnabled"]
-  }
+        id <- map["id"]
+              name <- map["name"]
+              percentage <- map["percentage"]
+              isEnabled <- map["isEnabled"]
+      }
 }
 
 }

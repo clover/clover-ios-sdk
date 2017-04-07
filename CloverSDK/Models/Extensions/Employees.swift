@@ -18,76 +18,92 @@ public enum AccountRole: String {
 
  
 open class Employee: NSObject, NSCoding, Mappable {
+  
     /// Unique identifier
   open var id: String?
+      
     /// Full name of the employee
   open var name: String?
+      
     /// Nickname of the employee (shows up on receipts)
   open var nickname: String?
+      
     /// Custom ID of the employee
   open var customId: String?
+      
     /// Email of the employee (optional)
   open var email: String?
+      
     /// Returns true if this employee was sent an invite to activate their account
   open var inviteSent: Bool?
+      
     /// Timestamp of when this employee claimed their account
   open var claimedTime: Date?
+      
     /// Timestamp of when this employee was deleted
   open var deletedTime: Date?
+      
     /// Employee PIN (hashed)
   open var pin: String?
+      
     /// Employee PIN
   open var unhashedPin: String?
+      
     /// Employee System Role
   open var role: CLVModels.Employees.AccountRole?
+      
   open var roles: [CLVModels.Base.Reference]?
+      
     /// Returns true if this employee is the owner account for this merchant
   open var isOwner: Bool?
+      
     /// This employee's shifts
   open var shifts: [CLVModels.Base.Reference]?
+      
     /// This employee's payments
   open var payments: [CLVModels.Base.Reference]?
+      
     /// This employee's orders
   open var orders: [CLVModels.Base.Reference]?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(nickname, forKey: "nickname")
-  aCoder.encode(customId, forKey: "customId")
-  aCoder.encode(email, forKey: "email")
-  aCoder.encode(inviteSent, forKey: "inviteSent")
-  aCoder.encode(claimedTime, forKey: "claimedTime")
-  aCoder.encode(deletedTime, forKey: "deletedTime")
-  aCoder.encode(pin, forKey: "pin")
-  aCoder.encode(unhashedPin, forKey: "unhashedPin")
-  aCoder.encode(role?.rawValue, forKey: "role")
-  aCoder.encode(roles, forKey: "roles")
-  aCoder.encode(isOwner, forKey: "isOwner")
-  aCoder.encode(shifts, forKey: "shifts")
-  aCoder.encode(payments, forKey: "payments")
-  aCoder.encode(orders, forKey: "orders")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(name, forKey: "name")
+      aCoder.encode(nickname, forKey: "nickname")
+      aCoder.encode(customId, forKey: "customId")
+      aCoder.encode(email, forKey: "email")
+      aCoder.encode(inviteSent, forKey: "inviteSent")
+      aCoder.encode(claimedTime, forKey: "claimedTime")
+      aCoder.encode(deletedTime, forKey: "deletedTime")
+      aCoder.encode(pin, forKey: "pin")
+      aCoder.encode(unhashedPin, forKey: "unhashedPin")
+      aCoder.encode(role?.rawValue, forKey: "role")
+      aCoder.encode(roles, forKey: "roles")
+      aCoder.encode(isOwner, forKey: "isOwner")
+      aCoder.encode(shifts, forKey: "shifts")
+      aCoder.encode(payments, forKey: "payments")
+      aCoder.encode(orders, forKey: "orders")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        name = aDecoder.decodeObject(forKey:"name") as? String
-        nickname = aDecoder.decodeObject(forKey:"nickname") as? String
-        customId = aDecoder.decodeObject(forKey:"customId") as? String
-        email = aDecoder.decodeObject(forKey:"email") as? String
-        inviteSent = aDecoder.decodeObject(forKey:"inviteSent") as? Bool
-        claimedTime = aDecoder.decodeObject(forKey:"claimedTime") as? Date
-        deletedTime = aDecoder.decodeObject(forKey:"deletedTime") as? Date
-        pin = aDecoder.decodeObject(forKey:"pin") as? String
-        unhashedPin = aDecoder.decodeObject(forKey:"unhashedPin") as? String
-        role = (aDecoder.decodeObject(forKey:"role") as? String) != nil ?
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              name = aDecoder.decodeObject(forKey:"name") as? String
+              nickname = aDecoder.decodeObject(forKey:"nickname") as? String
+              customId = aDecoder.decodeObject(forKey:"customId") as? String
+              email = aDecoder.decodeObject(forKey:"email") as? String
+              inviteSent = aDecoder.decodeObject(forKey:"inviteSent") as? Bool
+              claimedTime = aDecoder.decodeObject(forKey:"claimedTime") as? Date
+              deletedTime = aDecoder.decodeObject(forKey:"deletedTime") as? Date
+              pin = aDecoder.decodeObject(forKey:"pin") as? String
+              unhashedPin = aDecoder.decodeObject(forKey:"unhashedPin") as? String
+              role = (aDecoder.decodeObject(forKey:"role") as? String) != nil ?
       CLVModels.Employees.AccountRole(rawValue: (aDecoder.decodeObject(forKey:"role") as! String)) : nil
-        roles = aDecoder.decodeObject(forKey:"roles") as? [CLVModels.Base.Reference]
-        isOwner = aDecoder.decodeObject(forKey:"isOwner") as? Bool
-        shifts = aDecoder.decodeObject(forKey:"shifts") as? [CLVModels.Base.Reference]
-        payments = aDecoder.decodeObject(forKey:"payments") as? [CLVModels.Base.Reference]
-        orders = aDecoder.decodeObject(forKey:"orders") as? [CLVModels.Base.Reference]
-  }
+              roles = aDecoder.decodeObject(forKey:"roles") as? [CLVModels.Base.Reference]
+              isOwner = aDecoder.decodeObject(forKey:"isOwner") as? Bool
+              shifts = aDecoder.decodeObject(forKey:"shifts") as? [CLVModels.Base.Reference]
+              payments = aDecoder.decodeObject(forKey:"payments") as? [CLVModels.Base.Reference]
+              orders = aDecoder.decodeObject(forKey:"orders") as? [CLVModels.Base.Reference]
+      }
 
 override public init() {}
 
@@ -96,50 +112,54 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        name <- map["name"]
-        nickname <- map["nickname"]
-        customId <- map["customId"]
-        email <- map["email"]
-        inviteSent <- map["inviteSent"]
-        claimedTime <- (map["claimedTime"], CLVDateTransform())
-        deletedTime <- (map["deletedTime"], CLVDateTransform())
-        pin <- map["pin"]
-        unhashedPin <- map["unhashedPin"]
-        role <- map["role"]
-        roles <- map["roles.elements"]
-        isOwner <- map["isOwner"]
-        shifts <- map["shifts.elements"]
-        payments <- map["payments.elements"]
-        orders <- map["orders.elements"]
-  }
+        id <- map["id"]
+              name <- map["name"]
+              nickname <- map["nickname"]
+              customId <- map["customId"]
+              email <- map["email"]
+              inviteSent <- map["inviteSent"]
+              claimedTime <- (map["claimedTime"], CLVDateTransform())
+              deletedTime <- (map["deletedTime"], CLVDateTransform())
+              pin <- map["pin"]
+              unhashedPin <- map["unhashedPin"]
+              role <- map["role"]
+              roles <- map["roles.elements"]
+              isOwner <- map["isOwner"]
+              shifts <- map["shifts.elements"]
+              payments <- map["payments.elements"]
+              orders <- map["orders.elements"]
+      }
 }
 
  
 open class Role: NSObject, NSCoding, Mappable {
+  
     /// Unique identifier
   open var id: String?
+      
     /// Full name of the role
   open var name: String?
+      
     /// Base System Role
   open var systemRole: CLVModels.Employees.AccountRole?
+      
     /// employees with this role
   open var employeesRef: [CLVModels.Base.Reference]?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(systemRole?.rawValue, forKey: "systemRole")
-  aCoder.encode(employeesRef, forKey: "employeesRef")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(name, forKey: "name")
+      aCoder.encode(systemRole?.rawValue, forKey: "systemRole")
+      aCoder.encode(employeesRef, forKey: "employeesRef")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        name = aDecoder.decodeObject(forKey:"name") as? String
-        systemRole = (aDecoder.decodeObject(forKey:"systemRole") as? String) != nil ?
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              name = aDecoder.decodeObject(forKey:"name") as? String
+              systemRole = (aDecoder.decodeObject(forKey:"systemRole") as? String) != nil ?
       CLVModels.Employees.AccountRole(rawValue: (aDecoder.decodeObject(forKey:"systemRole") as! String)) : nil
-        employeesRef = aDecoder.decodeObject(forKey:"employeesRef") as? [CLVModels.Base.Reference]
-  }
+              employeesRef = aDecoder.decodeObject(forKey:"employeesRef") as? [CLVModels.Base.Reference]
+      }
 
 override public init() {}
 
@@ -148,61 +168,71 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        name <- map["name"]
-        systemRole <- map["systemRole"]
-        employeesRef <- map["employeesRef.elements"]
-  }
+        id <- map["id"]
+              name <- map["name"]
+              systemRole <- map["systemRole"]
+              employeesRef <- map["employeesRef.elements"]
+      }
 }
 
  
 open class Shift: NSObject, NSCoding, Mappable {
+  
     /// Unique identifier
   open var id: String?
+      
     /// The employee that worked this shift
   open var employee: CLVModels.Employees.Employee?
+      
     /// Amount of cash tips collected
   open var cashTipsCollected: Int?
+      
     /// Whether the employee used server banking
   open var serverBanking: Bool?
+      
     /// Clock in time
   open var inTime: Date?
+      
     /// Overridden clock in time
   open var overrideInTime: Date?
+      
     /// The employee who overrode the clock in time
   open var overrideInEmployee: CLVModels.Employees.Employee?
+      
     /// Clock out time
   open var outTime: Date?
+      
     /// Overridden clock out time
   open var overrideOutTime: Date?
+      
     /// The employee who overrode the clock out time
   open var overrideOutEmployee: CLVModels.Employees.Employee?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(employee, forKey: "employee")
-  aCoder.encode(cashTipsCollected, forKey: "cashTipsCollected")
-  aCoder.encode(serverBanking, forKey: "serverBanking")
-  aCoder.encode(inTime, forKey: "inTime")
-  aCoder.encode(overrideInTime, forKey: "overrideInTime")
-  aCoder.encode(overrideInEmployee, forKey: "overrideInEmployee")
-  aCoder.encode(outTime, forKey: "outTime")
-  aCoder.encode(overrideOutTime, forKey: "overrideOutTime")
-  aCoder.encode(overrideOutEmployee, forKey: "overrideOutEmployee")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(employee, forKey: "employee")
+      aCoder.encode(cashTipsCollected, forKey: "cashTipsCollected")
+      aCoder.encode(serverBanking, forKey: "serverBanking")
+      aCoder.encode(inTime, forKey: "inTime")
+      aCoder.encode(overrideInTime, forKey: "overrideInTime")
+      aCoder.encode(overrideInEmployee, forKey: "overrideInEmployee")
+      aCoder.encode(outTime, forKey: "outTime")
+      aCoder.encode(overrideOutTime, forKey: "overrideOutTime")
+      aCoder.encode(overrideOutEmployee, forKey: "overrideOutEmployee")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        employee = aDecoder.decodeObject(forKey:"employee") as? CLVModels.Employees.Employee
-        cashTipsCollected = aDecoder.decodeObject(forKey:"cashTipsCollected") as? Int
-        serverBanking = aDecoder.decodeObject(forKey:"serverBanking") as? Bool
-        inTime = aDecoder.decodeObject(forKey:"inTime") as? Date
-        overrideInTime = aDecoder.decodeObject(forKey:"overrideInTime") as? Date
-        overrideInEmployee = aDecoder.decodeObject(forKey:"overrideInEmployee") as? CLVModels.Employees.Employee
-        outTime = aDecoder.decodeObject(forKey:"outTime") as? Date
-        overrideOutTime = aDecoder.decodeObject(forKey:"overrideOutTime") as? Date
-        overrideOutEmployee = aDecoder.decodeObject(forKey:"overrideOutEmployee") as? CLVModels.Employees.Employee
-  }
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              employee = aDecoder.decodeObject(forKey:"employee") as? CLVModels.Employees.Employee
+              cashTipsCollected = aDecoder.decodeObject(forKey:"cashTipsCollected") as? Int
+              serverBanking = aDecoder.decodeObject(forKey:"serverBanking") as? Bool
+              inTime = aDecoder.decodeObject(forKey:"inTime") as? Date
+              overrideInTime = aDecoder.decodeObject(forKey:"overrideInTime") as? Date
+              overrideInEmployee = aDecoder.decodeObject(forKey:"overrideInEmployee") as? CLVModels.Employees.Employee
+              outTime = aDecoder.decodeObject(forKey:"outTime") as? Date
+              overrideOutTime = aDecoder.decodeObject(forKey:"overrideOutTime") as? Date
+              overrideOutEmployee = aDecoder.decodeObject(forKey:"overrideOutEmployee") as? CLVModels.Employees.Employee
+      }
 
 override public init() {}
 
@@ -211,17 +241,17 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        employee <- map["employee"]
-        cashTipsCollected <- map["cashTipsCollected"]
-        serverBanking <- map["serverBanking"]
-        inTime <- (map["inTime"], CLVDateTransform())
-        overrideInTime <- (map["overrideInTime"], CLVDateTransform())
-        overrideInEmployee <- map["overrideInEmployee"]
-        outTime <- (map["outTime"], CLVDateTransform())
-        overrideOutTime <- (map["overrideOutTime"], CLVDateTransform())
-        overrideOutEmployee <- map["overrideOutEmployee"]
-  }
+        id <- map["id"]
+              employee <- map["employee"]
+              cashTipsCollected <- map["cashTipsCollected"]
+              serverBanking <- map["serverBanking"]
+              inTime <- (map["inTime"], CLVDateTransform())
+              overrideInTime <- (map["overrideInTime"], CLVDateTransform())
+              overrideInEmployee <- map["overrideInEmployee"]
+              outTime <- (map["outTime"], CLVDateTransform())
+              overrideOutTime <- (map["overrideOutTime"], CLVDateTransform())
+              overrideOutEmployee <- map["overrideOutEmployee"]
+      }
 }
 
 }

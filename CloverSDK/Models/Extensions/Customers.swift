@@ -11,40 +11,49 @@ extension CLVModels {
 public class Customers {
  
 open class Address: NSObject, NSCoding, Mappable {
+  
   open var id: String?
+      
   open var address1: String?
+      
   open var address2: String?
+      
   open var address3: String?
+      
   open var city: String?
+      
   open var country: String?
+      
   open var state: String?
+      
   open var zip: String?
+      
     /// Customer who this address belongs to.
   open var customer: CLVModels.Base.Reference?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(address1, forKey: "address1")
-  aCoder.encode(address2, forKey: "address2")
-  aCoder.encode(address3, forKey: "address3")
-  aCoder.encode(city, forKey: "city")
-  aCoder.encode(country, forKey: "country")
-  aCoder.encode(state, forKey: "state")
-  aCoder.encode(zip, forKey: "zip")
-  aCoder.encode(customer, forKey: "customer")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(address1, forKey: "address1")
+      aCoder.encode(address2, forKey: "address2")
+      aCoder.encode(address3, forKey: "address3")
+      aCoder.encode(city, forKey: "city")
+      aCoder.encode(country, forKey: "country")
+      aCoder.encode(state, forKey: "state")
+      aCoder.encode(zip, forKey: "zip")
+      aCoder.encode(customer, forKey: "customer")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        address1 = aDecoder.decodeObject(forKey:"address1") as? String
-        address2 = aDecoder.decodeObject(forKey:"address2") as? String
-        address3 = aDecoder.decodeObject(forKey:"address3") as? String
-        city = aDecoder.decodeObject(forKey:"city") as? String
-        country = aDecoder.decodeObject(forKey:"country") as? String
-        state = aDecoder.decodeObject(forKey:"state") as? String
-        zip = aDecoder.decodeObject(forKey:"zip") as? String
-        customer = aDecoder.decodeObject(forKey:"customer") as? CLVModels.Base.Reference
-  }
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              address1 = aDecoder.decodeObject(forKey:"address1") as? String
+              address2 = aDecoder.decodeObject(forKey:"address2") as? String
+              address3 = aDecoder.decodeObject(forKey:"address3") as? String
+              city = aDecoder.decodeObject(forKey:"city") as? String
+              country = aDecoder.decodeObject(forKey:"country") as? String
+              state = aDecoder.decodeObject(forKey:"state") as? String
+              zip = aDecoder.decodeObject(forKey:"zip") as? String
+              customer = aDecoder.decodeObject(forKey:"customer") as? CLVModels.Base.Reference
+      }
 
 override public init() {}
 
@@ -53,54 +62,63 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        address1 <- map["address1"]
-        address2 <- map["address2"]
-        address3 <- map["address3"]
-        city <- map["city"]
-        country <- map["country"]
-        state <- map["state"]
-        zip <- map["zip"]
-        customer <- map["customer"]
-  }
+        id <- map["id"]
+              address1 <- map["address1"]
+              address2 <- map["address2"]
+              address3 <- map["address3"]
+              city <- map["city"]
+              country <- map["country"]
+              state <- map["state"]
+              zip <- map["zip"]
+              customer <- map["customer"]
+      }
 }
 
  
 open class Card: NSObject, NSCoding, Mappable {
+  
   open var id: String?
+      
   open var first6: String?
+      
   open var last4: String?
+      
   open var firstName: String?
+      
   open var lastName: String?
+      
   open var expirationDate: String?
+      
   open var cardType: String?
+      
   open var token: String?
+      
     /// Customer who this card belongs to.
   open var customer: CLVModels.Base.Reference?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(first6, forKey: "first6")
-  aCoder.encode(last4, forKey: "last4")
-  aCoder.encode(firstName, forKey: "firstName")
-  aCoder.encode(lastName, forKey: "lastName")
-  aCoder.encode(expirationDate, forKey: "expirationDate")
-  aCoder.encode(cardType, forKey: "cardType")
-  aCoder.encode(token, forKey: "token")
-  aCoder.encode(customer, forKey: "customer")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(first6, forKey: "first6")
+      aCoder.encode(last4, forKey: "last4")
+      aCoder.encode(firstName, forKey: "firstName")
+      aCoder.encode(lastName, forKey: "lastName")
+      aCoder.encode(expirationDate, forKey: "expirationDate")
+      aCoder.encode(cardType, forKey: "cardType")
+      aCoder.encode(token, forKey: "token")
+      aCoder.encode(customer, forKey: "customer")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        first6 = aDecoder.decodeObject(forKey:"first6") as? String
-        last4 = aDecoder.decodeObject(forKey:"last4") as? String
-        firstName = aDecoder.decodeObject(forKey:"firstName") as? String
-        lastName = aDecoder.decodeObject(forKey:"lastName") as? String
-        expirationDate = aDecoder.decodeObject(forKey:"expirationDate") as? String
-        cardType = aDecoder.decodeObject(forKey:"cardType") as? String
-        token = aDecoder.decodeObject(forKey:"token") as? String
-        customer = aDecoder.decodeObject(forKey:"customer") as? CLVModels.Base.Reference
-  }
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              first6 = aDecoder.decodeObject(forKey:"first6") as? String
+              last4 = aDecoder.decodeObject(forKey:"last4") as? String
+              firstName = aDecoder.decodeObject(forKey:"firstName") as? String
+              lastName = aDecoder.decodeObject(forKey:"lastName") as? String
+              expirationDate = aDecoder.decodeObject(forKey:"expirationDate") as? String
+              cardType = aDecoder.decodeObject(forKey:"cardType") as? String
+              token = aDecoder.decodeObject(forKey:"token") as? String
+              customer = aDecoder.decodeObject(forKey:"customer") as? CLVModels.Base.Reference
+      }
 
 override public init() {}
 
@@ -109,71 +127,79 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        first6 <- map["first6"]
-        last4 <- map["last4"]
-        firstName <- map["firstName"]
-        lastName <- map["lastName"]
-        expirationDate <- map["expirationDate"]
-        cardType <- map["cardType"]
-        token <- map["token"]
-        customer <- map["customer"]
-  }
+        id <- map["id"]
+              first6 <- map["first6"]
+              last4 <- map["last4"]
+              firstName <- map["firstName"]
+              lastName <- map["lastName"]
+              expirationDate <- map["expirationDate"]
+              cardType <- map["cardType"]
+              token <- map["token"]
+              customer <- map["customer"]
+      }
 }
 
  
 open class Customer: NSObject, NSCoding, Mappable {
+  
     /// Unique identifier
   open var id: String?
-    /// The order with which the customer is associated
-  open var orderRef: CLVModels.Base.Reference?
+        
     /// The merchant that is associated with this customer
   open var merchant: CLVModels.Base.Reference?
+      
     /// First/given name of the customer
   open var firstName: String?
+      
     /// Last name/surname of the customer
   open var lastName: String?
+      
   open var marketingAllowed: Bool?
+      
   open var customerSince: Int?
+      
   open var orders: [CLVModels.Base.Reference]?
+      
   open var addresses: [CLVModels.Customers.Address]?
+      
   open var emailAddresses: [CLVModels.Customers.EmailAddress]?
+      
   open var phoneNumbers: [CLVModels.Customers.PhoneNumber]?
+      
   open var cards: [CLVModels.Customers.Card]?
+      
     /// Additional information about the customer.
   open var metadata: CLVModels.Customers.CustomerMetadata?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(orderRef, forKey: "orderRef")
-  aCoder.encode(merchant, forKey: "merchant")
-  aCoder.encode(firstName, forKey: "firstName")
-  aCoder.encode(lastName, forKey: "lastName")
-  aCoder.encode(marketingAllowed, forKey: "marketingAllowed")
-  aCoder.encode(customerSince, forKey: "customerSince")
-  aCoder.encode(orders, forKey: "orders")
-  aCoder.encode(addresses, forKey: "addresses")
-  aCoder.encode(emailAddresses, forKey: "emailAddresses")
-  aCoder.encode(phoneNumbers, forKey: "phoneNumbers")
-  aCoder.encode(cards, forKey: "cards")
-  aCoder.encode(metadata, forKey: "metadata")
-}
+    aCoder.encode(id, forKey: "id")
+        aCoder.encode(merchant, forKey: "merchant")
+      aCoder.encode(firstName, forKey: "firstName")
+      aCoder.encode(lastName, forKey: "lastName")
+      aCoder.encode(marketingAllowed, forKey: "marketingAllowed")
+      aCoder.encode(customerSince, forKey: "customerSince")
+      aCoder.encode(orders, forKey: "orders")
+      aCoder.encode(addresses, forKey: "addresses")
+      aCoder.encode(emailAddresses, forKey: "emailAddresses")
+      aCoder.encode(phoneNumbers, forKey: "phoneNumbers")
+      aCoder.encode(cards, forKey: "cards")
+      aCoder.encode(metadata, forKey: "metadata")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        orderRef = aDecoder.decodeObject(forKey:"orderRef") as? CLVModels.Base.Reference
-        merchant = aDecoder.decodeObject(forKey:"merchant") as? CLVModels.Base.Reference
-        firstName = aDecoder.decodeObject(forKey:"firstName") as? String
-        lastName = aDecoder.decodeObject(forKey:"lastName") as? String
-        marketingAllowed = aDecoder.decodeObject(forKey:"marketingAllowed") as? Bool
-        customerSince = aDecoder.decodeObject(forKey:"customerSince") as? Int
-        orders = aDecoder.decodeObject(forKey:"orders") as? [CLVModels.Base.Reference]
-        addresses = aDecoder.decodeObject(forKey:"addresses") as? [CLVModels.Customers.Address]
-        emailAddresses = aDecoder.decodeObject(forKey:"emailAddresses") as? [CLVModels.Customers.EmailAddress]
-        phoneNumbers = aDecoder.decodeObject(forKey:"phoneNumbers") as? [CLVModels.Customers.PhoneNumber]
-        cards = aDecoder.decodeObject(forKey:"cards") as? [CLVModels.Customers.Card]
-        metadata = aDecoder.decodeObject(forKey:"metadata") as? CLVModels.Customers.CustomerMetadata
-  }
+        id = aDecoder.decodeObject(forKey:"id") as? String
+                merchant = aDecoder.decodeObject(forKey:"merchant") as? CLVModels.Base.Reference
+              firstName = aDecoder.decodeObject(forKey:"firstName") as? String
+              lastName = aDecoder.decodeObject(forKey:"lastName") as? String
+              marketingAllowed = aDecoder.decodeObject(forKey:"marketingAllowed") as? Bool
+              customerSince = aDecoder.decodeObject(forKey:"customerSince") as? Int
+              orders = aDecoder.decodeObject(forKey:"orders") as? [CLVModels.Base.Reference]
+              addresses = aDecoder.decodeObject(forKey:"addresses") as? [CLVModels.Customers.Address]
+              emailAddresses = aDecoder.decodeObject(forKey:"emailAddresses") as? [CLVModels.Customers.EmailAddress]
+              phoneNumbers = aDecoder.decodeObject(forKey:"phoneNumbers") as? [CLVModels.Customers.PhoneNumber]
+              cards = aDecoder.decodeObject(forKey:"cards") as? [CLVModels.Customers.Card]
+              metadata = aDecoder.decodeObject(forKey:"metadata") as? CLVModels.Customers.CustomerMetadata
+      }
 
 override public init() {}
 
@@ -182,54 +208,59 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        orderRef <- map["orderRef"]
-        merchant <- map["merchant"]
-        firstName <- map["firstName"]
-        lastName <- map["lastName"]
-        marketingAllowed <- map["marketingAllowed"]
-        customerSince <- map["customerSince"]
-        orders <- map["orders.elements"]
-        addresses <- map["addresses.elements"]
-        emailAddresses <- map["emailAddresses.elements"]
-        phoneNumbers <- map["phoneNumbers.elements"]
-        cards <- map["cards.elements"]
-        metadata <- map["metadata"]
-  }
+        id <- map["id"]
+                merchant <- map["merchant"]
+              firstName <- map["firstName"]
+              lastName <- map["lastName"]
+              marketingAllowed <- map["marketingAllowed"]
+              customerSince <- map["customerSince"]
+              orders <- map["orders.elements"]
+              addresses <- map["addresses.elements"]
+              emailAddresses <- map["emailAddresses.elements"]
+              phoneNumbers <- map["phoneNumbers.elements"]
+              cards <- map["cards.elements"]
+              metadata <- map["metadata"]
+      }
 }
 
  
 open class CustomerMetadata: NSObject, NSCoding, Mappable {
+  
     /// The name of the business the customer is associated with.
   open var businessName: String?
+      
     /// A note about the customer.
   open var note: String?
+      
     /// The year part of the date of birth for this customer. This part of the date of birth is optional, i.e., it's possible that only dobMonth and dobDay are populated.
   open var dobYear: Int?
+      
     /// The month part of the date of birth for this customer.
   open var dobMonth: Int?
+      
     /// The day part of the date of birth for this customer.
   open var dobDay: Int?
+      
     /// Customer who this metadata belongs to.
   open var customer: CLVModels.Base.Reference?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(businessName, forKey: "businessName")
-  aCoder.encode(note, forKey: "note")
-  aCoder.encode(dobYear, forKey: "dobYear")
-  aCoder.encode(dobMonth, forKey: "dobMonth")
-  aCoder.encode(dobDay, forKey: "dobDay")
-  aCoder.encode(customer, forKey: "customer")
-}
+    aCoder.encode(businessName, forKey: "businessName")
+      aCoder.encode(note, forKey: "note")
+      aCoder.encode(dobYear, forKey: "dobYear")
+      aCoder.encode(dobMonth, forKey: "dobMonth")
+      aCoder.encode(dobDay, forKey: "dobDay")
+      aCoder.encode(customer, forKey: "customer")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      businessName = aDecoder.decodeObject(forKey:"businessName") as? String
-        note = aDecoder.decodeObject(forKey:"note") as? String
-        dobYear = aDecoder.decodeObject(forKey:"dobYear") as? Int
-        dobMonth = aDecoder.decodeObject(forKey:"dobMonth") as? Int
-        dobDay = aDecoder.decodeObject(forKey:"dobDay") as? Int
-        customer = aDecoder.decodeObject(forKey:"customer") as? CLVModels.Base.Reference
-  }
+        businessName = aDecoder.decodeObject(forKey:"businessName") as? String
+              note = aDecoder.decodeObject(forKey:"note") as? String
+              dobYear = aDecoder.decodeObject(forKey:"dobYear") as? Int
+              dobMonth = aDecoder.decodeObject(forKey:"dobMonth") as? Int
+              dobDay = aDecoder.decodeObject(forKey:"dobDay") as? Int
+              customer = aDecoder.decodeObject(forKey:"customer") as? CLVModels.Base.Reference
+      }
 
 override public init() {}
 
@@ -238,36 +269,40 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      businessName <- map["businessName"]
-        note <- map["note"]
-        dobYear <- map["dobYear"]
-        dobMonth <- map["dobMonth"]
-        dobDay <- map["dobDay"]
-        customer <- map["customer"]
-  }
+        businessName <- map["businessName"]
+              note <- map["note"]
+              dobYear <- map["dobYear"]
+              dobMonth <- map["dobMonth"]
+              dobDay <- map["dobDay"]
+              customer <- map["customer"]
+      }
 }
 
  
 open class EmailAddress: NSObject, NSCoding, Mappable {
+  
   open var id: String?
+      
   open var emailAddress: String?
+      
   open var verifiedTime: Date?
+      
     /// Customer who this email address belongs to.
   open var customer: CLVModels.Base.Reference?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(emailAddress, forKey: "emailAddress")
-  aCoder.encode(verifiedTime, forKey: "verifiedTime")
-  aCoder.encode(customer, forKey: "customer")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(emailAddress, forKey: "emailAddress")
+      aCoder.encode(verifiedTime, forKey: "verifiedTime")
+      aCoder.encode(customer, forKey: "customer")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        emailAddress = aDecoder.decodeObject(forKey:"emailAddress") as? String
-        verifiedTime = aDecoder.decodeObject(forKey:"verifiedTime") as? Date
-        customer = aDecoder.decodeObject(forKey:"customer") as? CLVModels.Base.Reference
-  }
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              emailAddress = aDecoder.decodeObject(forKey:"emailAddress") as? String
+              verifiedTime = aDecoder.decodeObject(forKey:"verifiedTime") as? Date
+              customer = aDecoder.decodeObject(forKey:"customer") as? CLVModels.Base.Reference
+      }
 
 override public init() {}
 
@@ -276,31 +311,34 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        emailAddress <- map["emailAddress"]
-        verifiedTime <- (map["verifiedTime"], CLVDateTransform())
-        customer <- map["customer"]
-  }
+        id <- map["id"]
+              emailAddress <- map["emailAddress"]
+              verifiedTime <- (map["verifiedTime"], CLVDateTransform())
+              customer <- map["customer"]
+      }
 }
 
  
 open class PhoneNumber: NSObject, NSCoding, Mappable {
+  
   open var id: String?
+      
   open var phoneNumber: String?
+      
     /// Customer who this phone number belongs to.
   open var customer: CLVModels.Base.Reference?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(phoneNumber, forKey: "phoneNumber")
-  aCoder.encode(customer, forKey: "customer")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(phoneNumber, forKey: "phoneNumber")
+      aCoder.encode(customer, forKey: "customer")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        phoneNumber = aDecoder.decodeObject(forKey:"phoneNumber") as? String
-        customer = aDecoder.decodeObject(forKey:"customer") as? CLVModels.Base.Reference
-  }
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              phoneNumber = aDecoder.decodeObject(forKey:"phoneNumber") as? String
+              customer = aDecoder.decodeObject(forKey:"customer") as? CLVModels.Base.Reference
+      }
 
 override public init() {}
 
@@ -309,10 +347,10 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        phoneNumber <- map["phoneNumber"]
-        customer <- map["customer"]
-  }
+        id <- map["id"]
+              phoneNumber <- map["phoneNumber"]
+              customer <- map["customer"]
+      }
 }
 
 }

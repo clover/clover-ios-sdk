@@ -17,118 +17,150 @@ public enum BuildType: String {
 
  
 open class Device: NSObject, NSCoding, Mappable {
+  
     /// Unique identifier
   open var id: String?
+      
     /// Name of the device (if entered)
   open var name: String?
+      
   open var model: String?
+      
   open var merchant: CLVModels.Base.Reference?
+      
     /// A prefix that will be applied to order numbers. This is useful if the merchant and/or customer needs to track which device an order came from.
   open var orderPrefix: String?
+      
   open var terminalPrefix: Int?
+      
     /// The device's serial number.
   open var serial: String?
+      
   open var buildNumber: Int?
+      
   open var secureId: String?
+      
   open var buildType: CLVModels.Device.BuildType?
+      
   open var cpuId: String?
+      
     /// The IMEI of the device
   open var imei: String?
+      
     /// The IMSI of the SIM in the device (if present)
   open var imsi: String?
+      
     /// The ICCID of the SIM in the device (if present)
   open var simIccid: String?
+      
   open var deviceCertificate: String?
+      
   open var pedCertificate: String?
+      
     /// The type of device. Possible values are "GOLDLEAF" (Station), "LEAFCUTTER" (Mobile), "MAPLECUTTER" (Mini), "CLOVER_GO" (Clover Go), or "OTHER" (Unknown).
   open var deviceTypeName: String?
+      
     /// Whether this device has PIN prompt disabled.
   open var pinDisabled: Bool?
+      
   open var offlinePayments: Bool?
+      
   open var offlinePaymentsAll: Bool?
+      
   open var offlinePaymentsLimit: Int?
+      
   open var offlinePaymentsPromptThreshold: Int?
+      
   open var offlinePaymentsTotalPaymentsLimit: Int?
+      
   open var offlinePaymentsLimitDefault: Int?
+      
   open var offlinePaymentsPromptThresholdDefault: Int?
+      
   open var offlinePaymentsTotalPaymentsLimitDefault: Int?
+      
   open var offlinePaymentsMaxLimit: Int?
+      
   open var offlinePaymentsMaxTotalPaymentsLimit: Int?
+      
   open var showOfflinePayments: Bool?
+      
   open var maxOfflineDays: Int?
+      
   open var allowStoreAndForward: Bool?
+      
   open var secureReports: [CLVModels.Base.Reference]?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(model, forKey: "model")
-  aCoder.encode(merchant, forKey: "merchant")
-  aCoder.encode(orderPrefix, forKey: "orderPrefix")
-  aCoder.encode(terminalPrefix, forKey: "terminalPrefix")
-  aCoder.encode(serial, forKey: "serial")
-  aCoder.encode(buildNumber, forKey: "buildNumber")
-  aCoder.encode(secureId, forKey: "secureId")
-  aCoder.encode(buildType?.rawValue, forKey: "buildType")
-  aCoder.encode(cpuId, forKey: "cpuId")
-  aCoder.encode(imei, forKey: "imei")
-  aCoder.encode(imsi, forKey: "imsi")
-  aCoder.encode(simIccid, forKey: "simIccid")
-  aCoder.encode(deviceCertificate, forKey: "deviceCertificate")
-  aCoder.encode(pedCertificate, forKey: "pedCertificate")
-  aCoder.encode(deviceTypeName, forKey: "deviceTypeName")
-  aCoder.encode(pinDisabled, forKey: "pinDisabled")
-  aCoder.encode(offlinePayments, forKey: "offlinePayments")
-  aCoder.encode(offlinePaymentsAll, forKey: "offlinePaymentsAll")
-  aCoder.encode(offlinePaymentsLimit, forKey: "offlinePaymentsLimit")
-  aCoder.encode(offlinePaymentsPromptThreshold, forKey: "offlinePaymentsPromptThreshold")
-  aCoder.encode(offlinePaymentsTotalPaymentsLimit, forKey: "offlinePaymentsTotalPaymentsLimit")
-  aCoder.encode(offlinePaymentsLimitDefault, forKey: "offlinePaymentsLimitDefault")
-  aCoder.encode(offlinePaymentsPromptThresholdDefault, forKey: "offlinePaymentsPromptThresholdDefault")
-  aCoder.encode(offlinePaymentsTotalPaymentsLimitDefault, forKey: "offlinePaymentsTotalPaymentsLimitDefault")
-  aCoder.encode(offlinePaymentsMaxLimit, forKey: "offlinePaymentsMaxLimit")
-  aCoder.encode(offlinePaymentsMaxTotalPaymentsLimit, forKey: "offlinePaymentsMaxTotalPaymentsLimit")
-  aCoder.encode(showOfflinePayments, forKey: "showOfflinePayments")
-  aCoder.encode(maxOfflineDays, forKey: "maxOfflineDays")
-  aCoder.encode(allowStoreAndForward, forKey: "allowStoreAndForward")
-  aCoder.encode(secureReports, forKey: "secureReports")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(name, forKey: "name")
+      aCoder.encode(model, forKey: "model")
+      aCoder.encode(merchant, forKey: "merchant")
+      aCoder.encode(orderPrefix, forKey: "orderPrefix")
+      aCoder.encode(terminalPrefix, forKey: "terminalPrefix")
+      aCoder.encode(serial, forKey: "serial")
+      aCoder.encode(buildNumber, forKey: "buildNumber")
+      aCoder.encode(secureId, forKey: "secureId")
+      aCoder.encode(buildType?.rawValue, forKey: "buildType")
+      aCoder.encode(cpuId, forKey: "cpuId")
+      aCoder.encode(imei, forKey: "imei")
+      aCoder.encode(imsi, forKey: "imsi")
+      aCoder.encode(simIccid, forKey: "simIccid")
+      aCoder.encode(deviceCertificate, forKey: "deviceCertificate")
+      aCoder.encode(pedCertificate, forKey: "pedCertificate")
+      aCoder.encode(deviceTypeName, forKey: "deviceTypeName")
+      aCoder.encode(pinDisabled, forKey: "pinDisabled")
+      aCoder.encode(offlinePayments, forKey: "offlinePayments")
+      aCoder.encode(offlinePaymentsAll, forKey: "offlinePaymentsAll")
+      aCoder.encode(offlinePaymentsLimit, forKey: "offlinePaymentsLimit")
+      aCoder.encode(offlinePaymentsPromptThreshold, forKey: "offlinePaymentsPromptThreshold")
+      aCoder.encode(offlinePaymentsTotalPaymentsLimit, forKey: "offlinePaymentsTotalPaymentsLimit")
+      aCoder.encode(offlinePaymentsLimitDefault, forKey: "offlinePaymentsLimitDefault")
+      aCoder.encode(offlinePaymentsPromptThresholdDefault, forKey: "offlinePaymentsPromptThresholdDefault")
+      aCoder.encode(offlinePaymentsTotalPaymentsLimitDefault, forKey: "offlinePaymentsTotalPaymentsLimitDefault")
+      aCoder.encode(offlinePaymentsMaxLimit, forKey: "offlinePaymentsMaxLimit")
+      aCoder.encode(offlinePaymentsMaxTotalPaymentsLimit, forKey: "offlinePaymentsMaxTotalPaymentsLimit")
+      aCoder.encode(showOfflinePayments, forKey: "showOfflinePayments")
+      aCoder.encode(maxOfflineDays, forKey: "maxOfflineDays")
+      aCoder.encode(allowStoreAndForward, forKey: "allowStoreAndForward")
+      aCoder.encode(secureReports, forKey: "secureReports")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        name = aDecoder.decodeObject(forKey:"name") as? String
-        model = aDecoder.decodeObject(forKey:"model") as? String
-        merchant = aDecoder.decodeObject(forKey:"merchant") as? CLVModels.Base.Reference
-        orderPrefix = aDecoder.decodeObject(forKey:"orderPrefix") as? String
-        terminalPrefix = aDecoder.decodeObject(forKey:"terminalPrefix") as? Int
-        serial = aDecoder.decodeObject(forKey:"serial") as? String
-        buildNumber = aDecoder.decodeObject(forKey:"buildNumber") as? Int
-        secureId = aDecoder.decodeObject(forKey:"secureId") as? String
-        buildType = (aDecoder.decodeObject(forKey:"buildType") as? String) != nil ?
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              name = aDecoder.decodeObject(forKey:"name") as? String
+              model = aDecoder.decodeObject(forKey:"model") as? String
+              merchant = aDecoder.decodeObject(forKey:"merchant") as? CLVModels.Base.Reference
+              orderPrefix = aDecoder.decodeObject(forKey:"orderPrefix") as? String
+              terminalPrefix = aDecoder.decodeObject(forKey:"terminalPrefix") as? Int
+              serial = aDecoder.decodeObject(forKey:"serial") as? String
+              buildNumber = aDecoder.decodeObject(forKey:"buildNumber") as? Int
+              secureId = aDecoder.decodeObject(forKey:"secureId") as? String
+              buildType = (aDecoder.decodeObject(forKey:"buildType") as? String) != nil ?
       CLVModels.Device.BuildType(rawValue: (aDecoder.decodeObject(forKey:"buildType") as! String)) : nil
-        cpuId = aDecoder.decodeObject(forKey:"cpuId") as? String
-        imei = aDecoder.decodeObject(forKey:"imei") as? String
-        imsi = aDecoder.decodeObject(forKey:"imsi") as? String
-        simIccid = aDecoder.decodeObject(forKey:"simIccid") as? String
-        deviceCertificate = aDecoder.decodeObject(forKey:"deviceCertificate") as? String
-        pedCertificate = aDecoder.decodeObject(forKey:"pedCertificate") as? String
-        deviceTypeName = aDecoder.decodeObject(forKey:"deviceTypeName") as? String
-        pinDisabled = aDecoder.decodeObject(forKey:"pinDisabled") as? Bool
-        offlinePayments = aDecoder.decodeObject(forKey:"offlinePayments") as? Bool
-        offlinePaymentsAll = aDecoder.decodeObject(forKey:"offlinePaymentsAll") as? Bool
-        offlinePaymentsLimit = aDecoder.decodeObject(forKey:"offlinePaymentsLimit") as? Int
-        offlinePaymentsPromptThreshold = aDecoder.decodeObject(forKey:"offlinePaymentsPromptThreshold") as? Int
-        offlinePaymentsTotalPaymentsLimit = aDecoder.decodeObject(forKey:"offlinePaymentsTotalPaymentsLimit") as? Int
-        offlinePaymentsLimitDefault = aDecoder.decodeObject(forKey:"offlinePaymentsLimitDefault") as? Int
-        offlinePaymentsPromptThresholdDefault = aDecoder.decodeObject(forKey:"offlinePaymentsPromptThresholdDefault") as? Int
-        offlinePaymentsTotalPaymentsLimitDefault = aDecoder.decodeObject(forKey:"offlinePaymentsTotalPaymentsLimitDefault") as? Int
-        offlinePaymentsMaxLimit = aDecoder.decodeObject(forKey:"offlinePaymentsMaxLimit") as? Int
-        offlinePaymentsMaxTotalPaymentsLimit = aDecoder.decodeObject(forKey:"offlinePaymentsMaxTotalPaymentsLimit") as? Int
-        showOfflinePayments = aDecoder.decodeObject(forKey:"showOfflinePayments") as? Bool
-        maxOfflineDays = aDecoder.decodeObject(forKey:"maxOfflineDays") as? Int
-        allowStoreAndForward = aDecoder.decodeObject(forKey:"allowStoreAndForward") as? Bool
-        secureReports = aDecoder.decodeObject(forKey:"secureReports") as? [CLVModels.Base.Reference]
-  }
+              cpuId = aDecoder.decodeObject(forKey:"cpuId") as? String
+              imei = aDecoder.decodeObject(forKey:"imei") as? String
+              imsi = aDecoder.decodeObject(forKey:"imsi") as? String
+              simIccid = aDecoder.decodeObject(forKey:"simIccid") as? String
+              deviceCertificate = aDecoder.decodeObject(forKey:"deviceCertificate") as? String
+              pedCertificate = aDecoder.decodeObject(forKey:"pedCertificate") as? String
+              deviceTypeName = aDecoder.decodeObject(forKey:"deviceTypeName") as? String
+              pinDisabled = aDecoder.decodeObject(forKey:"pinDisabled") as? Bool
+              offlinePayments = aDecoder.decodeObject(forKey:"offlinePayments") as? Bool
+              offlinePaymentsAll = aDecoder.decodeObject(forKey:"offlinePaymentsAll") as? Bool
+              offlinePaymentsLimit = aDecoder.decodeObject(forKey:"offlinePaymentsLimit") as? Int
+              offlinePaymentsPromptThreshold = aDecoder.decodeObject(forKey:"offlinePaymentsPromptThreshold") as? Int
+              offlinePaymentsTotalPaymentsLimit = aDecoder.decodeObject(forKey:"offlinePaymentsTotalPaymentsLimit") as? Int
+              offlinePaymentsLimitDefault = aDecoder.decodeObject(forKey:"offlinePaymentsLimitDefault") as? Int
+              offlinePaymentsPromptThresholdDefault = aDecoder.decodeObject(forKey:"offlinePaymentsPromptThresholdDefault") as? Int
+              offlinePaymentsTotalPaymentsLimitDefault = aDecoder.decodeObject(forKey:"offlinePaymentsTotalPaymentsLimitDefault") as? Int
+              offlinePaymentsMaxLimit = aDecoder.decodeObject(forKey:"offlinePaymentsMaxLimit") as? Int
+              offlinePaymentsMaxTotalPaymentsLimit = aDecoder.decodeObject(forKey:"offlinePaymentsMaxTotalPaymentsLimit") as? Int
+              showOfflinePayments = aDecoder.decodeObject(forKey:"showOfflinePayments") as? Bool
+              maxOfflineDays = aDecoder.decodeObject(forKey:"maxOfflineDays") as? Int
+              allowStoreAndForward = aDecoder.decodeObject(forKey:"allowStoreAndForward") as? Bool
+              secureReports = aDecoder.decodeObject(forKey:"secureReports") as? [CLVModels.Base.Reference]
+      }
 
 override public init() {}
 
@@ -137,83 +169,93 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        name <- map["name"]
-        model <- map["model"]
-        merchant <- map["merchant"]
-        orderPrefix <- map["orderPrefix"]
-        terminalPrefix <- map["terminalPrefix"]
-        serial <- map["serial"]
-        buildNumber <- map["buildNumber"]
-        secureId <- map["secureId"]
-        buildType <- map["buildType"]
-        cpuId <- map["cpuId"]
-        imei <- map["imei"]
-        imsi <- map["imsi"]
-        simIccid <- map["simIccid"]
-        deviceCertificate <- map["deviceCertificate"]
-        pedCertificate <- map["pedCertificate"]
-        deviceTypeName <- map["deviceTypeName"]
-        pinDisabled <- map["pinDisabled"]
-        offlinePayments <- map["offlinePayments"]
-        offlinePaymentsAll <- map["offlinePaymentsAll"]
-        offlinePaymentsLimit <- map["offlinePaymentsLimit"]
-        offlinePaymentsPromptThreshold <- map["offlinePaymentsPromptThreshold"]
-        offlinePaymentsTotalPaymentsLimit <- map["offlinePaymentsTotalPaymentsLimit"]
-        offlinePaymentsLimitDefault <- map["offlinePaymentsLimitDefault"]
-        offlinePaymentsPromptThresholdDefault <- map["offlinePaymentsPromptThresholdDefault"]
-        offlinePaymentsTotalPaymentsLimitDefault <- map["offlinePaymentsTotalPaymentsLimitDefault"]
-        offlinePaymentsMaxLimit <- map["offlinePaymentsMaxLimit"]
-        offlinePaymentsMaxTotalPaymentsLimit <- map["offlinePaymentsMaxTotalPaymentsLimit"]
-        showOfflinePayments <- map["showOfflinePayments"]
-        maxOfflineDays <- map["maxOfflineDays"]
-        allowStoreAndForward <- map["allowStoreAndForward"]
-        secureReports <- map["secureReports.elements"]
-  }
+        id <- map["id"]
+              name <- map["name"]
+              model <- map["model"]
+              merchant <- map["merchant"]
+              orderPrefix <- map["orderPrefix"]
+              terminalPrefix <- map["terminalPrefix"]
+              serial <- map["serial"]
+              buildNumber <- map["buildNumber"]
+              secureId <- map["secureId"]
+              buildType <- map["buildType"]
+              cpuId <- map["cpuId"]
+              imei <- map["imei"]
+              imsi <- map["imsi"]
+              simIccid <- map["simIccid"]
+              deviceCertificate <- map["deviceCertificate"]
+              pedCertificate <- map["pedCertificate"]
+              deviceTypeName <- map["deviceTypeName"]
+              pinDisabled <- map["pinDisabled"]
+              offlinePayments <- map["offlinePayments"]
+              offlinePaymentsAll <- map["offlinePaymentsAll"]
+              offlinePaymentsLimit <- map["offlinePaymentsLimit"]
+              offlinePaymentsPromptThreshold <- map["offlinePaymentsPromptThreshold"]
+              offlinePaymentsTotalPaymentsLimit <- map["offlinePaymentsTotalPaymentsLimit"]
+              offlinePaymentsLimitDefault <- map["offlinePaymentsLimitDefault"]
+              offlinePaymentsPromptThresholdDefault <- map["offlinePaymentsPromptThresholdDefault"]
+              offlinePaymentsTotalPaymentsLimitDefault <- map["offlinePaymentsTotalPaymentsLimitDefault"]
+              offlinePaymentsMaxLimit <- map["offlinePaymentsMaxLimit"]
+              offlinePaymentsMaxTotalPaymentsLimit <- map["offlinePaymentsMaxTotalPaymentsLimit"]
+              showOfflinePayments <- map["showOfflinePayments"]
+              maxOfflineDays <- map["maxOfflineDays"]
+              allowStoreAndForward <- map["allowStoreAndForward"]
+              secureReports <- map["secureReports.elements"]
+      }
 }
 
  
 open class Rom: NSObject, NSCoding, Mappable {
+  
     /// Unique identifier
   open var id: String?
+      
     /// When the ROM was created
   open var createdAt: Int?
+      
   open var version_: Int?
+      
   open var versionName: String?
+      
   open var description_: String?
+      
   open var buildType: CLVModels.Device.RomBuildType?
+      
   open var isCritical: Bool?
+      
   open var published: Bool?
+      
   open var enabled: Bool?
+      
     /// When the ROM was associated with a merchant group
   open var associationTime: Date?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(createdAt, forKey: "createdAt")
-  aCoder.encode(version_, forKey: "version_")
-  aCoder.encode(versionName, forKey: "versionName")
-  aCoder.encode(description_, forKey: "description_")
-  aCoder.encode(buildType?.rawValue, forKey: "buildType")
-  aCoder.encode(isCritical, forKey: "isCritical")
-  aCoder.encode(published, forKey: "published")
-  aCoder.encode(enabled, forKey: "enabled")
-  aCoder.encode(associationTime, forKey: "associationTime")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(createdAt, forKey: "createdAt")
+      aCoder.encode(version_, forKey: "version_")
+      aCoder.encode(versionName, forKey: "versionName")
+      aCoder.encode(description_, forKey: "description_")
+      aCoder.encode(buildType?.rawValue, forKey: "buildType")
+      aCoder.encode(isCritical, forKey: "isCritical")
+      aCoder.encode(published, forKey: "published")
+      aCoder.encode(enabled, forKey: "enabled")
+      aCoder.encode(associationTime, forKey: "associationTime")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        createdAt = aDecoder.decodeObject(forKey:"createdAt") as? Int
-        version_ = aDecoder.decodeObject(forKey:"version_") as? Int
-        versionName = aDecoder.decodeObject(forKey:"versionName") as? String
-        description_ = aDecoder.decodeObject(forKey:"description_") as? String
-        buildType = (aDecoder.decodeObject(forKey:"buildType") as? String) != nil ?
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              createdAt = aDecoder.decodeObject(forKey:"createdAt") as? Int
+              version_ = aDecoder.decodeObject(forKey:"version_") as? Int
+              versionName = aDecoder.decodeObject(forKey:"versionName") as? String
+              description_ = aDecoder.decodeObject(forKey:"description_") as? String
+              buildType = (aDecoder.decodeObject(forKey:"buildType") as? String) != nil ?
       CLVModels.Device.RomBuildType(rawValue: (aDecoder.decodeObject(forKey:"buildType") as! String)) : nil
-        isCritical = aDecoder.decodeObject(forKey:"isCritical") as? Bool
-        published = aDecoder.decodeObject(forKey:"published") as? Bool
-        enabled = aDecoder.decodeObject(forKey:"enabled") as? Bool
-        associationTime = aDecoder.decodeObject(forKey:"associationTime") as? Date
-  }
+              isCritical = aDecoder.decodeObject(forKey:"isCritical") as? Bool
+              published = aDecoder.decodeObject(forKey:"published") as? Bool
+              enabled = aDecoder.decodeObject(forKey:"enabled") as? Bool
+              associationTime = aDecoder.decodeObject(forKey:"associationTime") as? Date
+      }
 
 override public init() {}
 
@@ -222,17 +264,17 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        createdAt <- map["createdAt"]
-        version_ <- map["version"]
-        versionName <- map["versionName"]
-        description_ <- map["description"]
-        buildType <- map["buildType"]
-        isCritical <- map["isCritical"]
-        published <- map["published"]
-        enabled <- map["enabled"]
-        associationTime <- (map["associationTime"], CLVDateTransform())
-  }
+        id <- map["id"]
+              createdAt <- map["createdAt"]
+              version_ <- map["version"]
+              versionName <- map["versionName"]
+              description_ <- map["description"]
+              buildType <- map["buildType"]
+              isCritical <- map["isCritical"]
+              published <- map["published"]
+              enabled <- map["enabled"]
+              associationTime <- (map["associationTime"], CLVDateTransform())
+      }
 }
 
  

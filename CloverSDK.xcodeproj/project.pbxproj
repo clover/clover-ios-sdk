@@ -8,7 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		111533DE70B27CC008DB1291 /* Pods_CloverSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92BC14A0954D89DB2EC70C6F /* Pods_CloverSDK.framework */; };
-		7EB240541E7451BF00FBD900 /* Exclusions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB240531E7451BF00FBD900 /* Exclusions.swift */; };
+		7EE7AE471E9813BA00EBF7D3 /* CLVModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874ACCA1C2CB255005CB35E /* CLVModels.swift */; };
+		7EE7AE571E98229D00EBF7D3 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE7AE481E98229D00EBF7D3 /* Account.swift */; };
+		7EE7AE581E98229D00EBF7D3 /* Apps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE7AE491E98229D00EBF7D3 /* Apps.swift */; };
+		7EE7AE591E98229D00EBF7D3 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE7AE4A1E98229D00EBF7D3 /* Base.swift */; };
+		7EE7AE5A1E98229D00EBF7D3 /* Cash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE7AE4B1E98229D00EBF7D3 /* Cash.swift */; };
+		7EE7AE5B1E98229D00EBF7D3 /* Customers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE7AE4C1E98229D00EBF7D3 /* Customers.swift */; };
+		7EE7AE5C1E98229D00EBF7D3 /* Developer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE7AE4D1E98229D00EBF7D3 /* Developer.swift */; };
+		7EE7AE5D1E98229D00EBF7D3 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE7AE4E1E98229D00EBF7D3 /* Device.swift */; };
+		7EE7AE5E1E98229D00EBF7D3 /* Employees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE7AE4F1E98229D00EBF7D3 /* Employees.swift */; };
+		7EE7AE5F1E98229D00EBF7D3 /* Exclusions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE7AE501E98229D00EBF7D3 /* Exclusions.swift */; };
+		7EE7AE601E98229D00EBF7D3 /* Hours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE7AE511E98229D00EBF7D3 /* Hours.swift */; };
+		7EE7AE611E98229D00EBF7D3 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE7AE521E98229D00EBF7D3 /* Inventory.swift */; };
+		7EE7AE621E98229D00EBF7D3 /* Merchant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE7AE531E98229D00EBF7D3 /* Merchant.swift */; };
+		7EE7AE631E98229D00EBF7D3 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE7AE541E98229D00EBF7D3 /* Order.swift */; };
+		7EE7AE641E98229D00EBF7D3 /* Payments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE7AE551E98229D00EBF7D3 /* Payments.swift */; };
+		7EE7AE651E98229D00EBF7D3 /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE7AE561E98229D00EBF7D3 /* Printer.swift */; };
 		7EEB2A6E1E72186E00EB8616 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EEB2A6A1E72186E00EB8616 /* Alamofire.framework */; };
 		7EEB2A6F1E72186E00EB8616 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EEB2A6B1E72186E00EB8616 /* ObjectMapper.framework */; };
 		7EEB2A701E72186E00EB8616 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EEB2A6C1E72186E00EB8616 /* PromiseKit.framework */; };
@@ -21,7 +36,6 @@
 		88019D181C248ECB002FC9BB /* CloverSDK.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 88019D171C248ECB002FC9BB /* CloverSDK.podspec */; };
 		881A22141C064D3000E45805 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 881A22131C064D3000E45805 /* LICENSE */; };
 		885C82BE1C8FD4BD00280B75 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C82BD1C8FD4BD00280B75 /* Logger.swift */; };
-		8874ACCB1C2CB255005CB35E /* CLVModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874ACCA1C2CB255005CB35E /* CLVModels.swift */; };
 		8874AD851C2DC93E005CB35E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 881A22111C064D2900E45805 /* README.md */; };
 		88786F181C052ADF00889AE5 /* CloverSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 88786F171C052ADF00889AE5 /* CloverSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		88786F1F1C052AE000889AE5 /* CloverSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88786F141C052ADF00889AE5 /* CloverSDK.framework */; };
@@ -31,20 +45,6 @@
 		88B72A3C1C56229B003A2586 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B72A3B1C56229B003A2586 /* Utils.swift */; };
 		88B72A3F1C5622A6003A2586 /* CLVMethodsExt+PK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B72A3D1C5622A6003A2586 /* CLVMethodsExt+PK.swift */; };
 		88B72A401C5622A6003A2586 /* CLVRequestExt+PK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B72A3E1C5622A6003A2586 /* CLVRequestExt+PK.swift */; };
-		88D288F21C98E858005AF5A9 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288E41C98E858005AF5A9 /* Account.swift */; };
-		88D288F31C98E858005AF5A9 /* Apps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288E51C98E858005AF5A9 /* Apps.swift */; };
-		88D288F41C98E858005AF5A9 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288E61C98E858005AF5A9 /* Base.swift */; };
-		88D288F51C98E858005AF5A9 /* Cash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288E71C98E858005AF5A9 /* Cash.swift */; };
-		88D288F61C98E858005AF5A9 /* Customers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288E81C98E858005AF5A9 /* Customers.swift */; };
-		88D288F71C98E858005AF5A9 /* Developer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288E91C98E858005AF5A9 /* Developer.swift */; };
-		88D288F81C98E858005AF5A9 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288EA1C98E858005AF5A9 /* Device.swift */; };
-		88D288F91C98E858005AF5A9 /* Employees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288EB1C98E858005AF5A9 /* Employees.swift */; };
-		88D288FA1C98E858005AF5A9 /* Hours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288EC1C98E858005AF5A9 /* Hours.swift */; };
-		88D288FB1C98E858005AF5A9 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288ED1C98E858005AF5A9 /* Inventory.swift */; };
-		88D288FC1C98E858005AF5A9 /* Merchant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288EE1C98E858005AF5A9 /* Merchant.swift */; };
-		88D288FD1C98E858005AF5A9 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288EF1C98E858005AF5A9 /* Order.swift */; };
-		88D288FE1C98E858005AF5A9 /* Payments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288F01C98E858005AF5A9 /* Payments.swift */; };
-		88D288FF1C98E858005AF5A9 /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D288F11C98E858005AF5A9 /* Printer.swift */; };
 		88D2890B1C98F39B005AF5A9 /* CLVRequestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D2890A1C98F39B005AF5A9 /* CLVRequestExtension.swift */; };
 		88DF3D091C4232350093FCB1 /* CLVOAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DF3D081C4232350093FCB1 /* CLVOAuth.swift */; };
 		88E163691C293FCB008FC1B9 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 88E163681C293FCB008FC1B9 /* Podfile */; };
@@ -71,7 +71,21 @@
 		7E12A34F1E71C27900EF7458 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "DerivedData/CloverSDK/Build/Products/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		7E12A3501E71C27900EF7458 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = "DerivedData/CloverSDK/Build/Products/Debug-iphoneos/PromiseKit/PromiseKit.framework"; sourceTree = "<group>"; };
 		7E12A3511E71C27900EF7458 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "DerivedData/CloverSDK/Build/Products/Debug-iphoneos/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
-		7EB240531E7451BF00FBD900 /* Exclusions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exclusions.swift; sourceTree = "<group>"; };
+		7EE7AE481E98229D00EBF7D3 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		7EE7AE491E98229D00EBF7D3 /* Apps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Apps.swift; sourceTree = "<group>"; };
+		7EE7AE4A1E98229D00EBF7D3 /* Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
+		7EE7AE4B1E98229D00EBF7D3 /* Cash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cash.swift; sourceTree = "<group>"; };
+		7EE7AE4C1E98229D00EBF7D3 /* Customers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customers.swift; sourceTree = "<group>"; };
+		7EE7AE4D1E98229D00EBF7D3 /* Developer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Developer.swift; sourceTree = "<group>"; };
+		7EE7AE4E1E98229D00EBF7D3 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		7EE7AE4F1E98229D00EBF7D3 /* Employees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employees.swift; sourceTree = "<group>"; };
+		7EE7AE501E98229D00EBF7D3 /* Exclusions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exclusions.swift; sourceTree = "<group>"; };
+		7EE7AE511E98229D00EBF7D3 /* Hours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hours.swift; sourceTree = "<group>"; };
+		7EE7AE521E98229D00EBF7D3 /* Inventory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
+		7EE7AE531E98229D00EBF7D3 /* Merchant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Merchant.swift; sourceTree = "<group>"; };
+		7EE7AE541E98229D00EBF7D3 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		7EE7AE551E98229D00EBF7D3 /* Payments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payments.swift; sourceTree = "<group>"; };
+		7EE7AE561E98229D00EBF7D3 /* Printer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Printer.swift; sourceTree = "<group>"; };
 		7EEB2A6A1E72186E00EB8616 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		7EEB2A6B1E72186E00EB8616 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "Pods/../build/Debug-iphoneos/ObjectMapper/ObjectMapper.framework"; sourceTree = "<group>"; };
 		7EEB2A6C1E72186E00EB8616 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = "Pods/../build/Debug-iphoneos/PromiseKit/PromiseKit.framework"; sourceTree = "<group>"; };
@@ -97,20 +111,6 @@
 		88B72A3B1C56229B003A2586 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		88B72A3D1C5622A6003A2586 /* CLVMethodsExt+PK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLVMethodsExt+PK.swift"; sourceTree = "<group>"; };
 		88B72A3E1C5622A6003A2586 /* CLVRequestExt+PK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLVRequestExt+PK.swift"; sourceTree = "<group>"; };
-		88D288E41C98E858005AF5A9 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
-		88D288E51C98E858005AF5A9 /* Apps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Apps.swift; sourceTree = "<group>"; };
-		88D288E61C98E858005AF5A9 /* Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
-		88D288E71C98E858005AF5A9 /* Cash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cash.swift; sourceTree = "<group>"; };
-		88D288E81C98E858005AF5A9 /* Customers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customers.swift; sourceTree = "<group>"; };
-		88D288E91C98E858005AF5A9 /* Developer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Developer.swift; sourceTree = "<group>"; };
-		88D288EA1C98E858005AF5A9 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
-		88D288EB1C98E858005AF5A9 /* Employees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employees.swift; sourceTree = "<group>"; };
-		88D288EC1C98E858005AF5A9 /* Hours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hours.swift; sourceTree = "<group>"; };
-		88D288ED1C98E858005AF5A9 /* Inventory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
-		88D288EE1C98E858005AF5A9 /* Merchant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Merchant.swift; sourceTree = "<group>"; };
-		88D288EF1C98E858005AF5A9 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
-		88D288F01C98E858005AF5A9 /* Payments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payments.swift; sourceTree = "<group>"; };
-		88D288F11C98E858005AF5A9 /* Printer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Printer.swift; sourceTree = "<group>"; };
 		88D2890A1C98F39B005AF5A9 /* CLVRequestExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLVRequestExtension.swift; sourceTree = "<group>"; };
 		88DF3D081C4232350093FCB1 /* CLVOAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLVOAuth.swift; sourceTree = "<group>"; };
 		88E163681C293FCB008FC1B9 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -193,21 +193,21 @@
 		8874ACF41C2CB370005CB35E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				7EB240531E7451BF00FBD900 /* Exclusions.swift */,
-				88D288E41C98E858005AF5A9 /* Account.swift */,
-				88D288E51C98E858005AF5A9 /* Apps.swift */,
-				88D288E61C98E858005AF5A9 /* Base.swift */,
-				88D288E71C98E858005AF5A9 /* Cash.swift */,
-				88D288E81C98E858005AF5A9 /* Customers.swift */,
-				88D288E91C98E858005AF5A9 /* Developer.swift */,
-				88D288EA1C98E858005AF5A9 /* Device.swift */,
-				88D288EB1C98E858005AF5A9 /* Employees.swift */,
-				88D288EC1C98E858005AF5A9 /* Hours.swift */,
-				88D288ED1C98E858005AF5A9 /* Inventory.swift */,
-				88D288EE1C98E858005AF5A9 /* Merchant.swift */,
-				88D288EF1C98E858005AF5A9 /* Order.swift */,
-				88D288F01C98E858005AF5A9 /* Payments.swift */,
-				88D288F11C98E858005AF5A9 /* Printer.swift */,
+				7EE7AE481E98229D00EBF7D3 /* Account.swift */,
+				7EE7AE491E98229D00EBF7D3 /* Apps.swift */,
+				7EE7AE4A1E98229D00EBF7D3 /* Base.swift */,
+				7EE7AE4B1E98229D00EBF7D3 /* Cash.swift */,
+				7EE7AE4C1E98229D00EBF7D3 /* Customers.swift */,
+				7EE7AE4D1E98229D00EBF7D3 /* Developer.swift */,
+				7EE7AE4E1E98229D00EBF7D3 /* Device.swift */,
+				7EE7AE4F1E98229D00EBF7D3 /* Employees.swift */,
+				7EE7AE501E98229D00EBF7D3 /* Exclusions.swift */,
+				7EE7AE511E98229D00EBF7D3 /* Hours.swift */,
+				7EE7AE521E98229D00EBF7D3 /* Inventory.swift */,
+				7EE7AE531E98229D00EBF7D3 /* Merchant.swift */,
+				7EE7AE541E98229D00EBF7D3 /* Order.swift */,
+				7EE7AE551E98229D00EBF7D3 /* Payments.swift */,
+				7EE7AE561E98229D00EBF7D3 /* Printer.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -490,35 +490,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88D288FB1C98E858005AF5A9 /* Inventory.swift in Sources */,
 				88B72A401C5622A6003A2586 /* CLVRequestExt+PK.swift in Sources */,
 				88019D051C248DBE002FC9BB /* TransformTypes.swift in Sources */,
+				7EE7AE5A1E98229D00EBF7D3 /* Cash.swift in Sources */,
+				7EE7AE5B1E98229D00EBF7D3 /* Customers.swift in Sources */,
 				88019D161C248DD4002FC9BB /* CLVSession.swift in Sources */,
-				8874ACCB1C2CB255005CB35E /* CLVModels.swift in Sources */,
 				88B72A3C1C56229B003A2586 /* Utils.swift in Sources */,
-				88D288F21C98E858005AF5A9 /* Account.swift in Sources */,
+				7EE7AE651E98229D00EBF7D3 /* Printer.swift in Sources */,
+				7EE7AE631E98229D00EBF7D3 /* Order.swift in Sources */,
+				7EE7AE5C1E98229D00EBF7D3 /* Developer.swift in Sources */,
+				7EE7AE581E98229D00EBF7D3 /* Apps.swift in Sources */,
+				7EE7AE621E98229D00EBF7D3 /* Merchant.swift in Sources */,
 				885C82BE1C8FD4BD00280B75 /* Logger.swift in Sources */,
+				7EE7AE591E98229D00EBF7D3 /* Base.swift in Sources */,
+				7EE7AE571E98229D00EBF7D3 /* Account.swift in Sources */,
+				7EE7AE5D1E98229D00EBF7D3 /* Device.swift in Sources */,
 				88D2890B1C98F39B005AF5A9 /* CLVRequestExtension.swift in Sources */,
 				88B72A3F1C5622A6003A2586 /* CLVMethodsExt+PK.swift in Sources */,
-				88D288F41C98E858005AF5A9 /* Base.swift in Sources */,
-				88D288FD1C98E858005AF5A9 /* Order.swift in Sources */,
 				88019D131C248DD4002FC9BB /* CLVRequest.swift in Sources */,
-				88D288F51C98E858005AF5A9 /* Cash.swift in Sources */,
-				88D288F31C98E858005AF5A9 /* Apps.swift in Sources */,
-				88D288F81C98E858005AF5A9 /* Device.swift in Sources */,
-				7EB240541E7451BF00FBD900 /* Exclusions.swift in Sources */,
-				88D288FE1C98E858005AF5A9 /* Payments.swift in Sources */,
-				88D288FC1C98E858005AF5A9 /* Merchant.swift in Sources */,
-				88D288F91C98E858005AF5A9 /* Employees.swift in Sources */,
+				7EE7AE471E9813BA00EBF7D3 /* CLVModels.swift in Sources */,
+				7EE7AE611E98229D00EBF7D3 /* Inventory.swift in Sources */,
+				7EE7AE5F1E98229D00EBF7D3 /* Exclusions.swift in Sources */,
+				7EE7AE601E98229D00EBF7D3 /* Hours.swift in Sources */,
 				88019D111C248DD4002FC9BB /* CLVMethods.swift in Sources */,
+				7EE7AE641E98229D00EBF7D3 /* Payments.swift in Sources */,
 				8889DA561C8F7A08000ED5A8 /* CLVError.swift in Sources */,
-				88D288FF1C98E858005AF5A9 /* Printer.swift in Sources */,
-				88D288FA1C98E858005AF5A9 /* Hours.swift in Sources */,
 				88AB4CF71C911A0C00F535BB /* CLVEndpoint.swift in Sources */,
-				88D288F61C98E858005AF5A9 /* Customers.swift in Sources */,
-				88D288F71C98E858005AF5A9 /* Developer.swift in Sources */,
 				88DF3D091C4232350093FCB1 /* CLVOAuth.swift in Sources */,
 				88019D151C248DD4002FC9BB /* CLVServerEnvironment.swift in Sources */,
+				7EE7AE5E1E98229D00EBF7D3 /* Employees.swift in Sources */,
 				88F6C7981C963B3F006BBD22 /* CLVSessionExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

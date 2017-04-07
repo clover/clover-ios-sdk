@@ -11,36 +11,44 @@ extension CLVModels {
 public class Base {
  
 open class Address: NSObject, NSCoding, Mappable {
+  
   open var address1: String?
+      
   open var address2: String?
+      
   open var address3: String?
+      
   open var city: String?
+      
   open var country: String?
+      
   open var phoneNumber: String?
+      
   open var state: String?
+      
   open var zip: String?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(address1, forKey: "address1")
-  aCoder.encode(address2, forKey: "address2")
-  aCoder.encode(address3, forKey: "address3")
-  aCoder.encode(city, forKey: "city")
-  aCoder.encode(country, forKey: "country")
-  aCoder.encode(phoneNumber, forKey: "phoneNumber")
-  aCoder.encode(state, forKey: "state")
-  aCoder.encode(zip, forKey: "zip")
-}
+    aCoder.encode(address1, forKey: "address1")
+      aCoder.encode(address2, forKey: "address2")
+      aCoder.encode(address3, forKey: "address3")
+      aCoder.encode(city, forKey: "city")
+      aCoder.encode(country, forKey: "country")
+      aCoder.encode(phoneNumber, forKey: "phoneNumber")
+      aCoder.encode(state, forKey: "state")
+      aCoder.encode(zip, forKey: "zip")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      address1 = aDecoder.decodeObject(forKey:"address1") as? String
-        address2 = aDecoder.decodeObject(forKey:"address2") as? String
-        address3 = aDecoder.decodeObject(forKey:"address3") as? String
-        city = aDecoder.decodeObject(forKey:"city") as? String
-        country = aDecoder.decodeObject(forKey:"country") as? String
-        phoneNumber = aDecoder.decodeObject(forKey:"phoneNumber") as? String
-        state = aDecoder.decodeObject(forKey:"state") as? String
-        zip = aDecoder.decodeObject(forKey:"zip") as? String
-  }
+        address1 = aDecoder.decodeObject(forKey:"address1") as? String
+              address2 = aDecoder.decodeObject(forKey:"address2") as? String
+              address3 = aDecoder.decodeObject(forKey:"address3") as? String
+              city = aDecoder.decodeObject(forKey:"city") as? String
+              country = aDecoder.decodeObject(forKey:"country") as? String
+              phoneNumber = aDecoder.decodeObject(forKey:"phoneNumber") as? String
+              state = aDecoder.decodeObject(forKey:"state") as? String
+              zip = aDecoder.decodeObject(forKey:"zip") as? String
+      }
 
 override public init() {}
 
@@ -49,15 +57,15 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      address1 <- map["address1"]
-        address2 <- map["address2"]
-        address3 <- map["address3"]
-        city <- map["city"]
-        country <- map["country"]
-        phoneNumber <- map["phoneNumber"]
-        state <- map["state"]
-        zip <- map["zip"]
-  }
+        address1 <- map["address1"]
+              address2 <- map["address2"]
+              address3 <- map["address3"]
+              city <- map["city"]
+              country <- map["country"]
+              phoneNumber <- map["phoneNumber"]
+              state <- map["state"]
+              zip <- map["zip"]
+      }
 }
 
  
@@ -101,16 +109,17 @@ public enum BusinessTypeCode: String {
 
  
 open class Reference: NSObject, NSCoding, Mappable {
+  
     /// Unique identifier
   open var id: String?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-}
+    aCoder.encode(id, forKey: "id")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-  }
+        id = aDecoder.decodeObject(forKey:"id") as? String
+      }
 
 override public init() {}
 
@@ -119,42 +128,43 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-  }
+        id <- map["id"]
+      }
 }
 
  
 open class ServiceCharge: NSObject, NSCoding, Mappable {
+  
     /// Unique identifier
   open var id: String?
-    /// The order with which the service charge is associated
-  open var orderRef: CLVModels.Base.Reference?
+        
     /// Service charge name
   open var name: String?
+      
     /// If this service charge is enabled
   open var enabled: Bool?
+      
     /// DEPRECATED
   open var percentage: Int?
+      
     /// Percent to charge times 10000, e.g. 12.5% will be 125000
   open var percentageDecimal: Int?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(orderRef, forKey: "orderRef")
-  aCoder.encode(name, forKey: "name")
-  aCoder.encode(enabled, forKey: "enabled")
-  aCoder.encode(percentage, forKey: "percentage")
-  aCoder.encode(percentageDecimal, forKey: "percentageDecimal")
-}
+    aCoder.encode(id, forKey: "id")
+        aCoder.encode(name, forKey: "name")
+      aCoder.encode(enabled, forKey: "enabled")
+      aCoder.encode(percentage, forKey: "percentage")
+      aCoder.encode(percentageDecimal, forKey: "percentageDecimal")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        orderRef = aDecoder.decodeObject(forKey:"orderRef") as? CLVModels.Base.Reference
-        name = aDecoder.decodeObject(forKey:"name") as? String
-        enabled = aDecoder.decodeObject(forKey:"enabled") as? Bool
-        percentage = aDecoder.decodeObject(forKey:"percentage") as? Int
-        percentageDecimal = aDecoder.decodeObject(forKey:"percentageDecimal") as? Int
-  }
+        id = aDecoder.decodeObject(forKey:"id") as? String
+                name = aDecoder.decodeObject(forKey:"name") as? String
+              enabled = aDecoder.decodeObject(forKey:"enabled") as? Bool
+              percentage = aDecoder.decodeObject(forKey:"percentage") as? Int
+              percentageDecimal = aDecoder.decodeObject(forKey:"percentageDecimal") as? Int
+      }
 
 override public init() {}
 
@@ -163,59 +173,67 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        orderRef <- map["orderRef"]
-        name <- map["name"]
-        enabled <- map["enabled"]
-        percentage <- map["percentage"]
-        percentageDecimal <- map["percentageDecimal"]
-  }
+        id <- map["id"]
+                name <- map["name"]
+              enabled <- map["enabled"]
+              percentage <- map["percentage"]
+              percentageDecimal <- map["percentageDecimal"]
+      }
 }
 
  
 open class Tender: NSObject, NSCoding, Mappable {
+  
     /// Unique identifier
   open var id: String?
+      
     /// If this merchant tender is editable
   open var editable: Bool?
+      
     /// Label Key
   open var labelKey: String?
+      
     /// Label Key
   open var label: String?
+      
     /// If this tender opens the cash drawer
   open var opensCashDrawer: Bool?
+      
     /// Allow tipping on payment from tender
   open var supportsTipping: Bool?
+      
     /// If this merchant tender is enabled
   open var enabled: Bool?
+      
     /// If this merchant tender is visible
   open var visible: Bool?
+      
     /// Label Key
   open var instructions: String?
-
+    
 open func encode(with aCoder: NSCoder) {
-  aCoder.encode(id, forKey: "id")
-  aCoder.encode(editable, forKey: "editable")
-  aCoder.encode(labelKey, forKey: "labelKey")
-  aCoder.encode(label, forKey: "label")
-  aCoder.encode(opensCashDrawer, forKey: "opensCashDrawer")
-  aCoder.encode(supportsTipping, forKey: "supportsTipping")
-  aCoder.encode(enabled, forKey: "enabled")
-  aCoder.encode(visible, forKey: "visible")
-  aCoder.encode(instructions, forKey: "instructions")
-}
+    aCoder.encode(id, forKey: "id")
+      aCoder.encode(editable, forKey: "editable")
+      aCoder.encode(labelKey, forKey: "labelKey")
+      aCoder.encode(label, forKey: "label")
+      aCoder.encode(opensCashDrawer, forKey: "opensCashDrawer")
+      aCoder.encode(supportsTipping, forKey: "supportsTipping")
+      aCoder.encode(enabled, forKey: "enabled")
+      aCoder.encode(visible, forKey: "visible")
+      aCoder.encode(instructions, forKey: "instructions")
+  }
 
 required public init(coder aDecoder: NSCoder) {
-      id = aDecoder.decodeObject(forKey:"id") as? String
-        editable = aDecoder.decodeObject(forKey:"editable") as? Bool
-        labelKey = aDecoder.decodeObject(forKey:"labelKey") as? String
-        label = aDecoder.decodeObject(forKey:"label") as? String
-        opensCashDrawer = aDecoder.decodeObject(forKey:"opensCashDrawer") as? Bool
-        supportsTipping = aDecoder.decodeObject(forKey:"supportsTipping") as? Bool
-        enabled = aDecoder.decodeObject(forKey:"enabled") as? Bool
-        visible = aDecoder.decodeObject(forKey:"visible") as? Bool
-        instructions = aDecoder.decodeObject(forKey:"instructions") as? String
-  }
+        id = aDecoder.decodeObject(forKey:"id") as? String
+              editable = aDecoder.decodeObject(forKey:"editable") as? Bool
+              labelKey = aDecoder.decodeObject(forKey:"labelKey") as? String
+              label = aDecoder.decodeObject(forKey:"label") as? String
+              opensCashDrawer = aDecoder.decodeObject(forKey:"opensCashDrawer") as? Bool
+              supportsTipping = aDecoder.decodeObject(forKey:"supportsTipping") as? Bool
+              enabled = aDecoder.decodeObject(forKey:"enabled") as? Bool
+              visible = aDecoder.decodeObject(forKey:"visible") as? Bool
+              instructions = aDecoder.decodeObject(forKey:"instructions") as? String
+      }
 
 override public init() {}
 
@@ -224,16 +242,16 @@ override public init() {}
 required public init?(map: Map) {}
 
 public func mapping(map: Map) {
-      id <- map["id"]
-        editable <- map["editable"]
-        labelKey <- map["labelKey"]
-        label <- map["label"]
-        opensCashDrawer <- map["opensCashDrawer"]
-        supportsTipping <- map["supportsTipping"]
-        enabled <- map["enabled"]
-        visible <- map["visible"]
-        instructions <- map["instructions"]
-  }
+        id <- map["id"]
+              editable <- map["editable"]
+              labelKey <- map["labelKey"]
+              label <- map["label"]
+              opensCashDrawer <- map["opensCashDrawer"]
+              supportsTipping <- map["supportsTipping"]
+              enabled <- map["enabled"]
+              visible <- map["visible"]
+              instructions <- map["instructions"]
+      }
 }
 
 }
