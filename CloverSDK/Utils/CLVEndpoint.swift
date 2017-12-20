@@ -35,7 +35,6 @@ public enum CLVV3Endpoint: String {
   
   // Cash
   case MERCHANT_CASH_EVENTS = "/v3/merchants/{mId}/cash_events"
-  case MERCHANT_EMPLOYEE_CASH_EVENTS = "/v3/merchants/{mId}/employees/{empId}/cash_events"
   case MERCHANT_DEVICE_CASH_EVENTS = "/v3/merchants/{mId}/devices/{deviceId}/cash_events"
   
   // Customers
