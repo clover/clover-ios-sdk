@@ -8,11 +8,11 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/clover/clover-ios-sdk.git", :tag => s.version.to_s }
 
   s.platform     = :ios
-  s.ios.deployment_target = "8.0"
+  s.ios.deployment_target = "10.0"
   s.requires_arc = true
 
   s.subspec "Models" do |models|
-    models.ios.deployment_target = "8.0"
+    models.ios.deployment_target = "10.0"
     models.watchos.deployment_target = "2.0"
     models.source_files = "CloverSDK/Models/**/*.{swift}"
     models.framework = "UIKit"
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec "Utils" do |utils|
-    utils.ios.deployment_target = "8.0"
+    utils.ios.deployment_target = "10.0"
     utils.watchos.deployment_target = "2.0"
     utils.source_files = "CloverSDK/Utils/**/*.{swift}"
     utils.framework = "UIKit"
@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec "PromiseKit" do |promisekit|
-    promisekit.ios.deployment_target = "8.0"
+    promisekit.ios.deployment_target = "10.0"
     promisekit.watchos.deployment_target = "2.0"
     promisekit.source_files = "CloverSDK/PromiseKit/**/*.{swift}"
     promisekit.framework = "UIKit"
@@ -45,7 +45,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec "OAuth" do |oauth|
-    oauth.ios.deployment_target = "8.0"
+    oauth.ios.deployment_target = "10.0"
     oauth.source_files = "CloverSDK/OAuth/**/*.{swift}"
     oauth.framework = "WebKit"
     oauth.dependency "CloverSDK/Models"
