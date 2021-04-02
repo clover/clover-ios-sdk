@@ -11,4 +11,5 @@ public enum CLVServerEnvironment: String {
   case EU = "https://www.eu.clover.com"
   case SANDBOX = "https://sandbox.dev.clover.com"
   case SANDBOX_DEV = "https://sandboxdev.dev.clover.com"
+  case STAGING1 = "https://stg1.dev.clover.com"
 }
