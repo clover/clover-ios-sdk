@@ -15,7 +15,7 @@ The fastest way to see what this SDK has to offer is to load up the Example App 
   - Create an account or log in, then create a merchant.  Ensure the merchant has Read/Write access for all permissions, and Enable online payments
   - Change the site URL to your server's base address
 3) Setup your Server and OAuth Callbacks
-  - Follow the instructions on [OAuth and Apple App Site Association](https://github.corp.clover.com/clover/ecomm-SDK-iOS/wiki/OAuth-and-Apple-App-Site-Association)
+  - Follow the instructions on [OAuth and Apple App Site Association](https://github.com/clover/clover-ios-sdk/wiki/OAuth-and-Apple-App-Site-Association)
 4) Ensure the following elements in the example code have been updated with your settings
   - In the Target Configuration: set the Team, Bundle Identifier, Signing Certificate to your configuration
   - In the Target Configuration: ensure the Associated Domain was configured from the previous step
