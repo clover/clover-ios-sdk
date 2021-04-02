@@ -1,0 +1,20 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'Ecomm SDK Testing' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for Ecomm SDK Testing
+  pod 'CloverREST', :path => '../../'
+
+  target 'Ecomm SDK TestingTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'Ecomm SDK TestingUITests' do
+    # Pods for testing
+  end
+
+end

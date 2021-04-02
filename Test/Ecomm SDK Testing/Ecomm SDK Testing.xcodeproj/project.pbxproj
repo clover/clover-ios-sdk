@@ -1,0 +1,756 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5B7959763967CC2615940E11 /* Pods_Ecomm_SDK_Testing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1EC7C548F88628E35E5BE57 /* Pods_Ecomm_SDK_Testing.framework */; };
+		9B2B3D060F0FB35E5EB4577D /* Pods_Ecomm_SDK_TestingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5749514E7B594F0712A48C0 /* Pods_Ecomm_SDK_TestingTests.framework */; };
+		AF8DFE2425E4434000AE6481 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8DFE2325E4434000AE6481 /* AppDelegate.swift */; };
+		AF8DFE2625E4434000AE6481 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8DFE2525E4434000AE6481 /* SceneDelegate.swift */; };
+		AF8DFE2825E4434000AE6481 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8DFE2725E4434000AE6481 /* ViewController.swift */; };
+		AF8DFE2B25E4434000AE6481 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF8DFE2925E4434000AE6481 /* Main.storyboard */; };
+		AF8DFE2D25E4434100AE6481 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF8DFE2C25E4434100AE6481 /* Assets.xcassets */; };
+		AF8DFE3025E4434100AE6481 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF8DFE2E25E4434100AE6481 /* LaunchScreen.storyboard */; };
+		AF8DFE3B25E4434100AE6481 /* Ecomm_SDK_TestingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8DFE3A25E4434100AE6481 /* Ecomm_SDK_TestingTests.swift */; };
+		AF8DFE4625E4434100AE6481 /* Ecomm_SDK_TestingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8DFE4525E4434100AE6481 /* Ecomm_SDK_TestingUITests.swift */; };
+		BE23345FACA81866700442A3 /* Pods_Ecomm_SDK_Testing_Ecomm_SDK_TestingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C09C74878115E1BA57342DFA /* Pods_Ecomm_SDK_Testing_Ecomm_SDK_TestingUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AF8DFE3725E4434100AE6481 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF8DFE1825E4434000AE6481 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AF8DFE1F25E4434000AE6481;
+			remoteInfo = "Ecomm SDK Testing";
+		};
+		AF8DFE4225E4434100AE6481 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF8DFE1825E4434000AE6481 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AF8DFE1F25E4434000AE6481;
+			remoteInfo = "Ecomm SDK Testing";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2100644C16CDA81AF31D84D5 /* Pods-Ecomm SDK TestingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ecomm SDK TestingTests.debug.xcconfig"; path = "Target Support Files/Pods-Ecomm SDK TestingTests/Pods-Ecomm SDK TestingTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5442BCAEE15618FFD2C241B0 /* Pods-Ecomm SDK Testing-Ecomm SDK TestingUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ecomm SDK Testing-Ecomm SDK TestingUITests.release.xcconfig"; path = "Target Support Files/Pods-Ecomm SDK Testing-Ecomm SDK TestingUITests/Pods-Ecomm SDK Testing-Ecomm SDK TestingUITests.release.xcconfig"; sourceTree = "<group>"; };
+		5C507136F661F36C766389E6 /* Pods-Ecomm SDK TestingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ecomm SDK TestingTests.release.xcconfig"; path = "Target Support Files/Pods-Ecomm SDK TestingTests/Pods-Ecomm SDK TestingTests.release.xcconfig"; sourceTree = "<group>"; };
+		AF8DFE2025E4434000AE6481 /* Ecomm SDK Testing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ecomm SDK Testing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF8DFE2325E4434000AE6481 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AF8DFE2525E4434000AE6481 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		AF8DFE2725E4434000AE6481 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AF8DFE2A25E4434000AE6481 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AF8DFE2C25E4434100AE6481 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AF8DFE2F25E4434100AE6481 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AF8DFE3125E4434100AE6481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF8DFE3625E4434100AE6481 /* Ecomm SDK TestingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ecomm SDK TestingTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF8DFE3A25E4434100AE6481 /* Ecomm_SDK_TestingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ecomm_SDK_TestingTests.swift; sourceTree = "<group>"; };
+		AF8DFE3C25E4434100AE6481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF8DFE4125E4434100AE6481 /* Ecomm SDK TestingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ecomm SDK TestingUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF8DFE4525E4434100AE6481 /* Ecomm_SDK_TestingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ecomm_SDK_TestingUITests.swift; sourceTree = "<group>"; };
+		AF8DFE4725E4434100AE6481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF8DFE5D25E446FC00AE6481 /* Ecomm SDK Testing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Ecomm SDK Testing.entitlements"; sourceTree = "<group>"; };
+		C09C74878115E1BA57342DFA /* Pods_Ecomm_SDK_Testing_Ecomm_SDK_TestingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ecomm_SDK_Testing_Ecomm_SDK_TestingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC8286DC81DF0A5C9D34F49E /* Pods-Ecomm SDK Testing-Ecomm SDK TestingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ecomm SDK Testing-Ecomm SDK TestingUITests.debug.xcconfig"; path = "Target Support Files/Pods-Ecomm SDK Testing-Ecomm SDK TestingUITests/Pods-Ecomm SDK Testing-Ecomm SDK TestingUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E1EC7C548F88628E35E5BE57 /* Pods_Ecomm_SDK_Testing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ecomm_SDK_Testing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5749514E7B594F0712A48C0 /* Pods_Ecomm_SDK_TestingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ecomm_SDK_TestingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE64CCBE50C6D7F6050EFD20 /* Pods-Ecomm SDK Testing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ecomm SDK Testing.release.xcconfig"; path = "Target Support Files/Pods-Ecomm SDK Testing/Pods-Ecomm SDK Testing.release.xcconfig"; sourceTree = "<group>"; };
+		F660CB116AE8E2F932F8A1F1 /* Pods-Ecomm SDK Testing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ecomm SDK Testing.debug.xcconfig"; path = "Target Support Files/Pods-Ecomm SDK Testing/Pods-Ecomm SDK Testing.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AF8DFE1D25E4434000AE6481 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B7959763967CC2615940E11 /* Pods_Ecomm_SDK_Testing.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF8DFE3325E4434100AE6481 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B2B3D060F0FB35E5EB4577D /* Pods_Ecomm_SDK_TestingTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF8DFE3E25E4434100AE6481 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE23345FACA81866700442A3 /* Pods_Ecomm_SDK_Testing_Ecomm_SDK_TestingUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		34AEDD33D1098302E4A33839 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E1EC7C548F88628E35E5BE57 /* Pods_Ecomm_SDK_Testing.framework */,
+				C09C74878115E1BA57342DFA /* Pods_Ecomm_SDK_Testing_Ecomm_SDK_TestingUITests.framework */,
+				E5749514E7B594F0712A48C0 /* Pods_Ecomm_SDK_TestingTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AF8DFE1725E4434000AE6481 = {
+			isa = PBXGroup;
+			children = (
+				AF8DFE2225E4434000AE6481 /* Ecomm SDK Testing */,
+				AF8DFE3925E4434100AE6481 /* Ecomm SDK TestingTests */,
+				AF8DFE4425E4434100AE6481 /* Ecomm SDK TestingUITests */,
+				AF8DFE2125E4434000AE6481 /* Products */,
+				FE4DFDCF20DFACAED9AF5AA1 /* Pods */,
+				34AEDD33D1098302E4A33839 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AF8DFE2125E4434000AE6481 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AF8DFE2025E4434000AE6481 /* Ecomm SDK Testing.app */,
+				AF8DFE3625E4434100AE6481 /* Ecomm SDK TestingTests.xctest */,
+				AF8DFE4125E4434100AE6481 /* Ecomm SDK TestingUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AF8DFE2225E4434000AE6481 /* Ecomm SDK Testing */ = {
+			isa = PBXGroup;
+			children = (
+				AF8DFE5D25E446FC00AE6481 /* Ecomm SDK Testing.entitlements */,
+				AF8DFE2325E4434000AE6481 /* AppDelegate.swift */,
+				AF8DFE2525E4434000AE6481 /* SceneDelegate.swift */,
+				AF8DFE2725E4434000AE6481 /* ViewController.swift */,
+				AF8DFE2925E4434000AE6481 /* Main.storyboard */,
+				AF8DFE2C25E4434100AE6481 /* Assets.xcassets */,
+				AF8DFE2E25E4434100AE6481 /* LaunchScreen.storyboard */,
+				AF8DFE3125E4434100AE6481 /* Info.plist */,
+			);
+			path = "Ecomm SDK Testing";
+			sourceTree = "<group>";
+		};
+		AF8DFE3925E4434100AE6481 /* Ecomm SDK TestingTests */ = {
+			isa = PBXGroup;
+			children = (
+				AF8DFE3A25E4434100AE6481 /* Ecomm_SDK_TestingTests.swift */,
+				AF8DFE3C25E4434100AE6481 /* Info.plist */,
+			);
+			path = "Ecomm SDK TestingTests";
+			sourceTree = "<group>";
+		};
+		AF8DFE4425E4434100AE6481 /* Ecomm SDK TestingUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AF8DFE4525E4434100AE6481 /* Ecomm_SDK_TestingUITests.swift */,
+				AF8DFE4725E4434100AE6481 /* Info.plist */,
+			);
+			path = "Ecomm SDK TestingUITests";
+			sourceTree = "<group>";
+		};
+		FE4DFDCF20DFACAED9AF5AA1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F660CB116AE8E2F932F8A1F1 /* Pods-Ecomm SDK Testing.debug.xcconfig */,
+				EE64CCBE50C6D7F6050EFD20 /* Pods-Ecomm SDK Testing.release.xcconfig */,
+				CC8286DC81DF0A5C9D34F49E /* Pods-Ecomm SDK Testing-Ecomm SDK TestingUITests.debug.xcconfig */,
+				5442BCAEE15618FFD2C241B0 /* Pods-Ecomm SDK Testing-Ecomm SDK TestingUITests.release.xcconfig */,
+				2100644C16CDA81AF31D84D5 /* Pods-Ecomm SDK TestingTests.debug.xcconfig */,
+				5C507136F661F36C766389E6 /* Pods-Ecomm SDK TestingTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AF8DFE1F25E4434000AE6481 /* Ecomm SDK Testing */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF8DFE4A25E4434100AE6481 /* Build configuration list for PBXNativeTarget "Ecomm SDK Testing" */;
+			buildPhases = (
+				94618C97F8C06DE34225C1E6 /* [CP] Check Pods Manifest.lock */,
+				AF8DFE1C25E4434000AE6481 /* Sources */,
+				AF8DFE1D25E4434000AE6481 /* Frameworks */,
+				AF8DFE1E25E4434000AE6481 /* Resources */,
+				D72354B4C604690936EEB04E /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Ecomm SDK Testing";
+			productName = "Ecomm SDK Testing";
+			productReference = AF8DFE2025E4434000AE6481 /* Ecomm SDK Testing.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AF8DFE3525E4434100AE6481 /* Ecomm SDK TestingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF8DFE4D25E4434100AE6481 /* Build configuration list for PBXNativeTarget "Ecomm SDK TestingTests" */;
+			buildPhases = (
+				A15181AC57C7C25F2AB9CE70 /* [CP] Check Pods Manifest.lock */,
+				AF8DFE3225E4434100AE6481 /* Sources */,
+				AF8DFE3325E4434100AE6481 /* Frameworks */,
+				AF8DFE3425E4434100AE6481 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AF8DFE3825E4434100AE6481 /* PBXTargetDependency */,
+			);
+			name = "Ecomm SDK TestingTests";
+			productName = "Ecomm SDK TestingTests";
+			productReference = AF8DFE3625E4434100AE6481 /* Ecomm SDK TestingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AF8DFE4025E4434100AE6481 /* Ecomm SDK TestingUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF8DFE5025E4434100AE6481 /* Build configuration list for PBXNativeTarget "Ecomm SDK TestingUITests" */;
+			buildPhases = (
+				D059D17653588F8C5F4FB5EC /* [CP] Check Pods Manifest.lock */,
+				AF8DFE3D25E4434100AE6481 /* Sources */,
+				AF8DFE3E25E4434100AE6481 /* Frameworks */,
+				AF8DFE3F25E4434100AE6481 /* Resources */,
+				4F5A30305EEA79E21262EF87 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AF8DFE4325E4434100AE6481 /* PBXTargetDependency */,
+			);
+			name = "Ecomm SDK TestingUITests";
+			productName = "Ecomm SDK TestingUITests";
+			productReference = AF8DFE4125E4434100AE6481 /* Ecomm SDK TestingUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AF8DFE1825E4434000AE6481 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					AF8DFE1F25E4434000AE6481 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					AF8DFE3525E4434100AE6481 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = AF8DFE1F25E4434000AE6481;
+					};
+					AF8DFE4025E4434100AE6481 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = AF8DFE1F25E4434000AE6481;
+					};
+				};
+			};
+			buildConfigurationList = AF8DFE1B25E4434000AE6481 /* Build configuration list for PBXProject "Ecomm SDK Testing" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AF8DFE1725E4434000AE6481;
+			productRefGroup = AF8DFE2125E4434000AE6481 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AF8DFE1F25E4434000AE6481 /* Ecomm SDK Testing */,
+				AF8DFE3525E4434100AE6481 /* Ecomm SDK TestingTests */,
+				AF8DFE4025E4434100AE6481 /* Ecomm SDK TestingUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AF8DFE1E25E4434000AE6481 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF8DFE3025E4434100AE6481 /* LaunchScreen.storyboard in Resources */,
+				AF8DFE2D25E4434100AE6481 /* Assets.xcassets in Resources */,
+				AF8DFE2B25E4434000AE6481 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF8DFE3425E4434100AE6481 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF8DFE3F25E4434100AE6481 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4F5A30305EEA79E21262EF87 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ecomm SDK Testing-Ecomm SDK TestingUITests/Pods-Ecomm SDK Testing-Ecomm SDK TestingUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ecomm SDK Testing-Ecomm SDK TestingUITests/Pods-Ecomm SDK Testing-Ecomm SDK TestingUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ecomm SDK Testing-Ecomm SDK TestingUITests/Pods-Ecomm SDK Testing-Ecomm SDK TestingUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		94618C97F8C06DE34225C1E6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Ecomm SDK Testing-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A15181AC57C7C25F2AB9CE70 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Ecomm SDK TestingTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D059D17653588F8C5F4FB5EC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Ecomm SDK Testing-Ecomm SDK TestingUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D72354B4C604690936EEB04E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ecomm SDK Testing/Pods-Ecomm SDK Testing-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ecomm SDK Testing/Pods-Ecomm SDK Testing-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ecomm SDK Testing/Pods-Ecomm SDK Testing-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AF8DFE1C25E4434000AE6481 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF8DFE2825E4434000AE6481 /* ViewController.swift in Sources */,
+				AF8DFE2425E4434000AE6481 /* AppDelegate.swift in Sources */,
+				AF8DFE2625E4434000AE6481 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF8DFE3225E4434100AE6481 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF8DFE3B25E4434100AE6481 /* Ecomm_SDK_TestingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF8DFE3D25E4434100AE6481 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF8DFE4625E4434100AE6481 /* Ecomm_SDK_TestingUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AF8DFE3825E4434100AE6481 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AF8DFE1F25E4434000AE6481 /* Ecomm SDK Testing */;
+			targetProxy = AF8DFE3725E4434100AE6481 /* PBXContainerItemProxy */;
+		};
+		AF8DFE4325E4434100AE6481 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AF8DFE1F25E4434000AE6481 /* Ecomm SDK Testing */;
+			targetProxy = AF8DFE4225E4434100AE6481 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AF8DFE2925E4434000AE6481 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF8DFE2A25E4434000AE6481 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AF8DFE2E25E4434100AE6481 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF8DFE2F25E4434100AE6481 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AF8DFE4825E4434100AE6481 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AF8DFE4925E4434100AE6481 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AF8DFE4B25E4434100AE6481 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F660CB116AE8E2F932F8A1F1 /* Pods-Ecomm SDK Testing.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Ecomm SDK Testing/Ecomm SDK Testing.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q993233M8T;
+				INFOPLIST_FILE = "Ecomm SDK Testing/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.clover.ecomm.Ecomm-SDK-Testing";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AF8DFE4C25E4434100AE6481 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE64CCBE50C6D7F6050EFD20 /* Pods-Ecomm SDK Testing.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Ecomm SDK Testing/Ecomm SDK Testing.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q993233M8T;
+				INFOPLIST_FILE = "Ecomm SDK Testing/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.clover.ecomm.Ecomm-SDK-Testing";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AF8DFE4E25E4434100AE6481 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2100644C16CDA81AF31D84D5 /* Pods-Ecomm SDK TestingTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q993233M8T;
+				INFOPLIST_FILE = "Ecomm SDK TestingTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.clover.ecomm.Ecomm-SDK-TestingTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ecomm SDK Testing.app/Ecomm SDK Testing";
+			};
+			name = Debug;
+		};
+		AF8DFE4F25E4434100AE6481 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C507136F661F36C766389E6 /* Pods-Ecomm SDK TestingTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q993233M8T;
+				INFOPLIST_FILE = "Ecomm SDK TestingTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.clover.ecomm.Ecomm-SDK-TestingTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ecomm SDK Testing.app/Ecomm SDK Testing";
+			};
+			name = Release;
+		};
+		AF8DFE5125E4434100AE6481 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC8286DC81DF0A5C9D34F49E /* Pods-Ecomm SDK Testing-Ecomm SDK TestingUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q993233M8T;
+				INFOPLIST_FILE = "Ecomm SDK TestingUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.clover.ecomm.Ecomm-SDK-TestingUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Ecomm SDK Testing";
+			};
+			name = Debug;
+		};
+		AF8DFE5225E4434100AE6481 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5442BCAEE15618FFD2C241B0 /* Pods-Ecomm SDK Testing-Ecomm SDK TestingUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q993233M8T;
+				INFOPLIST_FILE = "Ecomm SDK TestingUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.clover.ecomm.Ecomm-SDK-TestingUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Ecomm SDK Testing";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AF8DFE1B25E4434000AE6481 /* Build configuration list for PBXProject "Ecomm SDK Testing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF8DFE4825E4434100AE6481 /* Debug */,
+				AF8DFE4925E4434100AE6481 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF8DFE4A25E4434100AE6481 /* Build configuration list for PBXNativeTarget "Ecomm SDK Testing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF8DFE4B25E4434100AE6481 /* Debug */,
+				AF8DFE4C25E4434100AE6481 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF8DFE4D25E4434100AE6481 /* Build configuration list for PBXNativeTarget "Ecomm SDK TestingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF8DFE4E25E4434100AE6481 /* Debug */,
+				AF8DFE4F25E4434100AE6481 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF8DFE5025E4434100AE6481 /* Build configuration list for PBXNativeTarget "Ecomm SDK TestingUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF8DFE5125E4434100AE6481 /* Debug */,
+				AF8DFE5225E4434100AE6481 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AF8DFE1825E4434000AE6481 /* Project object */;
+}
