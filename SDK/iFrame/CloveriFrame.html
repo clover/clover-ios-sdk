@@ -1,0 +1,119 @@
+
+<meta charset="utf-8"><!DOCTYPE html>
+    <!--suppress ALL -->
+    <html lang="en">
+        
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+            <title>Parent Window</title>
+            <script src="https://<ENVIRONMENT>/sdk.js"></script>
+            <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'>
+        </head>
+        <body>
+            <div class="container">
+                <form action="/charge" method="post" id="payment-form">
+                    <div class="form-row top-row">
+                        <div id="card-number" class="field card-number"></div>
+                        <div class="input-errors" id="card-number-errors" role="alert"></div>
+                        <div id="card-date" class="field third-width"></div>
+                        <div class="input-errors" id="card-date-errors" role="alert"></div>
+                        <div id="card-cvv" class="field third-width"></div>
+                        <div class="input-errors" id="card-cvv-errors" role="alert"></div>
+                        <div id="card-postal-code" class="field third-width"></div>
+                        <div class="input-errors" id="card-postal-code-errors" role="alert"></div>
+                    </div>
+                    <!-- Used to display form errors. -->
+                    <div id="card-errors" role="alert"></div>
+                    <!-- Testing -->
+                    <div id="card-response" role="alert"></div>
+                    
+                    <!--
+                    <div class="button-container">
+                        <button>Submit Payment</button>
+                    </div>
+                    -->
+                </form>
+            </div>
+        </body>
+        
+
+        
+        
+        <style>
+            body {
+              background-color: #FFFFFF;
+              margin: 1px;
+            }
+
+            .container {
+              background-color: #FFFFFF;
+            }
+
+            .container * {
+              font-family: Roboto, "Open Sans", sans-serif;
+              font-size: 16px;
+            }
+
+            .container .form-row {
+              display: flex;
+              flex-direction: row;
+              flex-wrap: wrap;
+              justify-content: space-between;
+            }
+
+
+
+            .input-errors {
+              font-size: 12px;
+              position: absolute;
+              margin-left: 5px;
+              margin-top: 54px;
+              color: red;
+            }
+
+            .container .form-row .field {
+              box-sizing: border-box;
+              border: 1px solid #DEE0E1;
+              border-radius: 3px;
+              height: <row-height>;
+              margin: 2px;
+              padding: 1%;
+              width: 100%;
+            }
+        
+            .container .form-row {
+                display: flex;
+                flex-direction: row;
+                justify-content: left;
+            }
+
+
+            @media  {
+              body {
+                width: auto;
+              }
+            }
+
+            @media  {
+              body {
+                width: auto;
+              }
+              
+              .container {
+                height: auto;
+              }
+
+              .container .form-row .field.card-number {
+                width: 100%;
+              }
+              
+              .container .form-row .field.third-width {
+                width: 31.67%;
+              }
+            }
+
+        </style>
+        
+    </html>
+    
